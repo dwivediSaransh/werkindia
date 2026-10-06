@@ -1,0 +1,29 @@
+query MyOrganisations {
+  myOrganisations {
+    id
+    legalName
+    tradeName
+    sector
+    employeeBand
+    organisationType
+    nic2025Code
+    verificationStatus
+    createdAt
+    role
+  }
+}
+
+mutation CreateOrganisation($input: CreateOrganisationInput!) {
+  createOrganisation(input: $input) {
+    isActive
+    organisationId
+    legalName
+    tradeName
+    sector
+    employeeBand
+    role
+    createdAt
+    errorCode
+    errorMessage
+  }
+}

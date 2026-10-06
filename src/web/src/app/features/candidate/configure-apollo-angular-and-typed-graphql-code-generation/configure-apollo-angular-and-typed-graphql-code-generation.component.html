@@ -1,0 +1,17 @@
+<section class="configure-apollo">
+  <h1 class="title">Apollo + Codegen</h1>
+
+  @if (vm().state === 'loading') {
+    <p class="status" aria-live="polite">Loading GraphQL client...</p>
+  } @else if (vm().state === 'error') {
+    <p class="status error" role="alert">{{ vm().error }}</p>
+    <button class="btn" (click)="fetchVersion()" [disabled]="vm().state === 'loading'">
+      Retry
+    </button>
+  } @else if (vm().state === 'success') {
+    <p class="status success" aria-live="polite">{{ vm().data }}</p>
+    <button class="btn" (click)="fetchVersion()" [disabled]="vm().state === 'loading'">
+      Refresh
+    </button>
+  }
+</section>

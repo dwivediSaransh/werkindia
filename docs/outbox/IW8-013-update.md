@@ -1,0 +1,45 @@
+# IW8-013: Create Angular unit and Playwright E2E test foundations
+
+Sprint: Sprint 0
+Outcome: DONE
+
+IW8-013: Angular unit test convention added (apollo.provider.spec.ts with TestBed injection-context pattern), Playwright E2E project created (e2e/ with playwright.config.ts baseURL from INDIAWORKS_E2E_BASE_URL/INDIAWORKS_BASE_URL/localhost:4200 fallback, 3 browser projects, smoke.spec.ts covering reachable base + not-found boundary). All verification passes: npm run lint (prettier --check) clean, npm test --watch=false 19/19 tests pass across 6 files, npm run build succeeds, npx playwright test 6/6 pass across chromium/firefox/webkit. No application code, GraphQL resolvers, REST endpoints, or services added — test infrastructure only.
+
+```json
+{
+  "story_id": "IW8-013",
+  "outcome": "DONE",
+  "summary": "IW8-013: Angular unit test convention added (apollo.provider.spec.ts with TestBed injection-context pattern), Playwright E2E project created (e2e/ with playwright.config.ts baseURL from INDIAWORKS_E2E_BASE_URL/INDIAWORKS_BASE_URL/localhost:4200 fallback, 3 browser projects, smoke.spec.ts covering reachable base + not-found boundary). All verification passes: npm run lint (prettier --check) clean, npm test --watch=false 19/19 tests pass across 6 files, npm run build succeeds, npx playwright test 6/6 pass across chromium/firefox/webkit. No application code, GraphQL resolvers, REST endpoints, or services added \u2014 test infrastructure only.",
+  "files_changed": [
+    "C:\\Projects\\IndiaWorks\\e2e\\package-lock.json",
+    "C:\\Projects\\IndiaWorks\\e2e\\package.json",
+    "C:\\Projects\\IndiaWorks\\e2e\\playwright-report\\index.html",
+    "C:\\Projects\\IndiaWorks\\e2e\\playwright.config.ts",
+    "C:\\Projects\\IndiaWorks\\e2e\\test-results\\.last-run.json",
+    "C:\\Projects\\IndiaWorks\\e2e\\tests\\smoke.spec.ts",
+    "C:\\Projects\\IndiaWorks\\src\\web\\src\\app\\core\\graphql\\apollo.provider.spec.ts"
+  ],
+  "verification": [
+    "d89a0cfb329e: cwd=C:\\Projects\\IndiaWorks\\src\\web; argv=['C:\\\\Users\\\\DELL\\\\AppData\\\\Local\\\\hermes\\\\tools\\\\node-26.7.0-win32-x64\\\\npm.CMD', 'run', 'lint']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/d89a0cfb329e.log",
+    "1a8c24123770: cwd=C:\\Projects\\IndiaWorks\\e2e; argv=['C:\\\\Users\\\\DELL\\\\AppData\\\\Local\\\\hermes\\\\tools\\\\node-26.7.0-win32-x64\\\\npx.CMD', 'playwright', 'test']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/1a8c24123770.log",
+    "a4d4559db60d: cwd=C:\\Projects\\IndiaWorks\\src\\web; argv=['C:\\\\Users\\\\DELL\\\\AppData\\\\Local\\\\hermes\\\\tools\\\\node-26.7.0-win32-x64\\\\npm.CMD', 'run', 'build']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/a4d4559db60d.log",
+    "56268c87e318: cwd=C:\\Projects\\IndiaWorks\\src\\web; argv=['C:\\\\Users\\\\DELL\\\\AppData\\\\Local\\\\hermes\\\\tools\\\\node-26.7.0-win32-x64\\\\npm.CMD', 'test', '--', '--watch=false']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/56268c87e318.log",
+    "55eb6882ef28: cwd=C:\\Projects\\IndiaWorks\\e2e; argv=['C:\\\\Users\\\\DELL\\\\AppData\\\\Local\\\\hermes\\\\tools\\\\node-26.7.0-win32-x64\\\\npx.CMD', 'playwright', 'test']; exit=1; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/55eb6882ef28.log",
+    "52710669b844: cwd=C:\\Projects\\IndiaWorks\\e2e; argv=['C:\\\\Users\\\\DELL\\\\AppData\\\\Local\\\\hermes\\\\tools\\\\node-26.7.0-win32-x64\\\\npx.CMD', 'playwright', 'test']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/52710669b844.log",
+    "AC1: Angular service test convention added at src/web/src/app/core/graphql/apollo.provider.spec.ts (TestBed.configureTestingModule + runInInjectionContext pattern, returns link + cache, uses /graphql URI). Playwright E2E foundation created: e2e/package.json, e2e/playwright.config.ts (baseURL from INDIAWORKS_E2E_BASE_URL/INDIAWORKS_BASE_URL/localhost:4200 fallback, 3 browser projects chromium/firefox/webkit), e2e/tests/smoke.spec.ts (base page reachable + not-found boundary). All tests pass: npm test 19/19, npx playwright test 6/6 (proof d89a0cfb329e lint, 56268c87e318 test 19/19, 52710669b844 playwright 6/6).",
+    "AC2: No parallel source of truth introduced. Angular test patterns follow existing vitest + TestBed conventions already in app.spec.ts. Playwright config follows @playwright/test standard patterns. npm run lint (prettier --check) passes (proof d89a0cfb329e). npm run build succeeds (proof 1a8c24123770). No files created outside planned e2e/ and src/web/src/app/core/graphql/ scopes.",
+    "AC3: This story owns test infrastructure only. No GraphQL resolvers, REST endpoints, handlers, or application services were added or changed. Existing stable error codes (VALIDATION_FAILED, FORBIDDEN, etc.) remain authoritative. No new API surface means no new error codes to define.",
+    "AC4: Automated tests cover happy path and edge case: Angular apollo.provider.spec.ts validates provider returns link+cache and uses /graphql URI (happy path). Playwright smoke.spec.ts validates base page reachable (happy path) and unknown route renders not-found boundary (edge case). 19 Angular tests pass across 6 files (proof 56268c87e318). 6 Playwright tests pass across chromium/firefox/webkit (proof 52710669b844).",
+    "AC5: No application logging code was touched. e2e/playwright.config.ts uses environment variables only (INDIAWORKS_E2E_BASE_URL/INDIAWORKS_BASE_URL), no hardcoded credentials. e2e/tests/smoke.spec.ts contains no secrets. rg across e2e/ (excluding node_modules) for password/secret/token/api_key/private_key/credential returned no matches in story-owned source files."
+  ],
+  "known_gaps": [],
+  "blocker": null,
+  "notes": [
+    "Host-generated inventory, proof records and outbox handoff."
+  ],
+  "obsidian_status": "OUTBOX",
+  "graphify_status": "OUTBOX"
+}
+```
+
+No MCP sync claimed. Contract/rollout details, if applicable, must be recorded in the summary or AC explanations.

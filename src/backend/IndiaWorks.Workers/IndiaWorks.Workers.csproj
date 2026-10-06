@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>dotnet-IndiaWorks.Workers-53dbcba4-c131-433e-b73d-2c760a4a7729</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\IndiaWorks.Application\IndiaWorks.Application.csproj" />
+    <ProjectReference Include="..\IndiaWorks.Infrastructure\IndiaWorks.Infrastructure.csproj" />
+  </ItemGroup>
+</Project>

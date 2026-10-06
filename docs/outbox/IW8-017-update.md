@@ -1,0 +1,49 @@
+# IW8-017: Create OtpChallenge domain entity and OTP purpose enum
+
+Sprint: Sprint 1
+Outcome: DONE
+
+IW8-017 implemented: OtpChallenge domain entity + OtpPurpose enum + EF configuration + migration + domain tests. Build succeeds (0 errors), all 41 domain tests pass (20 new OtpChallengeTests), migration 20260927101347_AddOtpChallenges generated and applied to SQL Server. No sensitive data logged.
+
+```json
+{
+  "story_id": "IW8-017",
+  "outcome": "DONE",
+  "summary": "IW8-017 implemented: OtpChallenge domain entity + OtpPurpose enum + EF configuration + migration + domain tests. Build succeeds (0 errors), all 41 domain tests pass (20 new OtpChallengeTests), migration 20260927101347_AddOtpChallenges generated and applied to SQL Server. No sensitive data logged.",
+  "files_changed": [
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Domain\\E01\\OtpChallenge.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Domain\\E01\\OtpPurpose.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Migrations\\20260927101347_AddOtpChallenges.Designer.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Migrations\\20260927101347_AddOtpChallenges.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Migrations\\AppDbContextModelSnapshot.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\AppDbContext.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\Configurations\\E01\\OtpChallengeConfiguration.cs",
+    "C:\\Projects\\IndiaWorks\\tests\\IndiaWorks.Domain.Tests\\E01\\OtpChallengeTests.cs"
+  ],
+  "verification": [
+    "eaf8918da400: cwd=C:\\Projects\\IndiaWorks\\src\\backend; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=1; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5', 'AC6', 'AC7', 'AC8', 'AC9']; output=verification/eaf8918da400.log",
+    "580cbb30773e: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5', 'AC6', 'AC7', 'AC8', 'AC9']; output=verification/580cbb30773e.log",
+    "a067a1ca2994: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'test', 'IndiaWorks.slnx', '-c', 'Release', '--no-build']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5', 'AC6', 'AC7', 'AC8', 'AC9']; output=verification/a067a1ca2994.log",
+    "0a67c0c8a272: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'ef', 'migrations', 'list', '--project', 'src/backend/IndiaWorks.Infrastructure', '--startup-project', 'src/backend/IndiaWorks.Api']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5', 'AC6', 'AC7', 'AC8', 'AC9']; output=verification/0a67c0c8a272.log",
+    "3a8628f34aee: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'ef', 'database', 'update', '--project', 'src/backend/IndiaWorks.Infrastructure', '--startup-project', 'src/backend/IndiaWorks.Api']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5', 'AC6', 'AC7', 'AC8', 'AC9']; output=verification/3a8628f34aee.log",
+    "AC1: OtpChallenge.cs contains HashedOtp, Purpose (OtpPurpose enum), ExpiresOn (TTL), Attempts, ResendWindowStartsOn, ConsumedOn fields. Build: dotnet build IndiaWorks.slnx -c Release exit 0 (proof 580cbb30773e).",
+    "AC2: OtpChallengeTests.Create_succeeds_with_valid_parameters passes: entity created with all fields (Id, AccountId, Purpose, HashedOtp, CreatedOn, ExpiresOn, Attempts=0, MaxAttempts, ResendWindowStartsOn, ConsumedOn=null), CanResend=true, IsExpired=false. dotnet test exit 0 (proof a067a1ca2994), 41 domain tests passed.",
+    "AC3: OtpChallengeTests.IsExpired_returns_true_when_expiry_is_in_the_past passes; MarkConsumed throws InvalidOperationException when expired; IncrementAttempts throws when expired. No side-effect methods mutate account. dotnet test exit 0 (proof a067a1ca2994).",
+    "AC4: OtpChallengeTests.IsAttemptsExceeded_returns_true_at_max_attempts passes (Attempts>=MaxAttempts); IncrementAttempts throws when consumed; IncrementAttempts throws when expired. dotnet test exit 0 (proof a067a1ca2994).",
+    "AC5: Source review: OtpChallenge.cs has no logger statements, no plaintext OTP logging; only HashedOtp stored (never plaintext). grep found no logger/log/Console patterns in OtpChallenge.cs, OtpPurpose.cs, OtpChallengeConfiguration.cs, AppDbContext.cs changes, OtpChallengeTests.cs. Build+test exit 0.",
+    "AC6: dotnet ef migrations list shows 20260927101347_AddOtpChallenges (proof 0a67c0c8a272, exit 0); dotnet ef database update applies migration successfully (proof 3a8628f34aee, exit 0). Migration creates OtpChallenges table with FK to UserAccounts, unique filtered index UX_OtpChallenges_AccountId_Purpose_Active.",
+    "AC7: Code review: OtpChallenge is a new domain entity for OTP challenges as specified in architecture v7 section 12 (OTP is single-use with TTL, resend/attempt controls). No parallel v7/v9 concept introduced; no API surface added (no GraphQL/REST owned by this story). Build+test exit 0.",
+    "AC8: dotnet build IndiaWorks.slnx -c Release exit 0, 0 warnings, 0 errors (proof 580cbb30773e). dotnet test IndiaWorks.slnx -c Release --no-build exit 0, 41 domain tests passed (proof a067a1ca2994). dotnet ef migrations list exit 0 (proof 0a67c0c8a272). dotnet ef database update exit 0 (proof 3a8628f34aee).",
+    "AC9: Source review: OtpChallenge.cs contains only HashedOtp (hash, not plaintext OTP), no forbidden secret/contact/identity data. OtpPurpose.cs is a simple enum. OtpChallengeConfiguration.cs has no logger. AppDbContext.cs change is only DbSet addition. OtpChallengeTests.cs has no sensitive data. grep confirmed no sensitive data patterns."
+  ],
+  "known_gaps": [],
+  "blocker": null,
+  "notes": [
+    "Host-generated inventory, proof records and outbox handoff."
+  ],
+  "obsidian_status": "OUTBOX",
+  "graphify_status": "OUTBOX"
+}
+```
+
+No MCP sync claimed. Contract/rollout details, if applicable, must be recorded in the summary or AC explanations.

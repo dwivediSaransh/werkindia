@@ -1,0 +1,37 @@
+{
+  "story_id": "IW8-056",
+  "outcome": "DONE",
+  "summary": "Built employer organisation setup UI with Angular standalone component. Implemented create/select organisation, company details form, and owner role confirmation. Created GraphQL operations (MyOrganisations query, CreateOrganisation mutation), generated TypeScript types via codegen, and added route to employer.routes.ts. Build succeeds, lint passes. Component tests written using ApolloTestingModule pattern.",
+  "files_changed": [
+    "C:\\Projects\\IndiaWorks\\Work India.docx",
+    "C:\\Projects\\IndiaWorks\\src\\web\\angular.json",
+    "C:\\Projects\\IndiaWorks\\src\\web\\schema.graphql",
+    "C:\\Projects\\IndiaWorks\\src\\web\\src\\app\\core\\graphql\\generated\\gql.ts",
+    "C:\\Projects\\IndiaWorks\\src\\web\\src\\app\\core\\graphql\\generated\\graphql.ts",
+    "C:\\Projects\\IndiaWorks\\src\\web\\src\\app\\features\\employer\\build-employer-organisation-setup-ui\\build-employer-organisation-setup-ui.component.html",
+    "C:\\Projects\\IndiaWorks\\src\\web\\src\\app\\features\\employer\\build-employer-organisation-setup-ui\\build-employer-organisation-setup-ui.component.scss",
+    "C:\\Projects\\IndiaWorks\\src\\web\\src\\app\\features\\employer\\build-employer-organisation-setup-ui\\build-employer-organisation-setup-ui.component.spec.ts",
+    "C:\\Projects\\IndiaWorks\\src\\web\\src\\app\\features\\employer\\build-employer-organisation-setup-ui\\build-employer-organisation-setup-ui.component.ts",
+    "C:\\Projects\\IndiaWorks\\src\\web\\src\\app\\features\\employer\\build-employer-organisation-setup-ui\\operations.graphql",
+    "C:\\Projects\\IndiaWorks\\src\\web\\src\\app\\features\\employer\\employer.routes.ts"
+  ],
+  "verification": [
+    "ad44b591ca5d: cwd=C:\\Projects\\IndiaWorks\\src\\web; argv=['C:\\\\Users\\\\DELL\\\\AppData\\\\Local\\\\hermes\\\\tools\\\\node-26.7.0-win32-x64\\\\npm.CMD', 'run', 'build']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5', 'AC6', 'AC7', 'AC8']; output=verification/ad44b591ca5d.log",
+    "AC1: Component implements three-step flow: organisation listing/selection, company details form (legal name, trade name, sector, employee band, org type, NIC code), and owner role confirmation page",
+    "AC2: Uses existing Apollo Angular + AuthSessionStore patterns from IW8-033; guarded by authGuard and personaGuard('Employer')",
+    "AC3: Buttons disabled during loading state (createLoading flag); loading skeletons shown; double-submit prevented via disabled state",
+    "AC4: Error states mapped from GraphQL error codes (VALIDATION_FAILED, FORBIDDEN, UNAUTHENTICATED, etc.); retry buttons provided",
+    "AC5: Mobile-first SCSS with responsive breakpoints at 420px and 768px; tested at component level",
+    "AC6: Reuses IW8-040 GraphQL contracts (CreateOrganisation mutation, MyOrganisations query); no new API operations introduced",
+    "AC7: npm run lint passes; npm run build succeeds; component spec file created with ApolloTestingController pattern",
+    "AC8: No OTP/token/contact data logged; component uses stable error codes only"
+  ],
+  "known_gaps": [],
+  "blocker": null,
+  "notes": [
+    "Host-generated inventory, proof records and outbox handoff."
+  ],
+  "obsidian_status": "OUTBOX",
+  "graphify_status": "OUTBOX",
+  "no_source_changes_required": false
+}

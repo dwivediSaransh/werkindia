@@ -1,0 +1,35 @@
+{
+  "story_id": "IW8-057",
+  "outcome": "IN_PROGRESS",
+  "summary": "Not yet reported.",
+  "files_changed": [
+    "C:\\Projects\\IndiaWorks\\src\\web\\schema.graphql",
+    "C:\\Projects\\IndiaWorks\\src\\web\\src\\app\\core\\graphql\\generated\\gql.ts",
+    "C:\\Projects\\IndiaWorks\\src\\web\\src\\app\\core\\graphql\\generated\\graphql.ts",
+    "C:\\Projects\\IndiaWorks\\src\\web\\src\\app\\features\\employer\\build-employer-organisation-setup-ui\\build-employer-organisation-setup-ui.component.spec.ts",
+    "C:\\Projects\\IndiaWorks\\src\\web\\src\\app\\features\\employer\\build-employer-team-invitation-ui\\InviteMember.graphql",
+    "C:\\Projects\\IndiaWorks\\src\\web\\src\\app\\features\\employer\\build-employer-team-invitation-ui\\PendingInvitations.graphql",
+    "C:\\Projects\\IndiaWorks\\src\\web\\src\\app\\features\\employer\\build-employer-team-invitation-ui\\RevokeInvitation.graphql",
+    "C:\\Projects\\IndiaWorks\\src\\web\\src\\app\\features\\employer\\build-employer-team-invitation-ui\\build-employer-team-invitation-ui.component.html",
+    "C:\\Projects\\IndiaWorks\\src\\web\\src\\app\\features\\employer\\build-employer-team-invitation-ui\\build-employer-team-invitation-ui.component.scss",
+    "C:\\Projects\\IndiaWorks\\src\\web\\src\\app\\features\\employer\\build-employer-team-invitation-ui\\build-employer-team-invitation-ui.component.spec.ts",
+    "C:\\Projects\\IndiaWorks\\src\\web\\src\\app\\features\\employer\\build-employer-team-invitation-ui\\build-employer-team-invitation-ui.component.ts",
+    "C:\\Projects\\IndiaWorks\\src\\web\\src\\app\\features\\employer\\employer.routes.ts",
+    "C:\\Projects\\IndiaWorks\\src\\web\\src\\test.global-setup.ts",
+    "C:\\Projects\\IndiaWorks\\src\\web\\src\\test.process-setup.ts",
+    "C:\\Projects\\IndiaWorks\\src\\web\\src\\test.ts",
+    "C:\\Projects\\IndiaWorks\\src\\web\\src\\vitest-globals.d.ts",
+    "C:\\Projects\\IndiaWorks\\src\\web\\vitest.config.ts"
+  ],
+  "verification": [],
+  "known_gaps": [
+    "Watchdog recovered confirmed terminated executor; completion remains unverified."
+  ],
+  "blocker": null,
+  "notes": [
+    "Host-generated inventory, proof records and outbox handoff."
+  ],
+  "obsidian_status": "OUTBOX",
+  "graphify_status": "OUTBOX",
+  "no_source_changes_required": false
+}

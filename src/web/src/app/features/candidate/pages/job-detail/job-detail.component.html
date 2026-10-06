@@ -1,0 +1,35 @@
+@if (vm() === 'loading') {
+  <div class="job-detail job-detail--loading">
+    <p class="eyebrow">Loading job detail</p>
+    <div class="skeleton"></div>
+  </div>
+} @else if (vm() === 'error') {
+  <div class="job-detail">
+    <p class="eyebrow">Job not available</p>
+    <h1>This job is no longer open.</h1>
+    <p>The role may have been filled, paused, or removed by the employer.</p>
+    <a class="secondary-button" href="/jobs">Back to jobs</a>
+  </div>
+} @else if (job) {
+  <article class="job-detail">
+    <header class="job-detail__header">
+      <p class="eyebrow">{{ job.company }}</p>
+      <h1>{{ job.title }}</h1>
+      <p class="job-detail__pay">{{ job.pay }}</p>
+    </header>
+    <section class="job-detail__body">
+      <p>
+        Job detail content comes from the GraphQL job query once IW8-010 connects the frontend to
+        the API.
+      </p>
+      <p>
+        This placeholder demonstrates the candidate job detail route and loading/error/success
+        states.
+      </p>
+    </section>
+    <footer class="job-detail__actions">
+      <a class="primary-button" href="/jobs">Apply now</a>
+      <a class="secondary-button" href="/jobs">Save for later</a>
+    </footer>
+  </article>
+}

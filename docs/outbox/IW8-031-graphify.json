@@ -1,0 +1,40 @@
+{
+  "story_id": "IW8-031",
+  "outcome": "DONE",
+  "summary": "IW8-031 implemented and verified. Signals-based auth session store, token interceptor with single-flight refresh, Apollo auth link, and candidate feature component all exist and pass 44/44 tests. Lint and build succeed. Component spec fixed: removed fakeAsync/tick (Vitest jsdom lacks zone.js/testing), replaced toBeFalse() with toBe(false), flushed pending HTTP requests so afterEach verify() passes.",
+  "files_changed": [
+    "C:\\Projects\\IndiaWorks\\.cron\\current-run\\PLAN.md",
+    "C:\\Projects\\IndiaWorks\\src\\web\\src\\app\\core\\auth\\auth-session.store.spec.ts",
+    "C:\\Projects\\IndiaWorks\\src\\web\\src\\app\\core\\auth\\auth-session.store.ts",
+    "C:\\Projects\\IndiaWorks\\src\\web\\src\\app\\core\\auth\\auth.interceptor.spec.ts",
+    "C:\\Projects\\IndiaWorks\\src\\web\\src\\app\\core\\auth\\auth.interceptor.ts",
+    "C:\\Projects\\IndiaWorks\\src\\web\\src\\app\\core\\auth\\auth.service.spec.ts",
+    "C:\\Projects\\IndiaWorks\\src\\web\\src\\app\\core\\auth\\auth.service.ts",
+    "C:\\Projects\\IndiaWorks\\src\\web\\src\\app\\core\\graphql\\auth-link.spec.ts",
+    "C:\\Projects\\IndiaWorks\\src\\web\\src\\app\\features\\candidate\\create-angular-auth-session-store-and-token-interceptor\\create-angular-auth-session-store-and-token-interceptor.component.html",
+    "C:\\Projects\\IndiaWorks\\src\\web\\src\\app\\features\\candidate\\create-angular-auth-session-store-and-token-interceptor\\create-angular-auth-session-store-and-token-interceptor.component.scss",
+    "C:\\Projects\\IndiaWorks\\src\\web\\src\\app\\features\\candidate\\create-angular-auth-session-store-and-token-interceptor\\create-angular-auth-session-store-and-token-interceptor.component.spec.ts",
+    "C:\\Projects\\IndiaWorks\\src\\web\\src\\app\\features\\candidate\\create-angular-auth-session-store-and-token-interceptor\\create-angular-auth-session-store-and-token-interceptor.component.ts",
+    "C:\\Projects\\IndiaWorks\\src\\web\\vitest.config.ts"
+  ],
+  "verification": [
+    "476b223eddf7: cwd=C:\\Projects\\IndiaWorks\\src\\web; argv=['C:\\\\Users\\\\DELL\\\\AppData\\\\Local\\\\hermes\\\\tools\\\\node-26.7.0-win32-x64\\\\npm.CMD', 'run', 'lint']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5', 'AC6', 'AC7', 'AC8']; output=verification/476b223eddf7.log",
+    "1f3f1a8a95d9: cwd=C:\\Projects\\IndiaWorks\\src\\web; argv=['C:\\\\Users\\\\DELL\\\\AppData\\\\Local\\\\hermes\\\\tools\\\\node-26.7.0-win32-x64\\\\npm.CMD', 'test', '--', '--watch=false']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5', 'AC6', 'AC7', 'AC8']; output=verification/1f3f1a8a95d9.log",
+    "AC1: Signals-based session state: AuthSessionStore uses Angular signals (accessToken, refreshTokenHash, userId, deviceId, sessionId, persona, expiresOn) with computed isAuthenticated and sessionExpiresSoon. Verified in auth-session.store.spec.ts (6/6 tests pass).",
+    "AC2: Attach access token: auth.interceptor.ts clones requests with Authorization: Bearer header for /api/* URLs; auth-link.ts attaches Authorization header for GraphQL via SetContextLink. Verified in auth.interceptor.spec.ts and auth-link.spec.ts.",
+    "AC3: Single-flight refresh on 401/UNAUTHENTICATED: auth.interceptor.ts uses isRefreshing + BehaviorSubject refreshSubject to serialize refresh attempts; concurrent 401s wait on the same refresh and retry with new token. Verified in auth.interceptor.spec.ts.",
+    "AC4: Happy path: component spec sets mock session, triggers refresh, flushes successful response, and asserts store updated and success state rendered. Tests pass.",
+    "AC5: Loading and double-submit guard: component sets refreshInProgress before HTTP call; second trigger hits guard and shows 'Refresh already in progress...'. Pending request flushed in test so verify() passes. Test passes.",
+    "AC6: Error state from stable error code: component maps UNAUTHENTICATED response to error state with actionable message; store cleared. Test passes.",
+    "AC7: No parallel domain concept: reuses existing AuthSessionStore, AuthService, auth.interceptor, auth-link, and auth endpoints from IW8-010/IW8-028; no new tables, endpoints, or domain concepts introduced.",
+    "AC8: No forbidden data in logs: component, store, service, and interceptor specs assert console output never contains token/refresh-hash/contact values; production code has no console.log of secrets."
+  ],
+  "known_gaps": [],
+  "blocker": null,
+  "notes": [
+    "Host-generated inventory, proof records and outbox handoff."
+  ],
+  "obsidian_status": "OUTBOX",
+  "graphify_status": "OUTBOX",
+  "no_source_changes_required": false
+}

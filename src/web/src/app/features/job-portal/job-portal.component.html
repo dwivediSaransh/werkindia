@@ -1,0 +1,789 @@
+<div class="iw-shell">
+  <header class="iw-topbar">
+    <button
+      type="button"
+      class="iw-brand"
+      (click)="activeTab.set('portal')"
+      aria-label="IndiaWorks home"
+    >
+      <span class="iw-brand__mark">IW</span>
+      <span><strong>IndiaWorks</strong><small>Rozgar operations network</small></span>
+    </button>
+
+    <nav class="iw-nav" aria-label="Primary">
+      <button
+        type="button"
+        [class.is-active]="activeTab() === 'portal'"
+        (click)="activeTab.set('portal')"
+      >
+        Jobs
+      </button>
+      <button
+        type="button"
+        [class.is-active]="activeTab() === 'enterprise'"
+        (click)="activeTab.set('enterprise')"
+      >
+        Employer ATS
+      </button>
+      <button
+        type="button"
+        [class.is-active]="activeTab() === 'wages'"
+        (click)="activeTab.set('wages')"
+      >
+        Wage Index
+      </button>
+      <button
+        type="button"
+        [class.is-active]="activeTab() === 'companies'"
+        (click)="activeTab.set('companies')"
+      >
+        Companies
+      </button>
+    </nav>
+
+    <div class="iw-actions">
+      <button type="button" class="text-button" (click)="activeModal.set('candidate')">
+        {{ candidateUser()?.name || 'Candidate' }}
+      </button>
+      <button type="button" class="text-button" (click)="activeModal.set('saved')">
+        Saved {{ savedJobIds().length }}
+      </button>
+      <button type="button" class="primary-button" (click)="activeModal.set('post-job')">
+        Post job
+      </button>
+    </div>
+  </header>
+
+  <main>
+    @if (activeTab() === 'portal') {
+      <section class="iw-hero" aria-labelledby="portal-title">
+        <div class="iw-hero__copy">
+          <p class="eyebrow">Direct employer calls, verified roles, no agency charge</p>
+          <h1 id="portal-title">
+            India’s operational hiring board for fast, trusted workforce deployment.
+          </h1>
+          <p>
+            Browse WorkIndia-style role categories with transparent monthly in-hand pay, joining
+            readiness, document needs, and employer context before applying.
+          </p>
+          <div class="proof-strip">
+            <span
+              ><strong>{{ filteredJobs().length }}</strong> active matches</span
+            ><span><strong>24-48h</strong> drive support</span
+            ><span><strong>0</strong> candidate fees</span>
+          </div>
+        </div>
+        <aside class="iw-hero__media">
+          <img src="/assets/images/operations-workspace.jpg" alt="" />
+          <div>
+            <strong>Candidate privacy first</strong
+            ><span
+              >Profiles and contact reveals stay local in this shell until API stories connect
+              consent flows.</span
+            >
+          </div>
+        </aside>
+      </section>
+
+      <section class="filter-board" aria-label="Job search filters">
+        <label class="field field--wide"
+          ><span>Search role, company, category, city, or locality</span
+          ><input
+            type="search"
+            [ngModel]="filters().query"
+            (ngModelChange)="setFilter('query', $event)"
+            name="jobQuery"
+            placeholder="Cab driver, delivery, Bhiwandi, telecaller..."
+        /></label>
+        <label class="field"
+          ><span>City</span
+          ><select
+            [ngModel]="filters().city"
+            (ngModelChange)="setFilter('city', $event)"
+            name="cityFilter"
+          >
+            @for (city of cityOptions; track city) {
+              <option [value]="city === 'All India Cities' ? '' : city">{{ city }}</option>
+            }
+          </select></label
+        >
+        <label class="field"
+          ><span>Job type</span
+          ><select
+            [ngModel]="filters().jobType"
+            (ngModelChange)="setFilter('jobType', $any($event))"
+            name="jobTypeFilter"
+          >
+            <option value="all">All types</option>
+            <option value="Full Time">Full time</option>
+            <option value="Part Time">Part time</option>
+          </select></label
+        >
+        <label class="field"
+          ><span>Experience</span
+          ><select
+            [ngModel]="filters().experienceRequired"
+            (ngModelChange)="setFilter('experienceRequired', $any($event))"
+            name="experienceFilter"
+          >
+            <option value="all">All levels</option>
+            <option value="Fresher Only">Fresher friendly</option>
+            <option value="Experienced Only">Experienced</option>
+          </select></label
+        >
+        <label class="field"
+          ><span>Sort</span
+          ><select
+            [ngModel]="filters().sortBy"
+            (ngModelChange)="setFilter('sortBy', $any($event))"
+            name="sortFilter"
+          >
+            <option value="urgency">Urgency</option>
+            <option value="pay">Highest pay</option>
+            <option value="openings">Openings</option>
+            <option value="newest">Newest</option>
+          </select></label
+        >
+        <div class="role-tabs" aria-label="Role categories">
+          @for (category of roleCategories; track category) {
+            <button
+              type="button"
+              [class.is-active]="filters().category === category"
+              (click)="setFilter('category', category)"
+            >
+              {{ category === 'all' ? 'All roles' : category }}
+            </button>
+          }
+        </div>
+        <label class="check-row"
+          ><input
+            type="checkbox"
+            [ngModel]="filters().immediateJoiningOnly"
+            (ngModelChange)="setFilter('immediateJoiningOnly', $event)"
+            name="immediateOnly"
+          />
+          Immediate joining only</label
+        >
+      </section>
+
+      <section class="workspace-grid" aria-label="Job results">
+        <div class="job-stack">
+          @for (job of filteredJobs(); track job.id) {
+            <app-job-card
+              [job]="job"
+              [isSaved]="isJobSaved(job.id)"
+              (selectJob)="openJob($event)"
+              (toggleSave)="toggleSavedJob($event)"
+              (quickApply)="startApplication($event)"
+            ></app-job-card>
+          } @empty {
+            <div class="empty-state">
+              <h2>No matching roles found.</h2>
+              <p>
+                Widen the city, role, or experience filter to explore the current prototype dataset.
+              </p>
+              <button type="button" class="secondary-button" (click)="resetFilters()">
+                Reset filters
+              </button>
+            </div>
+          }
+        </div>
+        <aside class="side-panel">
+          <p class="eyebrow">Employer quick lane</p>
+          <h2>Hire 5 to 500 workers in one drive.</h2>
+          <p>
+            Use the migrated posting flow and ATS board to model bulk hiring, document checks, and
+            deployment tracking.
+          </p>
+          <button type="button" class="primary-button full" (click)="activeModal.set('post-job')">
+            Open posting flow
+          </button>
+          <button type="button" class="secondary-button full" (click)="activeTab.set('enterprise')">
+            View ATS
+          </button>
+        </aside>
+      </section>
+    }
+
+    @if (activeTab() === 'enterprise') {
+      <section class="page-section">
+        <div class="section-title">
+          <p class="eyebrow">Enterprise ATS</p>
+          <h1>Mass recruitment pipeline</h1>
+          <p>
+            Screen, document-check, interview, offer, and deploy candidates from a single
+            operational console.
+          </p>
+        </div>
+        <div class="metric-grid">
+          <article>
+            <span>Active deployed fleet</span><strong>148,200</strong
+            ><small>+1,420 this week</small>
+          </article>
+          <article>
+            <span>Aadhaar verification</span><strong>99.8%</strong
+            ><small>DigiLocker-ready shell</small>
+          </article>
+          <article>
+            <span>Time to deploy</span><strong>26h</strong><small>Application to floor ID</small>
+          </article>
+          <article>
+            <span>Weekly wages</span><strong>Rs 14.28 Cr</strong><small>UPI / NACH modeled</small>
+          </article>
+        </div>
+        <div class="stage-tabs">
+          @for (stage of pipelineStages(); track stage.id) {
+            <button
+              type="button"
+              [class.is-active]="activeStageFilter() === stage.id"
+              (click)="activeStageFilter.set(stage.id)"
+            >
+              {{ stage.label }} <span>{{ stage.count }}</span>
+            </button>
+          }
+        </div>
+        <label class="field field--wide"
+          ><span>Search pipeline</span
+          ><input
+            type="search"
+            [ngModel]="pipelineQuery()"
+            (ngModelChange)="pipelineQuery.set($event)"
+            name="pipelineQuery"
+        /></label>
+        <div class="table-shell">
+          <table>
+            <thead>
+              <tr>
+                <th>Candidate</th>
+                <th>Role</th>
+                <th>City</th>
+                <th>Score</th>
+                <th>Stage</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (candidate of filteredCandidates(); track candidate.id) {
+                <tr>
+                  <td>
+                    <strong>{{ candidate.name }}</strong
+                    ><small>{{ candidate.phone }}</small>
+                  </td>
+                  <td>{{ candidate.roleApplied }}</td>
+                  <td>
+                    {{ candidate.city }}<small>{{ candidate.preferredLanguage }}</small>
+                  </td>
+                  <td>
+                    <strong>{{ candidate.skillScore }}%</strong>
+                  </td>
+                  <td>
+                    <span class="status-chip">{{ candidate.stage }}</span>
+                  </td>
+                  <td>
+                    @if (candidate.stage === 'Deployed') {
+                      <span class="success-text">Floor active</span>
+                    } @else {
+                      <button
+                        type="button"
+                        class="secondary-button"
+                        (click)="advanceCandidate(candidate.id)"
+                      >
+                        Advance
+                      </button>
+                    }
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </section>
+    }
+
+    @if (activeTab() === 'wages') {
+      <section class="page-section">
+        <div class="section-title">
+          <p class="eyebrow">Wage intelligence</p>
+          <h1>Transparent salary benchmarks</h1>
+          <p>
+            Role-level wage ranges, coverage expectations, and retention signals migrated from the
+            prototype matrix.
+          </p>
+        </div>
+        <div class="table-shell">
+          <table>
+            <thead>
+              <tr>
+                <th>Role category</th>
+                <th>Sample base</th>
+                <th>Tier 1 monthly</th>
+                <th>Tier 2/3 monthly</th>
+                <th>Coverage</th>
+                <th>Retention</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (row of wageBenchmarks; track row.roleCategory) {
+                <tr>
+                  <td>
+                    <strong>{{ row.roleCategory }}</strong>
+                  </td>
+                  <td>{{ row.sampleCount }}</td>
+                  <td>
+                    <strong>{{ row.tier1Monthly }}</strong>
+                  </td>
+                  <td>{{ row.tier2Monthly }}</td>
+                  <td>{{ row.statutoryCoverage }}</td>
+                  <td>{{ row.retentionRate }}</td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </section>
+    }
+
+    @if (activeTab() === 'companies') {
+      <section class="page-section">
+        <div class="section-title">
+          <p class="eyebrow">Verified employers</p>
+          <h1>Enterprise hiring network</h1>
+          <p>
+            Prototype company directory converted to Angular cards with direct handoff into filtered
+            role search.
+          </p>
+        </div>
+        <div class="company-grid">
+          @for (company of companies; track company.id) {
+            <article class="company-card">
+              <span class="company-logo">{{ company.logoText }}</span>
+              <h2>{{ company.name }}</h2>
+              <p>{{ company.description }}</p>
+              <dl>
+                <div>
+                  <dt>Industry</dt>
+                  <dd>{{ company.industry }}</dd>
+                </div>
+                <div>
+                  <dt>Corridors</dt>
+                  <dd>{{ company.location }}</dd>
+                </div>
+                <div>
+                  <dt>Workforce</dt>
+                  <dd>{{ company.workforceStrength }}</dd>
+                </div>
+              </dl>
+              <button
+                type="button"
+                class="secondary-button full"
+                (click)="selectCompany(company.name)"
+              >
+                Explore openings
+              </button>
+            </article>
+          }
+        </div>
+      </section>
+    }
+  </main>
+
+  <footer class="iw-footer">
+    <strong>IndiaWorks Workforce OS</strong
+    ><span
+      >Candidate privacy, direct employer trust, wage transparency, and observable hiring
+      operations.</span
+    >
+  </footer>
+  @if (toastMessage(); as toast) {
+    <div class="toast" role="status">{{ toast }}</div>
+  }
+</div>
+
+@if (selectedJob(); as job) {
+  <div class="overlay" role="dialog" aria-modal="true" aria-labelledby="job-detail-title">
+    <aside class="drawer">
+      <div class="drawer__header">
+        <div>
+          <p class="eyebrow">{{ job.category }}</p>
+          <h2 id="job-detail-title">{{ job.title }}</h2>
+        </div>
+        <button type="button" class="icon-close" (click)="selectedJob.set(null)">Close</button>
+      </div>
+      <div class="detail-hero">
+        <strong>{{ job.displayPay }}</strong
+        ><span
+          >{{ job.openingsCount }} vacancies · {{ job.howSoonToFill }} · {{ job.jobTimings }}</span
+        >
+      </div>
+      <section class="detail-block">
+        <h3>Employer and location</h3>
+        <p>{{ job.company.name }} · {{ job.locality }}, {{ job.city }} · {{ job.address }}</p>
+      </section>
+      <section class="detail-block">
+        <h3>Candidate eligibility</h3>
+        <dl class="mini-grid">
+          <div>
+            <dt>Experience</dt>
+            <dd>{{ job.experienceRequired }}</dd>
+          </div>
+          <div>
+            <dt>Qualification</dt>
+            <dd>{{ job.minQualification }}</dd>
+          </div>
+          <div>
+            <dt>English</dt>
+            <dd>{{ job.englishRequirement }}</dd>
+          </div>
+          <div>
+            <dt>Documents</dt>
+            <dd>{{ job.assetsRequired.join(', ') }}</dd>
+          </div>
+        </dl>
+      </section>
+      <section class="detail-block">
+        <h3>Daily work</h3>
+        <ul>
+          @for (item of job.responsibilities; track item) {
+            <li>{{ item }}</li>
+          }
+        </ul>
+      </section>
+      <div class="drawer__footer">
+        <button type="button" class="secondary-button" (click)="toggleSavedJob(job.id)">
+          {{ isJobSaved(job.id) ? 'Remove saved' : 'Save role' }}</button
+        ><button type="button" class="primary-button" (click)="startApplication(job)">
+          Apply now
+        </button>
+      </div>
+    </aside>
+  </div>
+}
+
+@if (activeModal() === 'saved') {
+  <div class="overlay" role="dialog" aria-modal="true">
+    <aside class="drawer drawer--narrow">
+      <div class="drawer__header">
+        <h2>Saved roles</h2>
+        <button type="button" class="icon-close" (click)="activeModal.set(null)">Close</button>
+      </div>
+      <div class="saved-list">
+        @for (job of savedJobs(); track job.id) {
+          <article>
+            <h3>{{ job.title }}</h3>
+            <p>{{ job.company.name }} · {{ job.city }} · {{ job.displayPay }}</p>
+            <button
+              type="button"
+              class="secondary-button"
+              (click)="openJob(job); activeModal.set(null)"
+            >
+              Open</button
+            ><button type="button" class="text-button danger" (click)="toggleSavedJob(job.id)">
+              Remove
+            </button>
+          </article>
+        } @empty {
+          <p>No saved roles yet.</p>
+        }
+      </div>
+    </aside>
+  </div>
+}
+
+@if (activeModal() === 'application' && applyingJob(); as job) {
+  <div class="overlay" role="dialog" aria-modal="true">
+    <section class="modal-card">
+      <button type="button" class="icon-close" (click)="activeModal.set(null)">Close</button>
+      @if (!applicationDraft().token) {
+        <p class="eyebrow">Candidate application</p>
+        <h2>Apply for {{ job.title }}</h2>
+        <form class="form-grid" (submit)="$event.preventDefault(); submitApplication()">
+          <label
+            ><span>Full name</span
+            ><input
+              required
+              [ngModel]="applicationDraft().fullName"
+              (ngModelChange)="applicationDraft.update((d) => ({ ...d, fullName: $event }))"
+              name="applyName" /></label
+          ><label
+            ><span>Mobile number</span
+            ><input
+              required
+              maxlength="10"
+              [ngModel]="applicationDraft().phone"
+              (ngModelChange)="applicationDraft.update((d) => ({ ...d, phone: $event }))"
+              name="applyPhone" /></label
+          ><label
+            ><span>Preferred language</span
+            ><select
+              [ngModel]="applicationDraft().preferredLanguage"
+              (ngModelChange)="
+                applicationDraft.update((d) => ({ ...d, preferredLanguage: $event }))
+              "
+              name="applyLanguage"
+            >
+              <option>Hindi</option>
+              <option>Marathi</option>
+              <option>English</option>
+              <option>Kannada</option>
+              <option>Tamil</option>
+            </select></label
+          ><label
+            ><span>Experience</span
+            ><select
+              [ngModel]="applicationDraft().experienceLevel"
+              (ngModelChange)="applicationDraft.update((d) => ({ ...d, experienceLevel: $event }))"
+              name="applyExperience"
+            >
+              <option>Fresher</option>
+              <option>1-2 Years</option>
+              <option>3-5 Years</option>
+              <option>5+ Years</option>
+            </select></label
+          ><button type="submit" class="primary-button full">Generate interview pass</button>
+        </form>
+      } @else {
+        <p class="eyebrow">Interview pass ready</p>
+        <h2>{{ applicationDraft().token }}</h2>
+        <p>
+          {{ job.company.name }} coordinator: {{ job.enterpriseCoordinator.name }} ·
+          {{ job.enterpriseCoordinator.phoneHelpline }}
+        </p>
+        <button type="button" class="primary-button full" (click)="activeModal.set(null)">
+          Done
+        </button>
+      }
+    </section>
+  </div>
+}
+
+@if (activeModal() === 'candidate') {
+  <div class="overlay" role="dialog" aria-modal="true">
+    <section class="modal-card">
+      <button type="button" class="icon-close" (click)="activeModal.set(null)">Close</button>
+      <p class="eyebrow">Candidate profile</p>
+      <h2>Mobile OTP profile shell</h2>
+      <form class="form-grid" (submit)="$event.preventDefault(); saveCandidateProfile()">
+        <label
+          ><span>Mobile</span
+          ><input
+            maxlength="10"
+            [ngModel]="candidateProfile().mobile"
+            (ngModelChange)="candidateProfile.update((d) => ({ ...d, mobile: $event }))"
+            name="candidateMobile" /></label
+        ><label
+          ><span>Full name</span
+          ><input
+            [ngModel]="candidateProfile().name"
+            (ngModelChange)="candidateProfile.update((d) => ({ ...d, name: $event }))"
+            name="candidateName" /></label
+        ><label
+          ><span>City</span
+          ><select
+            [ngModel]="candidateProfile().city"
+            (ngModelChange)="candidateProfile.update((d) => ({ ...d, city: $event }))"
+            name="candidateCity"
+          >
+            <option>Mumbai</option>
+            <option>Delhi-NCR</option>
+            <option>Bengaluru</option>
+            <option>Pune</option>
+          </select></label
+        ><label
+          ><span>Locality</span
+          ><input
+            [ngModel]="candidateProfile().locality"
+            (ngModelChange)="candidateProfile.update((d) => ({ ...d, locality: $event }))"
+            name="candidateLocality" /></label
+        ><button type="submit" class="primary-button full">Save candidate profile</button>
+      </form>
+    </section>
+  </div>
+}
+
+@if (activeModal() === 'post-job') {
+  <div class="overlay" role="dialog" aria-modal="true">
+    <section class="modal-card modal-card--wide">
+      <button type="button" class="icon-close" (click)="activeModal.set(null)">Close</button>
+      <p class="eyebrow">Employer posting flow</p>
+      <h2>Post a direct hiring role</h2>
+      <div class="stepper">
+        <button type="button" [class.is-active]="postJobStep() === 1" (click)="postJobStep.set(1)">
+          1 Basic</button
+        ><button type="button" [class.is-active]="postJobStep() === 2" (click)="postJobStep.set(2)">
+          2 Requirements</button
+        ><button type="button" [class.is-active]="postJobStep() === 3" (click)="postJobStep.set(3)">
+          3 Publish</button
+        ><span>Reach score {{ reachScore() }}%</span>
+      </div>
+      <form class="form-grid" (submit)="$event.preventDefault(); publishJob()">
+        @if (postJobStep() === 1) {
+          <label
+            ><span>Role title</span
+            ><input
+              required
+              [ngModel]="postJobDraft().title"
+              (ngModelChange)="setPostDraft('title', $event)"
+              name="postTitle" /></label
+          ><label
+            ><span>Category</span
+            ><select
+              [ngModel]="postJobDraft().category"
+              (ngModelChange)="setPostDraft('category', $event)"
+              name="postCategory"
+            >
+              @for (category of roleCategories.slice(1); track category) {
+                <option [value]="category">{{ category }}</option>
+              }
+            </select></label
+          ><label
+            ><span>Company</span
+            ><input
+              required
+              [ngModel]="postJobDraft().companyName"
+              (ngModelChange)="setPostDraft('companyName', $event)"
+              name="postCompany" /></label
+          ><label
+            ><span>City</span
+            ><input
+              required
+              [ngModel]="postJobDraft().city"
+              (ngModelChange)="setPostDraft('city', $event)"
+              name="postCity" /></label
+          ><label
+            ><span>Locality</span
+            ><input
+              [ngModel]="postJobDraft().locality"
+              (ngModelChange)="setPostDraft('locality', $event)"
+              name="postLocality" /></label
+          ><label
+            ><span>Openings</span
+            ><input
+              type="number"
+              [ngModel]="postJobDraft().openingsCount"
+              (ngModelChange)="setPostDraft('openingsCount', +$event)"
+              name="postOpenings"
+          /></label>
+        }
+        @if (postJobStep() === 2) {
+          <label
+            ><span>Experience</span
+            ><select
+              [ngModel]="postJobDraft().experienceRequired"
+              (ngModelChange)="setPostDraft('experienceRequired', $any($event))"
+              name="postExperience"
+            >
+              <option>Any</option>
+              <option>Fresher Only</option>
+              <option>Experienced Only</option>
+            </select></label
+          ><label
+            ><span>Qualification</span
+            ><select
+              [ngModel]="postJobDraft().minQualification"
+              (ngModelChange)="setPostDraft('minQualification', $any($event))"
+              name="postQualification"
+            >
+              <option>&lt; 10th pass</option>
+              <option>10th pass or Above</option>
+              <option>12th pass or Above</option>
+              <option>Graduate / Post Graduate</option>
+            </select></label
+          ><label
+            ><span>Gender preference</span
+            ><select
+              [ngModel]="postJobDraft().genderPreference"
+              (ngModelChange)="setPostDraft('genderPreference', $any($event))"
+              name="postGender"
+            >
+              <option>Both genders allowed</option>
+              <option>Male</option>
+              <option>Female</option>
+            </select></label
+          ><label
+            ><span>English</span
+            ><select
+              [ngModel]="postJobDraft().englishRequirement"
+              (ngModelChange)="setPostDraft('englishRequirement', $any($event))"
+              name="postEnglish"
+            >
+              <option>Does not speak english</option>
+              <option>Speaks Thoda English</option>
+              <option>Speaks Good English</option>
+              <option>Speaks Fluent English</option>
+            </select></label
+          ><label
+            ><span>Min salary</span
+            ><input
+              type="number"
+              [ngModel]="postJobDraft().monthlyInHandMin"
+              (ngModelChange)="setPostDraft('monthlyInHandMin', +$event)"
+              name="postMinPay" /></label
+          ><label
+            ><span>Max salary</span
+            ><input
+              type="number"
+              [ngModel]="postJobDraft().monthlyInHandMax"
+              (ngModelChange)="setPostDraft('monthlyInHandMax', +$event)"
+              name="postMaxPay"
+          /></label>
+        }
+        @if (postJobStep() === 3) {
+          <label class="field--wide"
+            ><span>Address</span
+            ><input
+              [ngModel]="postJobDraft().address"
+              (ngModelChange)="setPostDraft('address', $event)"
+              name="postAddress" /></label
+          ><label
+            ><span>How soon to fill</span
+            ><select
+              [ngModel]="postJobDraft().howSoonToFill"
+              (ngModelChange)="setPostDraft('howSoonToFill', $any($event))"
+              name="postSoon"
+            >
+              <option>Immediately (24-48 hrs)</option>
+              <option>Within 1-2 weeks</option>
+              <option>1 - 3 months</option>
+            </select></label
+          ><label
+            ><span>Timings</span
+            ><input
+              [ngModel]="postJobDraft().jobTimings"
+              (ngModelChange)="setPostDraft('jobTimings', $event)"
+              name="postTiming" /></label
+          ><label class="field--wide"
+            ><span>Description</span
+            ><textarea
+              rows="4"
+              [ngModel]="postJobDraft().description"
+              (ngModelChange)="setPostDraft('description', $event)"
+              name="postDescription"
+            ></textarea>
+          </label>
+        }
+        <div class="form-actions">
+          @if (postJobStep() > 1) {
+            <button
+              type="button"
+              class="secondary-button"
+              (click)="postJobStep.set($any(postJobStep() - 1))"
+            >
+              Back
+            </button>
+          }
+          @if (postJobStep() < 3) {
+            <button
+              type="button"
+              class="primary-button"
+              (click)="postJobStep.set($any(postJobStep() + 1))"
+            >
+              Continue
+            </button>
+          } @else {
+            <button type="submit" class="primary-button">Publish job</button>
+          }
+        </div>
+      </form>
+    </section>
+  </div>
+}

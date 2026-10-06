@@ -1,0 +1,232 @@
+<div class="team-invitation">
+  <div class="card">
+    <div class="header">
+      <div class="logo" aria-hidden="true">IW</div>
+      <h1>Manage Team</h1>
+      <p class="subtitle">Invite members and manage team invitations</p>
+    </div>
+
+    <!-- Loading -->
+    @if (showLoading()) {
+      <div class="loading-state" role="status" aria-live="polite">
+        <div class="spinner-large" aria-hidden="true"></div>
+        <p>Loading team invitations...</p>
+      </div>
+    }
+
+    <!-- Error -->
+    @if (showError()) {
+      <div class="error-state" role="alert">
+        <span class="error-icon" aria-hidden="true">!</span>
+        <p>{{ errorMessage() }}</p>
+        <button type="button" class="btn btn-secondary" (click)="onDismissError()">
+          Try Again
+        </button>
+      </div>
+    }
+
+    <!-- Listing -->
+    @if (showListing()) {
+      <div class="listing-section">
+        <!-- Pending invitations -->
+        @if (pendingInvitations().length > 0) {
+          <section class="invitation-group">
+            <h3 class="section-title">Pending invitations</h3>
+            <ul class="invitation-list">
+              @for (inv of pendingInvitations(); track inv.id) {
+                <li class="invitation-item">
+                  <div class="invitation-info">
+                    <span class="invitee-type">{{ inv.inviteeIdentifierType | titlecase }}</span>
+                    <span class="invitee-role">Role: {{ inv.role | titlecase }}</span>
+                    <span class="invitee-meta">Invited {{ formatCreatedAt(inv.createdAt) }}</span>
+                  </div>
+                  <div class="invitation-actions">
+                    <button
+                      type="button"
+                      class="btn btn-link btn-sm"
+                      (click)="onRequestRevoke(inv)"
+                      [disabled]="vm().revokeLoading"
+                    >
+                      Revoke
+                    </button>
+                  </div>
+                </li>
+              }
+            </ul>
+          </section>
+        } @else {
+          <div class="empty-block">
+            <p>No pending invitations.</p>
+          </div>
+        }
+
+        <!-- Invited / acknowledged members -->
+        @if (invitedMembers().length > 0) {
+          <section class="invitation-group">
+            <h3 class="section-title">Invited members</h3>
+            <ul class="invitation-list invitation-list--muted">
+              @for (inv of invitedMembers(); track inv.id) {
+                <li class="invitation-item">
+                  <div class="invitation-info">
+                    <span class="invitee-type">{{ inv.inviteeIdentifierType | titlecase }}</span>
+                    <span class="invitee-role">Role: {{ inv.role | titlecase }}</span>
+                    <span class="invitee-status">{{ inv.status | titlecase }}</span>
+                  </div>
+                </li>
+              }
+            </ul>
+          </section>
+        }
+
+        <!-- Actions -->
+        <div class="actions-bar">
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="onOpenInviteForm()"
+            [disabled]="!canOpenInviteForm()"
+          >
+            + Invite Member
+          </button>
+        </div>
+      </div>
+    }
+
+    <!-- Invite form -->
+    @if (showInviteForm()) {
+      <div class="invite-form-section">
+        <button type="button" class="btn btn-link btn-back" (click)="onCancelInviteForm()">
+          Back to team
+        </button>
+
+        <h3 class="form-title">Invite a team member</h3>
+        <p class="form-description">
+          Only Owners and Admins can invite members. Choose the identifier type and the role for the
+          new member.
+        </p>
+
+        <div class="form-group">
+          <div class="field">
+            <label for="identifierType">Identifier type</label>
+            <select
+              id="identifierType"
+              class="select-input"
+              [value]="inviteeIdentifierTypeValue() ?? ''"
+              (change)="onIdentifierTypeChange($any($event.target).value)"
+            >
+              <option value="">Select identifier type</option>
+              <option value="Email">Email</option>
+              <option value="Phone">Phone</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="identifierValue">Identifier value <span class="required">*</span></label>
+            <input
+              id="identifierValue"
+              type="text"
+              class="text-input"
+              [class.error]="!canSubmitInvite() && inviteeIdentifierValue().length > 0"
+              placeholder="member@example.com or +919876543210"
+              maxlength="255"
+              [value]="inviteeIdentifierValue()"
+              (input)="onIdentifierValueInput($any($event.target).value)"
+            />
+            @if (!canSubmitInvite() && inviteeIdentifierValue().length > 0) {
+              <span class="field-error" role="alert"
+                >Identifier value must be at least 2 characters.</span
+              >
+            }
+          </div>
+
+          <div class="field">
+            <label for="inviteeRole">Role <span class="required">*</span></label>
+            <select
+              id="inviteeRole"
+              class="select-input"
+              [value]="inviteeRoleValue()"
+              (change)="onRoleChange($any($event.target).value)"
+            >
+              @for (role of roleOptions; track role.value) {
+                <option [value]="role.value">{{ role.label }}</option>
+              }
+            </select>
+            <span class="field-hint">Role controls access within the organisation.</span>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="btn btn-link" (click)="onCancelInviteForm()">Cancel</button>
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="onInviteSubmit()"
+            [disabled]="!canSubmitInvite() || vm().inviteLoading"
+          >
+            @if (vm().inviteLoading) {
+              <span class="spinner" aria-hidden="true"></span>
+              Sending...
+            } @else {
+              Send invitation
+            }
+          </button>
+        </div>
+      </div>
+    }
+
+    <!-- Revoke confirm -->
+    @if (vm().inviteIdToRevoke) {
+      <div class="revoke-modal" role="alertdialog" aria-labelledby="revoke-title">
+        <div class="revoke-modal-card">
+          <h3 id="revoke-title" class="form-title">Confirm revoke</h3>
+          <p class="form-description">{{ revokeConfirmLabel() }}</p>
+          <p class="form-description revoke-warning">
+            This action cannot be undone. The invitation will be cancelled immediately.
+          </p>
+          <div class="form-actions">
+            <button
+              type="button"
+              class="btn btn-link"
+              (click)="onCancelRevoke()"
+              [disabled]="vm().revokeLoading"
+            >
+              Cancel
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary btn-danger"
+              (click)="onConfirmRevoke()"
+              [disabled]="vm().revokeLoading"
+            >
+              @if (vm().revokeLoading) {
+                <span class="spinner" aria-hidden="true"></span>
+                Revoking...
+              } @else {
+                Revoke invitation
+              }
+            </button>
+          </div>
+        </div>
+      </div>
+    }
+
+    <!-- Success -->
+    @if (showSuccess()) {
+      <div class="success-state" role="status" aria-live="polite">
+        <div class="success-icon-large" aria-hidden="true">✓</div>
+        <h3>Invitation sent</h3>
+        <p>{{ errorMessage() }}</p>
+        <div class="form-actions form-actions--center">
+          <button type="button" class="btn btn-primary btn-full" (click)="onDismissError()">
+            Back to team
+          </button>
+        </div>
+      </div>
+    }
+  </div>
+
+  <p class="footer">
+    Invitations are scoped to your organisation. Only Owners and Admins can invite or revoke
+    members.
+  </p>
+</div>

@@ -1,0 +1,32 @@
+{
+  "story_id": "IW8-029",
+  "outcome": "DONE",
+  "summary": "Implemented PersonaResolutionService that determines available personas from existing session history and persists active persona on UserSession. Added PersonaResolutionResult, SwitchPersonaRequest records, and PersonaAvailability helper. Registered service in DI. 7 new tests added covering happy path (get available personas with candidate session, with both personas, no sessions yet), switch persona happy path, switch back, no active session returns SESSION_REVOKED, and no plaintext identifiers in logs. Build 0 errors, all 86 tests pass.",
+  "files_changed": [
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Application\\DependencyInjection.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Application\\Features\\E01\\Implement\\PersonaAvailability.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Application\\Features\\E01\\Implement\\PersonaResolutionResult.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Application\\Features\\E01\\Implement\\PersonaResolutionService.cs",
+    "C:\\Projects\\IndiaWorks\\tests\\IndiaWorks.Application.Tests\\E01\\ImplementTests.cs"
+  ],
+  "verification": [
+    "bce1610e18a9: cwd=C:\\Projects\\IndiaWorks\\src\\backend; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=1; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/bce1610e18a9.log",
+    "2c9e0a7854e9: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=1; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/2c9e0a7854e9.log",
+    "a36df7c8da0f: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'test', 'IndiaWorks.slnx', '-c', 'Release', '--no-build']; exit=1; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/a36df7c8da0f.log",
+    "22132cda6115: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/22132cda6115.log",
+    "5fbfd7b9db90: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'test', 'IndiaWorks.slnx', '-c', 'Release', '--no-build']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/5fbfd7b9db90.log",
+    "AC1: Determine available personas from session history and persist active persona on session: PersonaResolutionService.GetAvailablePersonasAsync returns available personas from non-revoked non-expired sessions (or both Candidate+Employer as default when no session evidence exists); SwitchActivePersonaAsync calls session.SwitchPersona() and persists via IUserSessionRepository.SaveChangesAsync. Proof: build 22132cda6115 (exit 0), tests 5fbfd7b9db90 (exit 0, 86 passed).",
+    "AC2: Valid dependency state and authorised actor returns expected result/state: 7 tests pass including switch persona happy path, switch back to candidate, get available personas from candidate-only session, both-persona session, no-sessions default, and SESSION_REVOKED when no active session. Proof: tests 5fbfd7b9db90.",
+    "AC3: No new parallel domain concept/table/API: Only application-layer service PersonaResolutionService + records PersonaResolutionResult/SwitchPersonaRequest + helper PersonaAvailability added. No new domain entities, no EF configurations, no migrations, no GraphQL/REST endpoints. Uses existing IUserSessionRepository and UserSession.Persona/SwitchPersona from IW8-025/IW8-027. Proof: build 22132cda6115 (exit 0), source review.",
+    "AC4: Automated tests pass and validation commands succeed: dotnet build IndiaWorks.slnx -c Release exit 0 (0 warnings, 0 errors, proof 22132cda6115); dotnet test IndiaWorks.slnx -c Release --no-build exit 0 (86 passed: 60 Application + 1 Domain + 22 Integration + 1 Architecture, 0 failed, 3 skipped integration). Proof: verification/22132cda6115.log, verification/5fbfd7b9db90.log.",
+    "AC5: No forbidden secret/contact/identity in logs: PersonaResolutionService masks UserId and DeviceId via MaskUserId/MaskDeviceId (first 8 chars + ellipsis) in all log messages. No OTP, JWT, refresh token, Aadhaar, PAN, phone, email, or credential values in logs. Verified by test PersonaResolutionService_no_plaintext_identifiers_in_logs asserting full Guid strings and 'eyJ' absent from log output, plus grep confirming zero Logger/Console patterns and zero sensitive data patterns in new source files. Proof: tests 5fbfd7b9db90, grep scan."
+  ],
+  "known_gaps": [],
+  "blocker": null,
+  "notes": [
+    "Host-generated inventory, proof records and outbox handoff."
+  ],
+  "obsidian_status": "OUTBOX",
+  "graphify_status": "OUTBOX",
+  "no_source_changes_required": false
+}

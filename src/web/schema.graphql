@@ -1,0 +1,291 @@
+type Query {
+  version: String!
+  health: String!
+  myOrganisations: [OrganisationSummary!]!
+}
+
+type Mutation {
+  echo(input: String!): String!
+  createOrganisation(input: CreateOrganisationInput!): CreateOrganisationPayload!
+}
+
+type OrganisationSummary {
+  id: ID!
+  legalName: String!
+  tradeName: String
+  sector: String
+  employeeBand: String
+  organisationType: String
+  nic2025Code: String
+  verificationStatus: String!
+  createdAt: DateTime!
+  role: String!
+}
+
+type CreateOrganisationPayload {
+  isActive: Boolean!
+  organisationId: ID
+  legalName: String
+  tradeName: String
+  sector: String
+  employeeBand: String
+  role: String
+  createdAt: DateTime
+  errorCode: String
+  errorMessage: String
+}
+
+input CreateOrganisationInput {
+  creatorUserAccountId: UUID!
+  legalName: String!
+  tradeName: String
+  sector: EmployerSectorInput
+  employeeBand: String
+  organisationType: String
+  nic2025Code: String
+}
+
+enum EmployerSectorInput {
+  Private
+  Government
+  Psu
+  Ngo
+  Household
+}
+
+scalar UUID
+scalar DateTime
+
+enum EmployerSectorInput {
+  Private
+  Government
+  Psu
+  Ngo
+  Household
+}
+
+type Query {
+  version: String!
+  health: String!
+  myOrganisations: [OrganisationSummary!]!
+  pendingInvitations(
+    organisationId: UUID!
+    callerUserAccountId: UUID!
+  ): [OrganisationInvitationSummary!]!
+}
+
+type Mutation {
+  echo(input: String!): String!
+  createOrganisation(input: CreateOrganisationInput!): CreateOrganisationPayload!
+  inviteMember(input: InviteMemberInput!): InviteMemberPayload!
+  acceptInvitation(input: AcceptInvitationInput!): AcceptInvitationPayload!
+  revokeInvitation(input: RevokeInvitationInput!): RevokeInvitationPayload!
+}
+
+type OrganisationSummary {
+  id: ID!
+  legalName: String!
+  tradeName: String
+  sector: String
+  employeeBand: String
+  organisationType: String
+  nic2025Code: String
+  verificationStatus: String!
+  createdAt: DateTime!
+  role: String!
+}
+
+type OrganisationInvitationSummary {
+  id: ID!
+  organisationId: ID!
+  invitedByUserAccountId: ID!
+  inviteeIdentifierType: String!
+  role: String!
+  status: String!
+  expiresAt: DateTime!
+  createdAt: DateTime!
+}
+
+type CreateOrganisationPayload {
+  isActive: Boolean!
+  organisationId: ID
+  legalName: String
+  tradeName: String
+  sector: String
+  employeeBand: String
+  role: String
+  createdAt: DateTime
+  errorCode: String
+  errorMessage: String
+}
+
+type InviteMemberPayload {
+  isSuccess: Boolean!
+  invitationId: ID
+  errorCode: String
+  errorMessage: String
+}
+
+type AcceptInvitationPayload {
+  isSuccess: Boolean!
+  organisationId: ID
+  role: String
+  errorCode: String
+  errorMessage: String
+}
+
+type RevokeInvitationPayload {
+  isSuccess: Boolean!
+  errorCode: String
+  errorMessage: String
+}
+
+input CreateOrganisationInput {
+  creatorUserAccountId: UUID!
+  legalName: String!
+  tradeName: String
+  sector: EmployerSectorInput
+  employeeBand: String
+  organisationType: String
+  nic2025Code: String
+}
+
+input InviteMemberInput {
+  organisationId: UUID!
+  invitedByUserAccountId: UUID!
+  inviteeIdentifierType: String!
+  inviteeIdentifierHash: [Int!]!
+  role: String!
+  tokenHash: [Int!]!
+  expiresAt: DateTime!
+}
+
+input AcceptInvitationInput {
+  invitationId: UUID!
+  acceptedByUserAccountId: UUID!
+}
+
+input RevokeInvitationInput {
+  invitationId: UUID!
+  revokedByUserAccountId: UUID!
+}
+
+enum GeographyType {
+  Country
+  State
+  District
+  City
+  Locality
+  Pin
+}
+
+scalar Long
+
+type JobFamilySummary {
+  id: Long!
+  code: String!
+  name: String!
+  parentCode: String
+  parentName: String
+  taxonomyVersionId: Long!
+  taxonomyVersion: String!
+  isActive: Boolean!
+  createdAt: DateTime!
+}
+
+type RoleSummary {
+  id: Long!
+  canonicalName: String!
+  slug: String!
+  jobFamilyId: Long!
+  jobFamilyCode: String!
+  jobFamilyName: String!
+  taxonomyVersionId: Long!
+  taxonomyVersion: String!
+  isActive: Boolean!
+  validFrom: DateTime!
+  validTo: DateTime
+  createdAt: DateTime!
+}
+
+type SpecialisationSummary {
+  id: Long!
+  roleId: Long!
+  roleCanonicalName: String!
+  roleSlug: String!
+  name: String!
+  code: String!
+  parentCode: String
+  parentName: String
+  isActive: Boolean!
+  createdAt: DateTime!
+}
+
+type WorkContextSummary {
+  id: Long!
+  roleId: Long!
+  roleCanonicalName: String!
+  roleSlug: String!
+  code: String!
+  name: String!
+  isActive: Boolean!
+  createdAt: DateTime!
+}
+
+type SkillSummary {
+  id: Long!
+  code: String!
+  name: String!
+  description: String
+  parentCode: String
+  parentName: String
+  taxonomyVersionId: Long!
+  taxonomyVersion: String!
+  isActive: Boolean!
+  createdAt: DateTime!
+}
+
+type TaxonomyVersionSummary {
+  id: Long!
+  semanticVersion: String!
+  status: String!
+  releaseNotes: String
+  effectiveFrom: DateTime!
+  createdAt: DateTime!
+}
+
+type GeographySummary {
+  id: ID!
+  type: String!
+  code: String
+  name: String!
+  parentId: ID
+  parentCode: String
+  parentName: String
+  latitude: Float
+  longitude: Float
+  createdAt: DateTime!
+}
+
+type Query {
+  version: String!
+  health: String!
+  myOrganisations: [OrganisationSummary!]!
+  pendingInvitations(
+    organisationId: UUID!
+    callerUserAccountId: UUID!
+  ): [OrganisationInvitationSummary!]!
+  jobFamilies(taxonomyVersionId: Long, search: String, isActive: Boolean): [JobFamilySummary!]!
+  roles(
+    jobFamilyId: Long
+    taxonomyVersionId: Long
+    search: String
+    isActive: Boolean
+  ): [RoleSummary!]!
+  specialisations(roleId: Long, search: String, isActive: Boolean): [SpecialisationSummary!]!
+  workContexts(roleId: Long, search: String, isActive: Boolean): [WorkContextSummary!]!
+  skills(taxonomyVersionId: Long, search: String, isActive: Boolean): [SkillSummary!]!
+  taxonomyVersions: [TaxonomyVersionSummary!]!
+  geographies(type: GeographyType, search: String, hasCoordinates: Boolean): [GeographySummary!]!
+  geographyHierarchy(type: GeographyType, search: String): [GeographySummary!]!
+}

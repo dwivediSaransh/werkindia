@@ -1,0 +1,208 @@
+enum EngagementType {
+  PERMANENT
+  FIXED_TERM
+  CONTRACT
+  GIG
+  PLATFORM_GIG
+  FREELANCE
+  APPRENTICESHIP
+  ARTICLESHIP
+  SELF_EMPLOYED
+}
+
+enum WorkMode {
+  ONSITE
+  FIELD
+  HYBRID
+  REMOTE
+  HOME_BASED
+}
+enum MarketSegmentTag {
+  BLUE
+  WHITE
+  GREY
+  SERVICE
+  PINK_LEGACY
+  HAZARDOUS_OPERATIONS
+}
+enum VerificationStatus {
+  UNVERIFIED
+  PENDING
+  VERIFIED
+  EXPIRED
+  REJECTED
+}
+
+type JobFamily {
+  id: ID!
+  code: String!
+  name: String!
+  roles(first: Int = 50, after: String): RoleConnection!
+}
+type Role {
+  id: ID!
+  canonicalName: String!
+  slug: String!
+  family: JobFamily!
+  aliases: [RoleAlias!]!
+  specialisations: [Specialisation!]!
+  externalMappings: [ExternalOccupationMapping!]!
+}
+type RoleAlias {
+  alias: String!
+  languageCode: String
+  regionCode: String
+  aliasType: String
+  weight: Float
+}
+type Specialisation {
+  id: ID!
+  name: String!
+  role: Role!
+}
+type ExternalOccupationMapping {
+  scheme: String!
+  externalCode: String!
+  externalName: String
+  frameworkVersion: String!
+  nsqfLevel: Float
+  sourceUrl: String
+}
+type Skill {
+  id: ID!
+  name: String!
+  skillType: String!
+}
+type CredentialType {
+  id: ID!
+  code: String!
+  name: String!
+}
+
+type Candidate {
+  id: ID!
+  displayName: String
+  occupations: [CandidateOccupation!]!
+  skills: [CandidateSkill!]!
+  credentials: [CandidateCredential!]!
+  engagementPreferences: [EngagementType!]!
+  workModePreferences: [WorkMode!]!
+  marketTags: [MarketSegmentTag!]!
+  availability: CandidateAvailability
+  contactPreview: CandidateContactPreview
+}
+
+type CandidateOccupation {
+  role: Role!
+  specialisation: Specialisation
+  isPrimary: Boolean!
+  experienceMonths: Int
+  isCurrent: Boolean!
+  verificationStatus: VerificationStatus!
+}
+type CandidateSkill {
+  skill: Skill!
+  proficiency: Int
+  experienceMonths: Int
+  verified: Boolean!
+}
+type CandidateCredential {
+  credentialType: CredentialType!
+  issuer: String
+  issueDate: String
+  expiryDate: String
+  verificationStatus: VerificationStatus!
+}
+type CandidateAvailability {
+  availableFrom: String
+  noticePeriodDays: Int
+  shiftIds: [ID!]!
+}
+type CandidateContactPreview {
+  maskedPhone: String
+  maskedEmail: String
+}
+
+type CandidateEdge {
+  cursor: String!
+  node: Candidate!
+}
+type CandidateConnection {
+  edges: [CandidateEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int
+}
+type RoleEdge {
+  cursor: String!
+  node: Role!
+}
+type RoleConnection {
+  edges: [RoleEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int
+}
+type PageInfo {
+  hasNextPage: Boolean!
+  endCursor: String
+}
+
+input SkillRequirementInput {
+  skillId: ID!
+  mandatory: Boolean = true
+  minProficiency: Int
+}
+input CredentialRequirementInput {
+  credentialTypeId: ID!
+  mandatory: Boolean = true
+  mustBeActive: Boolean = true
+  verifiedOnly: Boolean = true
+}
+input LocationRadiusInput {
+  cityId: ID
+  postalCode: String
+  latitude: Float
+  longitude: Float
+  radiusKm: Float
+}
+input LanguageRequirementInput {
+  languageCode: String!
+  minProficiency: Int
+}
+input CompensationFilterInput {
+  basis: String
+  minAmount: Float
+  maxAmount: Float
+  currency: String = "INR"
+}
+input CandidateSearchInput {
+  roleIds: [ID!]
+  specialisationIds: [ID!]
+  skillFilters: [SkillRequirementInput!]
+  credentialFilters: [CredentialRequirementInput!]
+  engagementTypes: [EngagementType!]
+  workModes: [WorkMode!]
+  marketTags: [MarketSegmentTag!]
+  location: LocationRadiusInput
+  languages: [LanguageRequirementInput!]
+  minExperienceMonths: Int
+  maxNoticePeriodDays: Int
+  shiftIds: [ID!]
+  compensation: CompensationFilterInput
+  verifiedOnly: Boolean
+  taxonomyVersion: String
+}
+
+type Query {
+  jobFamilies(version: String): [JobFamily!]!
+  roles(
+    familyId: ID
+    query: String
+    first: Int = 50
+    after: String
+  ): RoleConnection!
+  candidateSearch(
+    input: CandidateSearchInput!
+    first: Int = 25
+    after: String
+  ): CandidateConnection!
+}

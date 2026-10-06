@@ -1,0 +1,51 @@
+# IW8-066: Create OrganisationCandidateUnlock entity
+
+Sprint: Sprint 3
+Outcome: DONE
+
+IW8-066 Create OrganisationCandidateUnlock entity implemented: domain entity with unique OrgId+CandidateProfileId, UnlockSource enum (FreeAllowance/PaidEntitlement/AddOn/Admin), EF configuration with composite unique index, DbSet registered in AppDbContext, EF migration generated, domain and integration tests added. Build 0w/0e, 218 domain tests passed, 6 E04 integration tests passed.
+
+```json
+{
+  "story_id": "IW8-066",
+  "outcome": "DONE",
+  "summary": "IW8-066 Create OrganisationCandidateUnlock entity implemented: domain entity with unique OrgId+CandidateProfileId, UnlockSource enum (FreeAllowance/PaidEntitlement/AddOn/Admin), EF configuration with composite unique index, DbSet registered in AppDbContext, EF migration generated, domain and integration tests added. Build 0w/0e, 218 domain tests passed, 6 E04 integration tests passed.",
+  "files_changed": [
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Domain\\E04\\OrganisationCandidateUnlock.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Domain\\E04\\UnlockSource.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Migrations\\AppDbContextModelSnapshot.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\AppDbContext.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\Configurations\\E04\\OrganisationCandidateUnlockConfiguration.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\Migrations\\20261002071538_CreateOrganisationCandidateUnlock.Designer.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\Migrations\\20261002071538_CreateOrganisationCandidateUnlock.cs",
+    "C:\\Projects\\IndiaWorks\\tests\\IndiaWorks.Domain.Tests\\E04\\OrganisationCandidateUnlockTests.cs",
+    "C:\\Projects\\IndiaWorks\\tests\\IndiaWorks.IntegrationTests\\Database\\E04\\OrganisationCandidateUnlockModelConfigurationTests.cs"
+  ],
+  "verification": [
+    "9296db5d730b: cwd=C:\\Projects\\IndiaWorks\\src\\backend; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=1; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5', 'AC6', 'AC7', 'AC8', 'AC9']; output=verification/9296db5d730b.log",
+    "bbe117a1202e: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5', 'AC6', 'AC7', 'AC8', 'AC9']; output=verification/bbe117a1202e.log",
+    "492531628f83: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'test', 'tests/IndiaWorks.Domain.Tests/IndiaWorks.Domain.Tests.csproj', '-c', 'Release', '--no-build']; exit=0; ACs=['AC1', 'AC2', 'AC8']; output=verification/492531628f83.log",
+    "9839fbacc788: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'test', 'tests/IndiaWorks.IntegrationTests/IndiaWorks.IntegrationTests.csproj', '-c', 'Release', '--no-build', '--filter', 'FullyQualifiedName~E04']; exit=0; ACs=['AC2', 'AC7']; output=verification/9839fbacc788.log",
+    "7c1a423cb428: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'ef', 'migrations', 'list', '--project', 'src/backend/IndiaWorks.Infrastructure', '--startup-project', 'src/backend/IndiaWorks.Api']; exit=0; ACs=['AC7']; output=verification/7c1a423cb428.log",
+    "AC1: OrganisationCandidateUnlockConfiguration.cs defines unique composite index IX_OrganisationCandidateUnlocks_OrgId_CandidateProfileId; UnlockSource enum has FreeAllowance/PaidEntitlement/AddOn/Admin values",
+    "AC2: OrganisationCandidateUnlockTests.Create_WithValidParameters_SetsPropertiesCorrectly passes - entity created with valid orgId, candidateProfileId, source",
+    "AC3: OrganisationCandidateUnlockTests.Create_FreeAllowance_SourceIsFreeAllowance verifies FREE_ALLOWANCE source capture",
+    "AC4: OrganisationCandidateUnlock entity tracks Source property; all 4 sources validated in OrganisationCandidateUnlockTests",
+    "AC5: OrganisationCandidateUnlockTests.Create_PaidEntitlement/AddOn/Admin verify PAID_ENTITLEMENT/ADD_ON/ADMIN sources; paid path available via UnlockSource.PaidEntitlement",
+    "AC6: Unique composite index IX_OrganisationCandidateUnlocks_OrgId_CandidateProfileId enforced at DB level prevents duplicate org+candidate pairs",
+    "AC7: dotnet ef migrations list shows 20261002071538_CreateOrganisationCandidateUnlock as pending; migration creates OrganisationCandidateUnlocks table with correct columns and unique index",
+    "AC8: dotnet test IndiaWorks.Domain.Tests \u2192 218 passed (0 failed); dotnet test IndiaWorks.IntegrationTests --filter E04 \u2192 6 passed (0 failed)",
+    "AC9: No logging code added; entity contains no OTP/token/contact/identity fields; only Id/OrganisationId/CandidateProfileId/Source/UnlockedAt"
+  ],
+  "known_gaps": [],
+  "blocker": null,
+  "notes": [
+    "Host-generated inventory, proof records and outbox handoff."
+  ],
+  "obsidian_status": "OUTBOX",
+  "graphify_status": "OUTBOX",
+  "no_source_changes_required": false
+}
+```
+
+No MCP sync claimed. Contract/rollout details, if applicable, must be recorded in the summary or AC explanations.

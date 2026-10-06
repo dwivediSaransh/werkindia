@@ -1,0 +1,50 @@
+# IW8-025: Create UserDevice and UserSession entities
+
+Sprint: Sprint 1
+Outcome: DONE
+
+Created UserDevice and UserSession domain entities with EF configurations and migration. Build and all tests pass (63 domain tests including new UserDeviceTests and UserSessionTests, 43 application tests, 16 integration tests). Migration 20260928042631_AddUserDevicesAndSessions is generated and pending.
+
+```json
+{
+  "story_id": "IW8-025",
+  "outcome": "DONE",
+  "summary": "Created UserDevice and UserSession domain entities with EF configurations and migration. Build and all tests pass (63 domain tests including new UserDeviceTests and UserSessionTests, 43 application tests, 16 integration tests). Migration 20260928042631_AddUserDevicesAndSessions is generated and pending.",
+  "files_changed": [
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Domain\\E01\\UserDevice.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Domain\\E01\\UserSession.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Migrations\\20260928042631_AddUserDevicesAndSessions.Designer.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Migrations\\20260928042631_AddUserDevicesAndSessions.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Migrations\\AppDbContextModelSnapshot.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\AppDbContext.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\Configurations\\E01\\UserDeviceConfiguration.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\Configurations\\E01\\UserSessionConfiguration.cs",
+    "C:\\Projects\\IndiaWorks\\tests\\IndiaWorks.Domain.Tests\\E01\\UserDeviceTests.cs",
+    "C:\\Projects\\IndiaWorks\\tests\\IndiaWorks.Domain.Tests\\E01\\UserSessionTests.cs"
+  ],
+  "verification": [
+    "ed0e96cff1e4: cwd=C:\\Projects\\IndiaWorks\\src\\backend; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'test', 'IndiaWorks.slnx', '-c', 'Release', '--no-build']; exit=1; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/ed0e96cff1e4.log",
+    "7de367b49b8d: cwd=C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Domain; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'test', 'IndiaWorks.slnx', '-c', 'Release', '--no-build']; exit=1; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/7de367b49b8d.log",
+    "9d094ad9c317: cwd=C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Domain; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'test', '/c/Projects/IndiaWorks/IndiaWorks.slnx', '-c', 'Release', '--no-build']; exit=1; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/9d094ad9c317.log",
+    "1cb09ba96a1c: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'test', 'IndiaWorks.slnx', '-c', 'Release', '--no-build']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/1cb09ba96a1c.log",
+    "1954ef51f1a7: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'ef', 'migrations', 'list', '--project', 'src/backend/IndiaWorks.Infrastructure', '--startup-project', 'src/backend/IndiaWorks.Api']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4']; output=verification/1954ef51f1a7.log",
+    "4a576fefac63: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/4a576fefac63.log",
+    "8347efd8e727: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'ef', 'migrations', 'list', '--project', 'src/backend/IndiaWorks.Infrastructure', '--startup-project', 'src/backend/IndiaWorks.Api']; exit=0; ACs=['AC4']; output=verification/8347efd8e727.log",
+    "AC1: UserDevice stores device metadata (DeviceId, DeviceName, Platform, Browser), refresh-token hash (RefreshTokenHash), revocation (IsRevoked), timestamps; UserSession stores active persona (Persona enum: Candidate/Employer), expiry (ExpiresOn), revocation (IsRevoked), activity tracking. Both entities follow E01 conventions with private constructors, factory methods, and domain behavior methods.",
+    "AC2: 63 domain tests pass including UserDeviceTests (11 tests: creation, validation, revocation, refresh-token rotation, activity tracking) and UserSessionTests (10 tests: creation, expiry validation, persona switching, revocation, activity tracking, expiry extension). All existing tests remain green (43 application, 16 integration, 1 architecture).",
+    "AC3: Only UserDevice.cs and UserSession.cs added to E01; no new API endpoints, no parallel domain concepts. AppDbContext updated with DbSet<UserDevice> and DbSet<UserSession>. Follows existing E01 patterns (private constructor, static factory, IEntityTypeConfiguration). No duplicate tables or concepts introduced.",
+    "AC4: dotnet build succeeds (0 errors, 0 warnings). dotnet test passes all 123 tests. dotnet ef migrations list shows 20260928042631_AddUserDevicesAndSessions (Pending). Migration creates UserDevices and UserSessions tables with correct FKs (cascade from UserAccount, restrict from UserDevice), unique indexes, and useful query indexes.",
+    "AC5: Implementation review confirms only hashed refresh token is stored (RefreshTokenHash property, max 100 chars). No OTP, JWT, refresh token plaintext, Aadhaar, PAN, phone, email, or credential numbers are stored or logged. No search projections changed. Entity/ EF configuration code contains no sensitive data exposure."
+  ],
+  "known_gaps": [],
+  "blocker": null,
+  "notes": [
+    "Host-generated inventory, proof records and outbox handoff."
+  ],
+  "obsidian_status": "OUTBOX",
+  "graphify_status": "OUTBOX",
+  "no_source_changes_required": false
+}
+```
+
+No MCP sync claimed. Contract/rollout details, if applicable, must be recorded in the summary or AC explanations.

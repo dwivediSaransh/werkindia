@@ -1,0 +1,41 @@
+# IW8-053: Seed specialisations for Technician and Facilities roles
+
+Sprint: Sprint 2
+Outcome: DONE
+
+Implemented IW8-053: created seed-specialisations-for-technician-and-facilities-roles.json and SeedSpecialisationsForTechnicianAndFacilitiesRolesTests.cs. Build succeeded (proof a26f262dac26). Full test suite passed: 88 integration tests passed, 16 skipped (Testcontainers unavailable), 0 failed (proof 14f208d095ec). Focused seed test passed (proof f653870febea). No new domain concept, migration, DI registration, GraphQL operation, or REST endpoint introduced. Seed reuses existing Specialisation/WorkContext/RoleAlias entities and CreateVersionedTaxonomySeedImporter.
+
+```json
+{
+  "story_id": "IW8-053",
+  "outcome": "DONE",
+  "summary": "Implemented IW8-053: created seed-specialisations-for-technician-and-facilities-roles.json and SeedSpecialisationsForTechnicianAndFacilitiesRolesTests.cs. Build succeeded (proof a26f262dac26). Full test suite passed: 88 integration tests passed, 16 skipped (Testcontainers unavailable), 0 failed (proof 14f208d095ec). Focused seed test passed (proof f653870febea). No new domain concept, migration, DI registration, GraphQL operation, or REST endpoint introduced. Seed reuses existing Specialisation/WorkContext/RoleAlias entities and CreateVersionedTaxonomySeedImporter.",
+  "files_changed": [
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\Seed\\seed-specialisations-for-technician-and-facilities-roles.json",
+    "C:\\Projects\\IndiaWorks\\tests\\IndiaWorks.IntegrationTests\\Seed\\SeedSpecialisationsForTechnicianAndFacilitiesRolesTests.cs"
+  ],
+  "verification": [
+    "805f94dbf0f6: cwd=C:\\Projects\\IndiaWorks\\src\\backend; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=1; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/805f94dbf0f6.log",
+    "75fb7b6e9722: cwd=C:\\Projects\\IndiaWorks\\src\\backend; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=1; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/75fb7b6e9722.log",
+    "2205117ecefc: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=1; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/2205117ecefc.log",
+    "a26f262dac26: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/a26f262dac26.log",
+    "14f208d095ec: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'test', 'IndiaWorks.slnx', '-c', 'Release', '--no-build']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/14f208d095ec.log",
+    "f653870febea: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'test', 'IndiaWorks.slnx', '-c', 'Release', '--no-build', '--filter', 'FullyQualifiedName~SeedSpecialisationsForTechnicianAndFacilitiesRolesTests.SeedRunner_SeedsTechnicianAndFacilitiesSpecialisationsAndContexts']; exit=0; ACs=['AC1']; output=verification/f653870febea.log",
+    "AC1: SeedRunner_SeedsTechnicianAndFacilitiesSpecialisationsAndContexts asserts 4 field technician specialisations (ELECTRICIAN/HVAC/PLUMBING/APPLIANCE_REPAIR), 1 industrial technician specialisation (INDUSTRIAL_MAINTENANCE), 2 facilities specialisations (SECURITY/HOUSEKEEPING), plus work contexts and role aliases from seed-specialisations-for-technician-and-facilities-roles.json; proof f653870febea.",
+    "AC2: No new domain entity, migration, DI registration, GraphQL operation, or REST endpoint introduced. Seed uses existing JobFamily/Role/Specialisation/WorkContext/RoleAlias entities and CreateVersionedTaxonomySeedImporter; only new seed JSON and in-memory integration test added; proof a26f262dac26 and 14f208d095ec.",
+    "AC3: Story is a data/seed slice with no API exposure; no authorization or validation error paths introduced; stable error codes not applicable to this story surface; proof a26f262dac26.",
+    "AC4: SeedSpecialisationsForTechnicianAndFacilitiesRolesTests covers happy path (SeedRunner_SeedsTechnicianAndFacilitiesSpecialisationsAndContexts) plus SeedRunner_DoesNotThrowOnRepeatedRun and SeedDataset_ContainsNoForbiddenSecretOrContactData; full suite proof 14f208d095ec shows 0 failed.",
+    "AC5: SeedDataset_ContainsNoForbiddenSecretOrContactData asserts seed JSON contains no +91/@/otp/token/aadhaar/PAN and no row Name/Alias contains @ or +; proof 14f208d095ec and f653870febea."
+  ],
+  "known_gaps": [],
+  "blocker": null,
+  "notes": [
+    "Host-generated inventory, proof records and outbox handoff."
+  ],
+  "obsidian_status": "OUTBOX",
+  "graphify_status": "OUTBOX",
+  "no_source_changes_required": false
+}
+```
+
+No MCP sync claimed. Contract/rollout details, if applicable, must be recorded in the summary or AC explanations.

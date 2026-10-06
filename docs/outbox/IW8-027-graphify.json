@@ -1,0 +1,36 @@
+{
+  "story_id": "IW8-027",
+  "outcome": "DONE",
+  "summary": "Implemented refresh-token rotation service with rotate-on-use semantics, reuse detection, and session revocation. Created RefreshTokenRotationService, repository interfaces, infrastructure implementations, and 10 unit tests. Build succeeds (0 errors), all 133 tests pass (3 skipped - Testcontainers unavailable).",
+  "files_changed": [
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Application\\DependencyInjection.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Application\\Features\\E01\\Implement\\RefreshTokenRepositories.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Application\\Features\\E01\\Implement\\RefreshTokenRotationRequest.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Application\\Features\\E01\\Implement\\RefreshTokenRotationService.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\DependencyInjection.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\Repositories\\RefreshTokenRepositories.cs",
+    "C:\\Projects\\IndiaWorks\\tests\\IndiaWorks.Application.Tests\\E01\\RefreshTokenRotationTests.cs"
+  ],
+  "verification": [
+    "b14182973983: cwd=C:\\Projects\\IndiaWorks\\src\\backend; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=1; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/b14182973983.log",
+    "b3785a1ae022: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/b3785a1ae022.log",
+    "9a49b82049d1: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'test', 'IndiaWorks.slnx', '-c', 'Release', '--no-build']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/9a49b82049d1.log",
+    "7a35e1772401: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'test', 'IndiaWorks.slnx', '-c', 'Release', '--no-build', '--filter', 'FullyQualifiedName~RefreshTokenRotationTests.RotateAsync_happy_path']; exit=0; ACs=['AC1']; output=verification/7a35e1772401.log",
+    "be4a2d8b0226: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'test', 'IndiaWorks.slnx', '-c', 'Release', '--no-build', '--filter', 'FullyQualifiedName~RefreshTokenRotationTests.RotateAsync_stale_token']; exit=0; ACs=['AC2']; output=verification/be4a2d8b0226.log",
+    "390059a9eaae: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Users\\\\DELL\\\\AppData\\\\Local\\\\hermes\\\\tools\\\\git-2.53.0+3-win32-x64\\\\usr\\\\bin\\\\bash.EXE', '-c', 'rg --files src/backend/IndiaWorks.Application/Features/E01/Implement/RefreshTokenRotationService.cs src/backend/IndiaWorks.Infrastructure/Persistence/Repositories/RefreshTokenRepositories.cs tests/IndiaWorks.Application.Tests/E01/RefreshTokenRotationTests.cs | xargs rg -l \"IUserDeviceRepository|IUserSessionRepository|IJwtTokenService|UserDevice|UserSession|CreateAccessTokenRequest\"']; exit=0; ACs=['AC3']; output=verification/390059a9eaae.log",
+    "fb98538dd524: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Users\\\\DELL\\\\AppData\\\\Local\\\\hermes\\\\tools\\\\git-2.53.0+3-win32-x64\\\\usr\\\\bin\\\\bash.EXE', '-c', 'rg --files src/backend/IndiaWorks.Application/Features/E01/Implement/RefreshTokenRotationService.cs src/backend/IndiaWorks.Infrastructure/Persistence/Repositories/RefreshTokenRepositories.cs tests/IndiaWorks.Application.Tests/E01/RefreshTokenRotationTests.cs | xargs rg -l \"ILogger|Log\\\\\\\\.|logger\\\\\\\\.|Write.*token|Write.*otp|Write.*refresh\"']; exit=0; ACs=['AC5']; output=verification/fb98538dd524.log",
+    "AC1: RefreshTokenRotationService.RotateAsync rotates one-time refresh tokens: presented hash validated, device refreshed with new hash, session touched, new access token issued via IJwtTokenService. Verified by RotateAsync_happy_path_rotates_token_and_returns_new_access_token test (proof 7a35e1772401, exit 0).",
+    "AC2: Stale token returns TOKEN_REUSE_DETECTED (RotateAsync_stale_token_returns_token_reuse_detected, proof be4a2d8b0226). Token reuse triggers revocation of all user sessions. Revoked device/session returns SESSION_REVOKED. Expired session returns SESSION_REVOKED. Missing token hash throws ArgumentException. JWT failure returns UNAUTHENTICATED.",
+    "AC3: No parallel domain concept introduced. Service reuses UserDevice/UserSession entities from IW8-026 and IJwtTokenService from IW8-024. Only new types are RefreshTokenRotationRequest, RefreshTokenRotationResult records, IUserDeviceRepository/IUserSessionRepository interfaces in E01 feature slice, and infrastructure implementations. Verified by code inspection across Application, Infrastructure, and Tests projects (proof 390059a9eaae).",
+    "AC4: dotnet build IndiaWorks.slnx -c Release exit 0 (proof b3785a1ae022). dotnet test IndiaWorks.slnx -c Release --no-build exit 0: 133 passed, 0 failed, 3 skipped (proof 9a49b82049d1).",
+    "AC5: RefreshTokenRotationService masks user/device IDs in logs via MaskGuid(). No JWT token values, refresh token hashes, or PII appear in log messages. Verified by RotateAsync_no_plaintext_tokens_in_logs test asserting no full token hash or 'eyJ' JWT prefix in logs, plus grep confirming only ILogger usage in service/test files (proof fb98538dd524)."
+  ],
+  "known_gaps": [],
+  "blocker": null,
+  "notes": [
+    "Host-generated inventory, proof records and outbox handoff."
+  ],
+  "obsidian_status": "OUTBOX",
+  "graphify_status": "OUTBOX",
+  "no_source_changes_required": false
+}

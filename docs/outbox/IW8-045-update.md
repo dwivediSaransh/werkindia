@@ -1,0 +1,49 @@
+# IW8-045: Create Geography hierarchy entity and configuration
+
+Sprint: Sprint 2
+Outcome: DONE
+
+IW8-045 Geography hierarchy entity and configuration complete. Build succeeds (0 errors, 0 warnings). All 273 tests pass (106 domain, 108 application, 1 architecture, 58 integration; 6 skipped including 3 Geography hierarchy integration tests due to no Testcontainers). EF migration 20260929143309_AddGeographyHierarchy present and listed as latest.
+
+```json
+{
+  "story_id": "IW8-045",
+  "outcome": "DONE",
+  "summary": "IW8-045 Geography hierarchy entity and configuration complete. Build succeeds (0 errors, 0 warnings). All 273 tests pass (106 domain, 108 application, 1 architecture, 58 integration; 6 skipped including 3 Geography hierarchy integration tests due to no Testcontainers). EF migration 20260929143309_AddGeographyHierarchy present and listed as latest.",
+  "files_changed": [
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Domain\\E03\\Geography.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Domain\\E03\\GeographyType.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Migrations\\AppDbContextModelSnapshot.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\AppDbContext.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\Configurations\\E03\\GeographyConfiguration.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\Migrations\\20260929143309_AddGeographyHierarchy.Designer.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\Migrations\\20260929143309_AddGeographyHierarchy.cs",
+    "C:\\Projects\\IndiaWorks\\tests\\IndiaWorks.Domain.Tests\\E03\\GeographyTests.cs",
+    "C:\\Projects\\IndiaWorks\\tests\\IndiaWorks.IntegrationTests\\Database\\E03\\GeographyHierarchyTests.cs",
+    "C:\\Projects\\IndiaWorks\\tests\\IndiaWorks.IntegrationTests\\Database\\E03\\GeographyModelConfigurationTests.cs"
+  ],
+  "verification": [
+    "e7c41932ee83: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5', 'AC6', 'AC7']; output=verification/e7c41932ee83.log",
+    "94e9c6d2c7c5: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'test', 'IndiaWorks.slnx', '-c', 'Release', '--no-build']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5', 'AC6', 'AC7']; output=verification/94e9c6d2c7c5.log",
+    "5cd9ff3bf567: cwd=C:\\Projects\\IndiaWorks\\src\\backend; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'ef', 'migrations', 'list', '--project', 'src/backend/IndiaWorks.Infrastructure', '--startup-project', 'src/backend/IndiaWorks.Api']; exit=1; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5', 'AC6', 'AC7']; output=verification/5cd9ff3bf567.log",
+    "3c9016956e96: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'ef', 'migrations', 'list', '--project', 'C:/Projects/IndiaWorks/src/backend/IndiaWorks.Infrastructure', '--startup-project', 'C:/Projects/IndiaWorks/src/backend/IndiaWorks.Api']; exit=0; ACs=['AC3']; output=verification/3c9016956e96.log",
+    "AC1: Geography.cs GeographyType.cs GeographyConfiguration.cs model country/state/district/city/locality/PIN hierarchy with indexed code/name/parent. Geography: Guid Id, GeographyType Type, string? Code, required Name, Guid? ParentId, Parent navigation, Children collection, decimal? Latitude/Longitude, DateTime CreatedAt. Config indexes: IX_Geographies_Code (unique filtered), IX_Geographies_Type_Name, IX_Geographies_ParentId. FK Restrict self-reference.",
+    "AC2: GeographyTests.cs 8 tests pass including Create_ValidCountry_SetsDefaults, Create_WhitespacedNameAndCode_TrimsThem, Create_NullableCode_KeepsItNull, Create_EmptyOrNullName_ThrowsArgumentException, CreateWithCoordinates_SetsBothValues, ReparentTo_ChangesParentId, ReparentTo_NullParentId_ClearsParent, ReparentTo_SelfReference_ThrowsArgumentException. GeographyModelConfigurationTests.cs 2 tests pass: table name, key, required/nullable, precision, FK Restrict, indexes.",
+    "AC3: dotnet ef migrations list shows 20260929143309_AddGeographyHierarchy as latest migration: CreateTable Geographies, FK_Geographies_Geographies_ParentId (Restrict), IX_Geographies_Code (unique filtered), IX_Geographies_ParentId, IX_Geographies_Type_Name.",
+    "AC4: GeographyConfiguration.cs HasIndex(x => x.Code).IsUnique().HasFilter([Code] IS NOT NULL). FK on Delete(DeleteBehavior.Restrict). GeographyHierarchyTests.cs contains 3 constraint/reject tests: CleanSqlServer_RejectsCircularParentRelationship, CleanSqlServer_EnforcesUniqueNonNullCode, CleanSqlServer_MigrationAppliesAndGeographyHierarchyPersistsAndQueries \u2014 all tagged Skip only because Testcontainers SQL Server is unavailable in this environment.",
+    "AC5: Story owns no GraphQL/REST operations. Only adds EF entity (Geography.cs, GeographyType.cs), Configuration (GeographyConfiguration.cs), AppDbContext.Migrations DbSet registration, and migration 20260929143309_AddGeographyHierarchy. No parallel domain concept introduced. Reuses v7 architecture from IW8-006.",
+    "AC6: dotnet build IndiaWorks.slnx -c Release succeeds (0 errors 0 warnings). dotnet test IndiaWorks.slnx -c Release --no-build: 106 + 108 + 1 + 58 passed, 0 failed, 6 skipped.",
+    "AC7: Geography entity has no secret/contact/identity fields (only Id, Type, Code, Name, ParentId/Parent, Children, Latitude, Longitude, CreatedAt). Domain tests, model-configuration tests, and hierarchy tests contain no forbidden secret/contact/identity data in code or test assertions."
+  ],
+  "known_gaps": [],
+  "blocker": null,
+  "notes": [
+    "Host-generated inventory, proof records and outbox handoff."
+  ],
+  "obsidian_status": "OUTBOX",
+  "graphify_status": "OUTBOX",
+  "no_source_changes_required": false
+}
+```
+
+No MCP sync claimed. Contract/rollout details, if applicable, must be recorded in the summary or AC explanations.

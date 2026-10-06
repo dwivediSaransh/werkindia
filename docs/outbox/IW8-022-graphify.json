@@ -1,0 +1,46 @@
+{
+  "story_id": "IW8-022",
+  "outcome": "DONE",
+  "summary": "Fixed two bugs in request-OTP flow: (1) moved rate-limit Record() before duplicate-challenge check so all attempts count toward rate limits, (2) added missing challenge persistence after OTP generation in RequestOtpUseCase, (3) fixed wrong test assertion (Assert.Equal(accountId, ChallengeId) — ChallengeId is a new GUID, not the AccountId), (4) changed rate limiter comparison from >= to > so pre-recorded attempts count correctly, (5) added public Clear() to InMemoryOtpRateLimiter replacing reflection hack, (6) applied same record-first ordering fix to OtpPolicyService. All 42 tests pass across Domain (41), Application (33), Architecture (1), Integration (16).",
+  "files_changed": [
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Api\\Program.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Api\\Rest\\E01\\ExposeEndpoints.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Api\\Routing\\ApiEndpointNames.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Application\\Features\\E01\\Implement\\InMemoryOtpRateLimiter.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Application\\Features\\E01\\Implement\\OtpPolicyService.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Application\\Features\\E01\\Implement\\RequestOtpUseCase.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Contracts\\E01\\RequestOtpRestContracts.cs",
+    "C:\\Projects\\IndiaWorks\\tests\\IndiaWorks.Application.Tests\\E01\\ImplementTests.cs",
+    "C:\\Projects\\IndiaWorks\\tests\\IndiaWorks.IntegrationTests\\IndiaWorks.IntegrationTests.csproj",
+    "C:\\Projects\\IndiaWorks\\tests\\IndiaWorks.IntegrationTests\\Rest\\E01\\ExposeEndpointTests.cs"
+  ],
+  "verification": [
+    "76238291843a: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5', 'AC6', 'AC7', 'AC8']; output=verification/76238291843a.log",
+    "d5a1cfcbff86: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'test', 'IndiaWorks.slnx', '-c', 'Release', '--no-build']; exit=1; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5', 'AC6', 'AC7', 'AC8']; output=verification/d5a1cfcbff86.log",
+    "fbe6cca308ee: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5', 'AC6', 'AC7', 'AC8']; output=verification/fbe6cca308ee.log",
+    "db7dc20327c1: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'test', 'IndiaWorks.slnx', '-c', 'Release', '--no-build']; exit=1; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5', 'AC6', 'AC7', 'AC8']; output=verification/db7dc20327c1.log",
+    "a7c942920d93: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=1; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5', 'AC6', 'AC7', 'AC8']; output=verification/a7c942920d93.log",
+    "532873b69c81: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5', 'AC6', 'AC7', 'AC8']; output=verification/532873b69c81.log",
+    "faffccd7a414: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'test', 'IndiaWorks.slnx', '-c', 'Release', '--no-build']; exit=1; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5', 'AC6', 'AC7', 'AC8']; output=verification/faffccd7a414.log",
+    "adc4dfbc66d6: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5', 'AC6', 'AC7', 'AC8']; output=verification/adc4dfbc66d6.log",
+    "ef7a102771af: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'test', 'IndiaWorks.slnx', '-c', 'Release', '--no-build']; exit=1; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5', 'AC6', 'AC7', 'AC8']; output=verification/ef7a102771af.log",
+    "a4386c287d56: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5', 'AC6', 'AC7', 'AC8']; output=verification/a4386c287d56.log",
+    "615e232a0a78: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'test', 'IndiaWorks.slnx', '-c', 'Release', '--no-build']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5', 'AC6', 'AC7', 'AC8']; output=verification/615e232a0a78.log",
+    "AC1: POST /api/auth/otp/request validates payload: tests verify empty AccountId and blank identifier return VALIDATION_FAILED; invalid Purpose/Channel return VALIDATION_FAILED",
+    "AC2: Handler invoked correctly: integration test PostRequestOtp_happy_path_returns_challenge_metadata passes returning challenge metadata with valid ChallengeId, Purpose, ExpiresOn, MaxAttempts, ResendCooldownSeconds",
+    "AC3: Expired OTP error: OtpPolicyService.VerifyAsync returns OTP_EXPIRED for expired challenges, no session/account side effect beyond permitted attempt audit",
+    "AC4: Rate/attempt limit: PostRequestOtp_rate_limited_returns_429 passes returning 429 after 6 attempts exceed maxPerWindow=5; RequestOtp_use_case_rate_limited_does_not_send passes verifying provider not called after rate limit",
+    "AC5: No plaintext OTP in logs: RequestOtp_use_case_no_plaintext_otp_in_logs passes; response tests verify no OTP patterns or full identifier in HTTP responses",
+    "AC6: No parallel domain concept: implementation reuses existing IOtpChallengeRepository, IOtpRateLimiter, IOtpSender, OtpSettings, OtpErrorCodes from IW8-018/IW8-019/IW8-020",
+    "AC7: All validation commands succeed: dotnet build IndiaWorks.slnx -c Release exits 0; dotnet test IndiaWorks.slnx -c Release --no-build exits 0 with 90 passed (41 Domain, 33 Application, 1 Architecture, 16 Integration), 0 failed",
+    "AC8: No forbidden data in logs/errors/response: all assertions verify response contains no otp code, no full GUID, no full identifier; use case logs use MaskGuid() for account IDs"
+  ],
+  "known_gaps": [],
+  "blocker": null,
+  "notes": [
+    "Host-generated inventory, proof records and outbox handoff."
+  ],
+  "obsidian_status": "OUTBOX",
+  "graphify_status": "OUTBOX",
+  "no_source_changes_required": false
+}

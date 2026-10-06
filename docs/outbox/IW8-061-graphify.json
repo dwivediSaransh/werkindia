@@ -1,0 +1,35 @@
+{
+  "story_id": "IW8-061",
+  "outcome": "DONE",
+  "summary": "Created OrganisationSubscription and EntitlementUsageEvent entities with EF configurations, migration, and domain tests. Build succeeds, 192 tests pass.",
+  "files_changed": [
+    "C:\\Projects\\IndiaWorks\\cron\\cron_continue_watchdog.py",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Domain\\E04\\EntitlementUsageEvent.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Domain\\E04\\OrganisationSubscription.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Migrations\\AppDbContextModelSnapshot.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\AppDbContext.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\Configurations\\E04\\EntitlementUsageEventConfiguration.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\Configurations\\E04\\OrganisationSubscriptionConfiguration.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\Migrations\\20261001165740_CreateOrganisationSubscriptionAndEntitlementUsageEvents.Designer.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\Migrations\\20261001165740_CreateOrganisationSubscriptionAndEntitlementUsageEvents.cs",
+    "C:\\Projects\\IndiaWorks\\tests\\IndiaWorks.Domain.Tests\\E04\\EntitlementUsageEventTests.cs",
+    "C:\\Projects\\IndiaWorks\\tests\\IndiaWorks.Domain.Tests\\E04\\OrganisationSubscriptionTests.cs"
+  ],
+  "verification": [
+    "38c51cd369be: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/38c51cd369be.log",
+    "edae51e005df: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'test', 'tests/IndiaWorks.Domain.Tests', '-c', 'Release', '--no-build']; exit=0; ACs=['AC4']; output=verification/edae51e005df.log",
+    "AC1: OrganisationSubscription.cs and EntitlementUsageEvent.cs created with factories; OrganisationSubscriptionConfiguration and EntitlementUsageEventConfiguration added; AppDbContext updated with DbSets; migration 20261001165740_CreateOrganisationSubscriptionAndEntitlementUsageEvents generated with both tables and unique idempotency key index",
+    "AC2: Follows E04 patterns from IW8-060 (sealed entity, factory method, IEntityTypeConfiguration); architecture tests pass; no parallel domain concept introduced",
+    "AC3: No API exposed by this story; domain validation uses ArgumentException with named params per existing patterns; stable error codes reserved for future API layer",
+    "AC4: 192 domain tests pass (6 new: OrganisationSubscriptionTests happy path/empty org/empty plan/update status/cancel; EntitlementUsageEventTests happy path/empty org/null code/empty key/trimming); dotnet build and dotnet test both succeed",
+    "AC5: No logging calls in either entity; no OTP/token/contact/identity fields on OrganisationSubscription or EntitlementUsageEvent"
+  ],
+  "known_gaps": [],
+  "blocker": null,
+  "notes": [
+    "Host-generated inventory, proof records and outbox handoff."
+  ],
+  "obsidian_status": "OUTBOX",
+  "graphify_status": "OUTBOX",
+  "no_source_changes_required": false
+}

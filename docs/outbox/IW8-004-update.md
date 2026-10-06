@@ -1,0 +1,54 @@
+# IW8-004: Bootstrap ASP.NET Core API composition root
+
+Sprint: Sprint 0
+Outcome: DONE
+
+Bootstrapped the ASP.NET Core API composition root with configuration binding, problem details, JSON defaults, health/readiness endpoints, named routes, UTC single-line console logging, and backend layer registration.
+
+```json
+{
+  "story_id": "IW8-004",
+  "outcome": "DONE",
+  "summary": "Bootstrapped the ASP.NET Core API composition root with configuration binding, problem details, JSON defaults, health/readiness endpoints, named routes, UTC single-line console logging, and backend layer registration.",
+  "files_changed": [
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Api\\Program.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Api\\Routing\\ApiEndpointNames.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Api\\appsettings.json",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Api\\bin\\Release\\net10.0\\IndiaWorks.Api.dll",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Api\\bin\\Release\\net10.0\\IndiaWorks.Api.pdb",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Api\\bin\\Release\\net10.0\\appsettings.json",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Api\\obj\\Release\\net10.0\\IndiaWorks.Api.csproj.CoreCompileInputs.cache",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Api\\obj\\Release\\net10.0\\IndiaWorks.Api.dll",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Api\\obj\\Release\\net10.0\\IndiaWorks.Api.pdb",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Api\\obj\\Release\\net10.0\\ref\\IndiaWorks.Api.dll",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Api\\obj\\Release\\net10.0\\refint\\IndiaWorks.Api.dll",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Api\\obj\\Release\\net10.0\\rjsmcshtml.dswa.cache.json",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Api\\obj\\Release\\net10.0\\rjsmrazor.dswa.cache.json",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Api\\obj\\Release\\net10.0\\rpswa.dswa.cache.json",
+    "C:\\Projects\\IndiaWorks\\tests\\IndiaWorks.Domain.Tests\\Api\\ApiCompositionRootTests.cs",
+    "C:\\Projects\\IndiaWorks\\tests\\IndiaWorks.Domain.Tests\\bin\\Release\\net10.0\\IndiaWorks.Domain.Tests.dll",
+    "C:\\Projects\\IndiaWorks\\tests\\IndiaWorks.Domain.Tests\\bin\\Release\\net10.0\\IndiaWorks.Domain.Tests.pdb",
+    "C:\\Projects\\IndiaWorks\\tests\\IndiaWorks.Domain.Tests\\obj\\Release\\net10.0\\IndiaWorks.Domain.Tests.csproj.CoreCompileInputs.cache",
+    "C:\\Projects\\IndiaWorks\\tests\\IndiaWorks.Domain.Tests\\obj\\Release\\net10.0\\IndiaWorks.Domain.Tests.dll",
+    "C:\\Projects\\IndiaWorks\\tests\\IndiaWorks.Domain.Tests\\obj\\Release\\net10.0\\IndiaWorks.Domain.Tests.pdb",
+    "C:\\Projects\\IndiaWorks\\tests\\IndiaWorks.Domain.Tests\\obj\\Release\\net10.0\\ref\\IndiaWorks.Domain.Tests.dll",
+    "C:\\Projects\\IndiaWorks\\tests\\IndiaWorks.Domain.Tests\\obj\\Release\\net10.0\\refint\\IndiaWorks.Domain.Tests.dll"
+  ],
+  "verification": [
+    "79ed6c18e59c: cwd=C:\\Projects\\IndiaWorks; argv=['dotnet', 'build', 'IndiaWorks.slnx', '-c', 'Release', '--no-restore']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/79ed6c18e59c.log",
+    "ed873fdfe7cc: cwd=C:\\Projects\\IndiaWorks; argv=['dotnet', 'test', 'IndiaWorks.slnx', '-c', 'Release', '--no-build']; exit=0; ACs=['AC1', 'AC2', 'AC4']; output=verification/ed873fdfe7cc.log",
+    "AC1: Program.cs binds IndiaWorksApiOptions, registers problem details, JSON defaults, health checks, structured console logging, and application/infrastructure layers.",
+    "AC2: /ready returns the stable ServiceReadinessResponse contract and /health is mapped through health checks with named endpoints.",
+    "AC3: No new parallel domain concept, table, or business API operation was introduced.",
+    "AC4: dotnet build IndiaWorks.slnx -c Release --no-restore and dotnet test IndiaWorks.slnx -c Release --no-build passed through story_runtime proof.",
+    "AC5: The composition root adds no sensitive logging payloads, search projections, contact data, or identity data."
+  ],
+  "known_gaps": [],
+  "blocker": null,
+  "notes": ["Host-generated inventory, proof records and outbox handoff."],
+  "obsidian_status": "OUTBOX",
+  "graphify_status": "OUTBOX"
+}
+```
+
+No MCP sync claimed. Contract/rollout details, if applicable, must be recorded in the summary or AC explanations.

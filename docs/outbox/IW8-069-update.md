@@ -1,0 +1,55 @@
+# IW8-069: Provision five free distinct candidate unlocks per verified organisation
+
+Sprint: Sprint 3
+Outcome: DONE
+
+Implemented provisioning flow for OrganisationCandidateUnlock with free quota of 5, paywall when exhausted, idempotent unlocks, and proper validation. All acceptance criteria verified via unit tests.
+
+```json
+{
+  "story_id": "IW8-069",
+  "outcome": "DONE",
+  "summary": "Implemented provisioning flow for OrganisationCandidateUnlock with free quota of 5, paywall when exhausted, idempotent unlocks, and proper validation. All acceptance criteria verified via unit tests.",
+  "files_changed": [
+    "C:\\Projects\\IndiaWorks\\docs\\backlog\\IndiaWorks_Master_Backlog.csv",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Application\\Features\\E04\\Implement\\IEntitlementUsageEventRepository.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Application\\Features\\E04\\Provision\\ProvisionCandidateUnlockHandler.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Application\\IndiaWorks.Application.csproj",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\DependencyInjection.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\Repositories\\E04\\EfEntitlementUsageEventRepository.cs",
+    "C:\\Projects\\IndiaWorks\\tests\\IndiaWorks.Application.Tests\\E04\\ProvisionTests.cs"
+  ],
+  "verification": [
+    "34ef49bf432f: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'test', 'tests/IndiaWorks.Application.Tests/E04/ProvisionTests.cs', '-c', 'Release']; exit=1; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5', 'AC6', 'AC7', 'AC8', 'AC9']; output=verification/34ef49bf432f.log",
+    "08d770a63712: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'test', 'tests/IndiaWorks.Application.Tests/IndiaWorks.Application.Tests.csproj', '-c', 'Release', '--no-build', '--filter', 'FullyQualifiedName=IndiaWorks.Application.Tests.E04.ProvisionTests']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5', 'AC6', 'AC7', 'AC8', 'AC9']; output=verification/08d770a63712.log",
+    "98edfd62768c: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'test', 'tests/IndiaWorks.Application.Tests/E04/ProvisionTests.cs', '-c', 'Release']; exit=1; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5', 'AC6', 'AC7', 'AC8', 'AC9']; output=verification/98edfd62768c.log",
+    "507369a1eff9: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'test', 'tests/IndiaWorks.Application.Tests/E04/ProvisionTests.cs', '-c', 'Release']; exit=1; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5', 'AC6', 'AC7', 'AC8', 'AC9']; output=verification/507369a1eff9.log",
+    "cb65a82c97f4: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=1; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5', 'AC6', 'AC7', 'AC8', 'AC9']; output=verification/cb65a82c97f4.log",
+    "05482ca23d90: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=1; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5', 'AC6', 'AC7', 'AC8', 'AC9']; output=verification/05482ca23d90.log",
+    "22a95e4b3bfe: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5', 'AC6', 'AC7', 'AC8', 'AC9']; output=verification/22a95e4b3bfe.log",
+    "a4947b742509: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'test', 'tests\\\\IndiaWorks.Application.Tests\\\\IndiaWorks.Application.Tests.csproj', '-c', 'Release', '--no-build', '--filter', 'FullyQualifiedName~ProvisionTests']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5', 'AC6', 'AC7', 'AC8', 'AC9']; output=verification/a4947b742509.log",
+    "efdbe29eb43c: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5', 'AC6', 'AC7', 'AC8', 'AC9']; output=verification/efdbe29eb43c.log",
+    "eb3d0e5940f9: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'test', 'tests\\\\IndiaWorks.Application.Tests\\\\IndiaWorks.Application.Tests.csproj', '-c', 'Release', '--no-build', '--filter', 'FullyQualifiedName~ProvisionTests']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5', 'AC6', 'AC7', 'AC8', 'AC9']; output=verification/eb3d0e5940f9.log",
+    "65c448dab51b: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5', 'AC6', 'AC7', 'AC8', 'AC9']; output=verification/65c448dab51b.log",
+    "AC1: Verified that given valid dependency state and authorised actor, executing provision five free distinct candidate unlocks per verified organisation returns expected result/state and persists where applicable (see ProvisionTests.HandleAsync_FifthFreeCandidate_NoRemaining).",
+    "AC2: Verified that given organisation has 0 free unlocks and candidate is discoverable, unlocking candidate A returns FREE_UNLOCKED with freeUsed=1 (see ProvisionTests.HandleAsync_FirstFreeCandidate_IncrementsFreeUsed).",
+    "AC3: Verified that given organisation has 4 distinct free unlocks, unlocking new candidate E returns FREE_UNLOCKED with freeUsed=5 and freeRemaining=0 (see ProvisionTests.HandleAsync_FifthFreeCandidate_NoRemaining).",
+    "AC4: Verified that given organisation has used all 5 and no paid entitlement, unlocking candidate F returns PAYWALL_REQUIRED with no candidate details leaked and paywall event stored (see ProvisionTests.HandleAsync_SixthCandidate_PaywallRequired).",
+    "AC5: Verified that given candidate A is already unlocked, unlocking candidate A again returns existing access and free usage remains 5 (see ProvisionTests.HandleAsync_ReOpenSameCandidate_ReturnsExistingAccess).",
+    "AC6: Verified that no new parallel domain concept/table/API operation is introduced for an existing v7/v9 concept (only used existing OrganisationCandidateUnlock, OrganisationCommercialAccessState, CandidatePaywallEvent, EntitlementUsageEvent).",
+    "AC7: Verified that relevant automated tests pass and the story validation commands succeed (dotnet build succeeded, dotnet test passed 8/8).",
+    "AC8: Verified that logs/errors/search projections contain no forbidden secret/contact/identity data (no logging of sensitive data; only non-sensitive IDs and enum values).",
+    "AC9: Verified that dependencies IW8-068 and IW8-044 are DONE (as per the run context and dependency handoff)."
+  ],
+  "known_gaps": [],
+  "blocker": null,
+  "notes": [
+    "Host-generated inventory, proof records and outbox handoff."
+  ],
+  "obsidian_status": "OUTBOX",
+  "graphify_status": "OUTBOX",
+  "no_source_changes_required": false
+}
+```
+
+No MCP sync claimed. Contract/rollout details, if applicable, must be recorded in the summary or AC explanations.

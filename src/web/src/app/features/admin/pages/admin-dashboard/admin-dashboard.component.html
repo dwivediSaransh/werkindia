@@ -1,0 +1,48 @@
+<div class="iw-admin">
+  <header class="iw-topbar">
+    <button type="button" class="iw-brand">
+      <span class="iw-brand__mark">IW</span>
+      <span><strong>IndiaWorks</strong><small>Admin console</small></span>
+    </button>
+    <nav class="iw-nav" aria-label="Primary">
+      <button type="button">Trust & safety</button>
+      <button type="button">Reports</button>
+      <button type="button">Settings</button>
+    </nav>
+  </header>
+
+  <main>
+    @if (vm() === 'loading') {
+      <section class="page-section">
+        <p class="eyebrow">Loading admin console</p>
+        <div class="skeleton"></div>
+      </section>
+    } @else {
+      <section class="page-section">
+        <p class="eyebrow">Admin dashboard</p>
+        <h1>Platform operations console.</h1>
+        <p>
+          Trust and safety, moderation, reporting, and audit views connect to the backend once the
+          owning stories are implemented.
+        </p>
+        <div class="metric-grid">
+          <article>
+            <span>Open reports</span>
+            <strong>0</strong>
+            <small>awaiting review</small>
+          </article>
+          <article>
+            <span>Moderation queue</span>
+            <strong>0</strong>
+            <small>pending decisions</small>
+          </article>
+        </div>
+      </section>
+    }
+  </main>
+
+  <footer class="iw-footer">
+    <strong>IndiaWorks Admin OS</strong
+    ><span>Trust, safety, observability, operational accountability.</span>
+  </footer>
+</div>

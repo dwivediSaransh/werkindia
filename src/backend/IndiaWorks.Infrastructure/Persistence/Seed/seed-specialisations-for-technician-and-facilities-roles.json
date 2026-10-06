@@ -1,0 +1,207 @@
+{
+  "$schema": "https://indiaworks.internal/seed/versioned-taxonomy-1.0",
+  "description": "Specialisations, work contexts and role aliases for Technician and Facilities roles. Reuses TaxonomyVersion + code entities from IW8-049 and roles from IW8-051.",
+  "version": "1.0.0",
+  "semanticVersion": "1.0.0",
+  "status": "Active",
+  "effectiveFrom": "2026-01-01T00:00:00Z",
+  "rows": [
+    {
+      "entityType": "JobFamily",
+      "code": "TECHNICIAN",
+      "name": "Technician",
+      "parentCode": null,
+      "isActive": true
+    },
+    {
+      "entityType": "JobFamily",
+      "code": "FACILITIES",
+      "name": "Facilities",
+      "parentCode": null,
+      "isActive": true
+    },
+    {
+      "entityType": "Role",
+      "code": "FIELD_TECHNICIAN",
+      "name": "Field Technician",
+      "parentCode": null,
+      "jobFamilySlug": "TECHNICIAN",
+      "canonicalName": "Field Technician",
+      "slug": "field-technician",
+      "isActive": true
+    },
+    {
+      "entityType": "Role",
+      "code": "INDUSTRIAL_TECHNICIAN",
+      "name": "Industrial Technician",
+      "parentCode": null,
+      "jobFamilySlug": "TECHNICIAN",
+      "canonicalName": "Industrial Technician",
+      "slug": "industrial-technician",
+      "isActive": true
+    },
+    {
+      "entityType": "Role",
+      "code": "FACILITIES_MAINTENANCE_TECHNICIAN",
+      "name": "Facilities Maintenance Technician",
+      "parentCode": null,
+      "jobFamilySlug": "FACILITIES",
+      "canonicalName": "Facilities Maintenance Technician",
+      "slug": "facilities-maintenance-technician",
+      "isActive": true
+    },
+    {
+      "entityType": "Specialisation",
+      "code": "ELECTRICIAN",
+      "name": "Electrician",
+      "jobFamilySlug": "field-technician",
+      "isActive": true
+    },
+    {
+      "entityType": "Specialisation",
+      "code": "HVAC",
+      "name": "HVAC",
+      "jobFamilySlug": "field-technician",
+      "isActive": true
+    },
+    {
+      "entityType": "Specialisation",
+      "code": "PLUMBING",
+      "name": "Plumbing",
+      "jobFamilySlug": "field-technician",
+      "isActive": true
+    },
+    {
+      "entityType": "Specialisation",
+      "code": "APPLIANCE_REPAIR",
+      "name": "Appliance Repair",
+      "jobFamilySlug": "field-technician",
+      "isActive": true
+    },
+    {
+      "entityType": "Specialisation",
+      "code": "INDUSTRIAL_MAINTENANCE",
+      "name": "Industrial Maintenance",
+      "jobFamilySlug": "industrial-technician",
+      "isActive": true
+    },
+    {
+      "entityType": "Specialisation",
+      "code": "SECURITY",
+      "name": "Security",
+      "jobFamilySlug": "facilities-maintenance-technician",
+      "isActive": true
+    },
+    {
+      "entityType": "Specialisation",
+      "code": "HOUSEKEEPING",
+      "name": "Housekeeping",
+      "jobFamilySlug": "facilities-maintenance-technician",
+      "isActive": true
+    },
+    {
+      "entityType": "WorkContext",
+      "code": "FIELD_SERVICE",
+      "name": "Field Service",
+      "jobFamilySlug": "field-technician",
+      "isActive": true
+    },
+    {
+      "entityType": "WorkContext",
+      "code": "RESIDENTIAL_SERVICE",
+      "name": "Residential Service",
+      "jobFamilySlug": "field-technician",
+      "isActive": true
+    },
+    {
+      "entityType": "WorkContext",
+      "code": "COMMERCIAL_SERVICE",
+      "name": "Commercial Service",
+      "jobFamilySlug": "field-technician",
+      "isActive": true
+    },
+    {
+      "entityType": "WorkContext",
+      "code": "INDUSTRIAL_SITE",
+      "name": "Industrial Site",
+      "jobFamilySlug": "industrial-technician",
+      "isActive": true
+    },
+    {
+      "entityType": "WorkContext",
+      "code": "MANUFACTURING_PLANT",
+      "name": "Manufacturing Plant",
+      "jobFamilySlug": "industrial-technician",
+      "isActive": true
+    },
+    {
+      "entityType": "WorkContext",
+      "code": "FACILITY_GROUNDS",
+      "name": "Facility Grounds",
+      "jobFamilySlug": "facilities-maintenance-technician",
+      "isActive": true
+    },
+    {
+      "entityType": "WorkContext",
+      "code": "BUILDING_INTERIOR",
+      "name": "Building Interior",
+      "jobFamilySlug": "facilities-maintenance-technician",
+      "isActive": true
+    },
+    {
+      "entityType": "RoleAlias",
+      "alias": "Field Tech",
+      "jobFamilySlug": "field-technician",
+      "canonicalName": "Field Technician",
+      "slug": "field-technician",
+      "languageCode": "en-IN",
+      "aliasType": "Synonym"
+    },
+    {
+      "entityType": "RoleAlias",
+      "alias": "Service Technician",
+      "jobFamilySlug": "field-technician",
+      "canonicalName": "Field Technician",
+      "slug": "field-technician",
+      "languageCode": "en-IN",
+      "aliasType": "MarketAlias"
+    },
+    {
+      "entityType": "RoleAlias",
+      "alias": "Industrial Tech",
+      "jobFamilySlug": "industrial-technician",
+      "canonicalName": "Industrial Technician",
+      "slug": "industrial-technician",
+      "languageCode": "en-IN",
+      "aliasType": "Synonym"
+    },
+    {
+      "entityType": "RoleAlias",
+      "alias": "Plant Technician",
+      "jobFamilySlug": "industrial-technician",
+      "canonicalName": "Industrial Technician",
+      "slug": "industrial-technician",
+      "languageCode": "en-IN",
+      "aliasType": "MarketAlias"
+    },
+    {
+      "entityType": "RoleAlias",
+      "alias": "Facilities Tech",
+      "jobFamilySlug": "facilities-maintenance-technician",
+      "canonicalName": "Facilities Maintenance Technician",
+      "slug": "facilities-maintenance-technician",
+      "languageCode": "en-IN",
+      "aliasType": "Synonym"
+    },
+    {
+      "entityType": "RoleAlias",
+      "alias": "Maintenance Worker",
+      "jobFamilySlug": "facilities-maintenance-technician",
+      "canonicalName": "Facilities Maintenance Technician",
+      "slug": "facilities-maintenance-technician",
+      "languageCode": "en-IN",
+      "aliasType": "MarketAlias"
+    }
+  ],
+  "releaseNotes": "Technician and Facilities specialisations: electrician/HVAC/plumbing/appliance/industrial/security/housekeeping."
+}

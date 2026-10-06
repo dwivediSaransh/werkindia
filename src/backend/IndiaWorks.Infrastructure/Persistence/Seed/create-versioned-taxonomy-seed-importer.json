@@ -1,0 +1,78 @@
+{
+  "$schema": "https://indiaworks.internal/seed/versioned-taxonomy-1.0",
+  "description": "Versioned taxonomy seed pack for development and deterministic tests. Reuses TaxonomyVersion + code entities from IW8-049.",
+  "version": "1.0.0",
+  "semanticVersion": "1.0.0",
+  "status": "Draft",
+  "effectiveFrom": "2026-01-01T00:00:00Z",
+  "rows": [
+    {
+      "entityType": "JobFamily",
+      "code": "DELIVERY",
+      "name": "Delivery",
+      "parentCode": null,
+      "isActive": true
+    },
+    {
+      "entityType": "JobFamily",
+      "code": "HEALTHCARE",
+      "name": "Healthcare",
+      "parentCode": null,
+      "isActive": true
+    },
+    {
+      "entityType": "Role",
+      "code": "DELIVERY_DRIVER",
+      "name": "Delivery Driver",
+      "parentCode": null,
+      "jobFamilySlug": "DELIVERY",
+      "canonicalName": "Delivery Driver",
+      "slug": "delivery-driver",
+      "isActive": true
+    },
+    {
+      "entityType": "Role",
+      "code": "REGISTERED_NURSE",
+      "name": "Registered Nurse",
+      "parentCode": null,
+      "jobFamilySlug": "HEALTHCARE",
+      "canonicalName": "Registered Nurse",
+      "slug": "registered-nurse",
+      "isActive": true
+    },
+    {
+      "entityType": "Skill",
+      "code": "DRIVING_LIGHT_VEHICLE",
+      "name": "Driving Light Vehicle",
+      "parentCode": null,
+      "description": "Operate light delivery vehicles safely.",
+      "isActive": true
+    },
+    {
+      "entityType": "CredentialType",
+      "code": "PROFESSIONAL_DRIVER_LICENSE",
+      "name": "Professional Driver License",
+      "parentCode": null,
+      "description": "Valid professional driving license.",
+      "isActive": true
+    },
+    {
+      "entityType": "AssetType",
+      "code": "DRIVER_LICENSE",
+      "name": "Driver License",
+      "parentCode": null,
+      "description": "Personal driver license document.",
+      "isActive": true
+    },
+    {
+      "entityType": "RoleAlias",
+      "alias": "Courier",
+      "jobFamilySlug": "DELIVERY",
+      "canonicalName": "Delivery Driver",
+      "slug": "delivery-driver",
+      "languageCode": "en-IN",
+      "aliasType": "Synonym"
+    }
+  ],
+  "releaseNotes": "Initial development seed pack."
+}

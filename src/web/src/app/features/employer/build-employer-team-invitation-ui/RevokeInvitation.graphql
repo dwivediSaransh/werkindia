@@ -1,0 +1,7 @@
+mutation RevokeInvitation($input: RevokeInvitationInput!) {
+  revokeInvitation(input: $input) {
+    isSuccess
+    errorCode
+    errorMessage
+  }
+}

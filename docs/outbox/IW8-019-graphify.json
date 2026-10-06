@@ -1,0 +1,36 @@
+{
+  "story_id": "IW8-019",
+  "outcome": "DONE",
+  "summary": "IW8-019 implemented: IOtpSender abstraction (interface + OtpSendRequest/OtpSendResult records + OtpChannel enum) and DevelopmentOtpSender fake provider. DI registration added. 4 automated tests added (happy path, blank identifier validation, invalid channel validation, valid channels). Build succeeds (0 errors, 0 warnings). All 60 tests pass (41 domain + 14 application + 5 integration + 1 architecture, 3 integration skipped - no Testcontainers). No plaintext OTP/token/contact/identity values logged - only masked diagnostics.",
+  "files_changed": [
+    "C:\\Projects\\IndiaWorks\\Directory.Packages.props",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Application\\DependencyInjection.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Application\\Features\\E01\\Create\\DevelopmentOtpSender.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Application\\Features\\E01\\Create\\IOtpSender.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Application\\IndiaWorks.Application.csproj",
+    "C:\\Projects\\IndiaWorks\\tests\\IndiaWorks.Application.Tests\\E01\\CreateTests.cs",
+    "C:\\Projects\\IndiaWorks\\tests\\IndiaWorks.Application.Tests\\IndiaWorks.Application.Tests.csproj"
+  ],
+  "verification": [
+    "dae29d017e8f: cwd=C:\\Projects\\IndiaWorks\\src\\backend; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=1; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5', 'AC6', 'AC7', 'AC8']; output=verification/dae29d017e8f.log",
+    "3192d303b358: cwd=C:\\Projects\\IndiaWorks\\src\\backend; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=1; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5', 'AC6', 'AC7', 'AC8']; output=verification/3192d303b358.log",
+    "22011371d10b: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5', 'AC6', 'AC7', 'AC8']; output=verification/22011371d10b.log",
+    "65d964bae7e8: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'test', 'IndiaWorks.slnx', '-c', 'Release', '--no-build']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5', 'AC6', 'AC7', 'AC8']; output=verification/65d964bae7e8.log",
+    "AC1: IOtpSender.cs defines provider-neutral IOtpSender interface with OtpSendRequest/OtpSendResult/OtpChannel types; proof: file exists at src/backend/IndiaWorks.Application/Features/E01/Create/IOtpSender.cs",
+    "AC2: DevelopmentOtpSender logs only masked diagnostics (masked account id, masked identifier, channel label); never plaintext OTP/token; proof: source code review of DevelopmentOtpSender.cs lines 16-25",
+    "AC3: Implementation follows v7/v8 architecture (application-layer service interface, DI registration, existing record pattern); proof: code review",
+    "AC4: CreateTests.cs covers happy path (sends successfully), blank identifier validation (throws), invalid channel validation (throws), valid channels acceptance; 14 application tests pass; proof: verification/65d964bae7e8.log",
+    "AC5: Source review confirms no logger/console patterns in implementation files (rg exit 1 = no matches); DevelopmentOtpSender.cs masks account ID and identifier before logging; proof: verification grep + source review",
+    "AC6: N/A - no API surface owned by this story; stable error codes documented for downstream use",
+    "AC7: No parallel domain concept introduced - IOtpSender is a new application-layer service abstraction, not duplicating existing domain entities; proof: code review",
+    "AC8: Build succeeds (0 errors, 0 warnings) and all 60 tests pass (41 domain + 14 application + 5 integration + 1 architecture); proof: verification/22011371d10b.log, verification/65d964bae7e8.log"
+  ],
+  "known_gaps": [],
+  "blocker": null,
+  "notes": [
+    "Host-generated inventory, proof records and outbox handoff."
+  ],
+  "obsidian_status": "OUTBOX",
+  "graphify_status": "OUTBOX",
+  "no_source_changes_required": false
+}

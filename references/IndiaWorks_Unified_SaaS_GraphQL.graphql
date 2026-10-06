@@ -1,0 +1,1414 @@
+# IndiaWorks Unified SaaS GraphQL Schema v7
+# Product-facing contract. Canonical DB remains normalized; resolvers enforce tenancy,
+# candidate privacy, subscription entitlements and idempotency.
+# This is a conceptual contract for story implementation. The final runtime schema is
+# produced by Hot Chocolate code-first types/resolvers; do not hand-edit generated client code.
+# Later "extend" sections are retained to show approved additions without creating a second API.
+
+scalar Date
+scalar DateTime
+scalar Decimal
+scalar JSON
+
+# ----- Shared enums -----
+enum UserType {
+  CANDIDATE
+  EMPLOYER
+  ADMIN
+}
+enum OrganisationRole {
+  OWNER
+  ADMIN
+  RECRUITER
+  VIEWER
+  BILLING_ADMIN
+}
+enum WorkMode {
+  ONSITE
+  FIELD
+  REMOTE
+  HYBRID
+  HOME_BASED
+}
+enum EngagementType {
+  FULL_TIME
+  PART_TIME
+  CONTRACT
+  TEMPORARY
+  GIG
+  PLATFORM_GIG
+  APPRENTICESHIP
+  INTERNSHIP
+  FREELANCE
+}
+enum JobPostingStatus {
+  DRAFT
+  PUBLISHED
+  PAUSED
+  FILLED
+  CLOSED
+  EXPIRED
+}
+enum HiringUrgency {
+  IMMEDIATE
+  WITHIN_7_DAYS
+  WITHIN_30_DAYS
+  WITHIN_90_DAYS
+  FLEXIBLE
+}
+enum RequirementLevel {
+  REQUIRED
+  PREFERRED
+  OPTIONAL
+}
+enum ApplicationGate {
+  BLOCK
+  WARN
+  NONE
+}
+enum ApplicationStatus {
+  APPLIED
+  VIEWED
+  SHORTLISTED
+  CONTACTED
+  INTERVIEW_SCHEDULED
+  OFFERED
+  HIRED
+  REJECTED
+  WITHDRAWN
+  EXPIRED
+}
+enum CandidateDiscoverability {
+  PRIVATE
+  APPLIED_JOBS_ONLY
+  SEARCHABLE_VERIFIED_EMPLOYERS
+}
+enum EligibilityStatus {
+  ELIGIBLE
+  ELIGIBLE_WITH_WARNINGS
+  BLOCKED
+  UNKNOWN
+}
+enum BillingInterval {
+  TRIAL
+  MONTHLY
+  YEARLY
+  ONE_TIME
+}
+enum SubscriptionStatus {
+  TRIALING
+  ACTIVE
+  PAST_DUE
+  SUSPENDED
+  CANCEL_AT_PERIOD_END
+  CANCELLED
+  EXPIRED
+}
+enum EntitlementUnit {
+  BOOLEAN
+  COUNT
+  CREDIT
+  SEAT
+  GB
+  API_CALL
+}
+enum ResetCadence {
+  NONE
+  DAILY
+  MONTHLY
+  YEARLY
+  BILLING_PERIOD
+}
+enum PromotionStatus {
+  SCHEDULED
+  ACTIVE
+  PAUSED
+  COMPLETED
+  CANCELLED
+}
+enum ContactChannel {
+  CALL
+  WHATSAPP
+  CHAT
+  SMS
+}
+enum AlertChannel {
+  PUSH
+  SMS
+  WHATSAPP
+  EMAIL
+}
+enum AlertFrequency {
+  INSTANT
+  DAILY
+  WEEKLY
+  CUSTOM
+}
+enum JobSort {
+  RELEVANCE
+  NEWEST
+  SALARY_HIGH_TO_LOW
+  DISTANCE
+}
+
+# ----- Identity -----
+type OtpChallengeResult {
+  challengeId: ID!
+  expiresAt: DateTime!
+  resendAvailableAt: DateTime!
+}
+type AuthSession {
+  accessToken: String!
+  refreshToken: String!
+  activePersona: UserType!
+  availablePersonas: [UserType!]!
+  sessionId: ID!
+  nextRoute: String!
+}
+
+# ----- Taxonomy -----
+type JobFamily {
+  id: ID!
+  code: String!
+  name: String!
+}
+type Role {
+  id: ID!
+  code: String!
+  canonicalName: String!
+  family: JobFamily!
+}
+type Specialisation {
+  id: ID!
+  code: String!
+  name: String!
+  role: Role!
+}
+type WorkContext {
+  id: ID!
+  code: String!
+  name: String!
+}
+type Geography {
+  id: ID!
+  type: String!
+  code: String
+  name: String!
+  parent: Geography
+}
+type Skill {
+  id: ID!
+  code: String!
+  canonicalName: String!
+  skillType: String!
+}
+
+# ----- Organisation / SaaS -----
+type Organisation {
+  id: ID!
+  legalName: String!
+  tradeName: String
+  employerSector: String
+  employeeBand: String
+  verificationStatus: String!
+  myRole: OrganisationRole
+}
+type OrganisationMembership {
+  organisation: Organisation!
+  role: OrganisationRole!
+  status: String!
+}
+
+type SubscriptionPlan {
+  id: ID!
+  code: String!
+  name: String!
+  description: String
+  versions: [SubscriptionPlanVersion!]!
+}
+type SubscriptionPlanVersion {
+  id: ID!
+  interval: BillingInterval!
+  currency: String!
+  amount: Decimal
+  trialDays: Int
+  entitlements: [PlanEntitlement!]!
+}
+type PlanEntitlement {
+  code: String!
+  name: String!
+  unit: EntitlementUnit!
+  enabled: Boolean!
+  limit: Decimal
+  resetCadence: ResetCadence!
+}
+type EntitlementUsage {
+  code: String!
+  used: Decimal!
+  limit: Decimal
+  remaining: Decimal
+  resetAt: DateTime
+}
+type OrganisationSubscription {
+  id: ID!
+  organisation: Organisation!
+  status: SubscriptionStatus!
+  planVersion: SubscriptionPlanVersion!
+  trialEndsAt: DateTime
+  currentPeriodStart: DateTime
+  currentPeriodEnd: DateTime
+  cancelAtPeriodEnd: Boolean!
+  usage: [EntitlementUsage!]!
+}
+type CheckoutSession {
+  id: ID!
+  provider: String!
+  redirectUrl: String!
+  expiresAt: DateTime
+}
+type BillingInvoice {
+  id: ID!
+  number: String
+  status: String!
+  currency: String!
+  total: Decimal!
+  createdAt: DateTime!
+  paidAt: DateTime
+}
+
+# ----- Jobs -----
+type JobPosting {
+  id: ID!
+  organisation: Organisation!
+  status: JobPostingStatus!
+  role: Role!
+  specialisation: Specialisation
+  workContext: WorkContext
+  engagementType: EngagementType!
+  workMode: WorkMode!
+  vacancyCount: Int!
+  hiringUrgency: HiringUrgency!
+  targetStartDate: Date
+  applicationCloseDate: Date
+  description: String!
+  compensation: CompensationPackage!
+  locations: [JobLocation!]!
+  activePromotion: JobPromotion
+  createdAt: DateTime!
+  publishedAt: DateTime
+}
+type JobLocation {
+  geography: Geography
+  addressLine1: String
+  postalCode: String
+  latitude: Decimal
+  longitude: Decimal
+  candidateRadiusKm: Decimal
+  isPrimary: Boolean!
+}
+type CompensationPackage {
+  currency: String!
+  payFrequency: String!
+  fixedMin: Decimal
+  fixedMax: Decimal
+  grossMin: Decimal
+  grossMax: Decimal
+  displayedInHandMin: Decimal
+  displayedInHandMax: Decimal
+  components: [CompensationComponent!]!
+}
+type CompensationComponent {
+  componentType: String!
+  minAmount: Decimal
+  maxAmount: Decimal
+  frequency: String
+  description: String
+}
+
+type PromotionProduct {
+  id: ID!
+  code: String!
+  name: String!
+  placementType: String!
+  defaultDurationHours: Int!
+  creditCost: Decimal
+  maxBoost: Decimal!
+}
+type JobPromotion {
+  id: ID!
+  job: JobPosting!
+  product: PromotionProduct!
+  status: PromotionStatus!
+  startsAt: DateTime!
+  endsAt: DateTime!
+  source: String!
+  boost: Decimal!
+}
+
+# ----- Candidate -----
+type CandidateProfile {
+  id: ID!
+  displayName: String
+  onboardingState: String!
+  profileCompletenessPct: Int!
+  discoverabilityStatus: CandidateDiscoverability!
+  defaultLocation: Geography
+  occupations: [CandidateOccupation!]!
+  preferences: CandidateWorkPreference
+}
+type CandidateOccupation {
+  role: Role!
+  specialisation: Specialisation
+  isPrimary: Boolean!
+  isCurrent: Boolean!
+  experienceMonths: Int!
+}
+type CandidateWorkPreference {
+  engagementTypes: [EngagementType!]!
+  workModes: [WorkMode!]!
+  expectedMonthlyMin: Decimal
+  expectedMonthlyMax: Decimal
+  noticePeriodDays: Int
+  willingToRelocate: Boolean
+}
+
+type MaskedCandidateCard {
+  id: ID!
+  displayName: String
+  primaryOccupation: CandidateOccupation
+  skills: [Skill!]!
+  experienceMonths: Int!
+  approximateLocation: Geography
+  availabilityText: String
+  verificationFlags: [String!]!
+  match: CandidateJobMatch
+}
+type RevealedCandidateContact {
+  candidateId: ID!
+  phone: String
+  email: String
+  revealedAt: DateTime!
+  usageEventId: ID!
+}
+
+# ----- Matching -----
+type MatchIssue {
+  code: String!
+  field: String
+  message: String!
+  action: String
+}
+type CandidateJobMatch {
+  status: EligibilityStatus!
+  score: Decimal
+  hardBlocks: [MatchIssue!]!
+  warnings: [MatchIssue!]!
+  missingFields: [MatchIssue!]!
+  reasons: [String!]!
+  promotionApplied: Boolean!
+}
+
+# ----- Applications -----
+type CandidateApplication {
+  id: ID!
+  job: JobPosting!
+  candidate: CandidateProfile!
+  status: ApplicationStatus!
+  appliedAt: DateTime!
+  lastStatusAt: DateTime!
+}
+type ApplicationEvent {
+  id: ID!
+  type: String!
+  actorType: String!
+  occurredAt: DateTime!
+  details: JSON
+}
+
+# ----- Pagination -----
+type PageInfo {
+  endCursor: String
+  hasNextPage: Boolean!
+}
+type JobFeedEdge {
+  cursor: String!
+  node: JobPosting!
+  match: CandidateJobMatch
+}
+type JobFeedConnection {
+  edges: [JobFeedEdge!]!
+  pageInfo: PageInfo!
+}
+type CandidateSearchEdge {
+  cursor: String!
+  node: MaskedCandidateCard!
+}
+type CandidateSearchConnection {
+  edges: [CandidateSearchEdge!]!
+  pageInfo: PageInfo!
+  usage: EntitlementUsage
+}
+type CandidateApplicationEdge {
+  cursor: String!
+  node: CandidateApplication!
+}
+type CandidateApplicationConnection {
+  edges: [CandidateApplicationEdge!]!
+  pageInfo: PageInfo!
+}
+
+# ----- Inputs: organisation/billing -----
+input CreateOrganisationInput {
+  legalName: String!
+  tradeName: String
+  employerSector: String
+  employeeBand: String
+  nic2025Code: String
+}
+input StartTrialInput {
+  organisationId: ID!
+  planCode: String!
+}
+input CreateCheckoutInput {
+  organisationId: ID!
+  planVersionId: ID!
+  successUrl: String!
+  cancelUrl: String!
+  idempotencyKey: String!
+}
+input ChangePlanInput {
+  organisationId: ID!
+  planVersionId: ID!
+  effective: String = "NEXT_RENEWAL"
+  idempotencyKey: String!
+}
+
+# ----- Inputs: job -----
+input JobLocationInput {
+  geographyId: ID
+  addressLine1: String
+  addressLine2: String
+  postalCode: String
+  latitude: Decimal
+  longitude: Decimal
+  candidateRadiusKm: Decimal
+  isPrimary: Boolean = false
+}
+input JobExperienceRequirementInput {
+  policy: String!
+  minMonths: Int
+  maxMonths: Int
+  level: RequirementLevel!
+  applicationGate: ApplicationGate = WARN
+}
+input JobSkillRequirementInput {
+  skillId: ID!
+  level: RequirementLevel!
+  applicationGate: ApplicationGate = WARN
+  minProficiency: String
+  minMonthsExperience: Int
+}
+input JobCredentialRequirementInput {
+  credentialTypeId: ID!
+  level: RequirementLevel!
+  applicationGate: ApplicationGate = BLOCK
+  mustBeValidOnStartDate: Boolean = true
+  verifiedOnly: Boolean = false
+}
+input JobAssetRequirementInput {
+  assetTypeId: ID!
+  level: RequirementLevel!
+  applicationGate: ApplicationGate = WARN
+  ownershipRequired: Boolean = false
+}
+input JobEducationRequirementInput {
+  educationLevelCode: String!
+  courseCode: String
+  level: RequirementLevel!
+  applicationGate: ApplicationGate = WARN
+}
+input JobLanguageRequirementInput {
+  languageCode: String!
+  minProficiency: String
+  level: RequirementLevel!
+  applicationGate: ApplicationGate = WARN
+}
+input CompensationComponentInput {
+  componentType: String!
+  minAmount: Decimal
+  maxAmount: Decimal
+  frequency: String
+  description: String
+}
+input CompensationPackageInput {
+  currency: String! = "INR"
+  payFrequency: String!
+  fixedMin: Decimal
+  fixedMax: Decimal
+  grossMin: Decimal
+  grossMax: Decimal
+  displayedInHandMin: Decimal
+  displayedInHandMax: Decimal
+  components: [CompensationComponentInput!]
+}
+input CreateJobPostingInput {
+  organisationId: ID!
+  roleId: ID!
+  specialisationId: ID
+  workContextId: ID
+  engagementType: EngagementType!
+  workMode: WorkMode!
+  vacancyCount: Int!
+  hiringUrgency: HiringUrgency!
+  targetStartDate: Date
+  applicationCloseDate: Date
+  locations: [JobLocationInput!]!
+  experience: JobExperienceRequirementInput!
+  education: [JobEducationRequirementInput!]
+  languages: [JobLanguageRequirementInput!]
+  skills: [JobSkillRequirementInput!]
+  credentials: [JobCredentialRequirementInput!]
+  assets: [JobAssetRequirementInput!]
+  compensation: CompensationPackageInput!
+  description: String!
+}
+input PromoteJobInput {
+  organisationId: ID!
+  jobPostingId: ID!
+  promotionProductId: ID!
+  startsAt: DateTime
+  durationHours: Int
+  paymentMode: String = "ENTITLEMENT"
+  idempotencyKey: String!
+}
+
+# ----- Inputs: candidate discovery/application -----
+input JobLocationFilterInput {
+  geographyIds: [ID!]
+  latitude: Decimal
+  longitude: Decimal
+  radiusKm: Decimal
+}
+input SalaryFilterInput {
+  monthlyMin: Decimal
+  monthlyMax: Decimal
+}
+input ExperienceFilterInput {
+  bucket: String
+  minMonths: Int
+  maxMonths: Int
+}
+input JobSearchInput {
+  query: String
+  jobFamilyIds: [ID!]
+  roleIds: [ID!]
+  specialisationIds: [ID!]
+  organisationIndustryCodes: [String!]
+  employerSectors: [String!]
+  educationLevelCodes: [String!]
+  educationCourseCodes: [String!]
+  experience: ExperienceFilterInput
+  engagementTypes: [EngagementType!]
+  workModes: [WorkMode!]
+  hiringUrgency: [HiringUrgency!]
+  workplaceTags: [String!]
+  location: JobLocationFilterInput
+  salary: SalaryFilterInput
+  shiftTypes: [String!]
+  sort: JobSort = RELEVANCE
+}
+input CandidateLocationSearchInput {
+  geographyIds: [ID!]
+  latitude: Decimal
+  longitude: Decimal
+  radiusKm: Decimal
+  willingToRelocate: Boolean
+}
+input CandidateSkillFilterInput {
+  skillId: ID!
+  minProficiency: String
+  minMonthsExperience: Int
+  mandatory: Boolean = true
+}
+input CandidateCredentialFilterInput {
+  credentialTypeId: ID!
+  verifiedOnly: Boolean = false
+  activeOnly: Boolean = true
+}
+input CandidateSearchInput {
+  jobPostingId: ID
+  roleIds: [ID!]
+  specialisationIds: [ID!]
+  engagementTypes: [EngagementType!]
+  workModes: [WorkMode!]
+  location: CandidateLocationSearchInput
+  skillFilters: [CandidateSkillFilterInput!]
+  credentialFilters: [CandidateCredentialFilterInput!]
+  languageCodes: [String!]
+  minExperienceMonths: Int
+  maxNoticePeriodDays: Int
+  verifiedOnly: Boolean = false
+}
+input ApplyToJobInput {
+  jobPostingId: ID!
+  source: String
+  screeningAnswers: [ApplicationAnswerInput!]
+  idempotencyKey: String!
+}
+input ApplicationAnswerInput {
+  requirementKey: String!
+  answer: JSON!
+}
+input JobAlertInput {
+  name: String
+  filter: JobSearchInput!
+  channel: AlertChannel!
+  frequency: AlertFrequency!
+}
+
+# ----- Queries -----
+type Query {
+  plans: [SubscriptionPlan!]!
+  meOrganisations: [OrganisationMembership!]!
+  organisationSubscription(organisationId: ID!): OrganisationSubscription
+  entitlementUsage(organisationId: ID!): [EntitlementUsage!]!
+  billingInvoices(
+    organisationId: ID!
+    first: Int = 20
+    after: String
+  ): [BillingInvoice!]!
+
+  myJobs(
+    organisationId: ID!
+    statuses: [JobPostingStatus!]
+    first: Int = 20
+    after: String
+  ): [JobPosting!]!
+  promotionProducts(organisationId: ID!): [PromotionProduct!]!
+
+  candidateSearch(
+    organisationId: ID!
+    input: CandidateSearchInput!
+    first: Int = 20
+    after: String
+  ): CandidateSearchConnection!
+  jobCandidateMatches(
+    organisationId: ID!
+    jobPostingId: ID!
+    first: Int = 20
+    after: String
+  ): CandidateSearchConnection!
+
+  meCandidate: CandidateProfile
+  jobFeed(
+    input: JobSearchInput
+    first: Int = 20
+    after: String
+  ): JobFeedConnection!
+  jobSearch(
+    input: JobSearchInput!
+    first: Int = 20
+    after: String
+  ): JobFeedConnection!
+  job(id: ID!): JobPosting
+  prepareJobApplication(jobPostingId: ID!): CandidateJobMatch!
+  myApplications(
+    status: [ApplicationStatus!]
+    first: Int = 20
+    after: String
+  ): CandidateApplicationConnection!
+}
+
+# ----- Mutations -----
+type Mutation {
+  requestCandidateOtp(
+    mobile: String!
+    purpose: String = "LOGIN"
+  ): OtpChallengeResult!
+  verifyCandidateOtp(
+    challengeId: ID!
+    otp: String!
+    acceptedNoticeVersion: String!
+  ): AuthSession!
+  requestEmployerOtp(
+    identifier: String!
+    channel: String!
+    purpose: String = "LOGIN"
+  ): OtpChallengeResult!
+  verifyEmployerOtp(
+    challengeId: ID!
+    otp: String!
+    acceptedNoticeVersion: String!
+  ): AuthSession!
+
+  createOrganisation(input: CreateOrganisationInput!): Organisation!
+  startTrial(input: StartTrialInput!): OrganisationSubscription!
+  createSubscriptionCheckout(input: CreateCheckoutInput!): CheckoutSession!
+  changeSubscriptionPlan(input: ChangePlanInput!): OrganisationSubscription!
+  cancelSubscription(
+    organisationId: ID!
+    atPeriodEnd: Boolean = true
+  ): OrganisationSubscription!
+
+  createJobPosting(input: CreateJobPostingInput!): JobPosting!
+  publishJob(
+    organisationId: ID!
+    jobPostingId: ID!
+    idempotencyKey: String!
+  ): JobPosting!
+  pauseJob(organisationId: ID!, jobPostingId: ID!): JobPosting!
+  closeJob(organisationId: ID!, jobPostingId: ID!, reason: String): JobPosting!
+  promoteJob(input: PromoteJobInput!): JobPromotion!
+
+  revealCandidateContact(
+    organisationId: ID!
+    candidateProfileId: ID!
+    jobPostingId: ID
+    idempotencyKey: String!
+  ): RevealedCandidateContact!
+  shortlistCandidate(
+    organisationId: ID!
+    candidateProfileId: ID!
+    jobPostingId: ID
+  ): Boolean!
+
+  applyToJob(input: ApplyToJobInput!): CandidateApplication!
+  withdrawApplication(applicationId: ID!, reason: String): CandidateApplication!
+  updateApplicationStatus(
+    organisationId: ID!
+    applicationId: ID!
+    status: ApplicationStatus!
+    note: String
+  ): CandidateApplication!
+
+  createJobAlert(input: JobAlertInput!): ID!
+  contactEmployer(
+    jobPostingId: ID!
+    applicationId: ID
+    channel: ContactChannel!
+  ): JSON!
+}
+
+# =============================================================================
+# v6 Product / Technical Head additions
+# =============================================================================
+
+enum ModerationStatus {
+  PENDING_REVIEW
+  APPROVED
+  REJECTED
+  SUSPENDED
+}
+enum SearchDatePosted {
+  ANY
+  LAST_24_HOURS
+  LAST_3_DAYS
+  LAST_7_DAYS
+  LAST_30_DAYS
+}
+enum CandidatePipelineStage {
+  NEW
+  SAVED
+  CONTACTED
+  RESPONDED
+  SCREENING
+  INTERVIEWING
+  OFFERED
+  HIRED
+  REJECTED
+  DO_NOT_CONTACT
+  BLOCKED
+}
+enum NotificationDeliveryStatus {
+  QUEUED
+  SENT
+  DELIVERED
+  FAILED
+  OPENED
+  CLICKED
+}
+enum InterviewStatus {
+  SCHEDULED
+  COMPLETED
+  CANCELLED
+  NO_SHOW
+  RESCHEDULED
+}
+enum OfferStatus {
+  DRAFT
+  SENT
+  ACCEPTED
+  DECLINED
+  WITHDRAWN
+  EXPIRED
+}
+
+type UserDevice {
+  id: ID!
+  platform: String
+  deviceName: String
+  appVersion: String
+  firstSeenAt: DateTime!
+  lastSeenAt: DateTime!
+  isTrusted: Boolean!
+}
+type UserSessionInfo {
+  id: ID!
+  device: UserDevice
+  activePersona: UserType
+  createdAt: DateTime!
+  lastUsedAt: DateTime!
+  expiresAt: DateTime!
+  current: Boolean!
+}
+
+type OrganisationInvitation {
+  id: ID!
+  organisation: Organisation!
+  role: OrganisationRole!
+  status: String!
+  expiresAt: DateTime!
+  createdAt: DateTime!
+}
+
+type JobBenefit {
+  code: String!
+  name: String!
+  details: String
+}
+type JobScreeningQuestion {
+  id: ID!
+  key: String!
+  prompt: String!
+  answerType: String!
+  options: JSON
+  required: Boolean!
+  applicationGate: ApplicationGate!
+  displayOrder: Int!
+}
+type JobScheduleDetail {
+  shiftType: String
+  startTime: String
+  endTime: String
+  weekdays: [String!]!
+  weeklyHours: Decimal
+  rotational: Boolean!
+  nightShift: Boolean!
+}
+type JobContactAction {
+  channel: ContactChannel!
+  enabled: Boolean!
+  label: String
+  availableNow: Boolean!
+  reasonUnavailable: String
+}
+type JobInterviewWindow {
+  id: ID!
+  interviewType: String!
+  startAt: DateTime
+  endAt: DateTime
+  location: Geography
+  addressText: String
+  instructions: String
+  addressVisibility: String!
+}
+type JobModerationView {
+  status: ModerationStatus!
+  reasonCode: String
+  notes: String
+  decidedAt: DateTime
+}
+type JobPublicLink {
+  publicCode: String!
+  slug: String
+  url: String!
+  active: Boolean!
+}
+type JobShareLink {
+  id: ID!
+  url: String!
+  channel: String!
+  createdAt: DateTime!
+  expiresAt: DateTime
+}
+
+type FacetBucket {
+  key: String!
+  label: String!
+  count: Int!
+  selected: Boolean!
+}
+type JobSearchFacets {
+  roles: [FacetBucket!]!
+  specialisations: [FacetBucket!]!
+  locations: [FacetBucket!]!
+  workModes: [FacetBucket!]!
+  engagementTypes: [FacetBucket!]!
+  experience: [FacetBucket!]!
+  educationLevels: [FacetBucket!]!
+  courses: [FacetBucket!]!
+  shifts: [FacetBucket!]!
+  salaryBands: [FacetBucket!]!
+  datePosted: [FacetBucket!]!
+  employerSectors: [FacetBucket!]!
+  industries: [FacetBucket!]!
+  benefits: [FacetBucket!]!
+  languages: [FacetBucket!]!
+}
+
+type SavedJobSearch {
+  id: ID!
+  name: String
+  filter: JobSearchInput!
+  sort: JobSort
+  isDefault: Boolean!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+type JobAlert {
+  id: ID!
+  savedSearch: SavedJobSearch
+  channel: AlertChannel!
+  frequency: AlertFrequency!
+  active: Boolean!
+  timezone: String
+  quietHoursStart: String
+  quietHoursEnd: String
+  lastEvaluatedAt: DateTime
+  lastDeliveredAt: DateTime
+}
+type JobAlertDelivery {
+  id: ID!
+  job: JobPosting!
+  channel: AlertChannel!
+  status: NotificationDeliveryStatus!
+  queuedAt: DateTime!
+  deliveredAt: DateTime
+  openedAt: DateTime
+  clickedAt: DateTime
+}
+
+type EmployerCandidateRelationship {
+  id: ID!
+  organisation: Organisation!
+  candidate: MaskedCandidateCard!
+  stage: CandidatePipelineStage!
+  source: String
+  ownerUserAccountId: ID
+  firstInteractionAt: DateTime!
+  lastInteractionAt: DateTime!
+  doNotContact: Boolean!
+  notes: [EmployerCandidateNote!]!
+  tags: [EmployerCandidateTag!]!
+}
+type EmployerCandidateNote {
+  id: ID!
+  note: String!
+  authorUserAccountId: ID!
+  createdAt: DateTime!
+}
+type EmployerCandidateTag {
+  id: ID!
+  name: String!
+}
+
+type Interview {
+  id: ID!
+  application: CandidateApplication!
+  interviewType: String!
+  scheduledStartAt: DateTime!
+  scheduledEndAt: DateTime
+  timezone: String
+  locationText: String
+  status: InterviewStatus!
+  outcome: String
+}
+type JobOffer {
+  id: ID!
+  application: CandidateApplication!
+  status: OfferStatus!
+  proposedStartDate: Date
+  expiresAt: DateTime
+  offeredCompensation: JSON
+  sentAt: DateTime
+  respondedAt: DateTime
+}
+
+type JobDetailView {
+  job: JobPosting!
+  match: CandidateJobMatch
+  isSaved: Boolean!
+  myApplication: CandidateApplication
+  availableActions: [JobContactAction!]!
+  publicShareUrl: String!
+  similarJobs(first: Int = 10): JobFeedConnection!
+}
+
+type ReportResult {
+  id: ID!
+  status: String!
+}
+
+extend type JobPosting {
+  displayTitle: String
+  sourceType: String
+  expiresAt: DateTime
+  lastRefreshedAt: DateTime
+  schedule: JobScheduleDetail
+  benefits: [JobBenefit!]!
+  screeningQuestions: [JobScreeningQuestion!]!
+  contactActions: [JobContactAction!]!
+  interviewWindows: [JobInterviewWindow!]!
+  moderation: JobModerationView
+  publicLink: JobPublicLink
+}
+
+extend type Organisation {
+  verifiedForHiring: Boolean!
+}
+
+input JobScheduleInput {
+  shiftType: String
+  startTime: String
+  endTime: String
+  weekdays: [String!]
+  weeklyHours: Decimal
+  rotational: Boolean = false
+  nightShift: Boolean = false
+}
+input JobContactPolicyInput {
+  candidateMayCall: Boolean = false
+  candidateMayMessage: Boolean = true
+  showRecruiterNumber: Boolean = false
+  maskedNumber: Boolean = true
+  customInstructions: String
+}
+input JobContactWindowInput {
+  channel: ContactChannel!
+  weekday: Int!
+  startTime: String!
+  endTime: String!
+}
+input JobBenefitInput {
+  benefitCode: String!
+  details: String
+}
+input JobScreeningQuestionInput {
+  key: String!
+  prompt: String!
+  answerType: String!
+  options: JSON
+  required: Boolean = false
+  applicationGate: ApplicationGate = WARN
+  displayOrder: Int = 0
+}
+input JobInterviewWindowInput {
+  interviewType: String!
+  startAt: DateTime
+  endAt: DateTime
+  geographyId: ID
+  addressText: String
+  instructions: String
+  addressVisibility: String = "PUBLIC"
+}
+
+extend input CreateJobPostingInput {
+  displayTitle: String
+  sourceType: String = "DIRECT_EMPLOYER"
+  expiresAt: DateTime
+  schedule: JobScheduleInput
+  contactPolicy: JobContactPolicyInput
+  contactWindows: [JobContactWindowInput!]
+  benefits: [JobBenefitInput!]
+  screeningQuestions: [JobScreeningQuestionInput!]
+  interviewWindows: [JobInterviewWindowInput!]
+}
+
+input LanguageJobFilterInput {
+  languageCode: String!
+  minProficiency: String
+}
+input SkillJobFilterInput {
+  skillIds: [ID!]!
+  match: String = "ANY"
+}
+input CredentialJobFilterInput {
+  credentialTypeIds: [ID!]!
+  requiredOnly: Boolean = true
+}
+input BenefitJobFilterInput {
+  benefitCodes: [String!]!
+}
+input EmployerTrustFilterInput {
+  verifiedOnly: Boolean = false
+  directEmployerOnly: Boolean = false
+  sourceTypes: [String!]
+}
+
+extend input SalaryFilterInput {
+  payFrequencies: [String!]
+  minimumMonthlyEquivalent: Decimal
+  includeIncentive: Boolean
+  bonusOffered: Boolean
+}
+
+extend input JobSearchInput {
+  postedWithin: SearchDatePosted
+  employeeBands: [String!]
+  verifiedEmployerOnly: Boolean
+  directEmployerOnly: Boolean
+  sourceTypes: [String!]
+  languageFilters: [LanguageJobFilterInput!]
+  skillFiltersV2: [SkillJobFilterInput!]
+  credentialFiltersV2: [CredentialJobFilterInput!]
+  benefitFilters: [BenefitJobFilterInput!]
+  hasImmediateCall: Boolean
+  hasWhatsAppContact: Boolean
+  fresherFriendly: Boolean
+}
+
+input SaveJobSearchInput {
+  name: String
+  filter: JobSearchInput!
+  sort: JobSort = RELEVANCE
+  makeDefault: Boolean = false
+}
+input CreateJobAlertV2Input {
+  savedSearchId: ID!
+  channel: AlertChannel!
+  frequency: AlertFrequency!
+  timezone: String
+  quietHoursStart: String
+  quietHoursEnd: String
+}
+input InviteOrganisationMemberInput {
+  organisationId: ID!
+  identifier: String!
+  identifierType: String!
+  role: OrganisationRole!
+}
+input CreateShareLinkInput {
+  jobPostingId: ID!
+  channel: String!
+}
+input ReportMarketplaceInput {
+  targetType: String!
+  targetId: ID!
+  reasonCode: String!
+  details: String
+}
+input EmployerCandidateStageInput {
+  organisationId: ID!
+  candidateProfileId: ID!
+  stage: CandidatePipelineStage!
+  jobPostingId: ID
+  ownerUserAccountId: ID
+}
+input ScheduleInterviewInput {
+  organisationId: ID!
+  applicationId: ID!
+  interviewType: String!
+  startAt: DateTime!
+  endAt: DateTime
+  timezone: String
+  locationText: String
+}
+input CreateOfferInput {
+  organisationId: ID!
+  applicationId: ID!
+  proposedStartDate: Date
+  expiresAt: DateTime
+  offeredCompensation: JSON
+}
+
+extend type Query {
+  activeSessions: [UserSessionInfo!]!
+  organisationInvitations(organisationId: ID!): [OrganisationInvitation!]!
+  jobDetail(id: ID!): JobDetailView
+  publicJob(publicCode: String!): JobPosting
+  jobSearchFacets(input: JobSearchInput!): JobSearchFacets!
+  savedJobSearches: [SavedJobSearch!]!
+  myJobAlerts: [JobAlert!]!
+  jobAlertDeliveries(
+    alertId: ID!
+    first: Int = 20
+    after: String
+  ): [JobAlertDelivery!]!
+  employerCandidateRelationships(
+    organisationId: ID!
+    jobPostingId: ID
+    stages: [CandidatePipelineStage!]
+    first: Int = 20
+    after: String
+  ): [EmployerCandidateRelationship!]!
+  interviews(applicationId: ID!): [Interview!]!
+  offers(applicationId: ID!): [JobOffer!]!
+}
+
+extend type Mutation {
+  refreshSession(refreshToken: String!): AuthSession!
+  logoutSession(sessionId: ID!): Boolean!
+  revokeAllOtherSessions: Boolean!
+  switchPersona(persona: UserType!): AuthSession!
+  requestLoginIdentifierChange(
+    identifierType: String!
+    newIdentifier: String!
+  ): OtpChallengeResult!
+  verifyLoginIdentifierChange(challengeId: ID!, otp: String!): Boolean!
+
+  inviteOrganisationMember(
+    input: InviteOrganisationMemberInput!
+  ): OrganisationInvitation!
+  acceptOrganisationInvitation(
+    invitationId: ID!
+    token: String!
+  ): OrganisationMembership!
+  revokeOrganisationInvitation(invitationId: ID!): Boolean!
+
+  refreshJobPosting(
+    organisationId: ID!
+    jobPostingId: ID!
+    idempotencyKey: String!
+  ): JobPosting!
+  createJobShareLink(input: CreateShareLinkInput!): JobShareLink!
+
+  saveJobSearch(input: SaveJobSearchInput!): SavedJobSearch!
+  updateSavedJobSearch(id: ID!, input: SaveJobSearchInput!): SavedJobSearch!
+  deleteSavedJobSearch(id: ID!): Boolean!
+  createJobAlertV2(input: CreateJobAlertV2Input!): JobAlert!
+  pauseJobAlert(id: ID!): JobAlert!
+  resumeJobAlert(id: ID!): JobAlert!
+  deleteJobAlert(id: ID!): Boolean!
+
+  upsertEmployerCandidateStage(
+    input: EmployerCandidateStageInput!
+  ): EmployerCandidateRelationship!
+  addEmployerCandidateNote(
+    relationshipId: ID!
+    note: String!
+  ): EmployerCandidateNote!
+  addEmployerCandidateTag(
+    organisationId: ID!
+    name: String!
+  ): EmployerCandidateTag!
+  tagEmployerCandidate(
+    relationshipId: ID!
+    tagId: ID!
+  ): EmployerCandidateRelationship!
+
+  scheduleInterview(input: ScheduleInterviewInput!): Interview!
+  createOffer(input: CreateOfferInput!): JobOffer!
+
+  reportMarketplaceTarget(input: ReportMarketplaceInput!): ReportResult!
+  blockOrganisation(organisationId: ID!, reasonCode: String): Boolean!
+  unblockOrganisation(organisationId: ID!): Boolean!
+}
+
+# =============================================================================
+# v7 organisation candidate access/paywall additions
+# =============================================================================
+
+enum CandidateAccessDecision {
+  MASKED_ONLY
+  ALREADY_UNLOCKED
+  FREE_UNLOCK_AVAILABLE
+  FREE_UNLOCKED
+  PAID_UNLOCKED
+  PAYWALL_REQUIRED
+  BLOCKED_BY_PRIVACY
+  BLOCKED_BY_POLICY
+}
+
+enum CandidateUnlockSource {
+  FREE_ALLOWANCE
+  PAID_ENTITLEMENT
+  ADD_ON
+  ADMIN
+}
+
+type CandidateAccessStatus {
+  organisationId: ID!
+  freeLimit: Int!
+  freeUsed: Int!
+  freeRemaining: Int!
+  freeAllowanceExhausted: Boolean!
+  paidAccessActive: Boolean!
+  subscriptionStatus: SubscriptionStatus
+  candidateUnlockEntitlement: EntitlementUsage
+  paywallActive: Boolean!
+}
+
+type UnlockedCandidateProfile {
+  id: ID!
+  displayName: String
+  occupations: [CandidateOccupation!]!
+  skills: [Skill!]!
+  experienceMonths: Int!
+  location: Geography
+  languages: [String!]!
+  verificationFlags: [String!]!
+  availabilityText: String
+  profileCompletenessPct: Int!
+  contactRevealAvailable: Boolean!
+}
+
+type CandidateUnlockResult {
+  decision: CandidateAccessDecision!
+  source: CandidateUnlockSource
+  candidate: UnlockedCandidateProfile
+  accessStatus: CandidateAccessStatus!
+  usageEventId: ID
+  paywallCode: String
+  paywallMessage: String
+  upgradePlanCodes: [String!]!
+}
+
+extend type MaskedCandidateCard {
+  accessDecision: CandidateAccessDecision!
+  alreadyUnlocked: Boolean!
+}
+
+type JobApplicantEdgeV7 {
+  cursor: String!
+  application: CandidateApplication!
+  candidate: MaskedCandidateCard!
+}
+
+type JobApplicantConnectionV7 {
+  edges: [JobApplicantEdgeV7!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+  accessStatus: CandidateAccessStatus!
+}
+
+input UnlockCandidateProfileInput {
+  organisationId: ID!
+  candidateProfileId: ID!
+  jobPostingId: ID
+  source: String
+  idempotencyKey: String!
+}
+
+extend type Query {
+  candidateAccessStatus(organisationId: ID!): CandidateAccessStatus!
+  jobApplicantsV7(
+    organisationId: ID!
+    jobPostingId: ID!
+    first: Int = 20
+    after: String
+  ): JobApplicantConnectionV7!
+}
+
+extend type Mutation {
+  unlockCandidateProfile(
+    input: UnlockCandidateProfileInput!
+  ): CandidateUnlockResult!
+}
+
+# Resolver policy - non-negotiable:
+# 1) masked candidate lists never consume CANDIDATE_UNLOCK;
+# 2) Organisation + Candidate is the distinct consumption key;
+# 3) first five distinct candidates are free organisation-wide and never reset;
+# 4) sixth distinct candidate returns PAYWALL_REQUIRED unless a paid/add-on entitlement permits it;
+# 5) candidate consent/block/privacy is evaluated before commercial entitlement;
+# 6) contact reveal remains a separately audited operation and may have its own paid entitlement.

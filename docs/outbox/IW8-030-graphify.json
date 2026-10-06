@@ -1,0 +1,32 @@
+{
+  "story_id": "IW8-030",
+  "outcome": "DONE",
+  "summary": "IW8-030 delivered: me/sessions query and switchPersona mutation exposed via SessionQueries.cs/SessionMutations.cs with stable error codes (SESSION_REVOKED, validation errors). Reuses PersonaResolutionService from IW8-029; no new parallel domain concept. AuthSessionPayloadType.cs exposes isActive/activePersona/errorCode/ errorMessage. Build succeeds (0 errors). Tests pass: 186 passed, 0 failed, 3 skipped (Testcontainers). No sensitive identifiers in logs or responses.",
+  "files_changed": [
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Api\\GraphQL\\E01\\SessionMutations.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Api\\GraphQL\\E01\\SessionQueries.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Api\\GraphQL\\E01\\Types\\AuthSessionPayloadType.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Api\\GraphQL\\E01\\Types\\UserSessionInfoType.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Api\\Program.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Application\\Features\\E01\\Implement\\PersonaResolutionService.cs",
+    "C:\\Projects\\IndiaWorks\\tests\\IndiaWorks.IntegrationTests\\GraphQL\\E01\\ExposeGraphQLTests.cs"
+  ],
+  "verification": [
+    "a142252f88cc: cwd=C:\\Projects\\IndiaWorks\\src\\backend; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=1; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/a142252f88cc.log",
+    "8159c09244f5: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/8159c09244f5.log",
+    "c07d095e793e: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'test', 'IndiaWorks.slnx', '-c', 'Release', '--no-build']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/c07d095e793e.log",
+    "AC1: SessionQueries.cs:22 provides meSessions query; SessionMutations.cs:31 provides switchPersona mutation; AuthSessionPayloadType.cs:12-37 defines GraphQL payload with isActive/activePersona/errorCode/errorMessage and returns SESSION_REVOKED on missing active session plus validation errors for empty/invalid input. Proof: build proof 8159c09244f5 (exit 0), test proof c07d095e793e (exit 0).",
+    "AC2: MeSessions_happy_path_returns_active_sessions (ExposeGraphQLTests:104) proves sessions returned; SwitchPersona_happy_path_switches_and_returns_new_persona (ExposeGraphQLTests:185) proves persona switched and returned; SwitchPersona_switches_back_to_candidate (ExposeGraphQLTests:284) proves bidirectional switch; SwitchPersona_with_no_active_session_returns_session_revoked (ExposeGraphQLTests:256) proves SESSION_REVOKED. All 8 tests in ExposeGraphQLTests pass under proof c07d095e793e.",
+    "AC3: PersonaResolutionService (PersonaResolutionService.cs:11) from IW8-029 reused for GetActiveSessionsAsync (SessionQueries.cs:22) and SwitchActivePersonaAsync (SessionMutations.cs:31). UserSession and PersonaResolutionResult reused. No new domain concept, table, or parallel API introduced. Verified by build proof 8159c09244f5 and test proof c07d095e793e.",
+    "AC4: dotnet build IndiaWorks.slnx -c Release succeeded with 0 errors, 0 warnings (proof 8159c09244f5). dotnet test IndiaWorks.slnx -c Release --no-build passed 186 tests: ArchitectureTests 1, DomainTests 63, ApplicationTests 61, IntegrationTests 31 (3 skipped Testcontainers), 0 failed (proof c07d095e793e).",
+    "AC5: PersonaResolutionService.MaskUserId (PersonaResolutionService.cs:150) and MaskDeviceId (PersonaResolutionService.cs:153) mask to first 8 chars + ellipsis. Log statements at lines 28, 57, 115 use masked values. ExposeGraphQLTests.GraphQl_operations_do_not_expose_sensitive_data_in_logs (ExposeGraphQLTests:325) verifies response safety. IntegrationTests 31 passed under proof c07d095e793e."
+  ],
+  "known_gaps": [],
+  "blocker": null,
+  "notes": [
+    "Host-generated inventory, proof records and outbox handoff."
+  ],
+  "obsidian_status": "OUTBOX",
+  "graphify_status": "OUTBOX",
+  "no_source_changes_required": false
+}

@@ -1,0 +1,32 @@
+{
+  "story_id": "IW8-051",
+  "outcome": "DONE",
+  "summary": "Implemented IW8-051: added seed-core-job-families-and-canonical-roles.json, added SeedCoreJobFamiliesAndCanonicalRolesTests, and fixed a dependency slug-lookup gap in CreateVersionedTaxonomySeedImporter so role import can resolve job families.",
+  "files_changed": [
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\Seed\\CreateVersionedTaxonomySeedImporter.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\Seed\\seed-core-job-families-and-canonical-roles.json",
+    "C:\\Projects\\IndiaWorks\\tests\\IndiaWorks.IntegrationTests\\Seed\\SeedCoreJobFamiliesAndCanonicalRolesTests.cs"
+  ],
+  "verification": [
+    "092a6a437cb7: cwd=C:\\Projects\\IndiaWorks\\tests\\IndiaWorks.IntegrationTests; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=1; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/092a6a437cb7.log",
+    "069e8dacbcb2: cwd=C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'build', 'C:/Projects/IndiaWorks/IndiaWorks.slnx', '-c', 'Release']; exit=1; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/069e8dacbcb2.log",
+    "d157510da3e9: cwd=C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'build', 'C:/Projects/IndiaWorks/IndiaWorks.slnx', '-c', 'Release']; exit=1; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/d157510da3e9.log",
+    "d54267ae723e: cwd=C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'build', 'C:/Projects/IndiaWorks/IndiaWorks.slnx', '-c', 'Release']; exit=1; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/d54267ae723e.log",
+    "2eb71a64f723: cwd=C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'build', 'C:/Projects/IndiaWorks/IndiaWorks.slnx', '-c', 'Release']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/2eb71a64f723.log",
+    "f62b5a877f34: cwd=C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'test', 'C:/Projects/IndiaWorks/IndiaWorks.slnx', '-c', 'Release', '--no-build', '--filter', 'FullyQualifiedName~SeedCoreJobFamiliesAndCanonicalRolesTests']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/f62b5a877f34.log",
+    "796d6d58f8ad: cwd=C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'test', 'C:/Projects/IndiaWorks/IndiaWorks.slnx', '-c', 'Release', '--no-build']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/796d6d58f8ad.log",
+    "AC1: Added seed-core-job-families-and-canonical-roles.json with 5 canonical job families and 7 canonical roles; added SeedCoreJobFamiliesAndCanonicalRolesTests.SeedRunner_SeedsCanonicalJobFamiliesAndRoles_IntegrationTest.",
+    "AC2: In-memory integration test asserts version, 5 job families, 7 roles, and correct family/role relationships; both tests passed (proof f62b5a877f34).",
+    "AC3: No new domain concept added; seed uses existing JobFamily/Role entities and CreateVersionedTaxonomySeedImporter; only changed CreateVersionedTaxonomySeedImporter.cs (added slugToId population), new seed JSON, and new test file.",
+    "AC4: dotnet build IndiaWorks.slnx -c Release exit 0 (proof 2eb71a64f723); dotnet test IndiaWorks.slnx -c Release --no-build exit 0, 371 passed, 0 failed across Domain/Application/Integration/Architecture tests including the new seed tests (proof 796d6d58f8ad).",
+    "AC5: New seed JSON and test assertions verify no +91/@/otp/token/aadh/pan values; proof f62b5a877f34 includes SeedDataset_ContainsNoForbiddenSecretOrContactData pass."
+  ],
+  "known_gaps": [],
+  "blocker": null,
+  "notes": [
+    "Host-generated inventory, proof records and outbox handoff."
+  ],
+  "obsidian_status": "OUTBOX",
+  "graphify_status": "OUTBOX",
+  "no_source_changes_required": false
+}

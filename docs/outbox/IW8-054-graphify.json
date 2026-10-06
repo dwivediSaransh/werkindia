@@ -1,0 +1,26 @@
+{
+  "story_id": "IW8-054",
+  "outcome": "DONE",
+  "summary": "Seed professional and healthcare specialisations: implementation verified and complete. Build succeeded (0 warnings, 0 errors). Integration tests passed (2/2). Seed JSON contains 42 CredentialType entries and 29 Specialisation entries covering accountant, tax, audit, sales, business developer, account manager, HR generalist, recruitment, HRBP, software developer, architect, DevOps, full stack, teacher, tutor, academic coordinator (professional) and nurse, lab technician, radiology, pharmacist, physician, GP, paramedic, physiotherapist, dental hygienist, optometrist (healthcare). No sensitive data present. No new domain concepts introduced - reuses existing TaxonomyVersion + CreateVersionedTaxonomySeedImporter from IW8-049/IW8-051.",
+  "files_changed": [
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\Seed\\seed-professional-and-healthcare-specialisations.json",
+    "C:\\Projects\\IndiaWorks\\tests\\IndiaWorks.IntegrationTests\\Seed\\SeedProfessionalAndHealthcareSpecialisationsTests.cs"
+  ],
+  "verification": [
+    "da16fc60586a: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/da16fc60586a.log",
+    "65e275a3cabf: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'test', 'tests/IndiaWorks.IntegrationTests/IndiaWorks.IntegrationTests.csproj', '-c', 'Release', '--no-build', '--filter', 'FullyQualifiedName~SeedProfessionalAndHealthcareSpecialisationsTests']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/65e275a3cabf.log",
+    "AC1: Seed JSON present at src/backend/IndiaWorks.Infrastructure/Persistence/Seed/seed-professional-and-healthcare-specialisations.json with 42 CredentialType entries and 29 Specialisation entries as verified by inspection (proof: python inventory run returned 42 CTs and 29 SPs covering all required professional and healthcare specialisations).",
+    "AC2: Test SeedRunner_SeedsProfessionalAndHealthcareSpecialisationsAndCredentials passed in verification 65e275a3cabf (2/2 tests passed, exit 0), confirming expected result/state is returned and persisted through the existing CreateVersionedTaxonomySeedImporter.",
+    "AC3: No new domain concept/table/API introduced; seed reuses TaxonomyVersion + existing entity types (JobFamily, Role, CredentialType, Specialisation) and the shared CreateVersionedTaxonomySeedImporter from IW8-049/IW8-051. Verified by code inspection of seed JSON and test file.",
+    "AC4: dotnet build IndiaWorks.slnx -c Release succeeded with 0 warnings, 0 errors (proof da16fc60586a, exit 0); targeted seed tests passed (proof 65e275a3cabf, exit 0, 2 passed, 0 failed).",
+    "AC5: Seed file verified to contain no +91, @, otp, token, aadh, pan values; test SeedDataset_ContainsNoForbiddenSecretOrContactData passed in verification 65e275a3cabf (2/2 tests passed)."
+  ],
+  "known_gaps": [],
+  "blocker": null,
+  "notes": [
+    "Host-generated inventory, proof records and outbox handoff."
+  ],
+  "obsidian_status": "OUTBOX",
+  "graphify_status": "OUTBOX",
+  "no_source_changes_required": false
+}

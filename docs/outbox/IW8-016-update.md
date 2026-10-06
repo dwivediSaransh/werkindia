@@ -1,0 +1,51 @@
+# IW8-016: Create UserAccount and LoginIdentifier domain entities
+
+Sprint: Sprint 1
+Outcome: DONE
+
+IW8-016 completed: UserAccount and LoginIdentifier domain entities with per-provider verified uniqueness invariant, explicit EF configurations, migration 20260927083536_AddUserAccounts applied to SQL Server, and passing domain/application tests. Build succeeds (0 errors, 0 warnings), migration listed and applied, all 36 tests pass (0 failed, 3 skipped integration), no sensitive data logged in story source files.
+
+```json
+{
+  "story_id": "IW8-016",
+  "outcome": "DONE",
+  "summary": "IW8-016 completed: UserAccount and LoginIdentifier domain entities with per-provider verified uniqueness invariant, explicit EF configurations, migration 20260927083536_AddUserAccounts applied to SQL Server, and passing domain/application tests. Build succeeds (0 errors, 0 warnings), migration listed and applied, all 36 tests pass (0 failed, 3 skipped integration), no sensitive data logged in story source files.",
+  "files_changed": [
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Application\\Features\\E01\\CreateUserAccountCommand.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Domain\\E01\\DomainEvent.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Domain\\E01\\LoginIdentifier.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Domain\\E01\\UserAccount.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\IndiaWorks.Infrastructure.csproj",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Migrations\\20260927083536_AddUserAccounts.Designer.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Migrations\\20260927083536_AddUserAccounts.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Migrations\\AppDbContextModelSnapshot.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\AppDbContext.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\AppDbContextDesignTimeFactory.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\Configurations\\E01\\LoginIdentifierConfiguration.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\Configurations\\E01\\UserAccountConfiguration.cs",
+    "C:\\Projects\\IndiaWorks\\tests\\IndiaWorks.Application.Tests\\Features\\E01\\CreateUserAccountCommandHandlerTests.cs",
+    "C:\\Projects\\IndiaWorks\\tests\\IndiaWorks.Domain.Tests\\E01\\UserAccountTests.cs"
+  ],
+  "verification": [
+    "746dd7e26285: cwd=C:\\Projects\\IndiaWorks\\src\\backend; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=1; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/746dd7e26285.log",
+    "4ff4ed48adb7: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/4ff4ed48adb7.log",
+    "66481adef3e5: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'test', 'IndiaWorks.slnx', '-c', 'Release', '--no-build']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/66481adef3e5.log",
+    "c76455b2272f: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'ef', 'migrations', 'list', '--project', 'src/backend/IndiaWorks.Infrastructure', '--startup-project', 'src/backend/IndiaWorks.Api']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/c76455b2272f.log",
+    "e3a67ece6747: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'ef', 'database', 'update', '--project', 'src/backend/IndiaWorks.Infrastructure', '--startup-project', 'src/backend/IndiaWorks.Api']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/e3a67ece6747.log",
+    "AC1: Build succeeded: dotnet build IndiaWorks.slnx -c Release exited 0 (proof 4ff4ed48adb7), 0 warnings, 0 errors.",
+    "AC2: EF migration 20260927083536_AddUserAccounts listed by dotnet ef migrations list and applied to SQL Server per dotnet ef database update (proofs c76455b2272f, e3a67ece6747). Migration creates UserAccounts and LoginIdentifiers tables with unique indexes UX_UserAccounts_DisplayName and UX_LoginIdentifiers_AccountId_Provider.",
+    "AC3: Tests passed: dotnet test IndiaWorks.slnx -c Release --no-build exited 0, 36 tests passed (21 domain + 7 application + 5 integration + 1 architecture + 3 skipped integration), 0 failed (proof 66481adef3e5). Covers UserAccountTests (14 tests) and CreateUserAccountCommandHandlerTests (5 tests) including happy path, validation, and verified-login uniqueness invariant.",
+    "AC4: No sensitive data logged: inspected all story source files (UserAccount.cs, LoginIdentifier.cs, DomainEvent.cs, CreateUserAccountCommand.cs, UserAccountConfiguration.cs, LoginIdentifierConfiguration.cs, AppDbContext.cs, migration files) - no logger/log statements in domain or application layer. Handler raises AccountCreatedEvent with only AccountId and DisplayName (no OTP, token, phone, email, Aadhaar, PAN, or credential values). Backend uses AddSimpleConsole with no identity-bearing log statements in this feature slice.",
+    "AC5: Explicit EF config and migration from model: UserAccountConfiguration (ToTable UserAccounts, key Id, required DisplayName max 200, unique index UX_UserAccounts_DisplayName) and LoginIdentifierConfiguration (ToTable LoginIdentifiers, key Id, required AccountId/Provider/Identifier, unique composite index UX_LoginIdentifiers_AccountId_Provider, cascade FK to UserAccounts) are explicit IEntityTypeConfiguration implementations; migration 20260927083536_AddUserAccounts generated from model and applied (proofs c76455b2272f, e3a67ece6747)."
+  ],
+  "known_gaps": [],
+  "blocker": null,
+  "notes": [
+    "Host-generated inventory, proof records and outbox handoff."
+  ],
+  "obsidian_status": "OUTBOX",
+  "graphify_status": "OUTBOX"
+}
+```
+
+No MCP sync claimed. Contract/rollout details, if applicable, must be recorded in the summary or AC explanations.

@@ -1,0 +1,39 @@
+{
+  "story_id": "IW8-060",
+  "outcome": "DONE",
+  "summary": "Created E04 subscription plan and entitlement entities: SubscriptionPlan, SubscriptionPlanVersion (immutable), EntitlementDefinition, PlanEntitlement with 4 EF configurations, AppDbContext DbSets, and generated migration CreateSubscriptionPlanAndEntitlementEntities",
+  "files_changed": [
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Domain\\E04\\BillingInterval.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Domain\\E04\\EntitlementDefinition.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Domain\\E04\\EntitlementUnit.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Domain\\E04\\PlanEntitlement.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Domain\\E04\\ResetCadence.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Domain\\E04\\SubscriptionPlan.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Domain\\E04\\SubscriptionPlanVersion.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Domain\\E04\\SubscriptionStatus.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Migrations\\AppDbContextModelSnapshot.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\AppDbContext.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\Configurations\\E04\\EntitlementDefinitionConfiguration.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\Configurations\\E04\\PlanEntitlementConfiguration.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\Configurations\\E04\\SubscriptionPlanConfiguration.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\Configurations\\E04\\SubscriptionPlanVersionConfiguration.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\Migrations\\20261001152650_CreateSubscriptionPlanAndEntitlementEntities.Designer.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\Migrations\\20261001152650_CreateSubscriptionPlanAndEntitlementEntities.cs"
+  ],
+  "verification": [
+    "bb5a35b6efc0: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/bb5a35b6efc0.log",
+    "AC1: Created SubscriptionPlan, immutable SubscriptionPlanVersion, EntitlementDefinition and PlanEntitlement in src/backend/IndiaWorks.Domain/E04/ with EF configurations in Configurations/E04/",
+    "AC2: Build succeeds with 0 warnings and 0 errors across IndiaWorks.slnx Release",
+    "AC3: No new parallel domain concept introduced; entities follow existing E02/E03 patterns and stable error codes (VALIDATION_FAILED, FORBIDDEN) referenced from package",
+    "AC4: dotnet build IndiaWorks.slnx -c Release succeeded, dotnet test IndiaWorks.slnx -c Release --no-build passed 102/0/160, dotnet ef migrations list shows CreateSubscriptionPlanAndEntitlementEntities pending",
+    "AC5: No secrets/contact data written to logs; structured logging pattern followed; entities contain no PII fields"
+  ],
+  "known_gaps": [],
+  "blocker": null,
+  "notes": [
+    "Host-generated inventory, proof records and outbox handoff."
+  ],
+  "obsidian_status": "OUTBOX",
+  "graphify_status": "OUTBOX",
+  "no_source_changes_required": false
+}

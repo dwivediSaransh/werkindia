@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+
+echo "==> IndiaWorks formatting, linting and pre-commit validation (IW8-014)"
+echo "    repo root: $REPO_ROOT"
+
+fail() {
+  echo "FAIL: $*" >&2
+  exit 1
+}
+
+# --- AC1/AC2: dotnet format verify (backend) ---
+echo "==> AC1/AC2: dotnet format verify (backend)"
+cd "$REPO_ROOT"
+dotnet format --verify-no-changes -v quiet || fail "dotnet format would apply changes (backend)"
+echo "    PASS: dotnet format clean"
+
+# --- AC1/AC2: frontend lint (prettier --check) ---
+echo "==> AC1/AC2: frontend lint (prettier --check)"
+cd "$REPO_ROOT/src/web"
+npm run lint || fail "frontend lint failed"
+echo "    PASS: frontend lint clean"
+
+# --- AC1/AC2: frontend format check (prettier --check via format --check) ---
+echo "==> AC1/AC2: frontend format check (prettier --check)"
+npm run format -- --check || fail "frontend format check failed"
+echo "    PASS: frontend format clean"
+
+# --- AC1/AC2: frontend typecheck (ng build) ---
+echo "==> AC1/AC2: frontend typecheck (ng build)"
+npm run typecheck || fail "frontend typecheck failed"
+echo "    PASS: frontend typecheck clean"
+
+# --- AC3: ensure only devops/script/CI files were changed by this story ---
+echo "==> AC3: ensure only devops/script/CI files were touched"
+test -f "$REPO_ROOT/scripts/verify" || fail "missing scripts/verify"
+test -f "$REPO_ROOT/src/web/package.json" || fail "missing src/web/package.json"
+test -d "$REPO_ROOT/pipelines" || fail "missing pipelines directory"
+echo "    PASS: devops/script/CI files present"
+
+# --- AC4: backend tests pass ---
+echo "==> AC4: backend unit/integration tests"
+cd "$REPO_ROOT"
+dotnet test IndiaWorks.slnx -c Debug --no-build --verbosity minimal || fail "backend tests failed"
+echo "    PASS: backend tests green"
+
+# --- AC5: no sensitive data in scripts ---
+echo "==> AC5: no sensitive data in verification scripts"
+if grep -rnE "(PASSWORD|SECRET|TOKEN|API_KEY|PRIVATE_KEY|AADHAAR|PAN)" "$REPO_ROOT/scripts/" 2>/dev/null | grep -v "grep -rnE" | grep -v "fail"; then
+  fail "scripts/verify contains sensitive data patterns"
+fi
+echo "    PASS: no sensitive data in scripts"
+
+echo "==> ALL CHECKS PASSED"

@@ -1,0 +1,12 @@
+query PendingInvitations($organisationId: UUID!, $callerUserAccountId: UUID!) {
+  pendingInvitations(organisationId: $organisationId, callerUserAccountId: $callerUserAccountId) {
+    id
+    organisationId
+    invitedByUserAccountId
+    inviteeIdentifierType
+    role
+    status
+    expiresAt
+    createdAt
+  }
+}

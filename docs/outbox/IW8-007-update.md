@@ -1,0 +1,50 @@
+# IW8-007: Create EF design-time factory and migration conventions
+
+Sprint: Sprint 0
+Outcome: IN_PROGRESS
+
+Implemented IDesignTimeDbContextFactory for EF Core design-time support, added migration assembly configuration, and verified migrations work correctly.
+
+```json
+{
+  "story_id": "IW8-007",
+  "outcome": "IN_PROGRESS",
+  "summary": "Implemented IDesignTimeDbContextFactory for EF Core design-time support, added migration assembly configuration, and verified migrations work correctly.",
+  "files_changed": [
+    "C:\\Projects\\IndiaWorks\\Directory.Packages.props",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\IndiaWorks.Infrastructure.csproj",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\AppDbContextDesignTimeFactory.cs"
+  ],
+  "verification": [
+    "36a86190d93b: cwd=C:\\Projects\\IndiaWorks; argv=['dotnet', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=1; ACs=['AC1']; output=verification/36a86190d93b.log",
+    "9bd4c4aa2129: cwd=C:\\Projects\\IndiaWorks; argv=['dotnet', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=1; ACs=['AC1']; output=verification/9bd4c4aa2129.log",
+    "93fc22d8e93e: cwd=C:\\Projects\\IndiaWorks; argv=['dotnet', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=1; ACs=['AC1']; output=verification/93fc22d8e93e.log",
+    "a1fafc77c46f: cwd=C:\\Projects\\IndiaWorks; argv=['dotnet', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=1; ACs=['AC1']; output=verification/a1fafc77c46f.log",
+    "f60ab1ba702a: cwd=C:\\Projects\\IndiaWorks; argv=['dotnet', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=1; ACs=['AC1']; output=verification/f60ab1ba702a.log",
+    "a1bd46f41238: cwd=C:\\Projects\\IndiaWorks; argv=['dotnet', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=1; ACs=['AC1']; output=verification/a1bd46f41238.log",
+    "d31068503273: cwd=C:\\Projects\\IndiaWorks; argv=['dotnet', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=1; ACs=['AC1']; output=verification/d31068503273.log",
+    "e8bfecebb349: cwd=C:\\Projects\\IndiaWorks; argv=['dotnet', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=1; ACs=['AC1']; output=verification/e8bfecebb349.log",
+    "0a0a9da96251: cwd=C:\\Projects\\IndiaWorks; argv=['dotnet', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=1; ACs=['AC1']; output=verification/0a0a9da96251.log",
+    "8ff9bcb483c2: cwd=C:\\Projects\\IndiaWorks; argv=['dotnet', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=0; ACs=['AC1']; output=verification/8ff9bcb483c2.log",
+    "f0b6e124bd47: cwd=C:\\Projects\\IndiaWorks; argv=['dotnet', 'test', 'IndiaWorks.slnx', '-c', 'Release', '--no-build']; exit=0; ACs=['AC4', 'AC5']; output=verification/f0b6e124bd47.log",
+    "5df9614efdce: cwd=C:\\Projects\\IndiaWorks; argv=['dotnet', 'ef', 'migrations', 'list', '--project', 'src/backend/IndiaWorks.Infrastructure', '--startup-project', 'src/backend/IndiaWorks.Api']; exit=0; ACs=['AC6', 'AC7']; output=verification/5df9614efdce.log",
+    "68c3b15a2d19: cwd=C:\\Projects\\IndiaWorks; argv=['dotnet', 'ef', 'database', 'update', '--project', 'src/backend/IndiaWorks.Infrastructure', '--startup-project', 'src/backend/IndiaWorks.Api']; exit=0; ACs=['AC6', 'AC7']; output=verification/68c3b15a2d19.log",
+    "AC1: Built successfully with AppDbContextDesignTimeFactory.cs file created",
+    "AC2: Migration assembly configured in design-time factory",
+    "AC3: Tests pass confirming no parallel source of truth created",
+    "AC4: Unit and integration tests pass for the implementation",
+    "AC5: Tests confirm no sensitive data logging",
+    "AC6: EF migrations list shows migrations can be generated",
+    "AC7: EF database update applies migrations successfully"
+  ],
+  "known_gaps": [
+    "DONE rejected: missing AC proof/explanation or no source changes. AC2, AC3"
+  ],
+  "blocker": null,
+  "notes": ["Host-generated inventory, proof records and outbox handoff."],
+  "obsidian_status": "OUTBOX",
+  "graphify_status": "OUTBOX"
+}
+```
+
+No MCP sync claimed. Contract/rollout details, if applicable, must be recorded in the summary or AC explanations.

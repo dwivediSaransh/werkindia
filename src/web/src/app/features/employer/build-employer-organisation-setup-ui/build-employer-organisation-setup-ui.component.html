@@ -1,0 +1,319 @@
+<div class="organisation-setup">
+  <div class="card">
+    <!-- Header -->
+    <div class="header">
+      <div class="logo" aria-hidden="true">IW</div>
+      <h1>Set Up Your Organisation</h1>
+      <p class="subtitle">Create or select your company to get started</p>
+    </div>
+
+    <!-- Loading state -->
+    @if (showLoading()) {
+      <div class="loading-state" role="status" aria-live="polite">
+        <div class="spinner-large" aria-hidden="true"></div>
+        <p>Loading your organisations...</p>
+      </div>
+    }
+
+    <!-- Error state -->
+    @if (showError()) {
+      <div class="error-state" role="alert">
+        <span class="error-icon" aria-hidden="true">!</span>
+        <p>{{ errorMessage() }}</p>
+        <button type="button" class="btn btn-secondary" (click)="onRetryFromError()">
+          Try Again
+        </button>
+      </div>
+    }
+
+    <!-- Listing state: show existing organisations -->
+    @if (showListing()) {
+      <div class="listing-section">
+        @if (vm().organisations.length === 0) {
+          <div class="empty-state">
+            <div class="empty-icon" aria-hidden="true">🏢</div>
+            <h3>No organisations yet</h3>
+            <p>You haven't created or joined any organisations. Let's create your first one.</p>
+          </div>
+        } @else {
+          <div class="organisations-list">
+            <h3 class="section-title">Your Organisations</h3>
+            @for (org of vm().organisations; track org.id) {
+              <button
+                type="button"
+                class="org-card"
+                [class.selected]="org.id === vm().selectedOrganisationId"
+                (click)="onSelectOrganisation(org.id)"
+                [attr.aria-pressed]="org.id === vm().selectedOrganisationId"
+              >
+                <div class="org-info">
+                  <span class="org-name">{{ org.legalName }}</span>
+                  @if (org.tradeName) {
+                    <span class="org-trade">Doing business as: {{ org.tradeName }}</span>
+                  }
+                  <span class="org-meta">
+                    {{ org.role | titlecase }} · {{ org.verificationStatus | titlecase }}
+                  </span>
+                </div>
+              </button>
+            }
+          </div>
+        }
+
+        <!-- Actions -->
+        <div class="listing-actions">
+          <button
+            type="button"
+            class="btn btn-primary btn-full"
+            (click)="onCreateNewClick()"
+            [disabled]="vm().listLoading"
+          >
+            + Create New Organisation
+          </button>
+          @if (vm().selectedOrganisationId && vm().organisations.length > 0) {
+            <button
+              type="button"
+              class="btn btn-secondary"
+              (click)="onContinueWithSelection()"
+              [disabled]="vm().listLoading"
+            >
+              Continue with Selected
+            </button>
+          }
+        </div>
+      </div>
+    }
+
+    <!-- Create form state -->
+    @if (showCreateForm()) {
+      <div class="form-section">
+        <!-- Multi-step indicator -->
+        <div class="step-indicator" role="navigation" aria-label="Form progress">
+          <div
+            class="step"
+            [class.active]="vm().section === 'overview'"
+            [class.completed]="vm().section !== 'overview'"
+          >
+            <span class="step-number">1</span>
+            <span class="step-label">Basic Info</span>
+          </div>
+          <div class="step-line" [class.active]="vm().section !== 'overview'"></div>
+          <div
+            class="step"
+            [class.active]="vm().section === 'company-details'"
+            [class.completed]="vm().section === 'owner-confirmation'"
+          >
+            <span class="step-number">2</span>
+            <span class="step-label">Company Details</span>
+          </div>
+          <div class="step-line" [class.active]="vm().section === 'owner-confirmation'"></div>
+          <div class="step" [class.active]="vm().section === 'owner-confirmation'">
+            <span class="step-number">3</span>
+            <span class="step-label">Confirm Role</span>
+          </div>
+        </div>
+
+        <!-- Step 1: Basic Information -->
+        @if (showOverview()) {
+          <form class="form-group" (ngSubmit)="onNextSection()">
+            <h3 class="form-title">Basic Information</h3>
+            <p class="form-description">Enter the fundamental details of your organisation.</p>
+
+            <div class="field">
+              <label for="legalName">Legal Name <span class="required">*</span></label>
+              <input
+                id="legalName"
+                type="text"
+                class="text-input"
+                placeholder="e.g., Acme Corporation Pvt Ltd"
+                maxlength="200"
+                [value]="legalNameValue()"
+                (input)="onLegalNameInput($any($event.target).value)"
+                autocomplete="organization"
+                [class.error]="!vm().canSubmitLegalName && vm().legalName.length > 0"
+              />
+              @if (!vm().canSubmitLegalName && vm().legalName.length > 0) {
+                <span class="field-error" role="alert"
+                  >Legal name must be at least 2 characters</span
+                >
+              }
+            </div>
+
+            <div class="field">
+              <label for="tradeName">Trade Name <span class="optional">(optional)</span></label>
+              <input
+                id="tradeName"
+                type="text"
+                class="text-input"
+                placeholder="e.g., Acme Corp"
+                maxlength="100"
+                [value]="tradeNameValue()"
+                (input)="onTradeNameInput($any($event.target).value)"
+                autocomplete="organization"
+              />
+              <span class="field-hint">How your business is commonly known</span>
+            </div>
+
+            <div class="form-actions">
+              <button type="button" class="btn btn-link" (click)="onCancelCreate()">Cancel</button>
+              <button
+                type="submit"
+                class="btn btn-primary"
+                [disabled]="!vm().canSubmitLegalName || vm().createLoading"
+              >
+                Next: Company Details
+              </button>
+            </div>
+          </form>
+        }
+
+        <!-- Step 2: Company Details -->
+        @if (showCompanyDetails()) {
+          <form class="form-group" (ngSubmit)="onNextSection()">
+            <h3 class="form-title">Company Details</h3>
+            <p class="form-description">Provide additional information about your organisation.</p>
+
+            <div class="field">
+              <label for="sector">Industry Sector</label>
+              <select
+                id="sector"
+                class="select-input"
+                [value]="vm().sector || ''"
+                (change)="onSectorChange($any($event.target).value)"
+              >
+                <option value="">Select a sector</option>
+                @for (sector of sectorOptions; track sector.value) {
+                  <option [value]="sector.value">{{ sector.label }}</option>
+                }
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="employeeBand"
+                >Employee Count Range <span class="optional">(optional)</span></label
+              >
+              <input
+                id="employeeBand"
+                type="text"
+                class="text-input"
+                placeholder="e.g., 50-200, 1000+"
+                maxlength="50"
+                [value]="employeeBandValue()"
+                (input)="onEmployeeBandInput($any($event.target).value)"
+              />
+              <span class="field-hint">Approximate number of employees</span>
+            </div>
+
+            <div class="field">
+              <label for="organisationType"
+                >Organisation Type <span class="optional">(optional)</span></label
+              >
+              <input
+                id="organisationType"
+                type="text"
+                class="text-input"
+                placeholder="e.g., Private Limited, LLP, Partnership"
+                maxlength="50"
+                [value]="organisationTypeValue()"
+                (input)="onOrganisationTypeInput($any($event.target).value)"
+              />
+            </div>
+
+            <div class="field">
+              <label for="nic2025Code"
+                >NIC 2025 Code <span class="optional">(optional)</span></label
+              >
+              <input
+                id="nic2025Code"
+                type="text"
+                class="text-input"
+                placeholder="e.g., 01110 - Growing of cereals"
+                maxlength="20"
+                [value]="nic2025CodeValue()"
+                (input)="onNic2025CodeInput($any($event.target).value)"
+              />
+              <span class="field-hint">National Industrial Classification code</span>
+            </div>
+
+            <div class="form-actions">
+              <button type="button" class="btn btn-link" (click)="onBackSection()">Back</button>
+              <button type="submit" class="btn btn-primary" (click)="onNextSection()">
+                Next: Confirm Role
+              </button>
+            </div>
+          </form>
+        }
+
+        <!-- Step 3: Owner Role Confirmation -->
+        @if (showOwnerConfirmation()) {
+          <div class="form-group">
+            <h3 class="form-title">Owner Role Confirmation</h3>
+            <p class="form-description">
+              As the creator, you will be assigned the OWNER role with full permissions.
+            </p>
+
+            <div class="role-summary">
+              <div class="role-badge role-owner">
+                <span class="role-icon" aria-hidden="true">👑</span>
+                <span class="role-name">OWNER</span>
+              </div>
+              <ul class="role-permissions">
+                <li>Full control over organisation settings</li>
+                <li>Manage team members and invitations</li>
+                <li>Approve billing and subscription changes</li>
+                <li>Post and manage job postings</li>
+                <li>Access all recruiting features</li>
+              </ul>
+            </div>
+
+            @if (vm().createError) {
+              <div class="error-banner" role="alert">
+                <span class="error-icon-small" aria-hidden="true">!</span>
+                <span>{{ vm().createError }}</span>
+              </div>
+            }
+
+            <div class="form-actions form-actions--center">
+              <button type="button" class="btn btn-link" (click)="onBackSection()">Back</button>
+              <button
+                type="button"
+                class="btn btn-primary"
+                (click)="onCreateOrganisation()"
+                [disabled]="vm().createLoading"
+              >
+                @if (vm().createLoading) {
+                  <span class="spinner" aria-hidden="true"></span>
+                  Creating...
+                } @else {
+                  Create Organisation & Assign Me as Owner
+                }
+              </button>
+            </div>
+          </div>
+        }
+      </div>
+    }
+
+    <!-- Success state -->
+    @if (showSuccess()) {
+      <div class="success-state" role="status" aria-live="polite">
+        <div class="success-icon-large" aria-hidden="true">✓</div>
+        <h3>Organisation Created</h3>
+        <p>{{ errorMessage() }}</p>
+        <div class="success-details">
+          <div class="detail-row">
+            <span class="detail-label">Your Role</span>
+            <span class="detail-value role-badge role-owner-small">OWNER</span>
+          </div>
+        </div>
+        <div class="form-actions form-actions--center">
+          <button type="button" class="btn btn-primary btn-full" (click)="onContinueToDashboard()">
+            Continue to Dashboard
+          </button>
+        </div>
+      </div>
+    }
+  </div>
+
+  <p class="footer">By continuing, you agree to our terms of service and privacy policy.</p>
+</div>

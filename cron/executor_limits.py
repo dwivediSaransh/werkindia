@@ -1,0 +1,5 @@
+"""Shared bounds for the one-story Hermes executor."""
+
+MAX_EXECUTOR_ITERATIONS = 500
+MAX_EXECUTOR_OUTPUT_TOKENS = 16_384
+NO_DELIVERY_STALL_SECONDS = 600

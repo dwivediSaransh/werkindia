@@ -1,0 +1,43 @@
+# IW8-024: Create JWT access-token service
+
+Sprint: Sprint 1
+Outcome: DONE
+
+Build succeeded after fixing xUnit InlineData compile error. Tests pass: 43 application tests, 41 domain tests, 16 integration tests (3 skipped). JwtTokenService issues short-lived JWT with subject, session id and persona claims; no org permissions embedded. Validation returns VALIDATION_FAILED for invalid requests. No sensitive data logged.
+
+```json
+{
+  "story_id": "IW8-024",
+  "outcome": "DONE",
+  "summary": "Build succeeded after fixing xUnit InlineData compile error. Tests pass: 43 application tests, 41 domain tests, 16 integration tests (3 skipped). JwtTokenService issues short-lived JWT with subject, session id and persona claims; no org permissions embedded. Validation returns VALIDATION_FAILED for invalid requests. No sensitive data logged.",
+  "files_changed": [
+    "C:\\Projects\\IndiaWorks\\Directory.Packages.props",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Application\\DependencyInjection.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Application\\Features\\E01\\Create\\CreateAccessTokenRequest.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Application\\Features\\E01\\Create\\JwtTokenService.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Application\\IndiaWorks.Application.csproj",
+    "C:\\Projects\\IndiaWorks\\tests\\IndiaWorks.Application.Tests\\E01\\CreateTests.cs"
+  ],
+  "verification": [
+    "2d3234570daf: cwd=C:\\Projects\\IndiaWorks\\src\\backend; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=1; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/2d3234570daf.log",
+    "6b814b648bf1: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=1; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/6b814b648bf1.log",
+    "990f7dbcc339: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/990f7dbcc339.log",
+    "d4bc4c753f05: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'test', 'IndiaWorks.slnx', '-c', 'Release', '--no-build']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/d4bc4c753f05.log",
+    "AC1: JwtTokenService_issues_token_with_sub_session_and_persona_claims proves short-lived JWT with sub/sid/persona claims, expiry within 15min ceiling",
+    "AC2: JwtTokenService_rejects_invalid_request proves VALIDATION_FAILED for empty Guid subject, empty Guid session, blank/whitespace persona",
+    "AC3: No parallel domain concept introduced; JwtTokenService uses existing E01 feature slice and shared patterns; only application-layer files changed",
+    "AC4: dotnet build IndiaWorks.slnx -c Release exit=0; dotnet test exit=0; 43 application tests pass including JWT tests",
+    "AC5: JwtTokenService_does_not_log_plaintext_token_or_persona proves no eyJ token prefix or persona plaintext in logs; service masks subject/session/persona"
+  ],
+  "known_gaps": [],
+  "blocker": null,
+  "notes": [
+    "Host-generated inventory, proof records and outbox handoff."
+  ],
+  "obsidian_status": "OUTBOX",
+  "graphify_status": "OUTBOX",
+  "no_source_changes_required": false
+}
+```
+
+No MCP sync claimed. Contract/rollout details, if applicable, must be recorded in the summary or AC explanations.

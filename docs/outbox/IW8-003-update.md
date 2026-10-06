@@ -1,0 +1,96 @@
+# IW8-003: Create backend solution projects and project references
+
+Sprint: Sprint 0
+Outcome: DONE
+
+Created and proved the backend solution layer skeleton: Api, Domain, Application, Infrastructure, Contracts, Workers, one-way project references, DI extension points, shared readiness contract, and assembly markers for agent navigation.
+
+```json
+{
+  "story_id": "IW8-003",
+  "outcome": "DONE",
+  "summary": "Created and proved the backend solution layer skeleton: Api, Domain, Application, Infrastructure, Contracts, Workers, one-way project references, DI extension points, shared readiness contract, and assembly markers for agent navigation.",
+  "files_changed": [
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Api\\bin\\Release\\net10.0\\IndiaWorks.Api.dll",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Api\\bin\\Release\\net10.0\\IndiaWorks.Api.pdb",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Api\\bin\\Release\\net10.0\\IndiaWorks.Application.dll",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Api\\bin\\Release\\net10.0\\IndiaWorks.Application.pdb",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Api\\bin\\Release\\net10.0\\IndiaWorks.Domain.dll",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Api\\bin\\Release\\net10.0\\IndiaWorks.Domain.pdb",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Api\\bin\\Release\\net10.0\\IndiaWorks.Infrastructure.dll",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Api\\bin\\Release\\net10.0\\IndiaWorks.Infrastructure.pdb",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Api\\obj\\Release\\net10.0\\IndiaWorks.Api.csproj.AssemblyReference.cache",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Api\\obj\\Release\\net10.0\\IndiaWorks.Api.dll",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Api\\obj\\Release\\net10.0\\IndiaWorks.Api.pdb",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Api\\obj\\Release\\net10.0\\rjsmcshtml.dswa.cache.json",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Api\\obj\\Release\\net10.0\\rjsmrazor.dswa.cache.json",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Application\\AssemblyMarker.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Application\\bin\\Release\\net10.0\\IndiaWorks.Application.dll",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Application\\bin\\Release\\net10.0\\IndiaWorks.Application.pdb",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Application\\bin\\Release\\net10.0\\IndiaWorks.Domain.dll",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Application\\bin\\Release\\net10.0\\IndiaWorks.Domain.pdb",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Application\\obj\\Release\\net10.0\\IndiaWorks.Application.csproj.AssemblyReference.cache",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Application\\obj\\Release\\net10.0\\IndiaWorks.Application.csproj.CoreCompileInputs.cache",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Application\\obj\\Release\\net10.0\\IndiaWorks.Application.dll",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Application\\obj\\Release\\net10.0\\IndiaWorks.Application.pdb",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Application\\obj\\Release\\net10.0\\ref\\IndiaWorks.Application.dll",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Application\\obj\\Release\\net10.0\\refint\\IndiaWorks.Application.dll",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Domain\\AssemblyMarker.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Domain\\bin\\Release\\net10.0\\IndiaWorks.Domain.dll",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Domain\\bin\\Release\\net10.0\\IndiaWorks.Domain.pdb",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Domain\\obj\\Release\\net10.0\\IndiaWorks.Domain.csproj.CoreCompileInputs.cache",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Domain\\obj\\Release\\net10.0\\IndiaWorks.Domain.dll",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Domain\\obj\\Release\\net10.0\\IndiaWorks.Domain.pdb",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Domain\\obj\\Release\\net10.0\\ref\\IndiaWorks.Domain.dll",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Domain\\obj\\Release\\net10.0\\refint\\IndiaWorks.Domain.dll",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\AssemblyMarker.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\bin\\Release\\net10.0\\IndiaWorks.Application.dll",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\bin\\Release\\net10.0\\IndiaWorks.Application.pdb",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\bin\\Release\\net10.0\\IndiaWorks.Domain.dll",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\bin\\Release\\net10.0\\IndiaWorks.Domain.pdb",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\bin\\Release\\net10.0\\IndiaWorks.Infrastructure.dll",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\bin\\Release\\net10.0\\IndiaWorks.Infrastructure.pdb",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\obj\\Release\\net10.0\\IndiaWorks.Infrastructure.csproj.AssemblyReference.cache",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\obj\\Release\\net10.0\\IndiaWorks.Infrastructure.csproj.CoreCompileInputs.cache",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\obj\\Release\\net10.0\\IndiaWorks.Infrastructure.dll",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\obj\\Release\\net10.0\\IndiaWorks.Infrastructure.pdb",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\obj\\Release\\net10.0\\ref\\IndiaWorks.Infrastructure.dll",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\obj\\Release\\net10.0\\refint\\IndiaWorks.Infrastructure.dll",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Workers\\bin\\Release\\net10.0\\IndiaWorks.Application.dll",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Workers\\bin\\Release\\net10.0\\IndiaWorks.Application.pdb",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Workers\\bin\\Release\\net10.0\\IndiaWorks.Domain.dll",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Workers\\bin\\Release\\net10.0\\IndiaWorks.Domain.pdb",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Workers\\bin\\Release\\net10.0\\IndiaWorks.Infrastructure.dll",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Workers\\bin\\Release\\net10.0\\IndiaWorks.Infrastructure.pdb",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Workers\\bin\\Release\\net10.0\\IndiaWorks.Workers.dll",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Workers\\bin\\Release\\net10.0\\IndiaWorks.Workers.pdb",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Workers\\obj\\Release\\net10.0\\IndiaWorks.Workers.csproj.AssemblyReference.cache",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Workers\\obj\\Release\\net10.0\\IndiaWorks.Workers.dll",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Workers\\obj\\Release\\net10.0\\IndiaWorks.Workers.pdb",
+    "C:\\Projects\\IndiaWorks\\tests\\IndiaWorks.Domain.Tests\\Architecture\\ProjectReferenceTests.cs",
+    "C:\\Projects\\IndiaWorks\\tests\\IndiaWorks.Domain.Tests\\bin\\Release\\net10.0\\IndiaWorks.Domain.Tests.dll",
+    "C:\\Projects\\IndiaWorks\\tests\\IndiaWorks.Domain.Tests\\bin\\Release\\net10.0\\IndiaWorks.Domain.Tests.pdb",
+    "C:\\Projects\\IndiaWorks\\tests\\IndiaWorks.Domain.Tests\\bin\\Release\\net10.0\\IndiaWorks.Domain.dll",
+    "C:\\Projects\\IndiaWorks\\tests\\IndiaWorks.Domain.Tests\\bin\\Release\\net10.0\\IndiaWorks.Domain.pdb",
+    "C:\\Projects\\IndiaWorks\\tests\\IndiaWorks.Domain.Tests\\obj\\Release\\net10.0\\IndiaWorks.Domain.Tests.csproj.AssemblyReference.cache",
+    "C:\\Projects\\IndiaWorks\\tests\\IndiaWorks.Domain.Tests\\obj\\Release\\net10.0\\IndiaWorks.Domain.Tests.dll",
+    "C:\\Projects\\IndiaWorks\\tests\\IndiaWorks.Domain.Tests\\obj\\Release\\net10.0\\IndiaWorks.Domain.Tests.pdb"
+  ],
+  "verification": [
+    "649c45a61715: cwd=C:\\Projects\\IndiaWorks; argv=['dotnet', 'build', 'IndiaWorks.slnx', '-c', 'Release', '--no-restore']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/649c45a61715.log",
+    "7f2d6153cf2e: cwd=C:\\Projects\\IndiaWorks; argv=['dotnet', 'test', 'IndiaWorks.slnx', '-c', 'Release', '--no-build']; exit=0; ACs=['AC1', 'AC2', 'AC4']; output=verification/7f2d6153cf2e.log",
+    "AC1: Api, Domain, Application, Infrastructure, Contracts, and Workers projects exist with one-way references validated from the csproj files.",
+    "AC2: The backend foundation builds and the architecture test confirms dependency direction and layer marker presence.",
+    "AC3: No duplicate domain concept, table, or API operation was introduced.",
+    "AC4: dotnet build IndiaWorks.slnx -c Release --no-restore and dotnet test IndiaWorks.slnx -c Release --no-build passed through story_runtime proof.",
+    "AC5: No logging/search/contact/identity surface was added by this project-reference foundation work."
+  ],
+  "known_gaps": [],
+  "blocker": null,
+  "notes": ["Host-generated inventory, proof records and outbox handoff."],
+  "obsidian_status": "OUTBOX",
+  "graphify_status": "OUTBOX"
+}
+```
+
+No MCP sync claimed. Contract/rollout details, if applicable, must be recorded in the summary or AC explanations.

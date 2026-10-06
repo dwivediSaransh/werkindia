@@ -1,0 +1,77 @@
+.job-detail {
+  padding: clamp(1.2rem, 4vw, 3rem);
+  max-width: 13rem;
+  margin: clamp(2rem, 8vw, 6rem) auto;
+  background: #fffdf7;
+  border: 1px solid #ded3bf;
+  border-radius: 0.35rem;
+}
+
+.job-detail .eyebrow {
+  margin: 0 0 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 950;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: #675f52;
+}
+
+.job-detail h1 {
+  margin: 0 0 0.75rem;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  line-height: 1.05;
+  color: #1a1f1b;
+}
+
+.job-detail__pay {
+  margin: 0 0 1.5rem;
+  color: #a94f2b;
+  font-weight: 850;
+}
+
+.job-detail__body p {
+  color: #675f52;
+  line-height: 1.7;
+  margin: 0 0 1rem;
+}
+
+.job-detail--loading .skeleton {
+  height: 12rem;
+  background: #f0ebe0;
+  border-radius: 0.35rem;
+  margin-top: 1rem;
+}
+
+.job-detail__actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #ded3bf;
+  flex-wrap: wrap;
+}
+
+.job-detail__actions .primary-button,
+.job-detail__actions .secondary-button {
+  display: inline-block;
+  padding: 0.7rem 1.4rem;
+  font-weight: 800;
+  border-radius: 0.35rem;
+  text-decoration: none;
+  cursor: pointer;
+  min-height: 2.4rem;
+  border: 1px solid transparent;
+}
+
+.job-detail__actions .primary-button {
+  color: #fffaf0;
+  background: #a94f2b;
+  border-color: #a94f2b;
+}
+
+.job-detail__actions .secondary-button {
+  color: #1a1f1b;
+  background: rgba(255, 253, 247, 0.82);
+  border-color: #ded3bf;
+}

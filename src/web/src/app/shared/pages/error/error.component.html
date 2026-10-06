@@ -1,0 +1,20 @@
+<div class="iw-error">
+  <p class="eyebrow">Something went wrong</p>
+  <h1>
+    @switch (kind()) {
+      @case ('authorization') {
+        You don't have access to this page.
+      }
+      @case ('not-found') {
+        This page isn't available in your current session.
+      }
+      @default {
+        An unexpected error occurred.
+      }
+    }
+  </h1>
+  @if (message()) {
+    <p>{{ message() }}</p>
+  }
+  <a class="primary-button" href="/">Return home</a>
+</div>

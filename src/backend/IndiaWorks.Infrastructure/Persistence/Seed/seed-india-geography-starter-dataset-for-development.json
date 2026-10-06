@@ -1,0 +1,186 @@
+{
+  "$schema": "https://indiaworks.internal/seed/geography-starter-1.0",
+  "description": "Representative India geography starter dataset for development and deterministic tests. Reuses Geography + GeographyType hierarchy from IW8-045.",
+  "culture": "en-IN",
+  "rows": [
+    {
+      "type": "Country",
+      "code": "IN",
+      "name": "India",
+      "latitude": 20.5937,
+      "longitude": 78.9629
+    },
+    {
+      "type": "State",
+      "code": "KA",
+      "name": "Karnataka",
+      "parentCode": "IN",
+      "latitude": 15.6271,
+      "longitude": 74.4920
+    },
+    {
+      "type": "State",
+      "code": "MH",
+      "name": "Maharashtra",
+      "parentCode": "IN",
+      "latitude": 19.7515,
+      "longitude": 75.7139
+    },
+    {
+      "type": "State",
+      "code": "TN",
+      "name": "Tamil Nadu",
+      "parentCode": "IN",
+      "latitude": 11.1271,
+      "longitude": 78.6566
+    },
+    {
+      "type": "State",
+      "code": "TG",
+      "name": "Telangana",
+      "parentCode": "IN",
+      "latitude": 18.1124,
+      "longitude": 79.0193
+    },
+    {
+      "type": "State",
+      "code": "DL",
+      "name": "Delhi",
+      "parentCode": "IN",
+      "latitude": 28.6139,
+      "longitude": 77.2090
+    },
+    {
+      "type": "State",
+      "code": "GJ",
+      "name": "Gujarat",
+      "parentCode": "IN",
+      "latitude": 22.2587,
+      "longitude": 71.1924
+    },
+    {
+      "type": "State",
+      "code": "WB",
+      "name": "West Bengal",
+      "parentCode": "IN",
+      "latitude": 22.9868,
+      "longitude": 87.8550
+    },
+    {
+      "type": "City",
+      "code": "BLR",
+      "name": "Bengaluru",
+      "parentCode": "KA",
+      "latitude": 12.9716,
+      "longitude": 77.5946
+    },
+    {
+      "type": "City",
+      "code": "MYS",
+      "name": "Mysuru",
+      "parentCode": "KA",
+      "latitude": 12.3051,
+      "longitude": 76.6551
+    },
+    {
+      "type": "City",
+      "code": "BOM",
+      "name": "Mumbai",
+      "parentCode": "MH",
+      "latitude": 19.0760,
+      "longitude": 72.8777
+    },
+    {
+      "type": "City",
+      "code": "PNE",
+      "name": "Pune",
+      "parentCode": "MH",
+      "latitude": 18.5204,
+      "longitude": 73.8568
+    },
+    {
+      "type": "City",
+      "code": "MAI",
+      "name": "Chennai",
+      "parentCode": "TN",
+      "latitude": 13.0827,
+      "longitude": 80.2707
+    },
+    {
+      "type": "City",
+      "code": "HYD",
+      "name": "Hyderabad",
+      "parentCode": "TG",
+      "latitude": 17.3850,
+      "longitude": 78.4867
+    },
+    {
+      "type": "City",
+      "code": "KOL",
+      "name": "Kolkata",
+      "parentCode": "WB",
+      "latitude": 22.5726,
+      "longitude": 88.3639
+    },
+    {
+      "type": "City",
+      "code": "AMD",
+      "name": "Ahmedabad",
+      "parentCode": "GJ",
+      "latitude": 23.0225,
+      "longitude": 72.5714
+    },
+    {
+      "type": "State",
+      "code": "AP",
+      "name": "Andhra Pradesh",
+      "parentCode": "IN",
+      "latitude": 15.9129,
+      "longitude": 79.7400
+    },
+    {
+      "type": "City",
+      "code": "VSK",
+      "name": "Visakhapatnam",
+      "parentCode": "AP",
+      "latitude": 17.6868,
+      "longitude": 83.2185
+    },
+    {
+      "type": "Locality",
+      "code": "INDIRA_NAGAR",
+      "name": "Indiranagar",
+      "parentCode": "BLR"
+    },
+    {
+      "type": "Locality",
+      "code": "ANDHERI_WEST",
+      "name": "Andheri West",
+      "parentCode": "BOM"
+    },
+    {
+      "type": "Pin",
+      "code": "560038",
+      "name": "Bengaluru 560038",
+      "parentCode": "INDIRA_NAGAR"
+    },
+    {
+      "type": "Pin",
+      "code": "400058",
+      "name": "Mumbai 400058",
+      "parentCode": "ANDHERI_WEST"
+    },
+    {
+      "type": "District",
+      "code": "BLR_U",
+      "name": "Bengaluru Urban",
+      "parentCode": "KA"
+    },
+    {
+      "type": "District",
+      "code": "RANGAREDDY",
+      "name": "Ranga Reddy",
+      "parentCode": "TG"
+    }
+  ]
+}

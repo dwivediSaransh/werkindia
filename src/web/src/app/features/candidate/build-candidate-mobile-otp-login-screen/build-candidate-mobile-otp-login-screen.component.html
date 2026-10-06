@@ -1,0 +1,132 @@
+<div class="otp-login-screen">
+  <div class="card">
+    <div class="header">
+      <div class="logo" aria-hidden="true">IW</div>
+      <h1>Candidate Login</h1>
+      <p class="subtitle">Sign in with your mobile number</p>
+    </div>
+
+    <!-- Phone input step -->
+    @if (showPhoneStep()) {
+      <form (ngSubmit)="onPhoneSubmit()" class="phone-form">
+        <div class="field">
+          <label for="phone">Mobile Number</label>
+          <div class="input-wrapper">
+            <span class="country-code">+91</span>
+            <input
+              id="phone"
+              type="tel"
+              class="phone-input"
+              placeholder="98765 43210"
+              maxlength="10"
+              [value]="phoneInputValue()"
+              (input)="onPhoneInput($any($event.target).value)"
+              autocomplete="tel"
+              inputmode="numeric"
+            />
+          </div>
+          @if (vm().phoneError) {
+            <span class="field-error" role="alert">{{ vm().phoneError }}</span>
+          }
+        </div>
+
+        <button
+          type="submit"
+          class="btn btn-primary btn-full"
+          [disabled]="!vm().canSubmitPhone || vm().state === 'loading'"
+        >
+          @if (vm().state === 'loading') {
+            <span class="spinner" aria-hidden="true"></span>
+            Sending OTP...
+          } @else {
+            Send OTP
+          }
+        </button>
+      </form>
+    }
+
+    <!-- OTP input step -->
+    @if (showOtpStep()) {
+      <form (ngSubmit)="onOtpSubmit()" class="otp-form">
+        <div class="otp-info">
+          <span class="otp-icon" aria-hidden="true">📱</span>
+          <span class="otp-message">{{ vm().message }}</span>
+        </div>
+
+        <div class="field">
+          <label for="otp">Enter OTP</label>
+          <input
+            id="otp"
+            type="text"
+            class="otp-input"
+            placeholder="6-digit code"
+            maxlength="6"
+            [value]="otpInputValue()"
+            (input)="onOtpInput($any($event.target).value)"
+            autocomplete="one-time-code"
+            inputmode="numeric"
+            [class.error]="vm().otpError"
+          />
+          @if (vm().otpError) {
+            <span class="field-error" role="alert">{{ vm().otpError }}</span>
+          }
+        </div>
+
+        <button
+          type="submit"
+          class="btn btn-primary btn-full"
+          [disabled]="!vm().canSubmitOtp || vm().state === 'loading'"
+        >
+          @if (vm().state === 'loading') {
+            <span class="spinner" aria-hidden="true"></span>
+            Verifying...
+          } @else {
+            Verify & Login
+          }
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-link"
+          (click)="onResendOtp()"
+          [disabled]="vm().resendDisabled"
+        >
+          @if (vm().resendDisabled) {
+            Resend OTP in {{ vm().resendCountdownSeconds }}s
+          } @else {
+            Resend OTP
+          }
+        </button>
+      </form>
+    }
+
+    <!-- Loading state -->
+    @if (showLoading()) {
+      <div class="loading-state" role="status" aria-live="polite">
+        <div class="spinner-large" aria-hidden="true"></div>
+        <p>{{ vm().message || 'Processing...' }}</p>
+      </div>
+    }
+
+    <!-- Error state -->
+    @if (showError()) {
+      <div class="error-state" role="alert">
+        <span class="error-icon" aria-hidden="true">!</span>
+        <p>{{ errorMessage() }}</p>
+        <button type="button" class="btn btn-secondary" (click)="retryFromError()">
+          Try Again
+        </button>
+      </div>
+    }
+
+    <!-- Success state -->
+    @if (showSuccess()) {
+      <div class="success-state" role="status" aria-live="polite">
+        <span class="success-icon" aria-hidden="true">✓</span>
+        <p>{{ vm().message }}</p>
+      </div>
+    }
+  </div>
+
+  <p class="footer">By continuing, you agree to our terms of service and privacy policy.</p>
+</div>

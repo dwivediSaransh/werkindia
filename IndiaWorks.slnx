@@ -1,0 +1,17 @@
+<Solution>
+  <Folder Name="/src/" />
+  <Folder Name="/src/backend/">
+    <Project Path="src/backend/IndiaWorks.Api/IndiaWorks.Api.csproj" />
+    <Project Path="src/backend/IndiaWorks.Application/IndiaWorks.Application.csproj" />
+    <Project Path="src/backend/IndiaWorks.Contracts/IndiaWorks.Contracts.csproj" />
+    <Project Path="src/backend/IndiaWorks.Domain/IndiaWorks.Domain.csproj" />
+    <Project Path="src/backend/IndiaWorks.Infrastructure/IndiaWorks.Infrastructure.csproj" />
+    <Project Path="src/backend/IndiaWorks.Workers/IndiaWorks.Workers.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/IndiaWorks.Domain.Tests/IndiaWorks.Domain.Tests.csproj" />
+    <Project Path="tests/IndiaWorks.Application.Tests/IndiaWorks.Application.Tests.csproj" />
+    <Project Path="tests/IndiaWorks.ArchitectureTests/IndiaWorks.ArchitectureTests.csproj" />
+    <Project Path="tests/IndiaWorks.IntegrationTests/IndiaWorks.IntegrationTests.csproj" />
+  </Folder>
+</Solution>

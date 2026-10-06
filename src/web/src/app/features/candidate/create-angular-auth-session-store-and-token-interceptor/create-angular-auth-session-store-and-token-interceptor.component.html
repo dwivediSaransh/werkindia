@@ -1,0 +1,64 @@
+<div class="auth-session-demo">
+  <h1>Auth Session Store &amp; Token Interceptor</h1>
+
+  <section class="session-status">
+    <h2>Session Status</h2>
+    @if (isAuthenticated) {
+      <div class="status authenticated">
+        <span>Authenticated</span>
+        <span class="persona">Persona: {{ persona }}</span>
+        <span class="user-id">User ID: {{ userId }}</span>
+      </div>
+    } @else {
+      <div class="status idle">
+        <span>Not authenticated</span>
+      </div>
+    }
+  </section>
+
+  <section class="controls">
+    <h2>Controls</h2>
+
+    <div class="control-group">
+      <button class="btn btn-primary" (click)="setMockSession()" [disabled]="isAuthenticated">
+        Set Mock Session
+      </button>
+      <span class="hint">Sets a mock authenticated session for testing</span>
+    </div>
+
+    <div class="control-group">
+      <button class="btn btn-secondary" (click)="triggerRefresh()" [disabled]="isRefreshDisabled">
+        @if (refreshInProgress) {
+          Refreshing...
+        } @else {
+          Trigger Refresh
+        }
+      </button>
+      <span class="hint">Calls /api/auth/otp/refresh and updates session</span>
+    </div>
+
+    <div class="control-group">
+      <button class="btn btn-danger" (click)="logout()" [disabled]="!isAuthenticated">
+        Logout
+      </button>
+      <span class="hint">Clears session and calls /api/auth/otp/logout</span>
+    </div>
+  </section>
+
+  <section class="view-model">
+    <h2>View Model</h2>
+    @if (vm().state === 'loading') {
+      <div class="state loading">
+        <span>{{ vm().message }}</span>
+      </div>
+    } @else if (vm().state === 'error') {
+      <div class="state error">
+        <span>{{ vm().message }}</span>
+      </div>
+    } @else if (vm().state === 'authenticated') {
+      <div class="state success">
+        <span>{{ vm().message }}</span>
+      </div>
+    }
+  </section>
+</div>

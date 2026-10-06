@@ -1,0 +1,40 @@
+@if (vm() === 'loading') {
+  <div class="iw-public">
+    <p class="eyebrow">Loading shared job</p>
+    <div class="skeleton"></div>
+  </div>
+} @else if (vm() === 'expired') {
+  <div class="iw-public iw-public--expired">
+    <p class="eyebrow">This job link has expired</p>
+    <h1>This shared role is no longer available.</h1>
+    <p>The employer may have closed the posting or removed the shared link.</p>
+    <a class="primary-button" href="/">Browse current jobs</a>
+  </div>
+} @else {
+  <article class="iw-public">
+    <header class="iw-public__header">
+      <span class="iw-brand__mark">IW</span>
+      <div>
+        <p class="eyebrow">Shared job from IndiaWorks</p>
+        <h1>Direct hiring role</h1>
+        <p class="iw-public__meta">Shared by the employer · IndiaWorks</p>
+      </div>
+    </header>
+
+    <section class="iw-public__body">
+      <p>
+        Public job detail content is served from the shared link route and rendered without app
+        login.
+      </p>
+      <p>
+        Once the public job story is implemented, this page will show the public job card, pay
+        range, location, and a deep link into the app.
+      </p>
+    </section>
+
+    <footer class="iw-public__actions">
+      <a class="primary-button" href="/jobs">View in app</a>
+      <a class="secondary-button" href="/">Back to home</a>
+    </footer>
+  </article>
+}

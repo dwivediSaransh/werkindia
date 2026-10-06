@@ -1,0 +1,731 @@
+﻿Story ID,Sprint,Epic,Title,Priority,Owner,Layer,Agent Package,Status,Dependencies,User Story,Scope Summary,Acceptance Criteria,Files Changed,What Was Verified,Known Gaps,Notes
+IW8-001,Sprint 0,EP-00,Create repository folder structure and root solution layout,P0,Backend Agent,Platform,agent-packages/IW8-001.md,DONE,None,"As an IndiaWorks user/team, I need create repository folder structure and root solution layout so that this part of the product is reliable and independently deliverable.","Create the agreed repo tree for backend, Angular web, tests, docs, scripts and agent packages.","Create the agreed repo tree for backend, Angular web, tests, docs, scripts and agent packages. | Implementation follows the v7/v8 shared architecture and does not create a parallel source of truth. | Authorization and validation errors use stable machine-readable codes where the story exposes an API. | Automated tests cover the story's primary happy path and at least one failure/edge case. | No sensitive OTP/token/contact/identity value is written to application logs.","C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\bin\Release\net10.0\IndiaWorks.Api.deps.json
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\bin\Release\net10.0\IndiaWorks.Api.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\bin\Release\net10.0\IndiaWorks.Api.exe
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\bin\Release\net10.0\IndiaWorks.Api.pdb
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\bin\Release\net10.0\IndiaWorks.Api.runtimeconfig.json
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\bin\Release\net10.0\IndiaWorks.Api.staticwebassets.endpoints.json
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\bin\Release\net10.0\IndiaWorks.Application.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\bin\Release\net10.0\IndiaWorks.Application.pdb
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\bin\Release\net10.0\IndiaWorks.Contracts.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\bin\Release\net10.0\IndiaWorks.Contracts.pdb
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\bin\Release\net10.0\IndiaWorks.Domain.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\bin\Release\net10.0\IndiaWorks.Domain.pdb
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\bin\Release\net10.0\IndiaWorks.Infrastructure.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\bin\Release\net10.0\IndiaWorks.Infrastructure.pdb
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\bin\Release\net10.0\appsettings.Development.json
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\bin\Release\net10.0\appsettings.json
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\obj\Release\net10.0\.NETCoreApp,Version=v10.0.AssemblyAttributes.cs
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\obj\Release\net10.0\IndiaWor.C7DC2EFC.Up2Date
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\obj\Release\net10.0\IndiaWorks.Api.AssemblyInfo.cs
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\obj\Release\net10.0\IndiaWorks.Api.AssemblyInfoInputs.cache
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\obj\Release\net10.0\IndiaWorks.Api.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\obj\Release\net10.0\IndiaWorks.Api.MvcApplicationPartsAssemblyInfo.cache
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\obj\Release\net10.0\IndiaWorks.Api.csproj.AssemblyReference.cache
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\obj\Release\net10.0\IndiaWorks.Api.csproj.CoreCompileInputs.cache
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\obj\Release\net10.0\IndiaWorks.Api.csproj.FileListAbsolute.txt
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\obj\Release\net10.0\IndiaWorks.Api.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\obj\Release\net10.0\IndiaWorks.Api.genruntimeconfig.cache
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\obj\Release\net10.0\IndiaWorks.Api.pdb
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\obj\Release\net10.0\apphost.exe
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\obj\Release\net10.0\ref\IndiaWorks.Api.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\obj\Release\net10.0\refint\IndiaWorks.Api.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\obj\Release\net10.0\rjsmcshtml.dswa.cache.json
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\obj\Release\net10.0\rjsmrazor.dswa.cache.json
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\obj\Release\net10.0\rpswa.dswa.cache.json
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\obj\Release\net10.0\staticwebassets.build.endpoints.json
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\obj\Release\net10.0\staticwebassets.build.json
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\obj\Release\net10.0\staticwebassets.build.json.cache
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\obj\Release\net10.0\swae.build.ex.cache
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Application\bin\Release\net10.0\IndiaWorks.Application.deps.json
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Application\bin\Release\net10.0\IndiaWorks.Application.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Application\bin\Release\net10.0\IndiaWorks.Application.pdb
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Application\bin\Release\net10.0\IndiaWorks.Contracts.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Application\bin\Release\net10.0\IndiaWorks.Contracts.pdb
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Application\bin\Release\net10.0\IndiaWorks.Domain.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Application\bin\Release\net10.0\IndiaWorks.Domain.pdb
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Application\obj\Release\net10.0\.NETCoreApp,Version=v10.0.AssemblyAttributes.cs
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Application\obj\Release\net10.0\IndiaWor.45DEF5F1.Up2Date
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Application\obj\Release\net10.0\IndiaWorks.Application.AssemblyInfo.cs
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Application\obj\Release\net10.0\IndiaWorks.Application.AssemblyInfoInputs.cache
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Application\obj\Release\net10.0\IndiaWorks.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Application\obj\Release\net10.0\IndiaWorks.Application.csproj.AssemblyReference.cache
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Application\obj\Release\net10.0\IndiaWorks.Application.csproj.CoreCompileInputs.cache
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Application\obj\Release\net10.0\IndiaWorks.Application.csproj.FileListAbsolute.txt
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Application\obj\Release\net10.0\IndiaWorks.Application.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Application\obj\Release\net10.0\IndiaWorks.Application.pdb
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Application\obj\Release\net10.0\ref\IndiaWorks.Application.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Application\obj\Release\net10.0\refint\IndiaWorks.Application.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Contracts\bin\Release\net10.0\IndiaWorks.Contracts.deps.json
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Contracts\bin\Release\net10.0\IndiaWorks.Contracts.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Contracts\bin\Release\net10.0\IndiaWorks.Contracts.pdb
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Contracts\obj\Release\net10.0\IndiaWorks.Contracts.csproj.FileListAbsolute.txt
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Contracts\obj\Release\net10.0\IndiaWorks.Contracts.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Contracts\obj\Release\net10.0\IndiaWorks.Contracts.pdb
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Contracts\obj\Release\net10.0\ref\IndiaWorks.Contracts.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Contracts\obj\Release\net10.0\refint\IndiaWorks.Contracts.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Domain\bin\Release\net10.0\IndiaWorks.Domain.deps.json
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Domain\bin\Release\net10.0\IndiaWorks.Domain.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Domain\bin\Release\net10.0\IndiaWorks.Domain.pdb
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Domain\obj\Release\net10.0\IndiaWorks.Domain.csproj.FileListAbsolute.txt
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Domain\obj\Release\net10.0\IndiaWorks.Domain.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Domain\obj\Release\net10.0\IndiaWorks.Domain.pdb
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Domain\obj\Release\net10.0\ref\IndiaWorks.Domain.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Domain\obj\Release\net10.0\refint\IndiaWorks.Domain.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Infrastructure\bin\Release\net10.0\IndiaWorks.Application.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Infrastructure\bin\Release\net10.0\IndiaWorks.Application.pdb
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Infrastructure\bin\Release\net10.0\IndiaWorks.Contracts.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Infrastructure\bin\Release\net10.0\IndiaWorks.Contracts.pdb
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Infrastructure\bin\Release\net10.0\IndiaWorks.Domain.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Infrastructure\bin\Release\net10.0\IndiaWorks.Domain.pdb
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Infrastructure\bin\Release\net10.0\IndiaWorks.Infrastructure.deps.json
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Infrastructure\bin\Release\net10.0\IndiaWorks.Infrastructure.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Infrastructure\bin\Release\net10.0\IndiaWorks.Infrastructure.pdb
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Infrastructure\obj\Release\net10.0\.NETCoreApp,Version=v10.0.AssemblyAttributes.cs
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Infrastructure\obj\Release\net10.0\IndiaWor.BAA3F86B.Up2Date
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Infrastructure\obj\Release\net10.0\IndiaWorks.Infrastructure.AssemblyInfo.cs
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Infrastructure\obj\Release\net10.0\IndiaWorks.Infrastructure.AssemblyInfoInputs.cache
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Infrastructure\obj\Release\net10.0\IndiaWorks.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Infrastructure\obj\Release\net10.0\IndiaWorks.Infrastructure.csproj.AssemblyReference.cache
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Infrastructure\obj\Release\net10.0\IndiaWorks.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Infrastructure\obj\Release\net10.0\IndiaWorks.Infrastructure.csproj.FileListAbsolute.txt
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Infrastructure\obj\Release\net10.0\IndiaWorks.Infrastructure.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Infrastructure\obj\Release\net10.0\IndiaWorks.Infrastructure.pdb
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Infrastructure\obj\Release\net10.0\ref\IndiaWorks.Infrastructure.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Infrastructure\obj\Release\net10.0\refint\IndiaWorks.Infrastructure.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\bin\Release\net10.0\IndiaWorks.Application.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\bin\Release\net10.0\IndiaWorks.Application.pdb
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\bin\Release\net10.0\IndiaWorks.Contracts.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\bin\Release\net10.0\IndiaWorks.Contracts.pdb
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\bin\Release\net10.0\IndiaWorks.Domain.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\bin\Release\net10.0\IndiaWorks.Domain.pdb
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\bin\Release\net10.0\IndiaWorks.Infrastructure.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\bin\Release\net10.0\IndiaWorks.Infrastructure.pdb
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\bin\Release\net10.0\IndiaWorks.Workers.deps.json
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\bin\Release\net10.0\IndiaWorks.Workers.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\bin\Release\net10.0\IndiaWorks.Workers.exe
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\bin\Release\net10.0\IndiaWorks.Workers.pdb
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\bin\Release\net10.0\IndiaWorks.Workers.runtimeconfig.json
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\bin\Release\net10.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\bin\Release\net10.0\Microsoft.Extensions.Configuration.Binder.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\bin\Release\net10.0\Microsoft.Extensions.Configuration.CommandLine.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\bin\Release\net10.0\Microsoft.Extensions.Configuration.EnvironmentVariables.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\bin\Release\net10.0\Microsoft.Extensions.Configuration.FileExtensions.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\bin\Release\net10.0\Microsoft.Extensions.Configuration.Json.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\bin\Release\net10.0\Microsoft.Extensions.Configuration.UserSecrets.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\bin\Release\net10.0\Microsoft.Extensions.Configuration.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\bin\Release\net10.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\bin\Release\net10.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\bin\Release\net10.0\Microsoft.Extensions.Diagnostics.Abstractions.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\bin\Release\net10.0\Microsoft.Extensions.Diagnostics.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\bin\Release\net10.0\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\bin\Release\net10.0\Microsoft.Extensions.FileProviders.Physical.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\bin\Release\net10.0\Microsoft.Extensions.FileSystemGlobbing.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\bin\Release\net10.0\Microsoft.Extensions.Hosting.Abstractions.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\bin\Release\net10.0\Microsoft.Extensions.Hosting.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\bin\Release\net10.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\bin\Release\net10.0\Microsoft.Extensions.Logging.Configuration.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\bin\Release\net10.0\Microsoft.Extensions.Logging.Console.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\bin\Release\net10.0\Microsoft.Extensions.Logging.Debug.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\bin\Release\net10.0\Microsoft.Extensions.Logging.EventLog.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\bin\Release\net10.0\Microsoft.Extensions.Logging.EventSource.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\bin\Release\net10.0\Microsoft.Extensions.Logging.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\bin\Release\net10.0\Microsoft.Extensions.Options.ConfigurationExtensions.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\bin\Release\net10.0\Microsoft.Extensions.Options.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\bin\Release\net10.0\Microsoft.Extensions.Primitives.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\bin\Release\net10.0\System.Diagnostics.EventLog.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\bin\Release\net10.0\appsettings.Development.json
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\bin\Release\net10.0\appsettings.json
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\bin\Release\net10.0\runtimes\win\lib\net10.0\System.Diagnostics.EventLog.Messages.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\bin\Release\net10.0\runtimes\win\lib\net10.0\System.Diagnostics.EventLog.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\obj\Release\net10.0\.NETCoreApp,Version=v10.0.AssemblyAttributes.cs
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\obj\Release\net10.0\IndiaWor.BBD6ACD7.Up2Date
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\obj\Release\net10.0\IndiaWorks.Workers.AssemblyInfo.cs
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\obj\Release\net10.0\IndiaWorks.Workers.AssemblyInfoInputs.cache
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\obj\Release\net10.0\IndiaWorks.Workers.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\obj\Release\net10.0\IndiaWorks.Workers.csproj.AssemblyReference.cache
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\obj\Release\net10.0\IndiaWorks.Workers.csproj.CoreCompileInputs.cache
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\obj\Release\net10.0\IndiaWorks.Workers.csproj.FileListAbsolute.txt
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\obj\Release\net10.0\IndiaWorks.Workers.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\obj\Release\net10.0\IndiaWorks.Workers.genruntimeconfig.cache
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\obj\Release\net10.0\IndiaWorks.Workers.pdb
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\obj\Release\net10.0\apphost.exe
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\obj\Release\net10.0\ref\IndiaWorks.Workers.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\obj\Release\net10.0\refint\IndiaWorks.Workers.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\.msCoverageSourceRootsMapping_IndiaWorks.Domain.Tests
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\CoverletSourceRootsMapping_IndiaWorks.Domain.Tests
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\IndiaWorks.Domain.Tests.deps.json
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\IndiaWorks.Domain.Tests.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\IndiaWorks.Domain.Tests.pdb
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\IndiaWorks.Domain.Tests.runtimeconfig.json
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\IndiaWorks.Domain.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\IndiaWorks.Domain.pdb
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\Microsoft.TestPlatform.CommunicationUtilities.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\Microsoft.TestPlatform.CoreUtilities.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\Microsoft.TestPlatform.CrossPlatEngine.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\Microsoft.TestPlatform.PlatformAbstractions.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\Microsoft.TestPlatform.Utilities.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\Microsoft.VisualStudio.CodeCoverage.Shim.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\Microsoft.VisualStudio.TestPlatform.Common.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\Microsoft.VisualStudio.TestPlatform.ObjectModel.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\Newtonsoft.Json.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\cs\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\cs\Microsoft.TestPlatform.CoreUtilities.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\cs\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\cs\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\cs\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\de\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\de\Microsoft.TestPlatform.CoreUtilities.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\de\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\de\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\de\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\es\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\es\Microsoft.TestPlatform.CoreUtilities.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\es\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\es\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\es\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\fr\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\fr\Microsoft.TestPlatform.CoreUtilities.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\fr\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\fr\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\fr\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\it\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\it\Microsoft.TestPlatform.CoreUtilities.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\it\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\it\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\it\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\ja\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\ja\Microsoft.TestPlatform.CoreUtilities.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\ja\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\ja\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\ja\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\ko\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\ko\Microsoft.TestPlatform.CoreUtilities.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\ko\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\ko\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\ko\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\pl\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\pl\Microsoft.TestPlatform.CoreUtilities.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\pl\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\pl\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\pl\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\pt-BR\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\pt-BR\Microsoft.TestPlatform.CoreUtilities.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\pt-BR\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\pt-BR\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\pt-BR\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\ru\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\ru\Microsoft.TestPlatform.CoreUtilities.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\ru\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\ru\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\ru\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\testhost.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\testhost.exe
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\tr\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\tr\Microsoft.TestPlatform.CoreUtilities.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\tr\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\tr\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\tr\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\xunit.abstractions.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\xunit.assert.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\xunit.core.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\xunit.execution.dotnet.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\xunit.runner.visualstudio.testadapter.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\zh-Hans\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\zh-Hans\Microsoft.TestPlatform.CoreUtilities.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\zh-Hans\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\zh-Hans\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\zh-Hans\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\zh-Hant\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\zh-Hant\Microsoft.TestPlatform.CoreUtilities.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\zh-Hant\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\zh-Hant\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\zh-Hant\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\obj\Release\net10.0\.NETCoreApp,Version=v10.0.AssemblyAttributes.cs
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\obj\Release\net10.0\IndiaWor.0FD8F448.Up2Date
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\obj\Release\net10.0\IndiaWorks.Domain.Tests.AssemblyInfo.cs
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\obj\Release\net10.0\IndiaWorks.Domain.Tests.AssemblyInfoInputs.cache
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\obj\Release\net10.0\IndiaWorks.Domain.Tests.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\obj\Release\net10.0\IndiaWorks.Domain.Tests.csproj.AssemblyReference.cache
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\obj\Release\net10.0\IndiaWorks.Domain.Tests.csproj.CoreCompileInputs.cache
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\obj\Release\net10.0\IndiaWorks.Domain.Tests.csproj.FileListAbsolute.txt
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\obj\Release\net10.0\IndiaWorks.Domain.Tests.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\obj\Release\net10.0\IndiaWorks.Domain.Tests.genruntimeconfig.cache
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\obj\Release\net10.0\IndiaWorks.Domain.Tests.pdb
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\obj\Release\net10.0\ref\IndiaWorks.Domain.Tests.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\obj\Release\net10.0\refint\IndiaWorks.Domain.Tests.dll","cab554fb10c3: cwd=C:\Projects\IndiaWorks; argv=['dotnet', 'build', 'IndiaWorks.slnx', '-c', 'Release', '--no-restore']; exit=0; ACs=['AC1']; output=verification/cab554fb10c3.log
+AC1: Repository root now contains src/backend layered projects, src/web Angular shell, tests, docs, scripts, cron automation, and buildable solution structure.",,"{""StoryKey"":""FND-001"",""SprintOrder"":""1"",""StoryPoints"":""1"",""BusinessContext"":""Supports EP-00 in the v7 unified SaaS flow. Commercial/privacy rules from the architecture remain authoritative."",""OutOfScope"":""Do not implement unrelated adjacent features, redesign the v7 domain contract, or add a new framework without Tech Lead approval."",""TechnicalApproach"":""Implement as a infra slice using the shared repository patterns. Create the agreed repo tree for backend, Angular web, tests, docs, scripts and agent packages."",""TargetFiles"":""src/ | tests/"",""GraphQLOperations"":"""",""RestEndpoints"":"""",""DatabaseImpact"":""No schema change unless explicitly stated; do not create ad-hoc tables."",""TestPlan"":""Happy path + validation/authorization edge; integration/E2E according to story layer."",""ValidationCommands"":""dotnet build IndiaWorks.slnx -c Release | dotnet test IndiaWorks.slnx -c Release --no-build"",""ImportedFromVersionedBacklog"":""true"",""PackageQuality"":""PASS"",""PseudocodeSteps"":""8"",""ConcreteTestCases"":""4"",""AcceptanceCriteriaCount"":""5""}
+Run summary: Created the repository foundation layout, backend solution skeleton, Angular shell, docs/automation folders, and Hermes cron scaffolding for IW8-001.
+Obsidian status: OUTBOX
+Graphify status: OUTBOX
+Host-generated inventory, proof records and outbox handoff."
+IW8-002,Sprint 0,EP-00,Add Directory.Build.props and central NuGet package versions,P0,Backend Agent,Platform,agent-packages/IW8-002.md,DONE,IW8-001,"As an IndiaWorks user/team, I need add directory.build.props and central nuget package versions so that this part of the product is reliable and independently deliverable.","Pin .NET 10, EF Core 10.0.12 and Hot Chocolate 16.6.7 package versions centrally.","Pin .NET 10, EF Core 10.0.12 and Hot Chocolate 16.6.7 package versions centrally. | Implementation follows the v7/v8 shared architecture and does not create a parallel source of truth. | Authorization and validation errors use stable machine-readable codes where the story exposes an API. | Automated tests cover the story's primary happy path and at least one failure/edge case. | No sensitive OTP/token/contact/identity value is written to application logs.","C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\Foundation\PackageBaselineTests.cs
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\IndiaWorks.Domain.Tests.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\IndiaWorks.Domain.Tests.pdb
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\obj\Release\net10.0\IndiaWorks.Domain.Tests.csproj.CoreCompileInputs.cache
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\obj\Release\net10.0\IndiaWorks.Domain.Tests.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\obj\Release\net10.0\IndiaWorks.Domain.Tests.pdb
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\obj\Release\net10.0\ref\IndiaWorks.Domain.Tests.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\obj\Release\net10.0\refint\IndiaWorks.Domain.Tests.dll","5650bb83ab2c: cwd=C:\Projects\IndiaWorks; argv=['dotnet', 'build', 'IndiaWorks.slnx', '-c', 'Release', '--no-restore']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/5650bb83ab2c.log
+673cf65beeef: cwd=C:\Projects\IndiaWorks; argv=['dotnet', 'test', 'IndiaWorks.slnx', '-c', 'Release', '--no-build']; exit=0; ACs=['AC1', 'AC2', 'AC4']; output=verification/673cf65beeef.log
+AC1: global.json, Directory.Build.props, and Directory.Packages.props define the .NET 10 and central package baseline; PackageBaselineTests asserts the required pinned versions.
+AC2: The dependency-ready solution builds and the package-baseline test passes.
+AC3: No domain concept, table, or API operation was introduced.
+AC4: dotnet build IndiaWorks.slnx -c Release --no-restore and dotnet test IndiaWorks.slnx -c Release --no-build passed through story_runtime proof.
+AC5: No logging/search/contact/identity surface was added by this package baseline work.",DONE rejected: missing AC proof/explanation or no source changes.,"{""StoryKey"":""FND-002"",""SprintOrder"":""2"",""StoryPoints"":""1"",""BusinessContext"":""Supports EP-00 in the v7 unified SaaS flow. Commercial/privacy rules from the architecture remain authoritative."",""OutOfScope"":""Do not implement unrelated adjacent features, redesign the v7 domain contract, or add a new framework without Tech Lead approval."",""TechnicalApproach"":""Implement as a infra slice using the shared repository patterns. Pin .NET 10, EF Core 10.0.12 and Hot Chocolate 16.6.7 package versions centrally."",""TargetFiles"":""src/ | tests/"",""GraphQLOperations"":"""",""RestEndpoints"":"""",""DatabaseImpact"":""No schema change unless explicitly stated; do not create ad-hoc tables."",""TestPlan"":""Happy path + validation/authorization edge; integration/E2E according to story layer."",""ValidationCommands"":""dotnet build IndiaWorks.slnx -c Release | dotnet test IndiaWorks.slnx -c Release --no-build"",""ImportedFromVersionedBacklog"":""true"",""PackageQuality"":""PASS"",""PseudocodeSteps"":""8"",""ConcreteTestCases"":""4"",""AcceptanceCriteriaCount"":""5""}
+Run summary: Pinned the .NET foundation centrally with net10.0 repo defaults, central NuGet versions for EF Core 10.0.12 and Hot Chocolate 16.6.7, and validated the solution through restore/build/test.
+Obsidian status: OUTBOX
+Graphify status: OUTBOX
+Host-generated inventory, proof records and outbox handoff.
+Run summary: Pinned and proved the .NET foundation baseline with global.json, Directory.Build.props, central package versions for EF Core 10.0.12 and Hot Chocolate 16.6.7, and a focused package-baseline test.
+Obsidian status: OUTBOX
+Graphify status: OUTBOX
+Host-generated inventory, proof records and outbox handoff."
+IW8-003,Sprint 0,EP-00,Create backend solution projects and project references,P0,Backend Agent,Platform,agent-packages/IW8-003.md,DONE,"IW8-001, IW8-002","As an IndiaWorks user/team, I need create backend solution projects and project references so that this part of the product is reliable and independently deliverable.","Create Api, Domain, Application, Infrastructure, Contracts and Workers projects with one-way dependency rules.","Create Api, Domain, Application, Infrastructure, Contracts and Workers projects with one-way dependency rules. | Implementation follows the v7/v8 shared architecture and does not create a parallel source of truth. | Authorization and validation errors use stable machine-readable codes where the story exposes an API. | Automated tests cover the story's primary happy path and at least one failure/edge case. | No sensitive OTP/token/contact/identity value is written to application logs.","C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\bin\Release\net10.0\IndiaWorks.Api.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\bin\Release\net10.0\IndiaWorks.Api.pdb
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\bin\Release\net10.0\IndiaWorks.Application.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\bin\Release\net10.0\IndiaWorks.Application.pdb
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\bin\Release\net10.0\IndiaWorks.Domain.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\bin\Release\net10.0\IndiaWorks.Domain.pdb
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\bin\Release\net10.0\IndiaWorks.Infrastructure.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\bin\Release\net10.0\IndiaWorks.Infrastructure.pdb
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\obj\Release\net10.0\IndiaWorks.Api.csproj.AssemblyReference.cache
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\obj\Release\net10.0\IndiaWorks.Api.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\obj\Release\net10.0\IndiaWorks.Api.pdb
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\obj\Release\net10.0\rjsmcshtml.dswa.cache.json
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\obj\Release\net10.0\rjsmrazor.dswa.cache.json
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Application\AssemblyMarker.cs
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Application\bin\Release\net10.0\IndiaWorks.Application.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Application\bin\Release\net10.0\IndiaWorks.Application.pdb
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Application\bin\Release\net10.0\IndiaWorks.Domain.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Application\bin\Release\net10.0\IndiaWorks.Domain.pdb
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Application\obj\Release\net10.0\IndiaWorks.Application.csproj.AssemblyReference.cache
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Application\obj\Release\net10.0\IndiaWorks.Application.csproj.CoreCompileInputs.cache
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Application\obj\Release\net10.0\IndiaWorks.Application.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Application\obj\Release\net10.0\IndiaWorks.Application.pdb
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Application\obj\Release\net10.0\ref\IndiaWorks.Application.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Application\obj\Release\net10.0\refint\IndiaWorks.Application.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Domain\AssemblyMarker.cs
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Domain\bin\Release\net10.0\IndiaWorks.Domain.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Domain\bin\Release\net10.0\IndiaWorks.Domain.pdb
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Domain\obj\Release\net10.0\IndiaWorks.Domain.csproj.CoreCompileInputs.cache
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Domain\obj\Release\net10.0\IndiaWorks.Domain.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Domain\obj\Release\net10.0\IndiaWorks.Domain.pdb
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Domain\obj\Release\net10.0\ref\IndiaWorks.Domain.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Domain\obj\Release\net10.0\refint\IndiaWorks.Domain.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Infrastructure\AssemblyMarker.cs
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Infrastructure\bin\Release\net10.0\IndiaWorks.Application.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Infrastructure\bin\Release\net10.0\IndiaWorks.Application.pdb
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Infrastructure\bin\Release\net10.0\IndiaWorks.Domain.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Infrastructure\bin\Release\net10.0\IndiaWorks.Domain.pdb
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Infrastructure\bin\Release\net10.0\IndiaWorks.Infrastructure.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Infrastructure\bin\Release\net10.0\IndiaWorks.Infrastructure.pdb
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Infrastructure\obj\Release\net10.0\IndiaWorks.Infrastructure.csproj.AssemblyReference.cache
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Infrastructure\obj\Release\net10.0\IndiaWorks.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Infrastructure\obj\Release\net10.0\IndiaWorks.Infrastructure.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Infrastructure\obj\Release\net10.0\IndiaWorks.Infrastructure.pdb
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Infrastructure\obj\Release\net10.0\ref\IndiaWorks.Infrastructure.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Infrastructure\obj\Release\net10.0\refint\IndiaWorks.Infrastructure.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\bin\Release\net10.0\IndiaWorks.Application.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\bin\Release\net10.0\IndiaWorks.Application.pdb
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\bin\Release\net10.0\IndiaWorks.Domain.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\bin\Release\net10.0\IndiaWorks.Domain.pdb
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\bin\Release\net10.0\IndiaWorks.Infrastructure.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\bin\Release\net10.0\IndiaWorks.Infrastructure.pdb
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\bin\Release\net10.0\IndiaWorks.Workers.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\bin\Release\net10.0\IndiaWorks.Workers.pdb
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\obj\Release\net10.0\IndiaWorks.Workers.csproj.AssemblyReference.cache
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\obj\Release\net10.0\IndiaWorks.Workers.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Workers\obj\Release\net10.0\IndiaWorks.Workers.pdb
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\Architecture\ProjectReferenceTests.cs
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\IndiaWorks.Domain.Tests.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\IndiaWorks.Domain.Tests.pdb
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\IndiaWorks.Domain.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\IndiaWorks.Domain.pdb
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\obj\Release\net10.0\IndiaWorks.Domain.Tests.csproj.AssemblyReference.cache
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\obj\Release\net10.0\IndiaWorks.Domain.Tests.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\obj\Release\net10.0\IndiaWorks.Domain.Tests.pdb","649c45a61715: cwd=C:\Projects\IndiaWorks; argv=['dotnet', 'build', 'IndiaWorks.slnx', '-c', 'Release', '--no-restore']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/649c45a61715.log
+7f2d6153cf2e: cwd=C:\Projects\IndiaWorks; argv=['dotnet', 'test', 'IndiaWorks.slnx', '-c', 'Release', '--no-build']; exit=0; ACs=['AC1', 'AC2', 'AC4']; output=verification/7f2d6153cf2e.log
+AC1: Api, Domain, Application, Infrastructure, Contracts, and Workers projects exist with one-way references validated from the csproj files.
+AC2: The backend foundation builds and the architecture test confirms dependency direction and layer marker presence.
+AC3: No duplicate domain concept, table, or API operation was introduced.
+AC4: dotnet build IndiaWorks.slnx -c Release --no-restore and dotnet test IndiaWorks.slnx -c Release --no-build passed through story_runtime proof.
+AC5: No logging/search/contact/identity surface was added by this project-reference foundation work.",,"{""StoryKey"":""FND-003"",""SprintOrder"":""3"",""StoryPoints"":""1"",""BusinessContext"":""Supports EP-00 in the v7 unified SaaS flow. Commercial/privacy rules from the architecture remain authoritative."",""OutOfScope"":""Do not implement unrelated adjacent features, redesign the v7 domain contract, or add a new framework without Tech Lead approval."",""TechnicalApproach"":""Implement as a infra slice using the shared repository patterns. Create Api, Domain, Application, Infrastructure, Contracts and Workers projects with one-way dependency rules."",""TargetFiles"":""src/ | tests/"",""GraphQLOperations"":"""",""RestEndpoints"":"""",""DatabaseImpact"":""No schema change unless explicitly stated; do not create ad-hoc tables."",""TestPlan"":""Happy path + validation/authorization edge; integration/E2E according to story layer."",""ValidationCommands"":""dotnet build IndiaWorks.slnx -c Release | dotnet test IndiaWorks.slnx -c Release --no-build"",""ImportedFromVersionedBacklog"":""true"",""PackageQuality"":""PASS"",""PseudocodeSteps"":""8"",""ConcreteTestCases"":""4"",""AcceptanceCriteriaCount"":""5""}
+Run summary: Created and proved the backend solution layer skeleton: Api, Domain, Application, Infrastructure, Contracts, Workers, one-way project references, DI extension points, shared readiness contract, and assembly markers for agent navigation.
+Obsidian status: OUTBOX
+Graphify status: OUTBOX
+Host-generated inventory, proof records and outbox handoff."
+IW8-004,Sprint 0,EP-00,Bootstrap ASP.NET Core API composition root,P0,Backend Agent,Platform,agent-packages/IW8-004.md,DONE,IW8-003,"As an IndiaWorks user/team, I need bootstrap asp.net core api composition root so that this part of the product is reliable and independently deliverable.","Configure configuration binding, problem details, JSON defaults, health endpoint and structured logging.","Configure configuration binding, problem details, JSON defaults, health endpoint and structured logging. | Implementation follows the v7/v8 shared architecture and does not create a parallel source of truth. | Authorization and validation errors use stable machine-readable codes where the story exposes an API. | Automated tests cover the story's primary happy path and at least one failure/edge case. | No sensitive OTP/token/contact/identity value is written to application logs.","C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\Program.cs
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\Routing\ApiEndpointNames.cs
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\appsettings.json
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\bin\Release\net10.0\IndiaWorks.Api.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\bin\Release\net10.0\IndiaWorks.Api.pdb
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\bin\Release\net10.0\appsettings.json
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\obj\Release\net10.0\IndiaWorks.Api.csproj.CoreCompileInputs.cache
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\obj\Release\net10.0\IndiaWorks.Api.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\obj\Release\net10.0\IndiaWorks.Api.pdb
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\obj\Release\net10.0\ref\IndiaWorks.Api.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\obj\Release\net10.0\refint\IndiaWorks.Api.dll
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\obj\Release\net10.0\rjsmcshtml.dswa.cache.json
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\obj\Release\net10.0\rjsmrazor.dswa.cache.json
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\obj\Release\net10.0\rpswa.dswa.cache.json
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\Api\ApiCompositionRootTests.cs
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\IndiaWorks.Domain.Tests.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\bin\Release\net10.0\IndiaWorks.Domain.Tests.pdb
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\obj\Release\net10.0\IndiaWorks.Domain.Tests.csproj.CoreCompileInputs.cache
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\obj\Release\net10.0\IndiaWorks.Domain.Tests.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\obj\Release\net10.0\IndiaWorks.Domain.Tests.pdb
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\obj\Release\net10.0\ref\IndiaWorks.Domain.Tests.dll
+C:\Projects\IndiaWorks\tests\IndiaWorks.Domain.Tests\obj\Release\net10.0\refint\IndiaWorks.Domain.Tests.dll","79ed6c18e59c: cwd=C:\Projects\IndiaWorks; argv=['dotnet', 'build', 'IndiaWorks.slnx', '-c', 'Release', '--no-restore']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/79ed6c18e59c.log
+ed873fdfe7cc: cwd=C:\Projects\IndiaWorks; argv=['dotnet', 'test', 'IndiaWorks.slnx', '-c', 'Release', '--no-build']; exit=0; ACs=['AC1', 'AC2', 'AC4']; output=verification/ed873fdfe7cc.log
+AC1: Program.cs binds IndiaWorksApiOptions, registers problem details, JSON defaults, health checks, structured console logging, and application/infrastructure layers.
+AC2: /ready returns the stable ServiceReadinessResponse contract and /health is mapped through health checks with named endpoints.
+AC3: No new parallel domain concept, table, or business API operation was introduced.
+AC4: dotnet build IndiaWorks.slnx -c Release --no-restore and dotnet test IndiaWorks.slnx -c Release --no-build passed through story_runtime proof.
+AC5: The composition root adds no sensitive logging payloads, search projections, contact data, or identity data.",,"{""StoryKey"":""FND-004"",""SprintOrder"":""4"",""StoryPoints"":""1"",""BusinessContext"":""Supports EP-00 in the v7 unified SaaS flow. Commercial/privacy rules from the architecture remain authoritative."",""OutOfScope"":""Do not implement unrelated adjacent features, redesign the v7 domain contract, or add a new framework without Tech Lead approval."",""TechnicalApproach"":""Implement as a infra slice using the shared repository patterns. Configure configuration binding, problem details, JSON defaults, health endpoint and structured logging."",""TargetFiles"":""src/ | tests/"",""GraphQLOperations"":"""",""RestEndpoints"":"""",""DatabaseImpact"":""No schema change unless explicitly stated; do not create ad-hoc tables."",""TestPlan"":""Happy path + validation/authorization edge; integration/E2E according to story layer."",""ValidationCommands"":""dotnet build IndiaWorks.slnx -c Release | dotnet test IndiaWorks.slnx -c Release --no-build"",""ImportedFromVersionedBacklog"":""true"",""PackageQuality"":""PASS"",""PseudocodeSteps"":""8"",""ConcreteTestCases"":""4"",""AcceptanceCriteriaCount"":""5""}
+Run summary: Bootstrapped the ASP.NET Core API composition root with configuration binding, problem details, JSON defaults, health/readiness endpoints, named routes, UTC single-line console logging, and backend layer registration.
+Obsidian status: OUTBOX
+Graphify status: OUTBOX
+Host-generated inventory, proof records and outbox handoff."
+IW8-005,Sprint 0,EP-00,Bootstrap Hot Chocolate GraphQL endpoint,P0,Backend Agent,Backend/GraphQL,agent-packages/IW8-005.md,DONE,IW8-004,"As an IndiaWorks user/team, I need bootstrap hot chocolate graphql endpoint so that this part of the product is reliable and independently deliverable.","Register Hot Chocolate v16, Query/Mutation roots, error filter, request options and Nitro only in development.","Register Hot Chocolate v16, Query/Mutation roots, error filter, request options and Nitro only in development. | Implementation follows the v7/v8 shared architecture and does not create a parallel source of truth. | Authorization and validation errors use stable machine-readable codes where the story exposes an API. | Automated tests cover the story's primary happy path and at least one failure/edge case. | No sensitive OTP/token/contact/identity value is written to application logs.","C:\Projects\IndiaWorks\Directory.Packages.props
+C:\Projects\IndiaWorks\cron\execution_packet.py
+C:\Projects\IndiaWorks\cron\run_hermes_story.py
+C:\Projects\IndiaWorks\docs\automation\INDIAWORKS_PREPARED_EXECUTOR_PROMPT.md
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\IndiaWorks.Api.csproj
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\Program.cs
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\GraphQL\E00\BootstrapQueries.cs
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\GraphQL\E00\BootstrapMutations.cs
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\GraphQL\E00\Types\GraphQLErrorFilter.cs
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Infrastructure\DependencyInjection.cs
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Infrastructure\IndiaWorks.Infrastructure.csproj
+C:\Projects\IndiaWorks\tests\IndiaWorks.IntegrationTests\IndiaWorks.IntegrationTests.csproj
+C:\Projects\IndiaWorks\tests\IndiaWorks.IntegrationTests\GraphQL\E00\BootstrapGraphQLTests.cs","c8a3e1e93670: cwd=C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api; argv=['dotnet', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=1; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/c8a3e1e93670.log
+b75b2d2ee24d: cwd=C:\Projects\IndiaWorks; argv=['dotnet', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/b75b2d2ee24d.log
+d3621389435c: cwd=C:\Projects\IndiaWorks; argv=['dotnet', 'test', 'IndiaWorks.slnx', '-c', 'Release', '--no-build']; exit=0; ACs=['AC2', 'AC4']; output=verification/d3621389435c.log
+60716d390815: cwd=C:\Projects\IndiaWorks; argv=['dotnet', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/60716d390815.log
+c6149e41ba1c: cwd=C:\Projects\IndiaWorks; argv=['dotnet', 'test', 'IndiaWorks.slnx', '-c', 'Release', '--no-build']; exit=0; ACs=['AC2', 'AC4']; output=verification/c6149e41ba1c.log
+AC1: Hot Chocolate v16 packages are referenced, GraphQL server is registered in Program.cs, Query/Mutation roots exist, GraphQLErrorFilter returns safe INTERNAL_ERROR codes, and Nitro is mapped only in development.
+AC2: Integration tests cover version, health, echo mutation, and invalid query behavior through WebApplicationFactory.
+AC3: No parallel domain concept/table/API operation was introduced; accidental EF DbContext wiring was removed to preserve IW8-006 ownership.
+AC4: dotnet build IndiaWorks.slnx -c Release and dotnet test IndiaWorks.slnx -c Release --no-build passed through story_runtime proof.
+AC5: GraphQLErrorFilter strips exception details and no sensitive logging/search/contact/identity surface was added.",,"{""StoryKey"":""FND-005"",""SprintOrder"":""5"",""StoryPoints"":""1"",""BusinessContext"":""Supports EP-00 in the v7 unified SaaS flow. Commercial/privacy rules from the architecture remain authoritative."",""OutOfScope"":""Do not implement unrelated adjacent features, redesign the v7 domain contract, or add a new framework without Tech Lead approval."",""TechnicalApproach"":""Implement as a graphql slice using the shared repository patterns. Register Hot Chocolate v16, Query/Mutation roots, error filter, request options and Nitro only in development."",""TargetFiles"":""src/backend/IndiaWorks.Api/GraphQL/E00/BootstrapQueries.cs or BootstrapMutations.cs | src/backend/IndiaWorks.Api/GraphQL/E00/Types/ | tests/IndiaWorks.IntegrationTests/GraphQL/E00/BootstrapGraphQLTests.cs"",""GraphQLOperations"":""Bootstrap Hot Chocolate GraphQL endpoint"",""RestEndpoints"":"""",""DatabaseImpact"":""No schema change unless explicitly stated; do not create ad-hoc tables."",""TestPlan"":""Happy path + validation/authorization edge; integration/E2E according to story layer."",""ValidationCommands"":""dotnet build IndiaWorks.slnx -c Release | dotnet test IndiaWorks.slnx -c Release --no-build"",""ImportedFromVersionedBacklog"":""true"",""PackageQuality"":""PASS"",""PseudocodeSteps"":""8"",""ConcreteTestCases"":""4"",""AcceptanceCriteriaCount"":""5""}
+Run summary: Not yet reported.
+Obsidian status: OUTBOX
+Graphify status: OUTBOX
+Host-generated inventory, proof records and outbox handoff.
+Run summary: Not yet reported.
+Obsidian status: OUTBOX
+Graphify status: OUTBOX
+Host-generated inventory, proof records and outbox handoff.
+Run summary: Not yet reported.
+Obsidian status: OUTBOX
+Graphify status: OUTBOX
+Host-generated inventory, proof records and outbox handoff.
+Run summary: Not yet reported.
+Obsidian status: OUTBOX
+Graphify status: OUTBOX
+Host-generated inventory, proof records and outbox handoff.
+Run summary: Implemented and cleaned the Hot Chocolate v16 GraphQL bootstrap: Query/Mutation roots, safe GraphQL error filter, /graphql endpoint, development-only Nitro UI at /graphql/ui, and integration tests. Removed accidental EF DbContext wiring so IW8-006 remains the dedicated persistence story.
+Obsidian status: OUTBOX
+Graphify status: OUTBOX
+Host-generated inventory, proof records and outbox handoff."
+IW8-006,Sprint 0,EP-00,Create EF Core AppDbContext and SQL Server provider wiring,P0,Backend Agent,Backend/Database,agent-packages/IW8-006.md,DONE,IW8-003,"As an IndiaWorks user/team, I need create ef core appdbcontext and sql server provider wiring so that this part of the product is reliable and independently deliverable.","Create AppDbContext, assembly scanning for IEntityTypeConfiguration and SQL Server registration.","Create AppDbContext, assembly scanning for IEntityTypeConfiguration and SQL Server registration. | Implementation follows the v7/v8 shared architecture and does not create a parallel source of truth. | Authorization and validation errors use stable machine-readable codes where the story exposes an API. | Automated tests cover the story's primary happy path and at least one failure/edge case. | No sensitive OTP/token/contact/identity value is written to application logs. | EF model configuration is explicit and migration is generated from the model when schema changes. | Migration applies cleanly to an empty SQL Server database in integration test.","C:\Projects\IndiaWorks\Directory.Packages.props
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\IndiaWorks.Api.csproj
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\appsettings.json
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Domain\E00\ExampleEntity.cs
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Infrastructure\DependencyInjection.cs
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Infrastructure\IndiaWorks.Infrastructure.csproj
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Infrastructure\Migrations\20260926085848_InitialCreate.Designer.cs
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Infrastructure\Migrations\20260926085848_InitialCreate.cs
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Infrastructure\Migrations\AppDbContextModelSnapshot.cs
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Infrastructure\Persistence\AppDbContext.cs
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Infrastructure\Persistence\Configurations\E00\ExampleEntityConfiguration.cs","dotnet build IndiaWorks.slnx -c Release: exit 0
+dotnet test IndiaWorks.slnx -c Release --no-build: exit 0; Domain.Tests 4 passed; IntegrationTests 4 passed
+dotnet ef migrations list --project src/backend/IndiaWorks.Infrastructure --startup-project src/backend/IndiaWorks.Api: exit 0; listed 20260926085848_InitialCreate
+dotnet ef database update --project src/backend/IndiaWorks.Infrastructure --startup-project src/backend/IndiaWorks.Api: exit 0; database already up to date
+AC1: AppDbContext registers DbSet<ExampleEntity> and applies IEntityTypeConfiguration from infrastructure assembly.
+AC2: SQL Server provider wiring uses ConnectionStrings:IndiaWorksDb and fails closed when missing.
+AC3: InitialCreate migration and model snapshot define ExampleEntities schema from EF code-first model.
+AC4: No parallel API/domain operation was introduced; GraphQL surface unchanged.
+AC5: No secrets/contact/identity values were added to logs or projections.",,"{""StoryKey"":""FND-006"",""SprintOrder"":""6"",""StoryPoints"":""1"",""BusinessContext"":""Supports EP-00 in the v7 unified SaaS flow. Commercial/privacy rules from the architecture remain authoritative."",""OutOfScope"":""Do not implement unrelated adjacent features, redesign the v7 domain contract, or add a new framework without Tech Lead approval."",""TechnicalApproach"":""Implement as a be_entity slice using the shared repository patterns. Create AppDbContext, assembly scanning for IEntityTypeConfiguration and SQL Server registration."",""TargetFiles"":""src/backend/IndiaWorks.Domain/E00/\u003cEntity\u003e.cs | src/backend/IndiaWorks.Infrastructure/Persistence/Configurations/E00/\u003cEntity\u003eConfiguration.cs | src/backend/IndiaWorks.Infrastructure/Persistence/AppDbContext.cs | src/backend/IndiaWorks.Infrastructure/Persistence/Migrations/\u003ctimestamp\u003e_\u003cMigrationName\u003e.cs (generated if schema changes)"",""GraphQLOperations"":"""",""RestEndpoints"":"""",""DatabaseImpact"":""EF Core code-first migration required."",""TestPlan"":""Happy path + validation/authorization edge; integration/E2E according to story layer."",""ValidationCommands"":""dotnet build IndiaWorks.slnx -c Release | dotnet test IndiaWorks.slnx -c Release --no-build | dotnet ef migrations list --project src/backend/IndiaWorks.Infrastructure --startup-project src/backend/IndiaWorks.Api | dotnet ef database update --project src/backend/IndiaWorks.Infrastructure --startup-project src/backend/IndiaWorks.Api"",""ImportedFromVersionedBacklog"":""true"",""PackageQuality"":""PASS"",""PseudocodeSteps"":""8"",""ConcreteTestCases"":""4"",""AcceptanceCriteriaCount"":""5""}
+Run summary: Created AppDbContext, assembly scanning for IEntityTypeConfiguration and SQL Server registration. Verified build, test, migration generation, and database update.
+Obsidian status: OUTBOX
+Graphify status: OUTBOX
+Host-generated inventory, proof records and outbox handoff.
+Run summary: Created AppDbContext, ExampleEntity configuration, SQL Server registration, fail-closed connection-string guard, and InitialCreate EF migration.
+Obsidian status: OUTBOX
+Graphify status: OUTBOX
+Host-audited after executor nonzero exit; stale provider gap cleared using fresh local verification."
+IW8-007,Sprint 0,EP-00,Create EF design-time factory and migration conventions,P0,Backend Agent,Backend/Database,agent-packages/IW8-007.md,DONE,IW8-006,"As an IndiaWorks user/team, I need create ef design-time factory and migration conventions so that this part of the product is reliable and independently deliverable.","Add IDesignTimeDbContextFactory, migration naming rules and migration assembly configuration.","Add IDesignTimeDbContextFactory, migration naming rules and migration assembly configuration. | Implementation follows the v7/v8 shared architecture and does not create a parallel source of truth. | Authorization and validation errors use stable machine-readable codes where the story exposes an API. | Automated tests cover the story's primary happy path and at least one failure/edge case. | No sensitive OTP/token/contact/identity value is written to application logs. | EF model configuration is explicit and migration is generated from the model when schema changes. | Migration applies cleanly to an empty SQL Server database in integration test.","C:\Projects\IndiaWorks\Directory.Packages.props
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Infrastructure\IndiaWorks.Infrastructure.csproj
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Infrastructure\Persistence\AppDbContextDesignTimeFactory.cs
+C:\Projects\IndiaWorks\tests\IndiaWorks.IntegrationTests\IndiaWorks.IntegrationTests.csproj
+C:\Projects\IndiaWorks\tests\IndiaWorks.IntegrationTests\Database\E00\AppDbContextDesignTimeTests.cs","dotnet build IndiaWorks.slnx -c Release: exit 0
+dotnet test IndiaWorks.slnx -c Release --no-build: exit 0; Domain.Tests 4 passed; IntegrationTests 5 passed
+dotnet ef migrations list --project src/backend/IndiaWorks.Infrastructure --startup-project src/backend/IndiaWorks.Api: exit 0; listed 20260926085848_InitialCreate
+dotnet ef database update --project src/backend/IndiaWorks.Infrastructure --startup-project src/backend/IndiaWorks.Api: exit 0; database already up to date
+AC1: AppDbContextDesignTimeFactory implements IDesignTimeDbContextFactory<AppDbContext>; migration assembly is configured in UseSqlServer.
+AC2: Design-time factory reads ConnectionStrings:IndiaWorksDb and creates a SQL Server AppDbContext; integration test applies migrations and saves a valid row.
+AC3: Integration test uses a unique clean SQL Server database and MigrateAsync reaches the latest migration.
+AC4: Integration test attempts a duplicate primary-key insert and asserts SQL/EF rejects it.
+AC5: No parallel API/domain/table concept was added; story only adds EF design-time factory/package support/test coverage.
+AC6: Build, tests, migrations list, and database update all passed.
+AC7: No logs/errors/search projections with secret/contact/identity data were added.",,"{""StoryKey"":""FND-007"",""SprintOrder"":""7"",""StoryPoints"":""1"",""BusinessContext"":""Supports EP-00 in the v7 unified SaaS flow. Commercial/privacy rules from the architecture remain authoritative."",""OutOfScope"":""Do not implement unrelated adjacent features, redesign the v7 domain contract, or add a new framework without Tech Lead approval."",""TechnicalApproach"":""Implement as a be_entity slice using the shared repository patterns. Add IDesignTimeDbContextFactory, migration naming rules and migration assembly configuration."",""TargetFiles"":""src/backend/IndiaWorks.Domain/E00/\u003cEntity\u003e.cs | src/backend/IndiaWorks.Infrastructure/Persistence/Configurations/E00/\u003cEntity\u003eConfiguration.cs | src/backend/IndiaWorks.Infrastructure/Persistence/AppDbContext.cs | src/backend/IndiaWorks.Infrastructure/Persistence/Migrations/\u003ctimestamp\u003e_\u003cMigrationName\u003e.cs (generated if schema changes)"",""GraphQLOperations"":"""",""RestEndpoints"":"""",""DatabaseImpact"":""EF Core code-first migration required."",""TestPlan"":""Happy path + validation/authorization edge; integration/E2E according to story layer."",""ValidationCommands"":""dotnet build IndiaWorks.slnx -c Release | dotnet test IndiaWorks.slnx -c Release --no-build | dotnet ef migrations list --project src/backend/IndiaWorks.Infrastructure --startup-project src/backend/IndiaWorks.Api | dotnet ef database update --project src/backend/IndiaWorks.Infrastructure --startup-project src/backend/IndiaWorks.Api"",""ImportedFromVersionedBacklog"":""true"",""PackageQuality"":""PASS"",""PseudocodeSteps"":""7"",""ConcreteTestCases"":""4"",""AcceptanceCriteriaCount"":""7""}
+Run summary: Implemented IDesignTimeDbContextFactory for EF Core design-time support, added migration assembly configuration, and verified migrations work correctly.
+Obsidian status: OUTBOX
+Graphify status: OUTBOX
+Host-generated inventory, proof records and outbox handoff.
+Run summary: Added EF Core design-time factory, migration assembly configuration, required configuration packages, and database integration coverage for migration/constraint behavior.
+Obsidian status: OUTBOX
+Graphify status: OUTBOX
+Host-audited after cron result lacked AC2/AC3 proof mapping; completed with fresh local verification."
+IW8-008,Sprint 0,EP-00,Create Angular standalone workspace,P0,Frontend Agent,Frontend/Angular,agent-packages/IW8-008.md,DONE,IW8-001,"As an IndiaWorks user/team, I need Create Angular standalone workspace so that this part of the product is reliable and independently deliverable.","Create standalone Angular app with routing, SCSS, strict TypeScript and production/development environments.","Create standalone Angular app with routing, SCSS, strict TypeScript and production/development environments. | Implementation follows the v7/v8 shared architecture and does not create a parallel source of truth. | Authorization and validation errors use stable machine-readable codes where the story exposes an API. | Automated tests cover the story's primary happy path and at least one failure/edge case. | No sensitive OTP/token/contact/identity value is written to application logs. | Loading, empty, error and success states are handled. | Candidate UI is mobile-first; employer/admin UI remains responsive.","C:\Projects\IndiaWorks\src\web\angular.json
+C:\Projects\IndiaWorks\src\web\package.json
+C:\Projects\IndiaWorks\src\web\package-lock.json
+C:\Projects\IndiaWorks\src\web\tsconfig.json
+C:\Projects\IndiaWorks\src\web\tsconfig.app.json
+C:\Projects\IndiaWorks\src\web\tsconfig.spec.json
+C:\Projects\IndiaWorks\src\web\src\app\app.ts
+C:\Projects\IndiaWorks\src\web\src\app\app.routes.ts
+C:\Projects\IndiaWorks\src\web\src\app\app.spec.ts
+C:\Projects\IndiaWorks\src\web\src\app\features\candidate\create-angular-standalone-workspace\create-angular-standalone-workspace.component.html
+C:\Projects\IndiaWorks\src\web\src\app\features\candidate\create-angular-standalone-workspace\create-angular-standalone-workspace.component.scss
+C:\Projects\IndiaWorks\src\web\src\app\features\candidate\create-angular-standalone-workspace\create-angular-standalone-workspace.component.ts
+C:\Projects\IndiaWorks\src\web\src\app\features\candidate\create-angular-standalone-workspace\create-angular-standalone-workspace.component.spec.ts
+C:\Projects\IndiaWorks\src\web\src\main.ts
+C:\Projects\IndiaWorks\src\web\src\main.server.ts
+C:\Projects\IndiaWorks\src\web\src\server.ts
+C:\Projects\IndiaWorks\src\web\src\styles.scss
+C:\Projects\IndiaWorks\cron\execution_packet.py","2026-09-26 19:14 IST: cd C:\Projects\IndiaWorks\src\web; npm run lint -> exit 0; Prettier reported all matched files use code style.
+2026-09-26 19:14 IST: cd C:\Projects\IndiaWorks\src\web; npm test -- --watch=false -> exit 0; 2 test files passed, 5 tests passed.
+2026-09-26 19:14 IST: cd C:\Projects\IndiaWorks\src\web; npm run build -> exit 0; Angular application bundle generated, 2 static routes prerendered.
+2026-09-26 19:14 IST: python -m py_compile cron\execution_packet.py cron\run_hermes_story.py -> exit 0.
+2026-09-26 19:14 IST: Get-ChildItem -Recurse -File src\web\src\web,src\web\src\web.backup -> Count 0; stale nested Angular duplicate files removed.
+Manual scope review: IW8-008 Angular standalone workspace has routing, SCSS, strict TypeScript test setup, development/build scripts, and no secrets/PII/provider payloads in the story-owned files.",Non-failing Angular build warning remains in src/app/features/job-portal/job-portal.component.scss: stylesheet exceeds the 4 KB component style budget by 2.90 KB. This is outside IW8-008 workspace-foundation scope and should be handled by the job portal UI story.,"{""StoryKey"":""FND-008"",""SprintOrder"":""8"",""StoryPoints"":""1"",""BusinessContext"":""Supports EP-00 in the v7 unified SaaS flow. Commercial/privacy rules from the architecture remain authoritative."",""OutOfScope"":""Do not implement unrelated adjacent features, redesign the v7 domain contract, or add a new framework without Tech Lead approval."",""TechnicalApproach"":""Implement as a fe slice using the shared repository patterns. Create standalone Angular app with routing, SCSS, strict TypeScript and production/development environments."",""TargetFiles"":""src/web/src/app/features/candidate/create-angular-standalone-workspace/ | src/web/src/app/features/candidate/**/*.graphql (if API data is needed) | src/web/src/app/features/candidate/**/*.spec.ts"",""GraphQLOperations"":"""",""RestEndpoints"":"""",""DatabaseImpact"":""No schema change unless explicitly stated; do not create ad-hoc tables."",""TestPlan"":""Happy path + validation/authorization edge; integration/E2E according to story layer."",""ValidationCommands"":""cd src/web \u0026\u0026 npm run lint | cd src/web \u0026\u0026 npm test -- --watch=false | cd src/web \u0026\u0026 npm run build"",""ImportedFromVersionedBacklog"":""true"",""PackageQuality"":""PASS"",""PseudocodeSteps"":""7"",""ConcreteTestCases"":""4"",""AcceptanceCriteriaCount"":""8""}
+Run summary: Validation commands fail due to missing lint script and compilation errors in existing job-portal component.
+Blocker: Missing lint script in package.json (npm run lint fails) and JobDepartment/PortalJob types not defined in src/web/src/app/features/job-portal/job.model.ts causing compilation errors
+Obsidian status: OUTBOX
+Graphify status: OUTBOX
+Host-generated inventory, proof records and outbox handoff.
+Run summary: Not yet reported.
+Obsidian status: OUTBOX
+Graphify status: OUTBOX
+Host-generated inventory, proof records and outbox handoff.
+Run summary: Not yet reported.
+Obsidian status: OUTBOX
+Graphify status: OUTBOX
+Host-generated inventory, proof records and outbox handoff.
+Run summary: Not yet reported.
+Obsidian status: OUTBOX
+Graphify status: OUTBOX
+Host-generated inventory, proof records and outbox handoff.
+Host audit 2026-09-26T13:45:13.899754+00:00: IW8-008 marked DONE after direct verification; prior Hermes run 20260926T133222Z did not report completion and left nested src/web/src/web files, which were removed."
+IW8-009,Sprint 0,EP-00,Create Angular application shell and lazy route groups,P0,Frontend Agent,Frontend/Angular,agent-packages/IW8-009.md,DONE,IW8-008,"As an IndiaWorks user/team, I need create angular application shell and lazy route groups so that this part of the product is reliable and independently deliverable.","Add candidate, employer, admin and public route groups plus shared error/not-found pages.","Add candidate, employer, admin and public route groups plus shared error/not-found pages. | Implementation follows the v7/v8 shared architecture and does not create a parallel source of truth. | Authorization and validation errors use stable machine-readable codes where the story exposes an API. | Automated tests cover the story's primary happy path and at least one failure/edge case. | No sensitive OTP/token/contact/identity value is written to application logs. | Loading, empty, error and success states are handled. | Candidate UI is mobile-first; employer/admin UI remains responsive.","C:\Projects\IndiaWorks\src\web\src\app\app.routes.server.ts
+C:\Projects\IndiaWorks\src\web\src\app\app.routes.ts
+C:\Projects\IndiaWorks\src\web\src\app\app.spec.ts
+C:\Projects\IndiaWorks\src\web\src\app\features\admin\admin.routes.ts
+C:\Projects\IndiaWorks\src\web\src\app\features\admin\pages\admin-dashboard\admin-dashboard.component.html
+C:\Projects\IndiaWorks\src\web\src\app\features\admin\pages\admin-dashboard\admin-dashboard.component.scss
+C:\Projects\IndiaWorks\src\web\src\app\features\admin\pages\admin-dashboard\admin-dashboard.component.ts
+C:\Projects\IndiaWorks\src\web\src\app\features\candidate\candidate.routes.ts
+C:\Projects\IndiaWorks\src\web\src\app\features\candidate\pages\job-detail\job-detail.component.html
+C:\Projects\IndiaWorks\src\web\src\app\features\candidate\pages\job-detail\job-detail.component.scss
+C:\Projects\IndiaWorks\src\web\src\app\features\candidate\pages\job-detail\job-detail.component.spec.ts
+C:\Projects\IndiaWorks\src\web\src\app\features\candidate\pages\job-detail\job-detail.component.ts
+C:\Projects\IndiaWorks\src\web\src\app\features\employer\employer.routes.ts
+C:\Projects\IndiaWorks\src\web\src\app\features\employer\pages\employer-dashboard\employer-dashboard.component.html
+C:\Projects\IndiaWorks\src\web\src\app\features\employer\pages\employer-dashboard\employer-dashboard.component.scss
+C:\Projects\IndiaWorks\src\web\src\app\features\employer\pages\employer-dashboard\employer-dashboard.component.ts
+C:\Projects\IndiaWorks\src\web\src\app\features\public\pages\public-job\public-job.component.html
+C:\Projects\IndiaWorks\src\web\src\app\features\public\pages\public-job\public-job.component.scss
+C:\Projects\IndiaWorks\src\web\src\app\features\public\pages\public-job\public-job.component.ts
+C:\Projects\IndiaWorks\src\web\src\app\features\public\public.routes.ts
+C:\Projects\IndiaWorks\src\web\src\app\shared\pages\error\error.component.html
+C:\Projects\IndiaWorks\src\web\src\app\shared\pages\error\error.component.scss
+C:\Projects\IndiaWorks\src\web\src\app\shared\pages\error\error.component.ts
+C:\Projects\IndiaWorks\src\web\src\app\shared\pages\not-found\not-found.component.html
+C:\Projects\IndiaWorks\src\web\src\app\shared\pages\not-found\not-found.component.scss
+C:\Projects\IndiaWorks\src\web\src\app\shared\pages\not-found\not-found.component.ts","af87db86ca89: cwd=C:\Projects\IndiaWorks\src\web; argv=['C:\\nvm4w\\nodejs\\npm.CMD', 'run', 'lint']; exit=1; ACs=['AC1', 'AC8']; output=verification/af87db86ca89.log
+4d16d2ce4a88: cwd=C:\Projects\IndiaWorks\src\web; argv=['C:\\nvm4w\\nodejs\\npm.CMD', 'run', 'lint']; exit=0; ACs=['AC1', 'AC8']; output=verification/4d16d2ce4a88.log
+592b16a59dc3: cwd=C:\Projects\IndiaWorks\src\web; argv=['C:\\nvm4w\\nodejs\\npm.CMD', 'test', '--', '--watch=false']; exit=0; ACs=['AC1', 'AC8']; output=verification/592b16a59dc3.log
+bee685082c29: cwd=C:\Projects\IndiaWorks\src\web; argv=['C:\\nvm4w\\nodejs\\npm.CMD', 'run', 'build']; exit=1; ACs=['AC1', 'AC8']; output=verification/bee685082c29.log
+46b81710e6d4: cwd=C:\Projects\IndiaWorks\src\web; argv=['C:\\nvm4w\\nodejs\\npm.CMD', 'run', 'build']; exit=1; ACs=['AC1', 'AC8']; output=verification/46b81710e6d4.log
+6041c983c9d7: cwd=C:\Projects\IndiaWorks\src\web; argv=['C:\\nvm4w\\nodejs\\npm.CMD', 'run', 'build']; exit=0; ACs=['AC1', 'AC8']; output=verification/6041c983c9d7.log
+ee53c8148146: cwd=C:\Projects\IndiaWorks\src\web; argv=['C:\\nvm4w\\nodejs\\npm.CMD', 'run', 'lint']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5', 'AC6', 'AC7', 'AC8', 'AC9']; output=verification/ee53c8148146.log
+d4603c84d4ae: cwd=C:\Projects\IndiaWorks\src\web; argv=['C:\\nvm4w\\nodejs\\npm.CMD', 'test', '--', '--watch=false']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5', 'AC6', 'AC7', 'AC8', 'AC9']; output=verification/d4603c84d4ae.log
+c44bacf93ca3: cwd=C:\Projects\IndiaWorks\src\web; argv=['C:\\nvm4w\\nodejs\\npm.CMD', 'run', 'build']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5', 'AC6', 'AC7', 'AC8', 'AC9']; output=verification/c44bacf93ca3.log
+c5dd393efdac: cwd=C:\Projects\IndiaWorks\src\web; argv=['C:\\nvm4w\\nodejs\\npm.CMD', 'run', 'lint']; exit=1; ACs=['AC1', 'AC8']; output=verification/c5dd393efdac.log
+5ed684275a58: cwd=C:\Projects\IndiaWorks\src\web; argv=['C:\\nvm4w\\nodejs\\npm.CMD', 'run', 'lint']; exit=0; ACs=['AC1', 'AC8']; output=verification/5ed684275a58.log
+0c5209d4a939: cwd=C:\Projects\IndiaWorks\src\web; argv=['C:\\nvm4w\\nodejs\\npm.CMD', 'test', '--', '--watch=false']; exit=1; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5', 'AC6', 'AC7', 'AC8', 'AC9']; output=verification/0c5209d4a939.log
+ea88c00fb261: cwd=C:\Projects\IndiaWorks\src\web; argv=['C:\\nvm4w\\nodejs\\npm.CMD', 'run', 'lint']; exit=1; ACs=['AC1', 'AC8']; output=verification/ea88c00fb261.log
+d7087f4d8ce0: cwd=C:\Projects\IndiaWorks\src\web; argv=['C:\\nvm4w\\nodejs\\npm.CMD', 'run', 'lint']; exit=1; ACs=['AC1', 'AC8']; output=verification/d7087f4d8ce0.log
+5c75959c04b4: cwd=C:\Projects\IndiaWorks\src\web; argv=['C:\\nvm4w\\nodejs\\npm.CMD', 'run', 'lint']; exit=0; ACs=['AC1', 'AC8']; output=verification/5c75959c04b4.log
+4da189268337: cwd=C:\Projects\IndiaWorks\src\web; argv=['C:\\nvm4w\\nodejs\\npm.CMD', 'run', 'lint']; exit=0; ACs=['AC1', 'AC8']; output=verification/4da189268337.log
+365c2ecea371: cwd=C:\Projects\IndiaWorks\src\web; argv=['C:\\nvm4w\\nodejs\\npm.CMD', 'test', '--', '--watch=false']; exit=1; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5', 'AC6', 'AC7', 'AC8', 'AC9']; output=verification/365c2ecea371.log
+eb2514de93d1: cwd=C:\Projects\IndiaWorks\src\web; argv=['C:\\nvm4w\\nodejs\\npm.CMD', 'run', 'lint']; exit=0; ACs=['AC1', 'AC8']; output=verification/eb2514de93d1.log
+fa9ce0590df0: cwd=C:\Projects\IndiaWorks\src\web; argv=['C:\\nvm4w\\nodejs\\npm.CMD', 'test', '--', '--watch=false']; exit=1; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5', 'AC6', 'AC7', 'AC8', 'AC9']; output=verification/fa9ce0590df0.log
+d8cd4f9ee411: cwd=C:\Projects\IndiaWorks\src\web; argv=['C:\\nvm4w\\nodejs\\npm.CMD', 'run', 'lint']; exit=0; ACs=['AC1', 'AC8']; output=verification/d8cd4f9ee411.log
+7c22d7fe322e: cwd=C:\Projects\IndiaWorks\src\web; argv=['C:\\nvm4w\\nodejs\\npm.CMD', 'test', '--', '--watch=false']; exit=1; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5', 'AC6', 'AC7', 'AC8', 'AC9']; output=verification/7c22d7fe322e.log
+5dc0408802c6: cwd=C:\Projects\IndiaWorks\src\web; argv=['C:\\nvm4w\\nodejs\\npm.CMD', 'run', 'lint']; exit=0; ACs=['AC1', 'AC8']; output=verification/5dc0408802c6.log
+b297acd2ab26: cwd=C:\Projects\IndiaWorks\src\web; argv=['C:\\nvm4w\\nodejs\\npm.CMD', 'test', '--', '--watch=false']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5', 'AC6', 'AC7', 'AC8', 'AC9']; output=verification/b297acd2ab26.log
+f105e0fed9f6: cwd=C:\Projects\IndiaWorks\src\web; argv=['C:\\nvm4w\\nodejs\\npm.CMD', 'run', 'build']; exit=0; ACs=['AC1', 'AC8']; output=verification/f105e0fed9f6.log
+AC1: route groups and error/not-found pages: candidate.routes.ts, employer.routes.ts, admin.routes.ts, public.routes.ts, NotFoundComponent, ErrorComponent all create/build without error; app.routes.ts registers 4 lazy groups + root not-found fixture. Proof: npm run build exit 0, verification/f105e0fed9f6.log.
+AC2: expected result/state: existing JobPortalComponent reused as candidate/jobs index with its own spec; new JobDetailComponent handles loading/error/success states; EmployerDashboardComponent and AdminDashboardComponent render with loading->success transitions. Test coverage: job-detail.component.spec.ts covers happy path + error + success + loading-prevention.
+AC3: soft mismatch / warning behavior: this story is frontend routing structure only; no backend application gating exists. Not applicable at this layer; AC3 from the candidate application domain story is not owned by this frontend shell story.
+AC4: hard requirement block: not owned by this story; frontend routing does not implement candidate application gating. Marked N/A for this layer.
+AC5: duplicate apply prevention: not owned by this story; frontend routing does not implement application submission. Marked N/A for this layer.
+AC6: job closes before submit: not owned by this story; frontend routing does not implement application submission. Marked N/A for this layer.
+AC7: no parallel domain concept: no new backend/domain/API operation introduced; only frontend route groups, pages, and shared error/not-found components added. Proof: no changes to backend, GraphQL, REST, or EF projects.
+AC8: tests pass and validation commands succeed: npm run lint exit 0 (verification/5dc0408802c6.log), npm test -- --watch=false exit 0 with 3 test files, 11 tests passed (verification/b297acd2ab26.log), npm run build exit 0 (verification/f105e0fed9f6.log).
+AC9: no sensitive data leakage: no logging statements added; no OTP/token/contact/identity values present in new components, routes, or styles; existing app logging unchanged. Proof: manual review of all created and modified files.",,"{""StoryKey"":""FND-009"",""SprintOrder"":""9"",""StoryPoints"":""1"",""BusinessContext"":""Supports EP-00 in the v7 unified SaaS flow. Commercial/privacy rules from the architecture remain authoritative."",""OutOfScope"":""Do not implement unrelated adjacent features, redesign the v7 domain contract, or add a new framework without Tech Lead approval."",""TechnicalApproach"":""Implement as a fe slice using the shared repository patterns. Add candidate, employer, admin and public route groups plus shared error/not-found pages."",""TargetFiles"":""src/web/src/app/features/candidate/create-angular-application-shell-and-lazy-route-groups/ | src/web/src/app/features/candidate/**/*.graphql (if API data is needed) | src/web/src/app/features/candidate/**/*.spec.ts"",""GraphQLOperations"":"""",""RestEndpoints"":"""",""DatabaseImpact"":""No schema change unless explicitly stated; do not create ad-hoc tables."",""TestPlan"":""Happy path + validation/authorization edge; integration/E2E according to story layer."",""ValidationCommands"":""cd src/web \u0026\u0026 npm run lint | cd src/web \u0026\u0026 npm test -- --watch=false | cd src/web \u0026\u0026 npm run build"",""ImportedFromVersionedBacklog"":""true"",""PackageQuality"":""PASS"",""PseudocodeSteps"":""7"",""ConcreteTestCases"":""8"",""AcceptanceCriteriaCount"":""9""}
+Run summary: IW8-009: Angular application shell and lazy route groups delivered. Created candidate/employer/admin/public lazy route groups plus shared error/not-found page components. Reused existing job-portal component as candidate jobs index. All three validation commands pass: lint, test (3 files, 11 tests), and build. SSR parameterized routes configured via server routes file.
+Obsidian status: OUTBOX
+Graphify status: OUTBOX
+Host-generated inventory, proof records and outbox handoff."
+IW8-010,Sprint 0,EP-00,Configure Apollo Angular and typed GraphQL code generation,P0,Frontend Agent,Frontend/Angular,agent-packages/IW8-010.md,DONE,"IW8-005, IW8-008","As an IndiaWorks user/team, I need configure apollo angular and typed graphql code generation so that this part of the product is reliable and independently deliverable.","Wire Apollo Angular, auth-capable HTTP link and GraphQL Codegen generated typed operations directory.","Wire Apollo Angular, auth-capable HTTP link and GraphQL Codegen generated typed operations directory. | Implementation follows the v7/v8 shared architecture and does not create a parallel source of truth. | Authorization and validation errors use stable machine-readable codes where the story exposes an API. | Automated tests cover the story's primary happy path and at least one failure/edge case. | No sensitive OTP/token/contact/identity value is written to application logs. | Loading, empty, error and success states are handled. | Candidate UI is mobile-first; employer/admin UI remains responsive.","C:\Projects\IndiaWorks\src\web\.prettierrc
+C:\Projects\IndiaWorks\src\web\codegen.ts
+C:\Projects\IndiaWorks\src\web\package-lock.json
+C:\Projects\IndiaWorks\src\web\package.json
+C:\Projects\IndiaWorks\src\web\schema.graphql
+C:\Projects\IndiaWorks\src\web\src\app\app.config.ts
+C:\Projects\IndiaWorks\src\web\src\app\core\graphql\apollo.provider.ts
+C:\Projects\IndiaWorks\src\web\src\app\core\graphql\auth-link.spec.ts
+C:\Projects\IndiaWorks\src\web\src\app\core\graphql\auth-link.ts
+C:\Projects\IndiaWorks\src\web\src\app\core\graphql\generated\gql.ts
+C:\Projects\IndiaWorks\src\web\src\app\core\graphql\generated\graphql.ts
+C:\Projects\IndiaWorks\src\web\src\app\core\graphql\generated\index.ts
+C:\Projects\IndiaWorks\src\web\src\app\core\graphql\token.service.ts
+C:\Projects\IndiaWorks\src\web\src\app\features\candidate\configure-apollo-angular-and-typed-graphql-code-generation\configure-apollo-angular-and-typed-graphql-code-generation.component.html
+C:\Projects\IndiaWorks\src\web\src\app\features\candidate\configure-apollo-angular-and-typed-graphql-code-generation\configure-apollo-angular-and-typed-graphql-code-generation.component.scss
+C:\Projects\IndiaWorks\src\web\src\app\features\candidate\configure-apollo-angular-and-typed-graphql-code-generation\configure-apollo-angular-and-typed-graphql-code-generation.component.spec.ts
+C:\Projects\IndiaWorks\src\web\src\app\features\candidate\configure-apollo-angular-and-typed-graphql-code-generation\configure-apollo-angular-and-typed-graphql-code-generation.component.ts
+C:\Projects\IndiaWorks\src\web\src\app\features\candidate\configure-apollo-angular-and-typed-graphql-code-generation\operations.graphql
+C:\Projects\IndiaWorks\src\web\src\test.ts
+C:\Projects\IndiaWorks\src\web\vitest.config.ts","55ad569453bd: cwd=C:\Projects\IndiaWorks\src\web; argv=['C:\\nvm4w\\nodejs\\npm.CMD', 'run', 'codegen']; exit=0; ACs=['AC1', 'AC7']; output=verification/55ad569453bd.log
+7aa670ead84c: cwd=C:\Projects\IndiaWorks\src\web; argv=['C:\\nvm4w\\nodejs\\npm.CMD', 'run', 'lint']; exit=0; ACs=['AC1', 'AC7', 'AC8']; output=verification/7aa670ead84c.log
+acc4486a5ba8: cwd=C:\Projects\IndiaWorks\src\web; argv=['C:\\nvm4w\\nodejs\\npm.CMD', 'test', '--', '--watch=false']; exit=0; ACs=['AC2', 'AC3', 'AC4', 'AC5', 'AC7', 'AC8']; output=verification/acc4486a5ba8.log
+1abb3691724a: cwd=C:\Projects\IndiaWorks\src\web; argv=['C:\\nvm4w\\nodejs\\npm.CMD', 'run', 'build']; exit=0; ACs=['AC1', 'AC5', 'AC6', 'AC7', 'AC8']; output=verification/1abb3691724a.log
+AC1: Apollo Angular provider, auth link, codegen config, operation file, and generated typed GraphQL directory are present and validated by lint/build/codegen proofs.
+AC2: Component tests validate the typed GetVersion query success path and rendered version state.
+AC3: Component tests validate the loading state UI while duplicate refresh is disabled by the component loading guard.
+AC4: Component tests validate representative GraphQL FORBIDDEN error rendering without console/test exceptions.
+AC5: Responsive-control test verifies the required refresh button renders without clipped controls, and production build succeeds.
+AC6: No new domain concept, database table, REST endpoint, or business API was introduced; this story only wires frontend GraphQL client infrastructure.
+AC7: Validation proofs pass for lint, unit tests, build, and GraphQL codegen.
+AC8: Auth-link tests verify bearer token attachment behavior without logging token values; implementation does not add application logging.",,"{""StoryKey"":""FND-010"",""SprintOrder"":""10"",""StoryPoints"":""2"",""BusinessContext"":""Supports EP-00 in the v7 unified SaaS flow. Commercial/privacy rules from the architecture remain authoritative."",""OutOfScope"":""Do not implement unrelated adjacent features, redesign the v7 domain contract, or add a new framework without Tech Lead approval."",""TechnicalApproach"":""Implement as a fe slice using the shared repository patterns. Wire Apollo Angular, auth-capable HTTP link and GraphQL Codegen generated typed operations directory."",""TargetFiles"":""src/web/src/app/features/candidate/configure-apollo-angular-and-typed-graphql-code-generation/ | src/web/src/app/features/candidate/**/*.graphql (if API data is needed) | src/web/src/app/features/candidate/**/*.spec.ts"",""GraphQLOperations"":"""",""RestEndpoints"":"""",""DatabaseImpact"":""No schema change unless explicitly stated; do not create ad-hoc tables."",""TestPlan"":""Happy path + validation/authorization edge; integration/E2E according to story layer."",""ValidationCommands"":""cd src/web \u0026\u0026 npm run lint | cd src/web \u0026\u0026 npm test -- --watch=false | cd src/web \u0026\u0026 npm run build"",""ImportedFromVersionedBacklog"":""true"",""PackageQuality"":""PASS"",""PseudocodeSteps"":""7"",""ConcreteTestCases"":""4"",""AcceptanceCriteriaCount"":""8""}
+Run summary: Not yet reported.
+Obsidian status: OUTBOX
+Graphify status: OUTBOX
+Host-generated inventory, proof records and outbox handoff.
+Run summary: Not yet reported.
+Obsidian status: OUTBOX
+Graphify status: OUTBOX
+Host-generated inventory, proof records and outbox handoff.
+Run summary: Not yet reported.
+Obsidian status: OUTBOX
+Graphify status: OUTBOX
+Host-generated inventory, proof records and outbox handoff.
+Run summary: IW8-010 completed: Apollo Angular is wired through the app provider, an auth-capable GraphQL link and token service are present, typed GraphQL codegen outputs are generated from the GetVersion operation, and the candidate smoke component covers loading, success, error, and responsive control states.
+Obsidian status: OUTBOX
+Graphify status: OUTBOX
+Host-generated inventory, proof records and outbox handoff."
+IW8-011,Sprint 0,EP-00,Add local SQL Server container and developer configuration,P0,DevOps Agent,DevOps,agent-packages/IW8-011.md,DONE,IW8-006,"As an IndiaWorks user/team, I need add local sql server container and developer configuration so that this part of the product is reliable and independently deliverable.","Provide docker compose SQL Server, safe local connection string template and database startup instructions.","Provide docker compose SQL Server, safe local connection string template and database startup instructions. | Implementation follows the v7/v8 shared architecture and does not create a parallel source of truth. | Authorization and validation errors use stable machine-readable codes where the story exposes an API. | Automated tests cover the story's primary happy path and at least one failure/edge case. | No sensitive OTP/token/contact/identity value is written to application logs.","C:\Projects\IndiaWorks\cron\cron_continue_watchdog.py
+C:\Projects\IndiaWorks\cron\indiaworks_watchdog_controller.py
+C:\Projects\IndiaWorks\docker-compose.yml
+C:\Projects\IndiaWorks\pipelines\github\workflows\ci.yml
+C:\Projects\IndiaWorks\scripts\verify
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Api\appsettings.json","9443214c782c: cwd=C:\Projects\IndiaWorks; argv=['C:\\Users\\DELL\\AppData\\Local\\hermes\\tools\\git-2.53.0+3-win32-x64\\usr\\bin\\bash.EXE', 'scripts/verify']; exit=1; ACs=['AC1', 'AC2', 'AC3', 'AC5', 'AC6']; output=verification/9443214c782c.log
+f4c8ac405551: cwd=C:\Projects\IndiaWorks; argv=['C:\\Users\\DELL\\AppData\\Local\\hermes\\tools\\git-2.53.0+3-win32-x64\\usr\\bin\\bash.EXE', 'scripts/verify']; exit=1; ACs=['AC1', 'AC2', 'AC3', 'AC5', 'AC6']; output=verification/f4c8ac405551.log
+1c971f3a5a25: cwd=C:\Projects\IndiaWorks; argv=['C:\\Users\\DELL\\AppData\\Local\\hermes\\tools\\git-2.53.0+3-win32-x64\\usr\\bin\\bash.EXE', 'scripts/verify']; exit=1; ACs=['AC1', 'AC2', 'AC3', 'AC5', 'AC6']; output=verification/1c971f3a5a25.log
+aeaa32817cb5: cwd=C:\Projects\IndiaWorks; argv=['C:\\Users\\DELL\\AppData\\Local\\hermes\\tools\\git-2.53.0+3-win32-x64\\usr\\bin\\bash.EXE', 'scripts/verify']; exit=1; ACs=['AC1', 'AC2', 'AC3', 'AC5', 'AC6']; output=verification/aeaa32817cb5.log
+d4b27d4ccb1e: cwd=C:\Projects\IndiaWorks; argv=['C:\\Users\\DELL\\AppData\\Local\\hermes\\tools\\git-2.53.0+3-win32-x64\\usr\\bin\\bash.EXE', 'scripts/verify']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC5', 'AC6']; output=verification/d4b27d4ccb1e.log
+e4da05404f2c: cwd=C:\Projects\IndiaWorks\tests\IndiaWorks.IntegrationTests; argv=['C:\\Program Files\\dotnet\\dotnet.EXE', 'test', '-c', 'Debug', '--no-build', '--filter', 'FullyQualifiedName~AppDbContextDesignTimeTests.DesignTimeFactory_AppliesMigrations_And_DatabaseRejectsDuplicatePrimaryKey', '--verbosity', 'minimal']; exit=0; ACs=['AC4']; output=verification/e4da05404f2c.log
+07b2bc7bc2d9: cwd=C:\Projects\IndiaWorks; argv=['C:\\Program Files\\dotnet\\dotnet.EXE', 'test', 'IndiaWorks.slnx', '-c', 'Debug', '--no-build', '--filter', 'FullyQualifiedName~BootstrapGraphQLTests', '--verbosity', 'minimal']; exit=0; ACs=['AC7']; output=verification/07b2bc7bc2d9.log
+AC1: scripts/verify passed AC1 file/grep checks (docker-compose.yml defines sqlserver using mcr.microsoft.com/mssql/server; .env.example contains Server= connection string template and MSSQL_SA_PASSWORD); direct grep confirmed no secrets
+AC2: scripts/verify ran dotnet restore/build and dotnet test: Passed! Failed: 0, Passed: 6 in IndiaWorks.Domain.Tests and Passed! Failed: 0, Passed: 5 in IndiaWorks.IntegrationTests
+AC3: scripts/verify ran dotnet ef migrations list and reported 20260926085848_InitialCreate; separate runtime check also listed the same migration
+AC4: targeted runtime check ran AppDbContextDesignTimeTests.DesignTimeFactory_AppliesMigrations_And_DatabaseRejectsDuplicatePrimaryKey and it passed
+AC5: no new domain concept/table/API introduced; only docker-compose.yml, .env.example, scripts/verify, pipelines/github/workflows/ci.yml and an appsettings.json comment were added
+AC6: scripts/verify completed with exit 0 after EF tool flag fix; backend build and tests green
+AC7: no forbidden secret/contact/identity literals in new/changed files; appsettings.json still valid JSON; backend GraphQL bootstrap integration tests still pass",,"{""StoryKey"":""FND-011"",""SprintOrder"":""11"",""StoryPoints"":""1"",""BusinessContext"":""Supports EP-00 in the v7 unified SaaS flow. Commercial/privacy rules from the architecture remain authoritative."",""OutOfScope"":""Do not implement unrelated adjacent features, redesign the v7 domain contract, or add a new framework without Tech Lead approval."",""TechnicalApproach"":""Implement as a devops slice using the shared repository patterns. Provide docker compose SQL Server, safe local connection string template and database startup instructions."",""TargetFiles"":""scripts/ | docker-compose.yml | pipelines/ or CI provider configuration"",""GraphQLOperations"":"""",""RestEndpoints"":"""",""DatabaseImpact"":""No schema change unless explicitly stated; do not create ad-hoc tables."",""TestPlan"":""Happy path + validation/authorization edge; integration/E2E according to story layer."",""ValidationCommands"":""scripts/verify"",""ImportedFromVersionedBacklog"":""true"",""PackageQuality"":""PASS"",""PseudocodeSteps"":""7"",""ConcreteTestCases"":""4"",""AcceptanceCriteriaCount"":""7""}
+Run summary: IW8-011 delivered local SQL Server container and developer configuration without touching domain/schema/API surface. Added docker-compose.yml with mssql/server 2022-CU16 sqlserver service, .env.example safe local connection string template, scripts/verify validation entry point, a CI baseline under pipelines/github/workflows/ci.yml, and an inline developer template comment in appsettings.json. Verification used scripts/verify plus targeted runtime checks; docker is unavailable in this environment so container startup/Testcontainers runs are documented, not asserted live here.
+Obsidian status: OUTBOX
+Graphify status: OUTBOX
+Host-generated inventory, proof records and outbox handoff."
+IW8-012,Sprint 0,EP-00,"Create backend unit, integration and architecture test projects",P0,QA/Automation Agent,Testing,agent-packages/IW8-012.md,DONE,"IW8-003, IW8-006","As an IndiaWorks user/team, I need create backend unit, integration and architecture test projects so that this part of the product is reliable and independently deliverable.","Create xUnit projects, WebApplicationFactory base, SQL Server Testcontainers fixture and architecture dependency tests.","Create xUnit projects, WebApplicationFactory base, SQL Server Testcontainers fixture and architecture dependency tests. | Implementation follows the v7/v8 shared architecture and does not create a parallel source of truth. | Authorization and validation errors use stable machine-readable codes where the story exposes an API. | Automated tests cover the story's primary happy path and at least one failure/edge case. | No sensitive OTP/token/contact/identity value is written to application logs.","C:\Projects\IndiaWorks\Directory.Packages.props
+C:\Projects\IndiaWorks\IndiaWorks.slnx
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Infrastructure\Persistence\Configurations\E00\ExampleEntityConfiguration.cs
+C:\Projects\IndiaWorks\tests\IndiaWorks.Application.Tests\Application\DependencyInjectionTests.cs
+C:\Projects\IndiaWorks\tests\IndiaWorks.Application.Tests\IndiaWorks.Application.Tests.csproj
+C:\Projects\IndiaWorks\tests\IndiaWorks.ArchitectureTests\Architecture\ProjectDependencyTests.cs
+C:\Projects\IndiaWorks\tests\IndiaWorks.ArchitectureTests\IndiaWorks.ArchitectureTests.csproj
+C:\Projects\IndiaWorks\tests\IndiaWorks.IntegrationTests\Database\SqlServerContainerFixture.cs
+C:\Projects\IndiaWorks\tests\IndiaWorks.IntegrationTests\Database\SqlServerIntegrationTests.cs
+C:\Projects\IndiaWorks\tests\IndiaWorks.IntegrationTests\IndiaWorks.IntegrationTests.csproj
+C:\Projects\IndiaWorks\tmp_test\Program.cs","8857ce1f02f1: cwd=C:\Projects\IndiaWorks; argv=['C:\\Program Files\\dotnet\\dotnet.EXE', 'test', 'IndiaWorks.slnx', '-c', 'Debug', '--no-build']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/8857ce1f02f1.log
+AC1: All test projects build: dotnet build IndiaWorks.slnx succeeded with 0 Warnings, 0 Errors. Test projects: IndiaWorks.Domain.Tests, IndiaWorks.Application.Tests, IndiaWorks.ArchitectureTests, IndiaWorks.IntegrationTests all exist with xUnit, WebApplicationFactory, SQL Server Testcontainers fixture, and architecture dependency tests.
+AC2: ArchitectureTests.ProjectDependencyTests passed verifying backend projects follow declared one-way dependency direction. Domain and Contracts have no project references. Application references Domain+Contracts. Infrastructure references Application+Domain. Api references Application+Infrastructure+Contracts. Workers references Application+Infrastructure.
+AC3: GraphQL integration tests (BootstrapGraphQLTests) pass verifying stable error codes. TestBootstrapGraphQLTests_Handles_Invalid_Query_Gracefully checks for INTERNAL_ERROR code in GraphQL error responses. Build succeeds with 0 warnings.
+AC4: All tests pass: Domain.Tests 6/6 passed, Application.Tests 1/1 passed, ArchitectureTests 1/1 passed, IntegrationTests 5/8 passed + 3 skipped (Testcontainers skipped due to Docker unavailable). Happy path tests + edge cases covered including duplicate primary key rejection test.
+AC5: Test code review confirms no OTP/token/contact/identity values in logs. SqlServerContainerFixture uses only TestContainer!Pass99 for test database. No sensitive data leakage in test assertions, logging, or error messages. Search projections contain only domain entity data (ExampleEntity.Name).",,"{""StoryKey"":""FND-012"",""SprintOrder"":""12"",""StoryPoints"":""2"",""BusinessContext"":""Supports EP-00 in the v7 unified SaaS flow. Commercial/privacy rules from the architecture remain authoritative."",""OutOfScope"":""Do not implement unrelated adjacent features, redesign the v7 domain contract, or add a new framework without Tech Lead approval."",""TechnicalApproach"":""Implement as a test slice using the shared repository patterns. Create xUnit projects, WebApplicationFactory base, SQL Server Testcontainers fixture and architecture dependency tests."",""TargetFiles"":""tests/IndiaWorks.IntegrationTests/ | tests/IndiaWorks.Application.Tests/ | e2e/"",""GraphQLOperations"":"""",""RestEndpoints"":"""",""DatabaseImpact"":""No schema change unless explicitly stated; do not create ad-hoc tables."",""TestPlan"":""Happy path + validation/authorization edge; integration/E2E according to story layer."",""ValidationCommands"":""cd src/web \u0026\u0026 npm run lint | cd src/web \u0026\u0026 npm test -- --watch=false | cd src/web \u0026\u0026 npm run build | npx playwright test  # only for E2E stories"",""ImportedFromVersionedBacklog"":""true"",""PackageQuality"":""PASS"",""PseudocodeSteps"":""8"",""ConcreteTestCases"":""4"",""AcceptanceCriteriaCount"":""5""}
+Run summary: Not yet reported.
+Obsidian status: OUTBOX
+Graphify status: OUTBOX
+Host-generated inventory, proof records and outbox handoff.
+Run summary: Not yet reported.
+Obsidian status: OUTBOX
+Graphify status: OUTBOX
+Host-generated inventory, proof records and outbox handoff.
+Run summary: Fixed xUnit 2.9.3 compatibility issue in IntegrationTests. All 4 test projects build and pass: Domain.Tests (6 passed), Application.Tests (1 passed), ArchitectureTests (1 passed), IntegrationTests (5 passed, 3 skipped due to Docker unavailable). Architecture tests verify one-way dependency rules. GraphQL tests verify stable error codes.
+Obsidian status: OUTBOX
+Graphify status: OUTBOX
+Host-generated inventory, proof records and outbox handoff."
+IW8-013,Sprint 0,EP-00,Create Angular unit and Playwright E2E test foundations,P0,QA/Automation Agent,Testing,agent-packages/IW8-013.md,DONE,IW8-008,"As an IndiaWorks user/team, I need create angular unit and playwright e2e test foundations so that this part of the product is reliable and independently deliverable.",Add component/service test conventions and Playwright project with baseURL/environment setup.,Add component/service test conventions and Playwright project with baseURL/environment setup. | Implementation follows the v7/v8 shared architecture and does not create a parallel source of truth. | Authorization and validation errors use stable machine-readable codes where the story exposes an API. | Automated tests cover the story's primary happy path and at least one failure/edge case. | No sensitive OTP/token/contact/identity value is written to application logs.,"C:\Projects\IndiaWorks\e2e\package-lock.json
+C:\Projects\IndiaWorks\e2e\package.json
+C:\Projects\IndiaWorks\e2e\playwright-report\index.html
+C:\Projects\IndiaWorks\e2e\playwright.config.ts
+C:\Projects\IndiaWorks\e2e\test-results\.last-run.json
+C:\Projects\IndiaWorks\e2e\tests\smoke.spec.ts
+C:\Projects\IndiaWorks\src\web\src\app\core\graphql\apollo.provider.spec.ts","d89a0cfb329e: cwd=C:\Projects\IndiaWorks\src\web; argv=['C:\\Users\\DELL\\AppData\\Local\\hermes\\tools\\node-26.7.0-win32-x64\\npm.CMD', 'run', 'lint']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/d89a0cfb329e.log
+1a8c24123770: cwd=C:\Projects\IndiaWorks\e2e; argv=['C:\\Users\\DELL\\AppData\\Local\\hermes\\tools\\node-26.7.0-win32-x64\\npx.CMD', 'playwright', 'test']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/1a8c24123770.log
+a4d4559db60d: cwd=C:\Projects\IndiaWorks\src\web; argv=['C:\\Users\\DELL\\AppData\\Local\\hermes\\tools\\node-26.7.0-win32-x64\\npm.CMD', 'run', 'build']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/a4d4559db60d.log
+56268c87e318: cwd=C:\Projects\IndiaWorks\src\web; argv=['C:\\Users\\DELL\\AppData\\Local\\hermes\\tools\\node-26.7.0-win32-x64\\npm.CMD', 'test', '--', '--watch=false']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/56268c87e318.log
+55eb6882ef28: cwd=C:\Projects\IndiaWorks\e2e; argv=['C:\\Users\\DELL\\AppData\\Local\\hermes\\tools\\node-26.7.0-win32-x64\\npx.CMD', 'playwright', 'test']; exit=1; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/55eb6882ef28.log
+52710669b844: cwd=C:\Projects\IndiaWorks\e2e; argv=['C:\\Users\\DELL\\AppData\\Local\\hermes\\tools\\node-26.7.0-win32-x64\\npx.CMD', 'playwright', 'test']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/52710669b844.log
+AC1: Angular service test convention added at src/web/src/app/core/graphql/apollo.provider.spec.ts (TestBed.configureTestingModule + runInInjectionContext pattern, returns link + cache, uses /graphql URI). Playwright E2E foundation created: e2e/package.json, e2e/playwright.config.ts (baseURL from INDIAWORKS_E2E_BASE_URL/INDIAWORKS_BASE_URL/localhost:4200 fallback, 3 browser projects chromium/firefox/webkit), e2e/tests/smoke.spec.ts (base page reachable + not-found boundary). All tests pass: npm test 19/19, npx playwright test 6/6 (proof d89a0cfb329e lint, 56268c87e318 test 19/19, 52710669b844 playwright 6/6).
+AC2: No parallel source of truth introduced. Angular test patterns follow existing vitest + TestBed conventions already in app.spec.ts. Playwright config follows @playwright/test standard patterns. npm run lint (prettier --check) passes (proof d89a0cfb329e). npm run build succeeds (proof 1a8c24123770). No files created outside planned e2e/ and src/web/src/app/core/graphql/ scopes.
+AC3: This story owns test infrastructure only. No GraphQL resolvers, REST endpoints, handlers, or application services were added or changed. Existing stable error codes (VALIDATION_FAILED, FORBIDDEN, etc.) remain authoritative. No new API surface means no new error codes to define.
+AC4: Automated tests cover happy path and edge case: Angular apollo.provider.spec.ts validates provider returns link+cache and uses /graphql URI (happy path). Playwright smoke.spec.ts validates base page reachable (happy path) and unknown route renders not-found boundary (edge case). 19 Angular tests pass across 6 files (proof 56268c87e318). 6 Playwright tests pass across chromium/firefox/webkit (proof 52710669b844).
+AC5: No application logging code was touched. e2e/playwright.config.ts uses environment variables only (INDIAWORKS_E2E_BASE_URL/INDIAWORKS_BASE_URL), no hardcoded credentials. e2e/tests/smoke.spec.ts contains no secrets. rg across e2e/ (excluding node_modules) for password/secret/token/api_key/private_key/credential returned no matches in story-owned source files.",,"{""StoryKey"":""FND-013"",""SprintOrder"":""13"",""StoryPoints"":""2"",""BusinessContext"":""Supports EP-00 in the v7 unified SaaS flow. Commercial/privacy rules from the architecture remain authoritative."",""OutOfScope"":""Do not implement unrelated adjacent features, redesign the v7 domain contract, or add a new framework without Tech Lead approval."",""TechnicalApproach"":""Implement as a test slice using the shared repository patterns. Add component/service test conventions and Playwright project with baseURL/environment setup."",""TargetFiles"":""tests/IndiaWorks.IntegrationTests/ | tests/IndiaWorks.Application.Tests/ | e2e/"",""GraphQLOperations"":"""",""RestEndpoints"":"""",""DatabaseImpact"":""No schema change unless explicitly stated; do not create ad-hoc tables."",""TestPlan"":""Happy path + validation/authorization edge; integration/E2E according to story layer."",""ValidationCommands"":""cd src/web \u0026\u0026 npm run lint | cd src/web \u0026\u0026 npm test -- --watch=false | cd src/web \u0026\u0026 npm run build | npx playwright test  # only for E2E stories"",""ImportedFromVersionedBacklog"":""true"",""PackageQuality"":""PASS"",""PseudocodeSteps"":""8"",""ConcreteTestCases"":""4"",""AcceptanceCriteriaCount"":""5""}
+Run summary: IW8-013: Angular unit test convention added (apollo.provider.spec.ts with TestBed injection-context pattern), Playwright E2E project created (e2e/ with playwright.config.ts baseURL from env, smoke.spec.ts covering reachable base + not-found boundary, 6 tests across chromium/firefox/webkit all passing). npm run lint passes, npm test --watch=false passes (19 tests across 6 files), npm run build succeeds, npx playwright test passes (6/6). No new API surface introduced. No sensitive data in e2e config or test files.
+Obsidian status: OUTBOX
+Graphify status: OUTBOX
+Host-generated inventory, proof records and outbox handoff.
+Run summary: IW8-013: Angular unit test convention added (apollo.provider.spec.ts with TestBed injection-context pattern), Playwright E2E project created (e2e/ with playwright.config.ts baseURL from INDIAWORKS_E2E_BASE_URL/INDIAWORKS_BASE_URL/localhost:4200 fallback, 3 browser projects, smoke.spec.ts covering reachable base + not-found boundary). All verification passes: npm run lint (prettier --check) clean, npm test --watch=false 19/19 tests pass across 6 files, npm run build succeeds, npx playwright test 6/6 pass across chromium/firefox/webkit. No application code, GraphQL resolvers, REST endpoints, or services added — test infrastructure only.
+Obsidian status: OUTBOX
+Graphify status: OUTBOX
+Host-generated inventory, proof records and outbox handoff."
+IW8-014,Sprint 0,EP-00,"Add formatting, linting and pre-commit validation scripts",P0,DevOps Agent,DevOps,agent-packages/IW8-014.md,DONE,"IW8-003, IW8-008","As an IndiaWorks user/team, I need add formatting, linting and pre-commit validation scripts so that this part of the product is reliable and independently deliverable.","Add dotnet format, frontend lint/format/typecheck and a single scripts/verify command.","Add dotnet format, frontend lint/format/typecheck and a single scripts/verify command. | Implementation follows the v7/v8 shared architecture and does not create a parallel source of truth. | Authorization and validation errors use stable machine-readable codes where the story exposes an API. | Automated tests cover the story's primary happy path and at least one failure/edge case. | No sensitive OTP/token/contact/identity value is written to application logs.","C:\Projects\IndiaWorks\pipelines\github\workflows\ci.yml
+C:\Projects\IndiaWorks\scripts\verify
+C:\Projects\IndiaWorks\src\backend\IndiaWorks.Infrastructure\Persistence\AppDbContextDesignTimeFactory.cs
+C:\Projects\IndiaWorks\src\web\package.json
+C:\Projects\IndiaWorks\tests\IndiaWorks.IntegrationTests\Database\SqlServerIntegrationTests.cs","2b1d2d80dc9e: cwd=C:\Projects\IndiaWorks; argv=['C:\\Users\\DELL\\AppData\\Local\\hermes\\tools\\git-2.53.0+3-win32-x64\\usr\\bin\\bash.EXE', 'scripts/verify']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/2b1d2d80dc9e.log
+AC1: scripts/verify exits 0 and runs dotnet format --verify-no-changes + npm run lint + npm run format -- --check + npm run typecheck + dotnet test successfully
+AC2: Independent subcommand verification: npm run lint passes (prettier --check), npm run format -- --check passes, npm run typecheck passes (ng build), dotnet format --verify-no-changes passes
+AC3: Only devops/script/CI files changed: scripts/verify rewritten, src/web/package.json scripts added (format, typecheck), pipelines/github/workflows/ci.yml extended with frontend job. No new domain concepts, APIs, or tables introduced.
+AC4: Backend tests pass: dotnet test IndiaWorks.slnx -c Debug --no-build --verbosity minimal: 0 Failed, 13 Passed (1 Application, 6 Domain, 1 Architecture, 5 Integration with 3 skipped Testcontainer tests)
+AC5: scripts/verify contains no forbidden secret/contact/identity data patterns (grep for PASSWORD|SECRET|TOKEN|API_KEY|PRIVATE_KEY|AADHAAR|PAN excludes self-reference and fails on none). No sensitive data leakage in logs or scripts.",,"{""StoryKey"":""FND-014"",""SprintOrder"":""14"",""StoryPoints"":""1"",""BusinessContext"":""Supports EP-00 in the v7 unified SaaS flow. Commercial/privacy rules from the architecture remain authoritative."",""OutOfScope"":""Do not implement unrelated adjacent features, redesign the v7 domain contract, or add a new framework without Tech Lead approval."",""TechnicalApproach"":""Implement as a devops slice using the shared repository patterns. Add dotnet format, frontend lint/format/typecheck and a single scripts/verify command."",""TargetFiles"":""scripts/ | docker-compose.yml | pipelines/ or CI provider configuration"",""GraphQLOperations"":"""",""RestEndpoints"":"""",""DatabaseImpact"":""No schema change unless explicitly stated; do not create ad-hoc tables."",""TestPlan"":""Happy path + validation/authorization edge; integration/E2E according to story layer."",""ValidationCommands"":""scripts/verify"",""ImportedFromVersionedBacklog"":""true"",""PackageQuality"":""PASS"",""PseudocodeSteps"":""8"",""ConcreteTestCases"":""4"",""AcceptanceCriteriaCount"":""5""}
+Run summary: IW8-014 implemented: added dotnet format verify (backend), frontend lint/format/typecheck npm scripts, updated CI pipeline with frontend checks, and rewrote scripts/verify as single validation entry point. Fixed whitespace formatting issues in 2 files (AppDbContextDesignTimeFactory.cs, SqlServerIntegrationTests.cs). All checks pass: dotnet format clean, prettier lint/format/typecheck clean, backend tests green (13 passed, 3 skipped integration tests), no sensitive data in scripts.
+Obsidian status: OUTBOX
+Graphify status: OUTBOX
+Host-generated inventory, proof records and outbox handoff."
+IW8-015,Sprint 0,EP-00,Create CI pipeline baseline,P1,DevOps Agent,DevOps,agent-packages/IW8-015.md,DONE,"IW8-011, IW8-012, IW8-013, IW8-014","As an IndiaWorks user/team, I need create ci pipeline baseline so that this part of the product is reliable and independently deliverable.","CI must restore/build/test backend, install/build/test frontend, validate migrations and archive GraphQL schema.","CI must restore/build/test backend, install/build/test frontend, validate migrations and archive GraphQL schema. | Implementation follows the v7/v8 shared architecture and does not create a parallel source of truth. | Authorization and validation errors use stable machine-readable codes where the story exposes an API. | Automated tests cover the story's primary happy path and at least one failure/edge case. | No sensitive OTP/token/contact/identity value is written to application logs.",C:\Projects\IndiaWorks\pipelines\github\workflows\ci.yml,"933e1e63fa6a: cwd=C:\Projects\IndiaWorks; argv=['C:\\Users\\DELL\\AppData\\Local\\hermes\\tools\\git-2.53.0+3-win32-x64\\usr\\bin\\bash.EXE', 'scripts/verify']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/933e1e63fa6a.log
+AC1: dotnet format verify PASS + backend job in ci.yml restores/builds/tests (dotnet restore, dotnet build, dotnet format --verify-no-changes, dotnet test all present)
+AC2: npm run lint PASS + npm run format -- --check PASS + npm run typecheck PASS + frontend job in ci.yml installs/builds/tests (npm ci, npm run lint, npm run format -- --check, npm test -- --run, npm run typecheck, npm run build all present)
+AC3: test -f scripts/verify PASS + test -f src/web/package.json PASS + test -d pipelines PASS — pipelines/github/workflows/ci.yml is the CI provider configuration; no new parallel domain concept introduced
+AC4: dotnet test IndiaWorks.slnx PASS: 6 passed (Domain.Tests) + 1 passed (Application.Tests) + 1 passed (ArchitectureTests) + 5 passed (IntegrationTests, 3 skipped due to no SQL container) = 13 passed, 0 failed
+AC5: grep -rnE sensitive patterns in scripts/ returned no matches — PASS",,"{""StoryKey"":""FND-015"",""SprintOrder"":""15"",""StoryPoints"":""2"",""BusinessContext"":""Supports EP-00 in the v7 unified SaaS flow. Commercial/privacy rules from the architecture remain authoritative."",""OutOfScope"":""Do not implement unrelated adjacent features, redesign the v7 domain contract, or add a new framework without Tech Lead approval."",""TechnicalApproach"":""Implement as a devops slice using the shared repository patterns. CI must restore/build/test backend, install/build/test frontend, validate migrations and archive GraphQL schema."",""TargetFiles"":""scripts/ | docker-compose.yml | pipelines/ or CI provider configuration"",""GraphQLOperations"":"""",""RestEndpoints"":"""",""DatabaseImpact"":""No schema change unless explicitly stated; do not create ad-hoc tables."",""TestPlan"":""Happy path + validation/authorization edge; integration/E2E according to story layer."",""ValidationCommands"":""scripts/verify"",""ImportedFromVersionedBacklog"":""true"",""PackageQuality"":""PASS"",""PseudocodeSteps"":""8"",""ConcreteTestCases"":""4"",""AcceptanceCriteriaCount"":""5""}
+Run summary: CI pipeline baseline completed: extended pipelines/github/workflows/ci.yml with SQL Server service container, migration validation step (dotnet ef database update), GraphQL schema archive + artifact upload, frontend unit tests (npm test) and production build (npm run build). scripts/verify passes all 5 ACs: dotnet format clean, frontend lint/format/typecheck clean, devops files present, backend tests green (6+1+1+5=13 passed, 3 skipped), no sensitive data in scripts.
+Obsidian status: OUTBOX
+Graphify status: OUTBOX
+Host-generated inventory, proof records and outbox handoff."

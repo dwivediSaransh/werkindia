@@ -1,0 +1,55 @@
+<div class="iw-employer">
+  <header class="iw-topbar">
+    <button type="button" class="iw-brand">
+      <span class="iw-brand__mark">IW</span>
+      <span><strong>IndiaWorks</strong><small>Employer workspace</small></span>
+    </button>
+    <nav class="iw-nav" aria-label="Primary">
+      <button type="button" [class.is-active]="activeTab() === 'jobs'">Jobs</button>
+      <button type="button" [class.is-active]="activeTab() === 'applicants'">Applicants</button>
+      <button type="button" [class.is-active]="activeTab() === 'settings'">Settings</button>
+    </nav>
+  </header>
+
+  <main>
+    @if (vm() === 'loading') {
+      <section class="page-section">
+        <p class="eyebrow">Loading employer workspace</p>
+        <div class="skeleton"></div>
+      </section>
+    } @else if (vm() === 'empty') {
+      <section class="page-section">
+        <p class="eyebrow">No jobs yet</p>
+        <h1>Your job board is empty.</h1>
+        <p>Post your first direct-hiring role to start receiving candidate applications.</p>
+        <button class="primary-button">Post a job</button>
+      </section>
+    } @else {
+      <section class="page-section">
+        <p class="eyebrow">Employer dashboard</p>
+        <h1>Manage your hiring operations.</h1>
+        <p>
+          Employer job authoring, applicant review, and recruiting CRM flows connect to the backend
+          once the owning stories are implemented.
+        </p>
+        <div class="metric-grid">
+          <article>
+            <span>Active jobs</span>
+            <strong>0</strong>
+            <small>draft or published</small>
+          </article>
+          <article>
+            <span>Applicants</span>
+            <strong>0</strong>
+            <small>across all roles</small>
+          </article>
+        </div>
+      </section>
+    }
+  </main>
+
+  <footer class="iw-footer">
+    <strong>IndiaWorks Employer OS</strong
+    ><span>Direct hiring, verified employers, observable recruiting.</span>
+  </footer>
+</div>

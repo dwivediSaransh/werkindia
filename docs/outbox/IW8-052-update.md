@@ -1,0 +1,38 @@
+# IW8-052: Seed specialisations and aliases for Driver and Delivery
+
+Sprint: Sprint 2
+Outcome: DONE
+
+IW8-052: existing self-contained driver/delivery seed JSON and in-memory integration tests already delivered the story; re-verified build and full test suite and captured focused seed-test proof. IW8-051 is DONE and its slug-to-id lookup was folded into CreateVersionedTaxonomySeedImporter, so this seed resolves courier-driver/package-handler jobFamilySlug links without a new importer change. No new entity, migration, DI, GraphQL, or REST was introduced - only seed JSON and integration tests reusing Specialisation/WorkContext/RoleAlias/TaxonomyVersion/JobFamily/Role and CreateVersionedTaxonomySeedImporter.
+
+```json
+{
+  "story_id": "IW8-052",
+  "outcome": "DONE",
+  "summary": "IW8-052: existing self-contained driver/delivery seed JSON and in-memory integration tests already delivered the story; re-verified build and full test suite and captured focused seed-test proof. IW8-051 is DONE and its slug-to-id lookup was folded into CreateVersionedTaxonomySeedImporter, so this seed resolves courier-driver/package-handler jobFamilySlug links without a new importer change. No new entity, migration, DI, GraphQL, or REST was introduced - only seed JSON and integration tests reusing Specialisation/WorkContext/RoleAlias/TaxonomyVersion/JobFamily/Role and CreateVersionedTaxonomySeedImporter.",
+  "files_changed": [
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\Seed\\seed-specialisations-and-aliases-for-driver-and-delivery.json",
+    "C:\\Projects\\IndiaWorks\\tests\\IndiaWorks.IntegrationTests\\Seed\\SeedSpecialisationsAndAliasesForDriverAndDeliveryTests.cs"
+  ],
+  "verification": [
+    "4f113787e43c: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'test', 'IndiaWorks.slnx', '-c', 'Release', '--no-build']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/4f113787e43c.log",
+    "12d677ea2067: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'test', 'IndiaWorks.slnx', '-c', 'Release', '--no-build', '--filter', 'FullyQualifiedName~SeedSpecialisationsAndAliasesForDriverAndDeliveryTests']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/12d677ea2067.log",
+    "115842e3256e: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/115842e3256e.log",
+    "AC1: SeedRunner_SeedsDriverAndDeliverySpecialisationsAndAliases asserts 5 driver + 4 handler specialisations, 5 driver + 4 handler work contexts, and 4 aliases each from seed-specialisations-and-aliases-for-driver-and-delivery.json; proof 12d677ea2067 (3/3 seed tests passed).",
+    "AC2: SeedSpecialisationsAndAliasesForDriverAndDeliveryTests passes and full suite passes: 108 application + 1 architecture + 181 domain + 85 integration passed, 16 integration skipped (no Docker/Testcontainers); proof 4f113787e43c.",
+    "AC3: No new entity, migration, DI registration, GraphQL operation, or REST endpoint was introduced. Build proof 115842e3256e shows only existing projects rebuilt and no new project/migration/api binary appeared; full-suite proof 4f113787e43c shows ProjectDependencyTests and all existing suites still pass with only the new seed integration tests added; seed JSON and SeedSpecialisationsAndAliasesForDriverAndDeliveryTests reuse only existing Specialisation/WorkContext/RoleAlias/TaxonomyVersion/JobFamily/Role and CreateVersionedTaxonomySeedImporter contracts.",
+    "AC4: dotnet build IndiaWorks.slnx -c Release succeeded with 0 warnings/0 errors (proof 115842e3256e) and dotnet test IndiaWorks.slnx -c Release --no-build passed (proof 4f113787e43c) via story_runtime.py check.",
+    "AC5: SeedDataset_ContainsNoForbiddenSecretOrContactData passes; seed file contains no +91/@/otp/token/aadhaar/PAN and no row Name/Alias contains @ or +; proof 12d677ea2067."
+  ],
+  "known_gaps": [],
+  "blocker": null,
+  "notes": [
+    "Host-generated inventory, proof records and outbox handoff."
+  ],
+  "obsidian_status": "OUTBOX",
+  "graphify_status": "OUTBOX",
+  "no_source_changes_required": false
+}
+```
+
+No MCP sync claimed. Contract/rollout details, if applicable, must be recorded in the summary or AC explanations.

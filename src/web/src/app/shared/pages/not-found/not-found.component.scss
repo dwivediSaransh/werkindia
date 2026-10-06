@@ -1,0 +1,41 @@
+.iw-not-found {
+  padding: clamp(1.2rem, 4vw, 3rem);
+  max-width: 13rem;
+  margin: clamp(2rem, 8vw, 6rem) auto;
+  text-align: center;
+}
+
+.iw-not-found .eyebrow {
+  margin: 0 0 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 950;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: #675f52;
+}
+
+.iw-not-found h1 {
+  margin: 0 0 1rem;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  line-height: 1.05;
+  color: #1a1f1b;
+}
+
+.iw-not-found p {
+  color: #675f52;
+  line-height: 1.7;
+  margin: 0 0 1.5rem;
+}
+
+.iw-not-found .primary-button {
+  display: inline-block;
+  color: #fffaf0;
+  background: #a94f2b;
+  border: 1px solid #a94f2b;
+  padding: 0.7rem 1.4rem;
+  font-weight: 800;
+  border-radius: 0.35rem;
+  text-decoration: none;
+  cursor: pointer;
+}

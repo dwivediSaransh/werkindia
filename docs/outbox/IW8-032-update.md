@@ -1,0 +1,37 @@
+# IW8-032: Build candidate mobile OTP login screen
+
+Sprint: Sprint 1
+Outcome: IN_PROGRESS
+
+Not yet reported.
+
+```json
+{
+  "story_id": "IW8-032",
+  "outcome": "IN_PROGRESS",
+  "summary": "Not yet reported.",
+  "files_changed": [
+    "C:\\Projects\\IndiaWorks\\src\\web\\src\\app\\core\\auth\\auth.service.spec.ts",
+    "C:\\Projects\\IndiaWorks\\src\\web\\src\\app\\core\\auth\\auth.service.ts",
+    "C:\\Projects\\IndiaWorks\\src\\web\\src\\app\\features\\candidate\\build-candidate-mobile-otp-login-screen\\build-candidate-mobile-otp-login-screen.component.html",
+    "C:\\Projects\\IndiaWorks\\src\\web\\src\\app\\features\\candidate\\build-candidate-mobile-otp-login-screen\\build-candidate-mobile-otp-login-screen.component.scss",
+    "C:\\Projects\\IndiaWorks\\src\\web\\src\\app\\features\\candidate\\build-candidate-mobile-otp-login-screen\\build-candidate-mobile-otp-login-screen.component.spec.ts",
+    "C:\\Projects\\IndiaWorks\\src\\web\\src\\app\\features\\candidate\\build-candidate-mobile-otp-login-screen\\build-candidate-mobile-otp-login-screen.component.ts",
+    "C:\\Projects\\IndiaWorks\\src\\web\\src\\app\\features\\candidate\\candidate.routes.ts",
+    "C:\\Projects\\IndiaWorks\\src\\web\\vitest.config.ts"
+  ],
+  "verification": [],
+  "known_gaps": [
+    "Watchdog recovered confirmed terminated executor; completion remains unverified."
+  ],
+  "blocker": null,
+  "notes": [
+    "Host-generated inventory, proof records and outbox handoff."
+  ],
+  "obsidian_status": "OUTBOX",
+  "graphify_status": "OUTBOX",
+  "no_source_changes_required": false
+}
+```
+
+No MCP sync claimed. Contract/rollout details, if applicable, must be recorded in the summary or AC explanations.

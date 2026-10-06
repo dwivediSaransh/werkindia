@@ -1,0 +1,114 @@
+query JobFamilies {
+  jobFamilies {
+    id
+    code
+    name
+    parentCode
+    parentName
+    taxonomyVersionId
+    taxonomyVersion
+    isActive
+    createdAt
+  }
+}
+
+query Roles($jobFamilyId: Long) {
+  roles(jobFamilyId: $jobFamilyId) {
+    id
+    canonicalName
+    slug
+    jobFamilyId
+    jobFamilyCode
+    jobFamilyName
+    taxonomyVersionId
+    taxonomyVersion
+    isActive
+    validFrom
+    validTo
+    createdAt
+  }
+}
+
+query Specialisations($roleId: Long) {
+  specialisations(roleId: $roleId) {
+    id
+    roleId
+    roleCanonicalName
+    roleSlug
+    name
+    code
+    parentCode
+    parentName
+    isActive
+    createdAt
+  }
+}
+
+query WorkContexts($roleId: Long) {
+  workContexts(roleId: $roleId) {
+    id
+    roleId
+    roleCanonicalName
+    roleSlug
+    code
+    name
+    isActive
+    createdAt
+  }
+}
+
+query Skills {
+  skills {
+    id
+    code
+    name
+    description
+    parentCode
+    parentName
+    taxonomyVersionId
+    taxonomyVersion
+    isActive
+    createdAt
+  }
+}
+
+query TaxonomyVersions {
+  taxonomyVersions {
+    id
+    semanticVersion
+    status
+    releaseNotes
+    effectiveFrom
+    createdAt
+  }
+}
+
+query Geographies($type: GeographyType, $search: String) {
+  geographies(type: $type, search: $search) {
+    id
+    type
+    code
+    name
+    parentId
+    parentCode
+    parentName
+    latitude
+    longitude
+    createdAt
+  }
+}
+
+query GeographyHierarchy($type: GeographyType, $search: String) {
+  geographyHierarchy(type: $type, search: $search) {
+    id
+    type
+    code
+    name
+    parentId
+    parentCode
+    parentName
+    latitude
+    longitude
+    createdAt
+  }
+}

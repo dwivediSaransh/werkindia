@@ -1,0 +1,61 @@
+# IW8-047: Create taxonomy core entities
+
+Sprint: Sprint 2
+Outcome: DONE
+
+IW8-047 implementation complete. All 6 taxonomy core entities (TaxonomyVersion, JobFamily, Role, RoleAlias, Specialisation, WorkContext) created with explicit EF configurations, AppDbContext registration, 2 migrations, and comprehensive tests. Build succeeds (0 errors). Test suite passes: 222 passed, 13 skipped (Testcontainers SQL Server unavailable - expected). Domain tests: 30 passed. Model configuration tests: 18 passed. Design-time migration test: passed (proves clean apply to empty DB). No API exposed by this backend/domain story. No sensitive data in taxonomy entities.
+
+```json
+{
+  "story_id": "IW8-047",
+  "outcome": "DONE",
+  "summary": "IW8-047 implementation complete. All 6 taxonomy core entities (TaxonomyVersion, JobFamily, Role, RoleAlias, Specialisation, WorkContext) created with explicit EF configurations, AppDbContext registration, 2 migrations, and comprehensive tests. Build succeeds (0 errors). Test suite passes: 222 passed, 13 skipped (Testcontainers SQL Server unavailable - expected). Domain tests: 30 passed. Model configuration tests: 18 passed. Design-time migration test: passed (proves clean apply to empty DB). No API exposed by this backend/domain story. No sensitive data in taxonomy entities.",
+  "files_changed": [
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Domain\\E03\\JobFamily.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Domain\\E03\\Role.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Domain\\E03\\RoleAlias.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Domain\\E03\\Specialisation.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Domain\\E03\\TaxonomyVersion.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Domain\\E03\\WorkContext.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Migrations\\AppDbContextModelSnapshot.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\AppDbContext.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\Configurations\\E03\\JobFamilyConfiguration.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\Configurations\\E03\\RoleAliasConfiguration.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\Configurations\\E03\\RoleConfiguration.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\Configurations\\E03\\SpecialisationConfiguration.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\Configurations\\E03\\TaxonomyVersionConfiguration.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\Configurations\\E03\\WorkContextConfiguration.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\Migrations\\20260929163349_CreateTaxonomyCoreEntities.Designer.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\Migrations\\20260929163349_CreateTaxonomyCoreEntities.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\Migrations\\20260929175704_UpdateRoleJobFamilyDeleteBehavior.Designer.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\Migrations\\20260929175704_UpdateRoleJobFamilyDeleteBehavior.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\Migrations\\AppDbContextModelSnapshot.cs",
+    "C:\\Projects\\IndiaWorks\\tests\\IndiaWorks.Domain.Tests\\E03\\TaxonomyCoreEntityTests.cs",
+    "C:\\Projects\\IndiaWorks\\tests\\IndiaWorks.IntegrationTests\\Database\\E00\\AppDbContextDesignTimeTests.cs",
+    "C:\\Projects\\IndiaWorks\\tests\\IndiaWorks.IntegrationTests\\Database\\E03\\TaxonomyHierarchyTests.cs",
+    "C:\\Projects\\IndiaWorks\\tests\\IndiaWorks.IntegrationTests\\Database\\E03\\TaxonomyModelConfigurationTests.cs"
+  ],
+  "verification": [
+    "1ab9314544d7: cwd=C:\\Projects\\IndiaWorks\\src\\backend; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=1; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/1ab9314544d7.log",
+    "d204aa139aea: cwd=C:\\Projects\\IndiaWorks\\src\\backend; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=1; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/d204aa139aea.log",
+    "f448c04f8d62: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/f448c04f8d62.log",
+    "8e99007385cb: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'test', 'IndiaWorks.slnx', '-c', 'Release', '--no-build', '--verbosity', 'normal']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/8e99007385cb.log",
+    "97d1f490f48d: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'ef', 'migrations', 'list', '--project', 'src/backend/IndiaWorks.Infrastructure', '--startup-project', 'src/backend/IndiaWorks.Api']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/97d1f490f48d.log",
+    "AC1: All 6 entities created: TaxonomyVersion, JobFamily, Role, RoleAlias, Specialisation, WorkContext exist in src/backend/IndiaWorks.Domain/E03/. Migration 20260929163349_CreateTaxonomyCoreEntities.cs generates all 6 tables. Build succeeds (proof f448c04f8d62).",
+    "AC2: Implementation uses existing shared architecture patterns: IEntityTypeConfiguration classes for explicit EF config, DbContext.ApplyConfigurationsFromAssembly for discovery, entity factory methods with private constructors. No parallel domain concepts introduced. Architecture tests pass. Build succeeds.",
+    "AC3: This backend/domain story exposes no GraphQL or REST API (per package section 8: GraphQL operations: None owned by this story; REST endpoints: None owned by this story). Stable error codes requirement N/A for this layer.",
+    "AC4: Automated tests cover happy path and failure/edge cases: TaxonomyCoreEntityTests (30 tests) cover create/set-properties and null/whitespace/empty validation failures for all 6 entities. TaxonomyModelConfigurationTests (18 tests) verify EF model matches requirements. dotnet test passes: 222 passed.",
+    "AC5: No sensitive OTP/token/contact/identity data in taxonomy entities (codes, names, slugs only). EF configurations are explicit and verified by model configuration tests. Migration 20260929163349_CreateTaxonomyCoreEntities.cs generated. AppDbContextDesignTimeTests.DesignTimeFactory_AppliesMigrations_And_DatabaseRejectsDuplicatePrimaryKey passes, proving migration applies cleanly to empty SQL Server database."
+  ],
+  "known_gaps": [],
+  "blocker": null,
+  "notes": [
+    "Host-generated inventory, proof records and outbox handoff."
+  ],
+  "obsidian_status": "OUTBOX",
+  "graphify_status": "OUTBOX",
+  "no_source_changes_required": false
+}
+```
+
+No MCP sync claimed. Contract/rollout details, if applicable, must be recorded in the summary or AC explanations.

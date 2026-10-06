@@ -1,0 +1,236 @@
+{
+  "$schema": "https://indiaworks.internal/seed/versioned-taxonomy-1.0",
+  "description": "Specialisations, work contexts and role aliases for Driver and Delivery contexts. Reuses TaxonomyVersion + code entities from IW8-049 and roles from IW8-051.",
+  "version": "1.0.0",
+  "semanticVersion": "1.0.0",
+  "status": "Active",
+  "effectiveFrom": "2026-01-01T00:00:00Z",
+  "rows": [
+    {
+      "entityType": "JobFamily",
+      "code": "DELIVERY",
+      "name": "Delivery",
+      "parentCode": null,
+      "isActive": true
+    },
+    {
+      "entityType": "Role",
+      "code": "COURIER_DRIVER",
+      "name": "Courier Driver",
+      "parentCode": null,
+      "jobFamilySlug": "DELIVERY",
+      "canonicalName": "Courier Driver",
+      "slug": "courier-driver",
+      "isActive": true
+    },
+    {
+      "entityType": "Role",
+      "code": "PACKAGE_HANDLER",
+      "name": "Package Handler",
+      "parentCode": null,
+      "jobFamilySlug": "DELIVERY",
+      "canonicalName": "Package Handler",
+      "slug": "package-handler",
+      "isActive": true
+    },
+    {
+      "entityType": "Specialisation",
+      "code": "LMV",
+      "name": "Light Motor Vehicle",
+      "jobFamilySlug": "courier-driver",
+      "isActive": true
+    },
+    {
+      "entityType": "Specialisation",
+      "code": "THREE_WHEELER",
+      "name": "Three-Wheeler",
+      "jobFamilySlug": "courier-driver",
+      "isActive": true
+    },
+    {
+      "entityType": "Specialisation",
+      "code": "LCV",
+      "name": "Light Commercial Vehicle",
+      "jobFamilySlug": "courier-driver",
+      "isActive": true
+    },
+    {
+      "entityType": "Specialisation",
+      "code": "HGV",
+      "name": "Heavy Goods Vehicle",
+      "jobFamilySlug": "courier-driver",
+      "isActive": true
+    },
+    {
+      "entityType": "Specialisation",
+      "code": "PASSENGER_TRANSPORT",
+      "name": "Passenger Transport",
+      "jobFamilySlug": "courier-driver",
+      "isActive": true
+    },
+    {
+      "entityType": "Specialisation",
+      "code": "PARCEL_SORTING",
+      "name": "Parcel Sorting",
+      "jobFamilySlug": "package-handler",
+      "isActive": true
+    },
+    {
+      "entityType": "Specialisation",
+      "code": "LAST_MILE_DISPATCH",
+      "name": "Last-Mile Dispatch",
+      "jobFamilySlug": "package-handler",
+      "isActive": true
+    },
+    {
+      "entityType": "Specialisation",
+      "code": "ROUTE_PLANNING",
+      "name": "Route Planning",
+      "jobFamilySlug": "package-handler",
+      "isActive": true
+    },
+    {
+      "entityType": "Specialisation",
+      "code": "INVENTORY_HANDLING",
+      "name": "Inventory Handling",
+      "jobFamilySlug": "package-handler",
+      "isActive": true
+    },
+    {
+      "entityType": "WorkContext",
+      "code": "LMV_DELIVERY",
+      "name": "LMV Delivery",
+      "jobFamilySlug": "courier-driver",
+      "isActive": true
+    },
+    {
+      "entityType": "WorkContext",
+      "code": "THREE_WHEELER_DELIVERY",
+      "name": "Three-Wheeler Delivery",
+      "jobFamilySlug": "courier-driver",
+      "isActive": true
+    },
+    {
+      "entityType": "WorkContext",
+      "code": "LCV_DELIVERY",
+      "name": "LCV Delivery",
+      "jobFamilySlug": "courier-driver",
+      "isActive": true
+    },
+    {
+      "entityType": "WorkContext",
+      "code": "HGV_DELIVERY",
+      "name": "HGV Delivery",
+      "jobFamilySlug": "courier-driver",
+      "isActive": true
+    },
+    {
+      "entityType": "WorkContext",
+      "code": "PASSENGER_TRANSPORT_SERVICE",
+      "name": "Passenger Transport Service",
+      "jobFamilySlug": "courier-driver",
+      "isActive": true
+    },
+    {
+      "entityType": "WorkContext",
+      "code": "PARCEL_PICKUP",
+      "name": "Parcel Pickup",
+      "jobFamilySlug": "package-handler",
+      "isActive": true
+    },
+    {
+      "entityType": "WorkContext",
+      "code": "PARCEL_DROP",
+      "name": "Parcel Drop",
+      "jobFamilySlug": "package-handler",
+      "isActive": true
+    },
+    {
+      "entityType": "WorkContext",
+      "code": "DISPATCH_HUB",
+      "name": "Dispatch Hub",
+      "jobFamilySlug": "package-handler",
+      "isActive": true
+    },
+    {
+      "entityType": "WorkContext",
+      "code": "WAREHOUSE_FLOOR",
+      "name": "Warehouse Floor",
+      "jobFamilySlug": "package-handler",
+      "isActive": true
+    },
+    {
+      "entityType": "RoleAlias",
+      "alias": "Courier",
+      "jobFamilySlug": "courier-driver",
+      "canonicalName": "Courier Driver",
+      "slug": "courier-driver",
+      "languageCode": "en-IN",
+      "aliasType": "Synonym"
+    },
+    {
+      "entityType": "RoleAlias",
+      "alias": "Delivery Boy",
+      "jobFamilySlug": "courier-driver",
+      "canonicalName": "Courier Driver",
+      "slug": "courier-driver",
+      "languageCode": "en-IN",
+      "aliasType": "MarketAlias"
+    },
+    {
+      "entityType": "RoleAlias",
+      "alias": "Diesel Driver",
+      "jobFamilySlug": "courier-driver",
+      "canonicalName": "Courier Driver",
+      "slug": "courier-driver",
+      "languageCode": "en-IN",
+      "aliasType": "MarketAlias"
+    },
+    {
+      "entityType": "RoleAlias",
+      "alias": "Porter Driver",
+      "jobFamilySlug": "courier-driver",
+      "canonicalName": "Courier Driver",
+      "slug": "courier-driver",
+      "languageCode": "en-IN",
+      "aliasType": "MarketAlias"
+    },
+    {
+      "entityType": "RoleAlias",
+      "alias": "Packer",
+      "jobFamilySlug": "package-handler",
+      "canonicalName": "Package Handler",
+      "slug": "package-handler",
+      "languageCode": "en-IN",
+      "aliasType": "Synonym"
+    },
+    {
+      "entityType": "RoleAlias",
+      "alias": "Unloader",
+      "jobFamilySlug": "package-handler",
+      "canonicalName": "Package Handler",
+      "slug": "package-handler",
+      "languageCode": "en-IN",
+      "aliasType": "MarketAlias"
+    },
+    {
+      "entityType": "RoleAlias",
+      "alias": "Warehouse Hand",
+      "jobFamilySlug": "package-handler",
+      "canonicalName": "Package Handler",
+      "slug": "package-handler",
+      "languageCode": "en-IN",
+      "aliasType": "MarketAlias"
+    },
+    {
+      "entityType": "RoleAlias",
+      "alias": "Sortation Operator",
+      "jobFamilySlug": "package-handler",
+      "canonicalName": "Package Handler",
+      "slug": "package-handler",
+      "languageCode": "en-IN",
+      "aliasType": "MarketAlias"
+    }
+  ],
+  "releaseNotes": "Driver LMV/3W/LCV/HGV/passenger and delivery contexts with market aliases."
+}

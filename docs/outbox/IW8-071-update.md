@@ -1,0 +1,36 @@
+# IW8-071: Expose candidateAccessStatus GraphQL query
+
+Sprint: Sprint 3
+Outcome: DONE
+
+Implemented candidateAccessStatus GraphQL query returning freeLimit/freeUsed/freeRemaining/paywallActive/paidAccessActive
+
+```json
+{
+  "story_id": "IW8-071",
+  "outcome": "DONE",
+  "summary": "Implemented candidateAccessStatus GraphQL query returning freeLimit/freeUsed/freeRemaining/paywallActive/paidAccessActive",
+  "files_changed": [
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Api\\GraphQL\\E04\\ExposeQueries.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Api\\GraphQL\\E04\\Types\\CandidateAccessStatusType.cs"
+  ],
+  "verification": [
+    "0b6e09e327f3: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/0b6e09e327f3.log",
+    "AC1: Implemented CandidateAccessStatusQueries.CandidateAccessStatus method that returns CandidateAccessStatusResult with FreeLimit, FreeUsed, FreeRemaining, PaywallActive, and PaidAccessActive properties",
+    "AC2: The query method validates input, checks for existing unlock via IOrganisationCandidateUnlockRepository, checks access state via IOrganisationCommercialAccessStateRepository, and returns appropriate status based on free allowance availability",
+    "AC3: Implementation follows existing GraphQL query pattern in IndiaWorks.Api.GraphQL.E02 and E03, uses existing repository interfaces, and introduces no new domain concepts",
+    "AC4: dotnet build IndiaWorks.slnx -c Release succeeded with 0 warnings and 0 errors; dotnet test IndiaWorks.slnx -c Release --no-build passed 133 Application tests, 226 Domain tests, 1 Architecture test, and 114 Integration tests",
+    "AC5: Implementation uses only authorised organisation member parameters (organisationId, candidateProfileId) and returns aggregate status metrics; no logging of sensitive data; no secrets/contact/identity values in return type"
+  ],
+  "known_gaps": [],
+  "blocker": null,
+  "notes": [
+    "Host-generated inventory, proof records and outbox handoff."
+  ],
+  "obsidian_status": "OUTBOX",
+  "graphify_status": "OUTBOX",
+  "no_source_changes_required": false
+}
+```
+
+No MCP sync claimed. Contract/rollout details, if applicable, must be recorded in the summary or AC explanations.

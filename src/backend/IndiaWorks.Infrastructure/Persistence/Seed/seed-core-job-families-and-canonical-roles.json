@@ -1,0 +1,116 @@
+{
+  "$schema": "https://indiaworks.internal/seed/versioned-taxonomy-1.0",
+  "description": "Canonical IndiaWorks core job families and canonical roles for development and deterministic tests. Reuses TaxonomyVersion + code entities from IW8-049.",
+  "version": "1.0.0",
+  "semanticVersion": "1.0.0",
+  "status": "Active",
+  "effectiveFrom": "2026-01-01T00:00:00Z",
+  "rows": [
+    {
+      "entityType": "JobFamily",
+      "code": "DELIVERY",
+      "name": "Delivery",
+      "parentCode": null,
+      "isActive": true
+    },
+    {
+      "entityType": "JobFamily",
+      "code": "TECHNICIAN",
+      "name": "Technician",
+      "parentCode": null,
+      "isActive": true
+    },
+    {
+      "entityType": "JobFamily",
+      "code": "FACILITIES",
+      "name": "Facilities",
+      "parentCode": null,
+      "isActive": true
+    },
+    {
+      "entityType": "JobFamily",
+      "code": "PROFESSIONAL",
+      "name": "Professional",
+      "parentCode": null,
+      "isActive": true
+    },
+    {
+      "entityType": "JobFamily",
+      "code": "HEALTHCARE",
+      "name": "Healthcare",
+      "parentCode": null,
+      "isActive": true
+    },
+    {
+      "entityType": "Role",
+      "code": "COURIER_DRIVER",
+      "name": "Courier Driver",
+      "parentCode": null,
+      "jobFamilySlug": "DELIVERY",
+      "canonicalName": "Courier Driver",
+      "slug": "courier-driver",
+      "isActive": true
+    },
+    {
+      "entityType": "Role",
+      "code": "PACKAGE_HANDLER",
+      "name": "Package Handler",
+      "parentCode": null,
+      "jobFamilySlug": "DELIVERY",
+      "canonicalName": "Package Handler",
+      "slug": "package-handler",
+      "isActive": true
+    },
+    {
+      "entityType": "Role",
+      "code": "FIELD_TECHNICIAN",
+      "name": "Field Technician",
+      "parentCode": null,
+      "jobFamilySlug": "TECHNICIAN",
+      "canonicalName": "Field Technician",
+      "slug": "field-technician",
+      "isActive": true
+    },
+    {
+      "entityType": "Role",
+      "code": "INDUSTRIAL_TECHNICIAN",
+      "name": "Industrial Technician",
+      "parentCode": null,
+      "jobFamilySlug": "TECHNICIAN",
+      "canonicalName": "Industrial Technician",
+      "slug": "industrial-technician",
+      "isActive": true
+    },
+    {
+      "entityType": "Role",
+      "code": "FACILITIES_MAINTENANCE_TECHNICIAN",
+      "name": "Facilities Maintenance Technician",
+      "parentCode": null,
+      "jobFamilySlug": "FACILITIES",
+      "canonicalName": "Facilities Maintenance Technician",
+      "slug": "facilities-maintenance-technician",
+      "isActive": true
+    },
+    {
+      "entityType": "Role",
+      "code": "PROFESSIONAL_CONSULTANT",
+      "name": "Professional Consultant",
+      "parentCode": null,
+      "jobFamilySlug": "PROFESSIONAL",
+      "canonicalName": "Professional Consultant",
+      "slug": "professional-consultant",
+      "isActive": true
+    },
+    {
+      "entityType": "Role",
+      "code": "REGISTERED_NURSE",
+      "name": "Registered Nurse",
+      "parentCode": null,
+      "jobFamilySlug": "HEALTHCARE",
+      "canonicalName": "Registered Nurse",
+      "slug": "registered-nurse",
+      "isActive": true
+    }
+  ],
+  "releaseNotes": "Canonical IndiaWorks core job families and canonical roles v1.0.0."
+}

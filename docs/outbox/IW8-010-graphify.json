@@ -1,0 +1,48 @@
+{
+  "story_id": "IW8-010",
+  "outcome": "DONE",
+  "summary": "IW8-010 completed: Apollo Angular is wired through the app provider, an auth-capable GraphQL link and token service are present, typed GraphQL codegen outputs are generated from the GetVersion operation, and the candidate smoke component covers loading, success, error, and responsive control states.",
+  "files_changed": [
+    "C:\\Projects\\IndiaWorks\\src\\web\\.prettierrc",
+    "C:\\Projects\\IndiaWorks\\src\\web\\codegen.ts",
+    "C:\\Projects\\IndiaWorks\\src\\web\\package-lock.json",
+    "C:\\Projects\\IndiaWorks\\src\\web\\package.json",
+    "C:\\Projects\\IndiaWorks\\src\\web\\schema.graphql",
+    "C:\\Projects\\IndiaWorks\\src\\web\\src\\app\\app.config.ts",
+    "C:\\Projects\\IndiaWorks\\src\\web\\src\\app\\core\\graphql\\apollo.provider.ts",
+    "C:\\Projects\\IndiaWorks\\src\\web\\src\\app\\core\\graphql\\auth-link.spec.ts",
+    "C:\\Projects\\IndiaWorks\\src\\web\\src\\app\\core\\graphql\\auth-link.ts",
+    "C:\\Projects\\IndiaWorks\\src\\web\\src\\app\\core\\graphql\\generated\\gql.ts",
+    "C:\\Projects\\IndiaWorks\\src\\web\\src\\app\\core\\graphql\\generated\\graphql.ts",
+    "C:\\Projects\\IndiaWorks\\src\\web\\src\\app\\core\\graphql\\generated\\index.ts",
+    "C:\\Projects\\IndiaWorks\\src\\web\\src\\app\\core\\graphql\\token.service.ts",
+    "C:\\Projects\\IndiaWorks\\src\\web\\src\\app\\features\\candidate\\configure-apollo-angular-and-typed-graphql-code-generation\\configure-apollo-angular-and-typed-graphql-code-generation.component.html",
+    "C:\\Projects\\IndiaWorks\\src\\web\\src\\app\\features\\candidate\\configure-apollo-angular-and-typed-graphql-code-generation\\configure-apollo-angular-and-typed-graphql-code-generation.component.scss",
+    "C:\\Projects\\IndiaWorks\\src\\web\\src\\app\\features\\candidate\\configure-apollo-angular-and-typed-graphql-code-generation\\configure-apollo-angular-and-typed-graphql-code-generation.component.spec.ts",
+    "C:\\Projects\\IndiaWorks\\src\\web\\src\\app\\features\\candidate\\configure-apollo-angular-and-typed-graphql-code-generation\\configure-apollo-angular-and-typed-graphql-code-generation.component.ts",
+    "C:\\Projects\\IndiaWorks\\src\\web\\src\\app\\features\\candidate\\configure-apollo-angular-and-typed-graphql-code-generation\\operations.graphql",
+    "C:\\Projects\\IndiaWorks\\src\\web\\src\\test.ts",
+    "C:\\Projects\\IndiaWorks\\src\\web\\vitest.config.ts"
+  ],
+  "verification": [
+    "55ad569453bd: cwd=C:\\Projects\\IndiaWorks\\src\\web; argv=['C:\\\\nvm4w\\\\nodejs\\\\npm.CMD', 'run', 'codegen']; exit=0; ACs=['AC1', 'AC7']; output=verification/55ad569453bd.log",
+    "7aa670ead84c: cwd=C:\\Projects\\IndiaWorks\\src\\web; argv=['C:\\\\nvm4w\\\\nodejs\\\\npm.CMD', 'run', 'lint']; exit=0; ACs=['AC1', 'AC7', 'AC8']; output=verification/7aa670ead84c.log",
+    "acc4486a5ba8: cwd=C:\\Projects\\IndiaWorks\\src\\web; argv=['C:\\\\nvm4w\\\\nodejs\\\\npm.CMD', 'test', '--', '--watch=false']; exit=0; ACs=['AC2', 'AC3', 'AC4', 'AC5', 'AC7', 'AC8']; output=verification/acc4486a5ba8.log",
+    "1abb3691724a: cwd=C:\\Projects\\IndiaWorks\\src\\web; argv=['C:\\\\nvm4w\\\\nodejs\\\\npm.CMD', 'run', 'build']; exit=0; ACs=['AC1', 'AC5', 'AC6', 'AC7', 'AC8']; output=verification/1abb3691724a.log",
+    "AC1: Apollo Angular provider, auth link, codegen config, operation file, and generated typed GraphQL directory are present and validated by lint/build/codegen proofs.",
+    "AC2: Component tests validate the typed GetVersion query success path and rendered version state.",
+    "AC3: Component tests validate the loading state UI while duplicate refresh is disabled by the component loading guard.",
+    "AC4: Component tests validate representative GraphQL FORBIDDEN error rendering without console/test exceptions.",
+    "AC5: Responsive-control test verifies the required refresh button renders without clipped controls, and production build succeeds.",
+    "AC6: No new domain concept, database table, REST endpoint, or business API was introduced; this story only wires frontend GraphQL client infrastructure.",
+    "AC7: Validation proofs pass for lint, unit tests, build, and GraphQL codegen.",
+    "AC8: Auth-link tests verify bearer token attachment behavior without logging token values; implementation does not add application logging."
+  ],
+  "known_gaps": [],
+  "blocker": null,
+  "notes": [
+    "Host-generated inventory, proof records and outbox handoff."
+  ],
+  "obsidian_status": "OUTBOX",
+  "graphify_status": "OUTBOX"
+}

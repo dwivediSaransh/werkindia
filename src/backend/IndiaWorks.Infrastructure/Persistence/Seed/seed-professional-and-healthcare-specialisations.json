@@ -1,0 +1,500 @@
+{
+  "$schema": "https://indiaworks.internal/seed/versioned-taxonomy-1.0",
+  "description": "Specialisations and regulated credential references for Professional and Healthcare roles. Reuses TaxonomyVersion + code entities from IW8-049 and roles from IW8-051.",
+  "version": "1.0.0",
+  "semanticVersion": "1.0.0",
+  "status": "Active",
+  "effectiveFrom": "2026-01-01T00:00:00Z",
+  "rows": [
+    {
+      "entityType": "JobFamily",
+      "code": "PROFESSIONAL",
+      "name": "Professional",
+      "parentCode": null,
+      "isActive": true
+    },
+    {
+      "entityType": "JobFamily",
+      "code": "HEALTHCARE",
+      "name": "Healthcare",
+      "parentCode": null,
+      "isActive": true
+    },
+    {
+      "entityType": "Role",
+      "code": "PROFESSIONAL_CONSULTANT",
+      "name": "Professional Consultant",
+      "parentCode": null,
+      "jobFamilySlug": "PROFESSIONAL",
+      "canonicalName": "Professional Consultant",
+      "slug": "professional-consultant",
+      "isActive": true
+    },
+    {
+      "entityType": "Role",
+      "code": "REGISTERED_NURSE",
+      "name": "Registered Nurse",
+      "parentCode": null,
+      "jobFamilySlug": "HEALTHCARE",
+      "canonicalName": "Registered Nurse",
+      "slug": "registered-nurse",
+      "isActive": true
+    },
+    {
+      "entityType": "CredentialType",
+      "code": "CA_CERTIFIED_PUBLIC_ACCOUNTANT",
+      "name": "CA Certified Public Accountant",
+      "isActive": true
+    },
+    {
+      "entityType": "CredentialType",
+      "code": "CMA_COST_AND_MANAGEMENT",
+      "name": "CMA Cost and Management Accountant",
+      "isActive": true
+    },
+    {
+      "entityType": "CredentialType",
+      "code": "ACCA",
+      "name": "ACCA",
+      "isActive": true
+    },
+    {
+      "entityType": "CredentialType",
+      "code": "CPA_US",
+      "name": "CPA (US)",
+      "isActive": true
+    },
+    {
+      "entityType": "CredentialType",
+      "code": "GST_FILING_CERT",
+      "name": "GST Filing Certification",
+      "isActive": true
+    },
+    {
+      "entityType": "CredentialType",
+      "code": "SALESFORCE_ADMIN",
+      "name": "Salesforce Administrator",
+      "isActive": true
+    },
+    {
+      "entityType": "CredentialType",
+      "code": "SALESFORCE_SALES",
+      "name": "Salesforce Sales Cloud Consultant",
+      "isActive": true
+    },
+    {
+      "entityType": "CredentialType",
+      "code": "SPOTIO_AUDIENCE",
+      "name": "SPOTIO Audience Development",
+      "isActive": true
+    },
+    {
+      "entityType": "CredentialType",
+      "code": "MEDDIC",
+      "name": "MEDDIC Sales Methodology",
+      "isActive": true
+    },
+    {
+      "entityType": "CredentialType",
+      "code": "CHRP_INDIA",
+      "name": "CHRP India",
+      "isActive": true
+    },
+    {
+      "entityType": "CredentialType",
+      "code": "PHR",
+      "name": "PHR",
+      "isActive": true
+    },
+    {
+      "entityType": "CredentialType",
+      "code": "SHRM_CP",
+      "name": "SHRM-CP",
+      "isActive": true
+    },
+    {
+      "entityType": "CredentialType",
+      "code": "TALENT_ACQUISITION_CERT",
+      "name": "Talent Acquisition Certification",
+      "isActive": true
+    },
+    {
+      "entityType": "CredentialType",
+      "code": "B_EDUCATION",
+      "name": "B.Ed",
+      "isActive": true
+    },
+    {
+      "entityType": "CredentialType",
+      "code": "CTET",
+      "name": "CTET",
+      "isActive": true
+    },
+    {
+      "entityType": "CredentialType",
+      "code": "NET",
+      "name": "NET",
+      "isActive": true
+    },
+    {
+      "entityType": "CredentialType",
+      "code": "NURSING",
+      "name": "Nursing",
+      "isActive": true
+    },
+    {
+      "entityType": "CredentialType",
+      "code": "ANM",
+      "name": "ANM",
+      "isActive": true
+    },
+    {
+      "entityType": "CredentialType",
+      "code": "GNM",
+      "name": "GNM",
+      "isActive": true
+    },
+    {
+      "entityType": "CredentialType",
+      "code": "BSC_NURSING",
+      "name": "BSc Nursing",
+      "isActive": true
+    },
+    {
+      "entityType": "CredentialType",
+      "code": "MSC_NURSING",
+      "name": "MSc Nursing",
+      "isActive": true
+    },
+    {
+      "entityType": "CredentialType",
+      "code": "MEDICAL_LAB_TECHNICIAN",
+      "name": "Medical Lab Technician",
+      "isActive": true
+    },
+    {
+      "entityType": "CredentialType",
+      "code": "DMLT",
+      "name": "DMLT",
+      "isActive": true
+    },
+    {
+      "entityType": "CredentialType",
+      "code": "BSC_MLT",
+      "name": "BSc MLT",
+      "isActive": true
+    },
+    {
+      "entityType": "CredentialType",
+      "code": "MBBS",
+      "name": "MBBS",
+      "isActive": true
+    },
+    {
+      "entityType": "CredentialType",
+      "code": "BAMS",
+      "name": "BAMS",
+      "isActive": true
+    },
+    {
+      "entityType": "CredentialType",
+      "code": "BHMS",
+      "name": "BHMS",
+      "isActive": true
+    },
+    {
+      "entityType": "CredentialType",
+      "code": "AYUSH",
+      "name": "AYUSH",
+      "isActive": true
+    },
+    {
+      "entityType": "CredentialType",
+      "code": "PHARMACY",
+      "name": "Pharmacy",
+      "isActive": true
+    },
+    {
+      "entityType": "CredentialType",
+      "code": "D_PHARM",
+      "name": "D.Pharm",
+      "isActive": true
+    },
+    {
+      "entityType": "CredentialType",
+      "code": "B_PHARM",
+      "name": "B.Pharm",
+      "isActive": true
+    },
+    {
+      "entityType": "CredentialType",
+      "code": "REGISTERED_MEDICAL_PRACTITIONER",
+      "name": "Registered Medical Practitioner",
+      "isActive": true
+    },
+    {
+      "entityType": "CredentialType",
+      "code": "PARAMEDIC",
+      "name": "Paramedic",
+      "isActive": true
+    },
+    {
+      "entityType": "CredentialType",
+      "code": "PHYSIOTHERAPY",
+      "name": "Physiotherapy",
+      "isActive": true
+    },
+    {
+      "entityType": "CredentialType",
+      "code": "BPT",
+      "name": "BPT",
+      "isActive": true
+    },
+    {
+      "entityType": "CredentialType",
+      "code": "DENTAL",
+      "name": "Dental",
+      "isActive": true
+    },
+    {
+      "entityType": "CredentialType",
+      "code": "BDS",
+      "name": "BDS",
+      "isActive": true
+    },
+    {
+      "entityType": "CredentialType",
+      "code": "OPTOMETRY",
+      "name": "Optometry",
+      "isActive": true
+    },
+    {
+      "entityType": "CredentialType",
+      "code": "OCCUPATIONAL_THERAPY",
+      "name": "Occupational Therapy",
+      "isActive": true
+    },
+    {
+      "entityType": "CredentialType",
+      "code": "SPEECH_THERAPY",
+      "name": "Speech Therapy",
+      "isActive": true
+    },
+    {
+      "entityType": "CredentialType",
+      "code": "AUDIOLOGY",
+      "name": "Audiology",
+      "isActive": true
+    },
+    {
+      "entityType": "CredentialType",
+      "code": "RADIOLOGY",
+      "name": "Radiology",
+      "isActive": true
+    },
+    {
+      "entityType": "Specialisation",
+      "code": "ACCOUNTANT",
+      "name": "Accountant",
+      "jobFamilySlug": "professional-consultant",
+      "isActive": true
+    },
+    {
+      "entityType": "Specialisation",
+      "code": "TAX_SPECIALIST",
+      "name": "Tax Specialist",
+      "jobFamilySlug": "professional-consultant",
+      "isActive": true
+    },
+    {
+      "entityType": "Specialisation",
+      "code": "AUDIT_SPECIALIST",
+      "name": "Audit Specialist",
+      "jobFamilySlug": "professional-consultant",
+      "isActive": true
+    },
+    {
+      "entityType": "Specialisation",
+      "code": "SALES_REPRESENTATIVE",
+      "name": "Sales Representative",
+      "jobFamilySlug": "professional-consultant",
+      "isActive": true
+    },
+    {
+      "entityType": "Specialisation",
+      "code": "BUSINESS_DEVELOPER",
+      "name": "Business Developer",
+      "jobFamilySlug": "professional-consultant",
+      "isActive": true
+    },
+    {
+      "entityType": "Specialisation",
+      "code": "ACCOUNT_MANAGER",
+      "name": "Account Manager",
+      "jobFamilySlug": "professional-consultant",
+      "isActive": true
+    },
+    {
+      "entityType": "Specialisation",
+      "code": "HR_GENERALIST",
+      "name": "HR Generalist",
+      "jobFamilySlug": "professional-consultant",
+      "isActive": true
+    },
+    {
+      "entityType": "Specialisation",
+      "code": "RECRUITMENT_SPECIALIST",
+      "name": "Recruitment Specialist",
+      "jobFamilySlug": "professional-consultant",
+      "isActive": true
+    },
+    {
+      "entityType": "Specialisation",
+      "code": "HR_BUSINESS_PARTNER",
+      "name": "HR Business Partner",
+      "jobFamilySlug": "professional-consultant",
+      "isActive": true
+    },
+    {
+      "entityType": "Specialisation",
+      "code": "SOFTWARE_DEVELOPER",
+      "name": "Software Developer",
+      "jobFamilySlug": "professional-consultant",
+      "isActive": true
+    },
+    {
+      "entityType": "Specialisation",
+      "code": "SOFTWARE_ARCHITECT",
+      "name": "Software Architect",
+      "jobFamilySlug": "professional-consultant",
+      "isActive": true
+    },
+    {
+      "entityType": "Specialisation",
+      "code": "DEVOPS_ENGINEER",
+      "name": "DevOps Engineer",
+      "jobFamilySlug": "professional-consultant",
+      "isActive": true
+    },
+    {
+      "entityType": "Specialisation",
+      "code": "FULL_STACK_DEVELOPER",
+      "name": "Full Stack Developer",
+      "jobFamilySlug": "professional-consultant",
+      "isActive": true
+    },
+    {
+      "entityType": "Specialisation",
+      "code": "TEACHER",
+      "name": "Teacher",
+      "jobFamilySlug": "professional-consultant",
+      "isActive": true
+    },
+    {
+      "entityType": "Specialisation",
+      "code": "TUTOR",
+      "name": "Tutor",
+      "jobFamilySlug": "professional-consultant",
+      "isActive": true
+    },
+    {
+      "entityType": "Specialisation",
+      "code": "ACADEMIC_COORDINATOR",
+      "name": "Academic Coordinator",
+      "jobFamilySlug": "professional-consultant",
+      "isActive": true
+    },
+    {
+      "entityType": "Specialisation",
+      "code": "STAFF_NURSE",
+      "name": "Staff Nurse",
+      "jobFamilySlug": "registered-nurse",
+      "isActive": true
+    },
+    {
+      "entityType": "Specialisation",
+      "code": "OPERATING_THEATRE_NURSE",
+      "name": "Operating Theatre Nurse",
+      "jobFamilySlug": "registered-nurse",
+      "isActive": true
+    },
+    {
+      "entityType": "Specialisation",
+      "code": "COMMUNITY_HEALTH_NURSE",
+      "name": "Community Health Nurse",
+      "jobFamilySlug": "registered-nurse",
+      "isActive": true
+    },
+    {
+      "entityType": "Specialisation",
+      "code": "LAB_TECHNICIAN",
+      "name": "Lab Technician",
+      "jobFamilySlug": "registered-nurse",
+      "isActive": true
+    },
+    {
+      "entityType": "Specialisation",
+      "code": "PATHOLOGY_LAB_TECHNICIAN",
+      "name": "Pathology Lab Technician",
+      "jobFamilySlug": "registered-nurse",
+      "isActive": true
+    },
+    {
+      "entityType": "Specialisation",
+      "code": "RADIOLOGY_TECHNICIAN",
+      "name": "Radiology Technician",
+      "jobFamilySlug": "registered-nurse",
+      "isActive": true
+    },
+    {
+      "entityType": "Specialisation",
+      "code": "PHARMACIST",
+      "name": "Pharmacist",
+      "jobFamilySlug": "registered-nurse",
+      "isActive": true
+    },
+    {
+      "entityType": "Specialisation",
+      "code": "PHYSICIAN",
+      "name": "Physician",
+      "jobFamilySlug": "registered-nurse",
+      "isActive": true
+    },
+    {
+      "entityType": "Specialisation",
+      "code": "GENERAL_PRACTITIONER",
+      "name": "General Practitioner",
+      "jobFamilySlug": "registered-nurse",
+      "isActive": true
+    },
+    {
+      "entityType": "Specialisation",
+      "code": "PARAMEDIC_SPECIALIST",
+      "name": "Paramedic",
+      "jobFamilySlug": "registered-nurse",
+      "isActive": true
+    },
+    {
+      "entityType": "Specialisation",
+      "code": "PHYSIOTHERAPIST",
+      "name": "Physiotherapist",
+      "jobFamilySlug": "registered-nurse",
+      "isActive": true
+    },
+    {
+      "entityType": "Specialisation",
+      "code": "DENTAL_HYGIENIST",
+      "name": "Dental Hygienist",
+      "jobFamilySlug": "registered-nurse",
+      "isActive": true
+    },
+    {
+      "entityType": "Specialisation",
+      "code": "OPTOMETRIST",
+      "name": "Optometrist",
+      "jobFamilySlug": "registered-nurse",
+      "isActive": true
+    }
+  ],
+  "releaseNotes": "Professional and healthcare specialisations with regulated credential references for accountant/sales/HR/software/teacher/nursing/lab/medical roles."
+}

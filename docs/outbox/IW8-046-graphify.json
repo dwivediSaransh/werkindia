@@ -1,0 +1,31 @@
+{
+  "story_id": "IW8-046",
+  "outcome": "DONE",
+  "summary": "IW8-046 seed India geography starter dataset implemented and verified. Fixed build errors (missing using directives, ambiguous Path reference, deprecated JsonSerializerOptions.Culture), corrected data integrity bug (added missing AP state for VSK parent), updated test expectations to 24 rows. Build: 0 errors/0 warnings. Tests: 274 passed, 0 failed, 8 skipped (all SQL Server Testcontainers, environment limitation).",
+  "files_changed": [
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\Seed\\GeographyStarterSeed.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\Seed\\Models\\GeographySeedDataset.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\Seed\\Models\\GeographySeedRow.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\Seed\\SeedDataException.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\Seed\\seed-india-geography-starter-dataset-for-development.json",
+    "C:\\Projects\\IndiaWorks\\tests\\IndiaWorks.IntegrationTests\\Seed\\GeographyStarterSeedTests.cs"
+  ],
+  "verification": [
+    "addc6d66abbc: cwd=C:\\Projects\\IndiaWorks\\src\\backend; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=1; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/addc6d66abbc.log",
+    "5ed906964da0: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/5ed906964da0.log",
+    "23bf0b28cdbd: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'test', 'IndiaWorks.slnx', '-c', 'Release', '--no-build']; exit=0; ACs=['AC1', 'AC2', 'AC3', 'AC4', 'AC5']; output=verification/23bf0b28cdbd.log",
+    "AC1: Build succeeded (0 errors, 0 warnings) and 274 tests passed including GeographyStarterSeedTests.SeedDataset_ContainsNoForbiddenSecretOrContactData; seed-india-geography-starter-dataset-for-development.json contains 24 rows covering Country/State/District/City/Locality/Pin hierarchy with representative India geographies (India, Karnataka, Maharashtra, Tamil Nadu, Telangana, Delhi, Gujarat, West Bengal, Andhra Pradesh, Bengaluru, Mysuru, Mumbai, Pune, Chennai, Hyderabad, Kolkata, Ahmedabad, Visakhapatnam, Indiranagar, Andheri West, PINs 560038/400058, Bengaluru Urban, Ranga Reddy)",
+    "AC2: GeographyStarterSeed.SeedAsync uses Geography.Create/CreateWithCoordinates from IW8-045 Geography entity, deserializes GeographySeedDataset/GeographySeedRow models, seeds in GeographyType enum order with per-level transactions and code-based idempotency; no new domain concept introduced",
+    "AC3: No new parallel domain concept/table/API introduced; reuses Geography entity, GeographyType enum, GeographyConfiguration, AppDbContext.Geographies from IW8-045; seed is a data slice with no GraphQL/REST owned by this story",
+    "AC4: dotnet build IndiaWorks.slnx -c Release: 0 errors 0 warnings; dotnet test IndiaWorks.slnx -c Release --no-build: 274 passed 0 failed (8 skipped are SQL Server Testcontainers tests skipped due to no Docker, expected and documented)",
+    "AC5: GeographyStarterSeedTests.SeedDataset_ContainsNoForbiddenSecretOrContactData passes asserting seed JSON contains no +91/@/otp/token/aadh/pan and no row.Name contains @ or +; seed CSV/logs contain no OTP/token/contact/identity data"
+  ],
+  "known_gaps": [],
+  "blocker": null,
+  "notes": [
+    "Host-generated inventory, proof records and outbox handoff."
+  ],
+  "obsidian_status": "OUTBOX",
+  "graphify_status": "OUTBOX",
+  "no_source_changes_required": false
+}

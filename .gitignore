@@ -1,0 +1,61 @@
+# Build outputs
+bin/
+obj/
+dist/
+out/
+coverage/
+TestResults/
+*.trx
+*.coverage
+*.coveragexml
+
+# Node / Angular
+node_modules/
+.angular/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Local environment and machine state
+.env
+.env.*
+!.env.example
+WORKSPACE_PATHS.local.json
+*.local.json
+*.user
+*.suo
+.vs/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Logs and temporary files
+*.log
+tmp/
+temp/
+tmp_test/
+*.tmp
+*.bak
+*.lock
+.hermesrun.lock
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Test runner output
+playwright-report/
+test-results/
+
+# Hermes runtime artifacts
+.chermes/
+.cron/
+.hermes/*
+!.hermes/
+!.hermes/backlog-index.json
+
+# OS files
+.DS_Store
+Thumbs.db
