@@ -43,6 +43,8 @@ public class AppDbContext : DbContext
     public DbSet<OrganisationCommercialAccessState> OrganisationCommercialAccessStates => Set<OrganisationCommercialAccessState>();
     public DbSet<OrganisationCandidateUnlock> OrganisationCandidateUnlocks => Set<OrganisationCandidateUnlock>();
     public DbSet<CandidatePaywallEvent> CandidatePaywallEvents => Set<CandidatePaywallEvent>();
+    public DbSet<BillingWebhookInbox> BillingWebhookInbox => Set<BillingWebhookInbox>();
+    public DbSet<PaymentTransaction> PaymentTransactions => Set<PaymentTransaction>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

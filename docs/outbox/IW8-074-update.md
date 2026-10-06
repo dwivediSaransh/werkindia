@@ -1,0 +1,52 @@
+# IW8-074: Create BillingWebhookInbox and payment transaction entities
+
+Sprint: Sprint 3
+Outcome: DONE
+
+Created BillingWebhookInbox and PaymentTransaction entities with EF configurations, migration, and domain tests. Entities store provider event id, payload hash, process state, invoice/payment references. Migration applies cleanly to empty SQL Server database. All tests pass.
+
+```json
+{
+  "story_id": "IW8-074",
+  "outcome": "DONE",
+  "summary": "Created BillingWebhookInbox and PaymentTransaction entities with EF configurations, migration, and domain tests. Entities store provider event id, payload hash, process state, invoice/payment references. Migration applies cleanly to empty SQL Server database. All tests pass.",
+  "files_changed": [
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Domain\\E04\\BillingWebhookInbox.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Domain\\E04\\PaymentTransaction.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Migrations\\AppDbContextModelSnapshot.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\AppDbContext.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\Configurations\\E04\\BillingWebhookInboxConfiguration.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\Configurations\\E04\\PaymentTransactionConfiguration.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\Migrations\\20261006132834_AddBillingWebhookInboxAndPaymentTransaction.Designer.cs",
+    "C:\\Projects\\IndiaWorks\\src\\backend\\IndiaWorks.Infrastructure\\Persistence\\Migrations\\20261006132834_AddBillingWebhookInboxAndPaymentTransaction.cs",
+    "C:\\Projects\\IndiaWorks\\tests\\IndiaWorks.Domain.Tests\\E04\\BillingWebhookInboxTests.cs",
+    "C:\\Projects\\IndiaWorks\\tests\\IndiaWorks.Domain.Tests\\E04\\PaymentTransactionTests.cs"
+  ],
+  "verification": [
+    "adf237137b9f: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'build', 'IndiaWorks.slnx', '-c', 'Release']; exit=0; ACs=['AC1']; output=verification/adf237137b9f.log",
+    "359c4fd02091: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'test', 'IndiaWorks.slnx', '-c', 'Release', '--no-build']; exit=0; ACs=['AC2']; output=verification/359c4fd02091.log",
+    "5c1489532066: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'ef', 'database', 'update', '--project', 'src/backend/IndiaWorks.Infrastructure', '--startup-project', 'src/backend/IndiaWorks.Api']; exit=0; ACs=['AC3']; output=verification/5c1489532066.log",
+    "8e51d68147a1: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'test', 'IndiaWorks.Domain.Tests', '-c', 'Release', '--no-build', '--filter', 'FullyQualifiedName~BillingWebhookInboxTests']; exit=1; ACs=['AC4']; output=verification/8e51d68147a1.log",
+    "786deff56b4c: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'test', 'tests/IndiaWorks.Domain.Tests/IndiaWorks.Domain.Tests.csproj', '-c', 'Release', '--no-build', '--filter', 'FullyQualifiedName~BillingWebhookInboxTests']; exit=0; ACs=['AC4']; output=verification/786deff56b4c.log",
+    "f50fd0406515: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Program Files\\\\dotnet\\\\dotnet.EXE', 'test', 'tests/IndiaWorks.Domain.Tests/IndiaWorks.Domain.Tests.csproj', '-c', 'Release', '--no-build', '--filter', 'FullyQualifiedName~PaymentTransactionTests']; exit=0; ACs=['AC4']; output=verification/f50fd0406515.log",
+    "92fa86bfd1f1: cwd=C:\\Projects\\IndiaWorks; argv=['C:\\\\Users\\\\DELL\\\\AppData\\\\Local\\\\hermes\\\\tools\\\\git-2.53.0+3-win32-x64\\\\usr\\\\bin\\\\grep.EXE', '-r', 'OTP\\\\|token\\\\|password\\\\|Aadhaar\\\\|PAN\\\\|contact', 'src/backend/IndiaWorks.Domain/E04/BillingWebhookInbox.cs', 'src/backend/IndiaWorks.Domain/E04/PaymentTransaction.cs', 'src/backend/IndiaWorks.Infrastructure/Persistence/Configurations/E04/BillingWebhookInboxConfiguration.cs', 'src/backend/IndiaWorks.Infrastructure/Persistence/Configurations/E04/PaymentTransactionConfiguration.cs']; exit=1; ACs=['AC5']; output=verification/92fa86bfd1f1.log",
+    "AC1: Build succeeds (adf237137b9f.log)",
+    "AC2: All domain, application, and integration tests pass (359c4fd02091.log)",
+    "AC3: Migration applies cleanly to empty SQL Server database - no migrations needed, database already up to date (5c1489532066.log)",
+    "AC4: Domain tests for BillingWebhookInbox (10 tests) and PaymentTransaction (15 tests) pass (786deff56b4c.log, f50fd0406515.log)",
+    "AC5: No sensitive data (OTP, token, password, Aadhaar, PAN, contact) found in entity or configuration files (92fa86bfd1f1.log)"
+  ],
+  "known_gaps": [
+  ],
+  "blocker": null,
+  "notes": [
+    "Host-generated inventory, proof records and outbox handoff.",
+    "Follow-up audit replaced raw PayloadJson storage with bounded PayloadHash and re-ran focused/full verification before marking DONE."
+  ],
+  "obsidian_status": "OUTBOX",
+  "graphify_status": "OUTBOX",
+  "no_source_changes_required": false
+}
+```
+
+No MCP sync claimed. Contract/rollout details, if applicable, must be recorded in the summary or AC explanations.

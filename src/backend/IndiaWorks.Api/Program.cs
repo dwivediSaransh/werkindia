@@ -11,6 +11,7 @@ using IndiaWorks.Api.GraphQL.E03.Types;
 using IndiaWorks.Api.Options;
 using IndiaWorks.Api.Routing;
 using IndiaWorks.Api.Rest.E01;
+using IndiaWorks.Api.Rest.E04;
 using IndiaWorks.Application;
 using IndiaWorks.Contracts.Health;
 using IndiaWorks.Domain;
@@ -102,6 +103,7 @@ app.MapHealthChecks("/health")
     .WithName(ApiEndpointNames.Health);
 
 app.MapAuthOtpEndpoints();
+app.MapPaymentWebhookEndpoints();
 
 app.MapGraphQL("/graphql");
 

@@ -133,6 +133,17 @@ def recover(root: Path, now: float, dry_run: bool) -> tuple[str, str]:
     return 'RECOVERED', 'Timed-out run archived truthfully; next tick can retry the same story.'
 
 
+def cron_route_args(job: dict) -> list[str]:
+    args: list[str] = []
+    if job.get('provider'):
+        args += ['--provider', str(job['provider'])]
+    if job.get('model'):
+        args += ['--model', str(job['model'])]
+    if job.get('reasoning_effort'):
+        args += ['--reasoning-effort', str(job['reasoning_effort'])]
+    return args
+
+
 def main(collect_health=None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--root', required=True)
@@ -203,7 +214,7 @@ def main(collect_health=None) -> int:
                            [sys.executable, str(root / 'cron/run_hermes_story.py'), '--root', str(root),
                            '--hermes-python', args.hermes_python, '--hermes-main', args.hermes_main,
                            '--notification-home', args.hermes_home,
-                           '--expected-story', story])
+                           '--expected-story', story, *cron_route_args(job)])
                 if action == 'RUN_ORIGINAL':
                     story = '_original-scheduler-trigger'
                 attempts = state.get('attempts', 0) + 1 if state.get('story_id') == story else 1

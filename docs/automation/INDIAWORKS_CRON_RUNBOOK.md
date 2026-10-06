@@ -5,12 +5,26 @@ One invocation -> one Story ID -> verification -> result -> stop.
 The one-story runner is `cron/run_hermes_story.py`. It validates the working set,
 prepares the next eligible story, starts Hermes against the prepared context,
 captures proof, finalizes the backlog, and archives the run under `.hermes/runs/`.
+Keep native cron delivery on `local`; the controller writes concise progress
+directly into the IndiaWorks profile output store. Native `bot-chat:*` delivery
+can block dispatch after long runs because it starts a delivery turn after the
+script already finished.
 
-The one-story cron job must be agent-backed, not a no-agent wrapper around a
-second Hermes process. Its model is pinned on the cron job itself so the Hermes
-cron edit modal remains the source of truth for coding model changes. Do not
-hard-code provider/model routing inside `cron/run_hermes_story.py` or
-`cron/indiaworks_story.py`.
+The installed one-story cron job must use `indiaworks_story.py` in no-agent
+mode, matching the Scapier controller pattern. The script invokes
+`cron/run_hermes_story.py`, which validates the working set, prepares one story,
+starts a fresh Hermes one-shot process in the isolated IndiaWorks profile,
+captures concrete source/check progress, finalizes the backlog, and archives the
+run under `.hermes/runs/`.
+
+The coding model still belongs to the Hermes cron job, not the repository
+script. `indiaworks_story.py` reads the job's editable `provider`, `model`, and
+`reasoning_effort` fields from Hermes `jobs.json` and passes them into the inner
+executor. Change models through the Hermes cron edit modal or:
+
+```powershell
+hermes cron edit 2f464807b97a --provider openrouter --model poolside/laguna-s-2.1:free --reasoning-effort low
+```
 
 Do not pin the cron to time-limited promotional free models. The old
 `upstage/solar-pro4:free` route on Nous and the
@@ -19,7 +33,8 @@ availability failures in Hermes runs. As of 2026-10-06, the active IndiaWorks
 one-story job is pinned to `openrouter` + `poolside/laguna-s-2.1:free` after a
 successful live smoke run. If this free route becomes rate-limited, update the
 job through `hermes cron edit <job-id> --provider <provider> --model <model>`;
-keep the job agent-backed so manual edits in the Hermes UI keep working.
+keep `--script indiaworks_story.py --no-agent` so stdout delivery and progress
+checks keep working.
 
 Before scheduling:
 

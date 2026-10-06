@@ -4,6 +4,7 @@ using IndiaWorks.Application.Features.E01.Implement;
 using IndiaWorks.Application.Features.E02.Implement;
 using IndiaWorks.Application.Features.E04.Implement;
 using IndiaWorks.Application.Features.E04.Provision;
+using IndiaWorks.Application.Features.E04.Receive;
 
 namespace IndiaWorks.Application;
 
@@ -30,6 +31,7 @@ public static class DependencyInjection
         services.AddScoped<OrganisationCommercialIdentityService>();
         services.AddScoped<EntitlementEvaluator>();
         services.AddScoped<ProvisionCandidateUnlockHandler>();
+        services.AddScoped<ReceivePaymentWebhookHandler>();
 
         return services;
     }

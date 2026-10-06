@@ -55,6 +55,9 @@ def main() -> int:
     parser.add_argument("--timeout", type=int, default=2700)
     parser.add_argument("--expected-story", help="Watchdog: resume only this selected Story ID.")
     parser.add_argument('--notification-home', type=Path, help='Hermes home for direct output chat; no inference.')
+    parser.add_argument('--provider', help='Hermes inference provider selected on the cron job.')
+    parser.add_argument('--model', help='Hermes inference model selected on the cron job.')
+    parser.add_argument('--reasoning-effort', help='Hermes reasoning effort selected on the cron job.')
     args = parser.parse_args()
     root = Path(args.root).resolve()
     def notify(message: str) -> None:
@@ -110,13 +113,19 @@ def main() -> int:
     # Complete project rules are already in CONTEXT.md; skip duplicate automatic
     # context/memory/skill preloading, not the requirement to read those rules.
     command = [args.hermes_python, args.hermes_main, "-p", "indiaworks", "--in", str(root), "--ignore-rules",
-               '--toolsets', 'terminal,file',
-               "--usage-file", str(logs / f"{stamp}-{story_id}-usage.json"), "-z", prompt]
+               '--toolsets', 'terminal,file']
+    if args.provider:
+        command += ['--provider', args.provider]
+    if args.model:
+        command += ['--model', args.model]
+    if args.reasoning_effort:
+        command += ['--reasoning', args.reasoning_effort]
+    command += ["--usage-file", str(logs / f"{stamp}-{story_id}-usage.json"), "-z", prompt]
     if Path(args.hermes_main).parent.name == 'hermes_cli':
         command.insert(1, str(root / 'cron/hermes_executor_entry.py'))
     notify(
         f"IndiaWorks {story_id}: starting coding executor "
-        "using the indiaworks profile model/fallback chain "
+        f"using {args.provider or 'profile-provider'}/{args.model or 'profile-model'} "
         f"({MAX_EXECUTOR_ITERATIONS} turns, {MAX_EXECUTOR_OUTPUT_TOKENS} output tokens). "
         f"Progress reports show source changes and captured checks. "
         f"Log: {logs / f'{stamp}-{story_id}.log'}"

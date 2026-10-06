@@ -8,4 +8,5 @@ public static class ApiEndpointNames
     public const string VerifyOtp = "IndiaWorks.Auth.Otp.Verify";
     public const string RefreshToken = "IndiaWorks.Auth.Otp.Refresh";
     public const string Logout = "IndiaWorks.Auth.Otp.Logout";
+    public const string ReceivePaymentWebhook = "IndiaWorks.Billing.Webhooks.ReceivePayment";
 }

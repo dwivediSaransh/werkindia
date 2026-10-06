@@ -72,8 +72,8 @@ IW8-070,Sprint 3,EP-04,P0,Backend/Application,Backend Agent,docs/sprints/Sprint_
 IW8-071,Sprint 3,EP-04,P0,Backend/GraphQL,Backend Agent,docs/sprints/Sprint_03/agent-packages/IW8-071.md,DONE,PASS,8,4,5,
 IW8-072,Sprint 3,EP-04,P0,Backend/GraphQL,Backend Agent,docs/sprints/Sprint_03/agent-packages/IW8-072.md,DONE,PASS,10,6,9,
 IW8-073,Sprint 3,EP-04,P0,Backend/Application,Backend Agent,docs/sprints/Sprint_03/agent-packages/IW8-073.md,DONE,PASS,8,4,5,
-IW8-074,Sprint 3,EP-04,P0,Backend/Database,Backend Agent,docs/sprints/Sprint_03/agent-packages/IW8-074.md,TODO,PASS,8,4,5,
-IW8-075,Sprint 3,EP-04,P0,Backend/REST,Backend Agent,docs/sprints/Sprint_03/agent-packages/IW8-075.md,TODO,PASS,8,4,5,
+IW8-074,Sprint 3,EP-04,P0,Backend/Database,Backend Agent,docs/sprints/Sprint_03/agent-packages/IW8-074.md,DONE,,,,,Review package quality fields
+IW8-075,Sprint 3,EP-04,P0,Backend/REST,Backend Agent,docs/sprints/Sprint_03/agent-packages/IW8-075.md,DONE,PASS,8,4,5,
 IW8-076,Sprint 3,EP-04,P0,Backend/GraphQL,Backend Agent,docs/sprints/Sprint_03/agent-packages/IW8-076.md,TODO,PASS,8,4,5,
 IW8-077,Sprint 3,EP-04,P0,Frontend/Angular,Frontend Agent,docs/sprints/Sprint_03/agent-packages/IW8-077.md,TODO,PASS,10,9,9,
 IW8-078,Sprint 3,EP-04,P0,Frontend/Angular,Frontend Agent,docs/sprints/Sprint_03/agent-packages/IW8-078.md,TODO,PASS,7,4,8,
